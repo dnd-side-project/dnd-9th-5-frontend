@@ -1,5 +1,3 @@
-import { redirect } from "next/navigation";
-
 export default function Home() {
-  return <main>sss</main>;
+  return <main className="">ssss</main>;
 }
