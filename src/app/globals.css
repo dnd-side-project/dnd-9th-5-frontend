@@ -6,7 +6,7 @@
   box-sizing: border-box;
   -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
   scrollbar-width: none; /* Hide scrollbar for Firefox */
-  font-family: Noto Sans KR, serif;
+  font-family: Pretendard;
   white-space: pre-wrap;
 }
 
@@ -14,8 +14,11 @@
   display: none;
 }
 
-html {
-  font-size: 4vw;
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
 }
 
 @media (min-width: 420px) {
