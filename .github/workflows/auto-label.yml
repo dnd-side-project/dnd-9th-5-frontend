@@ -1,0 +1,19 @@
+name: Auto Label
+on:
+  pull_request:
+    types: [opened, reopened, edited]
+  issues:
+    types: [opened, reopened, edited]
+
+jobs:
+  labeler:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Check Labels
+        id: labeler
+        uses: jimschubert/labeler-action@v1
+        with:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
