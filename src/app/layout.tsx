@@ -1,4 +1,7 @@
+import Header from '@/components/header';
 import './globals.css';
+import '../../styles/font.css';
+import '../../styles/typography.css';
 
 import type { Metadata } from 'next';
 
@@ -43,8 +46,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body className="flex h-[100dvh] w-screen justify-center bg-black bg-slate-50">
-        <div className="relative h-full w-full max-w-450 overflow-y-scroll bg-white text-black">
+      <body className="flex h-[100dvh] w-screen justify-center bg-slate-100 py-px">
+        <div className="h-full w-full max-w-440 bg-white text-black drop-shadow-2xl">
+          <Header />
           {children}
         </div>
       </body>
