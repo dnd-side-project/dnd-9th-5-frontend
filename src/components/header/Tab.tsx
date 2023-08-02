@@ -16,8 +16,11 @@ export default function Tab() {
     <nav className="flex items-center gap-4">
       {tabData.map((item) =>
         item.path === path ? (
-          <div className="border-b-main-violet border-b-2 py-3" key={item.path}>
-            <h5 className="text-brand">{item.title}</h5>
+          <div key={item.path}>
+            <div className="py-3">
+              <h5 className="text-brand">{item.title}</h5>
+            </div>
+            <div className="border-b-main-violet relative top-0.5 border-b-2" />
           </div>
         ) : (
           <Link href={item.path} className="py-3" key={item.path}>
