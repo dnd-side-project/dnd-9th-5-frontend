@@ -6,8 +6,8 @@ if [ -n "$CI" ]; then
 fi
 
 branch=$(git branch --show-current)
-if [ "$branch" = "master" ]; then
-  echo "master 브랜치에 커밋하지 마세요!"
+if [ "$branch" = "main" ]; then
+  echo "main 브랜치에 커밋하지 마세요!"
   exit 1
 fi
 
