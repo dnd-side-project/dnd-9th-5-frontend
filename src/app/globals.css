@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  font-family: Noto Sans KR, serif;
+  white-space: pre-wrap;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  font-size: 4vw;
+}
+
+@media (min-width: 420px) {
+  html {
+    font-size: 16px;
+  }
+}
