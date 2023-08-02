@@ -47,9 +47,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko">
       <body className="flex h-[100dvh] w-screen touch-none justify-center bg-slate-100 py-px">
-        <div className="max-w-440 h-full w-full bg-white px-5 py-1 text-black drop-shadow-2xl">
+        <div className="max-w-440 h-full w-full bg-white py-2 text-black drop-shadow-2xl">
           <Header />
-          {children}
+          <div className="px-5 py-4">{children}</div>
         </div>
       </body>
     </html>

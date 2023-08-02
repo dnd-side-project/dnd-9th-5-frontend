@@ -1,9 +1,10 @@
+import MainHeader from '../MainHeader';
 import Tab from './Tab';
 
 export default function Header() {
   return (
-    <div>
-      <div>Header</div>
+    <div className="px-5">
+      <MainHeader />
       <Tab />
     </div>
   );
