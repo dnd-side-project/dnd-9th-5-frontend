@@ -1,31 +1,32 @@
+import { COLOR } from "../../src/constants/color";
+
 export const colors = {
-  white: '#FFFFFF',
-  gray: {
-    '030': '#F9F9FB',
-    '050': '#F7F7FA',
-    '100':'#F0F0F5',
-    '200': '#E8E8EE',
-    '300':'#E1E1E8',
-    '400':'#CDCED6',
-    '500':'#A9ABB8',
-    '600' :'#858899',
-    '700':'#525463',
-    '800':'#3E404C',
-    '900':'#2B2D36',
-    '950':'#252730',
-  },
-  black: '#141218',
-  violet: {
-    '050':'#141218',
-    '100':'#E2D9FC',
-    '200':'#C8B8FA',
-    '300':'#B29BF8',
-    '400':'#9C7FF5',
-    '500':'#8662F3',
-    '600':'#744CEB',
-    '700':'#5B2EE0',
-    '800':'#4B25C1',
-    '900':'#412499',
-    '950':'#21005D',
-  }
-} as const;
+    // bg
+    "white": COLOR.white,
+    "sub-white": COLOR.gray[50],
+    "divider": COLOR.gray[100],
+
+    // border
+    "default": COLOR.gray[300],
+    "active": COLOR.gray[900],
+    "disabled": COLOR.gray[100],
+
+    // brand colors
+    "main-violet-light": COLOR.violet[300],
+    "main-violet": COLOR.violet[500],
+    "main-violet-dark": COLOR.violet[700],
+
+    // text
+    "cto": COLOR.black,
+    "brand": COLOR.violet[500],
+    "primary":COLOR.gray[900],
+    "secondary": COLOR.gray[700],
+    "tertiary": COLOR.gray[500],
+    "caption": COLOR.gray[400],
+    
+    // icon
+    "icon-default": COLOR.gray[800],
+    "icon-hover": COLOR.gray[600],
+    "icon-disabled": COLOR.gray[500],
+
+} as const
