@@ -1,4 +1,4 @@
-import Header from '@/components/header';
+import { Header } from '@/components/header';
 import './globals.css';
 import '../../styles/font.css';
 import '../../styles/typography.css';
@@ -47,9 +47,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko">
       <body className="flex h-[100dvh] w-screen touch-none justify-center bg-slate-100 py-px">
-        <div className="max-w-440 h-full w-full bg-white py-2 text-black drop-shadow-2xl">
+        <div className="h-full w-full max-w-440 bg-white py-16 text-black drop-shadow-2xl">
           <Header />
-          <div className="px-5 py-4">{children}</div>
+          <div className="px-20 py-16">{children}</div>
         </div>
       </body>
     </html>

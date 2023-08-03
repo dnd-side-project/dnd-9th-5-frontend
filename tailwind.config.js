@@ -1,10 +1,11 @@
-const { colors, animations } = require('./styles/theme');
+const { colors, pxToRemTailwind, animations } = require('./styles/theme');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      ...pxToRemTailwind,
       colors,
       keyframes: animations,
       animation: {

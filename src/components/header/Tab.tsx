@@ -13,21 +13,23 @@ export default function Tab() {
   const path = usePathname();
 
   return (
-    <nav className="flex items-center gap-4">
-      {tabData.map((item) =>
-        item.path === path ? (
-          <div key={item.path}>
-            <div className="py-3">
-              <h5 className="text-brand">{item.title}</h5>
-            </div>
-            <div className="border-b-main-violet relative top-0.5 border-b-2" />
-          </div>
-        ) : (
-          <Link href={item.path} className="py-3" key={item.path}>
-            <h5 className="text-secondary">{item.title}</h5>
-          </Link>
-        )
-      )}
+    <nav className="flex items-center gap-16">
+      {tabData.map((item) => (
+        <div key={item.path}>
+          {item.path === path ? (
+            <>
+              <div className="py-12">
+                <h5 className="text-brand">{item.title}</h5>
+              </div>
+              <div className="border-b-main-violet relative top-0.5 border-b-2" />
+            </>
+          ) : (
+            <Link className="py-12" href={item.path}>
+              <h5>{item.title}</h5>
+            </Link>
+          )}
+        </div>
+      ))}
     </nav>
   );
 }
