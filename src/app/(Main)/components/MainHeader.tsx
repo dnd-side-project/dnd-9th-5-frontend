@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { Header } from '../../../components/Header';
 import Tab from './Tab';
+import { Header } from '@/components/Header';
 
 export default function MainHeader() {
   return (
