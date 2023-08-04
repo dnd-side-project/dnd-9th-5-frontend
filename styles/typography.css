@@ -1,0 +1,49 @@
+h1 {
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 3.75rem;
+    letter-spacing: -0.4px;
+}
+h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 3rem;
+    letter-spacing: -0.4px;
+}
+h3 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    letter-spacing: -0.3px;
+}
+h4 {
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+    letter-spacing: -0.2px;
+}
+
+/*
+subtitle-1 에 해당하는 타이포입니다.
+hifi에서 subtitle-2, subtitle-3은 아직 쓰이지 않는 것 같아서 임의로 h5로 사용했어요
+*/
+h5 {
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.2px;
+}
+
+p {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.1px;
+}
+
+caption {
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    letter-spacing: 0.4px;
+}
