@@ -5,6 +5,7 @@ export const colors = {
     "white": COLOR.white,
     "sub-white": COLOR.gray[50],
     "divider": COLOR.gray[100],
+    "card-ui": COLOR.gray[30],
 
     // border
     "default": COLOR.gray[300],
