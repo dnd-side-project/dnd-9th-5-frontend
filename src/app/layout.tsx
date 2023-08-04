@@ -7,11 +7,11 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'PosePicker',
-  description: '',
+  description: 'PosePicker FE by @guesung, @seondal',
   openGraph: {
     title: 'PosePicker',
-    description: '',
-    url: '', // 웹사이트 URL
+    description: 'PosePicker FE by @guesung, @seondal',
+    url: 'https://pose-picker.vercel.app/', // 웹사이트 URL
     siteName: 'PosePicker',
     images: [
       {
@@ -47,9 +47,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko">
       <body className="flex h-[100dvh] w-screen touch-none justify-center bg-slate-100 py-px">
-        <div className="h-full w-full max-w-440 bg-white py-16 text-black drop-shadow-2xl">
+        <div className="h-full w-full max-w-440 bg-white text-black drop-shadow-2xl">
           <Header />
-          <div className="px-20 py-16">{children}</div>
+          <div className="px-20 py-128">{children}</div>
         </div>
       </body>
     </html>
