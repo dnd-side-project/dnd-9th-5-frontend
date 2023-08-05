@@ -1,10 +1,10 @@
 import { Button } from '@/components/Button';
-import { Modal } from '@/components/Modal';
+import { Popup } from '@/components/Modal';
 import { Spacing } from '@/components/Spacing';
 
 export default function MenuModal() {
   return (
-    <Modal isOpen>
+    <Popup isOpen>
       <Spacing size={20} />
       <div>문의사항을 남기시겠습니까?</div>
       <Spacing size={20} />
@@ -12,6 +12,6 @@ export default function MenuModal() {
         <Button className="bg-default">취소</Button>
         <Button className="bg-main-violet">확인</Button>
       </div>
-    </Modal>
+    </Popup>
   );
 }
