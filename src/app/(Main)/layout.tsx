@@ -5,7 +5,7 @@ import { Spacing } from '@/components/Spacing';
 export default function MainLayout({ children }: StrictPropsWithChildren) {
   return (
     <>
-      <Spacing size={140} />
+      <Spacing size={120} />
       <MainHeader />
       {children}
     </>

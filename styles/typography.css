@@ -34,6 +34,13 @@ h5 {
     letter-spacing: -0.2px;
 }
 
+h6 {
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    letter-spacing: 0;
+}
+
 p {
     font-weight: 400;
     font-size: 1rem;
