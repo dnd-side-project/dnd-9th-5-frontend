@@ -1,4 +1,4 @@
-import { Header } from '@/components/header';
+import { Header } from '@/components/Header';
 import './globals.css';
 import '../../styles/font.css';
 import '../../styles/typography.css';
