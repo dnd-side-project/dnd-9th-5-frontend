@@ -14,7 +14,7 @@ export const colors = {
   // brand colors
   'main-violet-bright': COLOR.violet[100],
   'main-violet-light': COLOR.violet[300],
-  'main-violet': COLOR.violet[500],
+  'main-violet': COLOR.violet[600],
   'main-violet-dark': COLOR.violet[700],
 
   // text
