@@ -13,7 +13,7 @@ export default function Tab() {
   const path = usePathname();
 
   return (
-    <nav className="flex items-center gap-16">
+    <nav className="fixed inset-x-0 top-64 mx-auto flex h-48 items-center gap-16 border-b-2 border-b-divider px-20">
       {tabData.map((item) => (
         <div key={item.path}>
           {item.path === path ? (
@@ -21,7 +21,7 @@ export default function Tab() {
               <div className="py-12">
                 <h5 className="text-brand">{item.title}</h5>
               </div>
-              <div className="border-b-main-violet relative top-0.5 border-b-2" />
+              <div className="relative top-0.5 border-b-2 border-b-main-violet" />
             </>
           ) : (
             <Link className="py-12" href={item.path}>

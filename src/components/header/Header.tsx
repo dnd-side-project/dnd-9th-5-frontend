@@ -1,11 +1,20 @@
-import MainHeader from './MainHeader';
-import Tab from './Tab';
+import { HTMLAttributes, PropsWithChildren } from 'react';
 
-export default function Header() {
+interface HeaderProps {
+  leftNode?: React.ReactNode;
+  rightNode?: React.ReactNode;
+  className?: string;
+  props?: PropsWithChildren<HTMLAttributes<HTMLHeadElement>>;
+}
+
+export default function Header({ leftNode, rightNode, className, ...props }: HeaderProps) {
   return (
-    <div className="border-b-divider fixed inset-x-0 border-b-2 bg-white px-20 pt-16">
-      <MainHeader />
-      <Tab />
-    </div>
+    <header
+      className={`fixed inset-x-0 top-16 flex items-center justify-between bg-white px-20 ${className} h-48`}
+      {...props}
+    >
+      {leftNode ? leftNode : <div />}
+      {rightNode ? rightNode : <div />}
+    </header>
   );
 }

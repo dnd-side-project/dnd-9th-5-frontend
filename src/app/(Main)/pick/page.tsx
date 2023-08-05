@@ -1,3 +1,3 @@
 export default function Pick() {
-  return <>포즈픽</>;
+  return <>포즈픽s</>;
 }
