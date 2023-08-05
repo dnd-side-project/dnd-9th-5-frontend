@@ -17,8 +17,8 @@ export default function Feed() {
       <Filter />
       <div className="pt-72">
         <div className="columns-2	overflow-y-scroll">
-          {tmp.map((item) => (
-            <Thumbnails height={item} />
+          {tmp.map((item, idx) => (
+            <Thumbnails height={item} key={idx} />
           ))}
         </div>
       </div>

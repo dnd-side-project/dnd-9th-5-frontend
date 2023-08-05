@@ -3,7 +3,7 @@ export const ICON = {
         back: "/icons/arrow_back.svg"
     },
     carat: {
-        up: "/icnos/carat_up.svg",
+        up: "/icons/carat_up.svg",
         down: "/icons/carat_down.svg"
     }
 } as const
