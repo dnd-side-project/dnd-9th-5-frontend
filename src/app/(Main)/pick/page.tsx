@@ -1,3 +1,9 @@
+import PickSection from './components/PickSection';
+
 export default function Pick() {
-  return <>포즈픽s</>;
+  return (
+    <>
+      <PickSection />
+    </>
+  );
 }
