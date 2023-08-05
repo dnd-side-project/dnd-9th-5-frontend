@@ -1,14 +1,17 @@
 'use client';
 
 import { AnimatePresence, motion, MotionProps } from 'framer-motion';
-import { PropsWithChildren } from 'react';
 import { Portal } from '.';
+import { StrictPropsWithChildren } from '@/types';
 
-type AnimatedPortalProps = {
+interface AnimatedPortalProps {
   motionProps: MotionProps;
-} & PropsWithChildren;
+}
 
-export default function AnimatedPortal({ children, motionProps }: AnimatedPortalProps) {
+export default function AnimatedPortal({
+  children,
+  motionProps,
+}: StrictPropsWithChildren<AnimatedPortalProps>) {
   return (
     <Portal>
       <AnimatePresence>
