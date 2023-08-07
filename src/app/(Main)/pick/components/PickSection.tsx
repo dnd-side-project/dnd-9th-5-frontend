@@ -10,7 +10,7 @@ export default function PickSection() {
   const [countState, setCountState] = useState<string>('1인');
 
   return (
-    <section className="flex flex-col ">
+    <section className="flex flex-col">
       <div className="my-16 flex h-40 justify-evenly rounded-8 px-20">
         {countList.map((count) => (
           <CountItem
@@ -22,9 +22,9 @@ export default function PickSection() {
         ))}
       </div>
       <div className="relative h-520 grow bg-black">
-        <Image src="/images/sample.png" fill alt="image" />
+        <Image src="/images/sample.png" fill priority alt="image" />
       </div>
-      <BottomFixedButton text="포즈 pick!" className="bg-main-violet text-white" />
+      <BottomFixedButton className="bg-main-violet text-white">포즈 pick!</BottomFixedButton>
     </section>
   );
 }
