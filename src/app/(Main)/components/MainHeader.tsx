@@ -8,8 +8,8 @@ export default function MainHeader() {
       <Header
         leftNode={<h4>PosePicker</h4>}
         rightNode={<Image src="/icons/menu.svg" width={24} height={24} alt="24" />}
+        headerDownNode={<Tab />}
       />
-      <Tab />
     </div>
   );
 }
