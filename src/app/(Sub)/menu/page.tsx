@@ -1,10 +1,17 @@
-import MenuHeader from './components/MenuHeader';
+import { Spacing } from '@/components/Spacing';
+import LoginSection from './components/LoginSection';
+import MakerSection from './components/MakerSection';
+import MenuHeader from './components/MenuListSection';
+import MenuListSection from './components/MenuSection';
 
 export default function MenuPage() {
   return (
-    <>
+    <div className="h-full px-20">
       <MenuHeader />
-      메뉴
-    </>
+      <LoginSection />
+      <Spacing size={12} />
+      <MenuListSection />
+      <MakerSection />
+    </div>
   );
 }
