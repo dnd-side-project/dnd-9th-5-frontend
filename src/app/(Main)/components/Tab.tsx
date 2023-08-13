@@ -19,7 +19,9 @@ export default function Tab() {
           {item.path === path ? (
             <>
               <div className="py-12">
-                <h5 className="text-brand">{item.title}</h5>
+                <h5 id="subtitle-1" className="text-brand">
+                  {item.title}
+                </h5>
               </div>
               <div className="relative border-b-2 border-b-main-violet" />
             </>
