@@ -5,6 +5,8 @@ import '../../styles/typography.css';
 
 import type { Metadata } from 'next';
 
+import QueryProvider from './QueryProvider';
+
 export const metadata: Metadata = {
   title: 'PosePicker',
   description: 'PosePicker FE by @guesung, @seondal',
@@ -48,8 +50,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ko">
       <body className="flex h-[100dvh] w-screen touch-none justify-center bg-slate-100 py-px">
         <div className="h-full w-full max-w-440 bg-white text-black drop-shadow-2xl">
-          {children}
-          <div id="portal" />
+          <QueryProvider>
+            {children}
+            <div id="portal" />
+          </QueryProvider>
         </div>
       </body>
     </html>
