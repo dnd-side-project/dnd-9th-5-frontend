@@ -1,8 +1,9 @@
 'use client';
 
-import useIsMounted from '@/hooks/useIsMounted';
 import { PropsWithChildren, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
+
+import useIsMounted from '@/hooks/useIsMounted';
 
 export type PortalProps = {
   documentId?: string;

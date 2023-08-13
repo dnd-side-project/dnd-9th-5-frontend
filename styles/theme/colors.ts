@@ -1,4 +1,4 @@
-import { COLOR } from "../../src/constants/color";
+import { COLOR } from '../../src/constants/color';
 
 export const colors = {
   // bg
