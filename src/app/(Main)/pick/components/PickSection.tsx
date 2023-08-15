@@ -6,7 +6,6 @@ import Lottie from 'react-lottie-player';
 
 import lottieJson from '../../../../../public/lotties/posepicker.json';
 import { usePosePickQuery } from '@/apis/apis';
-import publicApi from '@/apis/config/publicApi';
 import { BottomFixedButton } from '@/components/Button';
 import { Spacing } from '@/components/Spacing';
 
@@ -15,13 +14,19 @@ const countList = ['1인', '2인', '3인', '4인', '5인+'];
 export default function PickSection() {
   const [countState, setCountState] = useState<string>('1인');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { refetch, data } = usePosePickQuery(+countState[0]);
+  const [image, setImage] = useState<string>('');
+  const { refetch, data } = usePosePickQuery(+countState[0], {
+    enabled: false,
+    onSuccess: (data) => {
+      if (!data) return;
+      setImage(data.poseInfo.image_key);
+    },
+  });
 
   const handlePickClick = () => {
     // setIsLoading(true);
     // TODO : API 호출
     refetch();
-    console.log(data);
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
@@ -45,7 +50,7 @@ export default function PickSection() {
         {isLoading ? (
           <Lottie loop animationData={lottieJson} play style={{ width: '100%', height: '100%' }} />
         ) : (
-          <Image src="/images/sample.png" fill priority alt="image" />
+          image && <Image src={image || ''} fill priority alt="image" />
         )}
       </div>
       <BottomFixedButton className="bg-main-violet text-white" onClick={handlePickClick}>
