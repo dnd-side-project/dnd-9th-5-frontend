@@ -23,7 +23,9 @@ export default function PickSection() {
 
   return (
     <section className="flex flex-col px-20">
-      <SelectionBasic data={countList} state={countState} setState={setCountState} />
+      <div className="py-16">
+        <SelectionBasic data={countList} state={countState} setState={setCountState} />
+      </div>
       <Spacing size={13} />
       <div className="relative h-520">
         {isLoading ? (

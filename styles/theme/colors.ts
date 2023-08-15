@@ -8,9 +8,9 @@ export const colors = {
   'card-ui': COLOR.gray[30],
 
   // border
-  default: COLOR.gray[300],
-  active: COLOR.gray[900],
-  disabled: COLOR.gray[100],
+  'border-default': COLOR.gray[300],
+  'border-active': COLOR.gray[900],
+  'border-disabled': COLOR.gray[100],
 
   // brand colors
   'main-violet-bright': COLOR.violet[100],
