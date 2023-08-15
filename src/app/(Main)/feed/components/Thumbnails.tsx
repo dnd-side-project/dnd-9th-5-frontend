@@ -1,3 +1,3 @@
-export default function Thumbnails({ height }: { height: number }) {
-  return <div className={`inline-block bg-sub-white h-${height} mb-16 w-full rounded-8`} />;
+export default function Thumbnails() {
+  return <div className={`mb-16 inline-block h-200 w-full rounded-8 bg-sub-white`} />;
 }
