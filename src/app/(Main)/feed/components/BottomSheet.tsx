@@ -1,4 +1,4 @@
-import { Button } from '@/components/Button';
+import { PrimaryButton } from '@/components/Button';
 import { SelectionBasic } from '@/components/Selection';
 import { ICON } from '@/constants/icon';
 import Image from 'next/image';
@@ -39,7 +39,13 @@ export default function BottomSheet() {
           </section>
         </div>
         <div className="flex gap-8 p-20">
-          <Button children={'wow'} />
+          <PrimaryButton
+            type="outline"
+            icon={ICON.restart}
+            text="필터 초기화"
+            onClick={() => console.log('포즈보기')}
+          />
+          <PrimaryButton type="fill" text="포즈보기" onClick={() => console.log('포즈보기')} />
         </div>
       </div>
     </>

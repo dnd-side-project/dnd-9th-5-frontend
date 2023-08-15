@@ -1,5 +1,6 @@
 export const ICON = {
   close: '/icons/close.svg',
+  restart: '/icons/restart.svg',
   arrow: {
     back: '/icons/arrow_back.svg',
   },
