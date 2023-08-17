@@ -1,9 +1,9 @@
-import { Header } from '@/components/Header';
 import './globals.css';
 import '../../styles/font.css';
 import '../../styles/typography.css';
 
 import type { Metadata } from 'next';
+import RecoilContextProvider from './RecoilContextProvider';
 
 export const metadata: Metadata = {
   title: 'PosePicker',
@@ -47,10 +47,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko">
       <body className="flex h-[100dvh] w-screen touch-none justify-center bg-slate-100 py-px">
-        <div className="h-full w-full max-w-440 bg-white text-black drop-shadow-2xl">
-          {children}
-          <div id="portal" />
-        </div>
+        <RecoilContextProvider>
+          <div className="h-full w-full max-w-440 bg-white text-black drop-shadow-2xl">
+            {children}
+            <div id="portal" />
+          </div>
+        </RecoilContextProvider>
       </body>
     </html>
   );
