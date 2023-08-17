@@ -1,5 +1,5 @@
 import { PrimaryButton } from '@/components/Button';
-import { SelectionBasic } from '@/components/Selection';
+import { SelectionBasic, SelectionTag } from '@/components/Selection';
 import { ICON } from '@/constants/icon';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -10,6 +10,9 @@ export default function BottomSheet() {
 
   const frameList = ['전체', '1컷', '3컷', '4컷', '6컷', '8컷+'];
   const [frameState, setFrameState] = useState<string>('전체');
+
+  const tagList = ['친구', '연인', '유명프레임', '기념일', '소품'];
+  const [tagState, setTagState] = useState<string[]>([]);
 
   return (
     <>
@@ -36,6 +39,7 @@ export default function BottomSheet() {
             <div id="subtitle-2" className="mb-8 text-secondary">
               태그
             </div>
+            <SelectionTag data={tagList} state={tagState} setState={setTagState} />
           </section>
         </div>
         <div className="flex gap-8 p-20">
