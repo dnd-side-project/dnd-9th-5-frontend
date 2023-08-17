@@ -1,8 +1,8 @@
 'use client';
 
-import BottomSheet from './components/BottomSheet';
 import Filter from './components/Filter';
 import Thumbnails from './components/Thumbnails';
+import FilterSheet from './components/FilterSheet';
 
 export default function Feed() {
   return (
@@ -19,7 +19,7 @@ export default function Feed() {
           <Thumbnails />
         </div>
       </div>
-      <BottomSheet />
+      <FilterSheet />
     </>
   );
 }
