@@ -6,13 +6,19 @@ import { useState } from 'react';
 
 export default function BottomSheet() {
   const countList = ['전체', '1인', '2인', '3인', '4인', '5인+'];
-  const [countState, setCountState] = useState<string>('전체');
+  const [countState, setCountState] = useState<string>(countList[0]);
 
   const frameList = ['전체', '1컷', '3컷', '4컷', '6컷', '8컷+'];
-  const [frameState, setFrameState] = useState<string>('전체');
+  const [frameState, setFrameState] = useState<string>(frameList[0]);
 
   const tagList = ['친구', '연인', '유명프레임', '기념일', '소품'];
   const [tagState, setTagState] = useState<string[]>([]);
+
+  function resetFilter() {
+    setCountState(countList[0]);
+    setFrameState(frameList[0]);
+    setTagState([]);
+  }
 
   return (
     <>
@@ -47,7 +53,7 @@ export default function BottomSheet() {
             type="outline"
             icon={ICON.restart}
             text="필터 초기화"
-            onClick={() => console.log('포즈보기')}
+            onClick={resetFilter}
           />
           <PrimaryButton type="fill" text="포즈보기" onClick={() => console.log('포즈보기')} />
         </div>
