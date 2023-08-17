@@ -22,6 +22,7 @@ export default function BottomSheet() {
 
   return (
     <>
+      <div className="fixed inset-x-0 inset-y-0 bg-dimmed opacity-30" />
       <div className="fixed inset-x-0 bottom-0 rounded-t-16 bg-white">
         <div className="flex justify-end px-8 pt-12">
           <button className="p-12" onClick={() => console.log('close')}>
@@ -48,7 +49,7 @@ export default function BottomSheet() {
             <SelectionTag data={tagList} state={tagState} setState={setTagState} />
           </section>
         </div>
-        <div className="flex gap-8 p-20">
+        <div className="flex gap-8 p-20 [&>*]:flex-1">
           <PrimaryButton
             type="outline"
             icon={ICON.restart}

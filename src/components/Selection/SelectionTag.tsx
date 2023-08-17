@@ -1,4 +1,3 @@
-import { COLOR } from '@/constants/color';
 import { ICON } from '@/constants/icon';
 import Image from 'next/image';
 
@@ -20,11 +19,12 @@ export default function SelectionTag({ data, state, setState }: SelectionTag) {
     <div className="flex flex-wrap gap-8">
       {data.map((item, idx) => {
         const selected = state.includes(item);
-        const bg = `bg-[${selected ? COLOR.violet[100] : COLOR.gray[50]}]`;
         return (
           <div
             key={idx}
-            className={`${bg} flex gap-4 rounded-30 px-12 py-5`}
+            className={`flex gap-4 rounded-30 px-12 py-5 ${
+              selected ? 'bg-main-violet-bright' : 'bg-sub-white'
+            }`}
             onClick={() => clickTag(item)}
           >
             <div id="subtitle-2" className={selected ? 'text-main-violet-dark' : 'text-secondary'}>

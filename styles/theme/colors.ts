@@ -6,6 +6,7 @@ export const colors = {
   'sub-white': COLOR.gray[50],
   divider: COLOR.gray[100],
   'card-ui': COLOR.gray[30],
+  dimmed: COLOR.black,
 
   // border
   'border-default': COLOR.gray[300],
@@ -13,6 +14,7 @@ export const colors = {
   'border-disabled': COLOR.gray[100],
 
   // brand colors
+  'main-violet-base': COLOR.violet[50],
   'main-violet-bright': COLOR.violet[100],
   'main-violet-light': COLOR.violet[300],
   'main-violet': COLOR.violet[600],
