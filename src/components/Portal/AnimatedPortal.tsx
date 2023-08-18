@@ -1,6 +1,7 @@
 'use client';
 
-import { AnimatePresence, motion, MotionProps } from 'framer-motion';
+import { AnimatePresence, MotionProps, motion } from 'framer-motion';
+
 import { Portal } from '.';
 import { StrictPropsWithChildren } from '@/types';
 
