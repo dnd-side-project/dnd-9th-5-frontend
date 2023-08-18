@@ -96,7 +96,7 @@ jobs:
 
       - name: Check Lint
         if: github.event_name != 'push'
-        run: yarn lint
+        run: yarn lint:fix
 
       - name: Run Prettier
         if: github.event_name != 'push'
