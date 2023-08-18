@@ -11,7 +11,7 @@ module.exports = {
     'eslint-config-prettier',
     'next/core-web-vitals',
   ],
-  plugins: ['@typescript-eslint', 'import', 'prettier', 'react', 'react-hooks', 'jsx-a11y'],
+  plugins: ['@typescript-eslint', 'import', 'prettier', 'react', 'jsx-a11y'],
   settings: {
     'import/resolver': {
       node: {

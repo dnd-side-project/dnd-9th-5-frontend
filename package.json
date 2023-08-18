@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:fix": "eslint '**/*.{js,jsx,ts,tsx}' --fix",
     "format": "prettier --write --ignore-path .gitignore ."
   },
   "dependencies": {
@@ -33,7 +34,6 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.33.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.3",
     "postcss": "^8.4.27",
     "prettier": "^3.0.0",
