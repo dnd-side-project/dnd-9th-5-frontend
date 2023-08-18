@@ -1,16 +1,16 @@
-import Thumbnails from './Thumbnails';
+import Photo from './Photo';
 
 export default function PhotoList() {
   return (
     <>
       <div className="columns-2	overflow-y-scroll">
-        <Thumbnails />
-        <Thumbnails />
-        <Thumbnails />
-        <Thumbnails />
-        <Thumbnails />
-        <Thumbnails />
-        <Thumbnails />
+        <Photo />
+        <Photo />
+        <Photo />
+        <Photo />
+        <Photo />
+        <Photo />
+        <Photo />
       </div>
     </>
   );
