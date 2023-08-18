@@ -14,11 +14,15 @@ export const usePoseDetailQuery = (poseId: number) =>
 
 export interface PosePickResponse {
   poseInfo: {
-    frame_count: number;
-    image_key: string;
-    people_count: number;
-    pose_id: number;
-    pose_source: string;
+    createdAt: string;
+    frameCount: number;
+    imageKey: string;
+    peopleCount: number;
+    poseId: number;
+    source: string;
+    sourceUrl: string;
+    tagAttributes: string;
+    updatedAt: string;
   };
 }
 

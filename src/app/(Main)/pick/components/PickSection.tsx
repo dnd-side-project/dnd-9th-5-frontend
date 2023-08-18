@@ -19,13 +19,12 @@ export default function PickSection() {
     enabled: false,
     onSuccess: (data) => {
       if (!data) return;
-      setImage(data.poseInfo.image_key);
+      setImage(data.poseInfo.imageKey);
     },
   });
 
   const handlePickClick = () => {
-    // setIsLoading(true);
-    // TODO : API 호출
+    setIsLoading(true);
     refetch();
     setTimeout(() => {
       setIsLoading(false);
@@ -50,7 +49,7 @@ export default function PickSection() {
         {isLoading ? (
           <Lottie loop animationData={lottieJson} play style={{ width: '100%', height: '100%' }} />
         ) : (
-          image && <Image src={image || ''} fill priority alt="image" />
+          <Image src={image || '/images/sample.png'} fill priority alt="image" />
         )}
       </div>
       <BottomFixedButton className="bg-main-violet text-white" onClick={handlePickClick}>
