@@ -7,6 +7,7 @@ const tabData = [
   { path: '/pick', title: '포즈픽' },
   { path: '/talk', title: '포즈톡' },
   { path: '/feed', title: '포즈피드' },
+  { path: '/bookmark', title: '북마크' },
 ];
 
 export default function Tab() {
