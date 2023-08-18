@@ -3,7 +3,6 @@ import type { ButtonHTMLAttributes, HTMLAttributes, PropsWithChildren } from 're
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
-  props?: PropsWithChildren<HTMLAttributes<HTMLButtonElement>>;
   type?: 'button' | 'submit';
 }
 

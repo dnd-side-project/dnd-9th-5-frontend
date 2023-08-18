@@ -6,12 +6,10 @@ import { AnimatedPortal, Portal } from '../Portal';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside';
 
 interface ModalWrapperProps {
-  isOpen: boolean;
   onClose?: () => void;
 }
 
 export default function ModalWrapper({
-  isOpen,
   onClose = () => {},
   children,
 }: StrictPropsWithChildren<ModalWrapperProps>) {
@@ -19,7 +17,6 @@ export default function ModalWrapper({
 
   useOnClickOutside(modalRef, onClose);
 
-  if (!isOpen) return null;
   return (
     <AnimatedPortal
       motionProps={{ initial: { opacity: 0 }, animate: { opacity: 1 }, exit: { opacity: 0 } }}
