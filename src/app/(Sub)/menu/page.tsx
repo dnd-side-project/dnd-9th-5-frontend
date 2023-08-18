@@ -9,7 +9,6 @@ export default function MenuPage() {
     <div className="h-full px-20">
       <MenuHeader />
       <LoginSection />
-      <Spacing size={12} />
       <MenuListSection />
       <MakerSection />
     </div>
