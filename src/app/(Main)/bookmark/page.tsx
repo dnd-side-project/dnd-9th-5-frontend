@@ -1,3 +1,9 @@
+import PhotoList from '../feed/components/PhotoList';
+
 export default function BookmarkPage() {
-  return <>북마크</>;
+  return (
+    <>
+      <PhotoList />
+    </>
+  );
 }
