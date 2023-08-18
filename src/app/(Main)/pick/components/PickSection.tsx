@@ -1,11 +1,12 @@
 'use client';
 
-import { BottomFixedButton } from '@/components/Button';
-import { Spacing } from '@/components/Spacing';
 import Image from 'next/image';
 import { useState } from 'react';
-import lottieJson from '../../../../../public/lotties/posepicker.json';
 import Lottie from 'react-lottie-player';
+
+import lottieJson from '../../../../../public/lotties/posepicker.json';
+import { BottomFixedButton } from '@/components/Button';
+import { Spacing } from '@/components/Spacing';
 
 const countList = ['1인', '2인', '3인', '4인', '5인+'];
 
