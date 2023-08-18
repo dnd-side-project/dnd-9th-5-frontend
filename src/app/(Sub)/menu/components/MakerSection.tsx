@@ -3,10 +3,9 @@ import { Spacing } from '@/components/Spacing';
 import Image from 'next/image';
 import Link from 'next/link';
 
-interface MakerSectionProps {}
 export default function MakerSection() {
   return (
-    <BottomFixedDiv className="flex justify-center">
+    <BottomFixedDiv>
       <div className="flex justify-center">
         <Link href="https://www.instagram.com">
           <Image alt="instagram" src="/icons/instagram.svg" width={48} height={48} />
