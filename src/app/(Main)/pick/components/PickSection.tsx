@@ -53,7 +53,7 @@ export default function PickSection() {
         {isLoading ? (
           <Lottie loop animationData={lottiePick} play style={{ width: '100%', height: '100%' }} />
         ) : (
-          <Image src={image || '/images/sample.png'} fill priority alt="image" />
+          <Image src={image || '/images/sample.png'} fill priority alt="sample" />
         )}
       </div>
       <BottomFixedButton className="bg-main-violet text-white" onClick={handlePickClick}>
