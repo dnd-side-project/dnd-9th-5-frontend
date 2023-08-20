@@ -1,34 +1,38 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Lottie from 'react-lottie-player';
 
-import lottieJson from '../../../../../public/lotties/posepicker.json';
-import { usePosePickQuery } from '@/apis/apis';
+import { usePosePickQuery } from '@/apis';
 import { BottomFixedButton } from '@/components/Button';
 import { Spacing } from '@/components/Spacing';
+
+import lottiePick from '#/lotties/pick.json';
 
 const countList = ['1인', '2인', '3인', '4인', '5인+'];
 
 export default function PickSection() {
   const [countState, setCountState] = useState<string>('1인');
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [image, setImage] = useState<string>('');
-  const { refetch, data } = usePosePickQuery(+countState[0], {
-    enabled: false,
+  const { refetch } = usePosePickQuery(+countState[0], {
     onSuccess: (data) => {
       if (!data) return;
       setImage(data.poseInfo.imageKey);
     },
   });
 
-  const handlePickClick = () => {
-    setIsLoading(true);
-    refetch();
+  useEffect(() => {
+    if (!isLoading) return;
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
+  }, [isLoading]);
+
+  const handlePickClick = () => {
+    setIsLoading(true);
+    refetch();
   };
 
   return (
@@ -37,7 +41,7 @@ export default function PickSection() {
         {countList.map((count) => (
           <CountItem
             key={count}
-            onClick={() => setCountState(count)}
+            onClick={() => !isLoading && setCountState(count)}
             isSelected={count === countState}
             count={count}
           />
@@ -47,7 +51,7 @@ export default function PickSection() {
       <Spacing size={13} />
       <div className="relative h-520">
         {isLoading ? (
-          <Lottie loop animationData={lottieJson} play style={{ width: '100%', height: '100%' }} />
+          <Lottie loop animationData={lottiePick} play style={{ width: '100%', height: '100%' }} />
         ) : (
           <Image src={image || '/images/sample.png'} fill priority alt="image" />
         )}
