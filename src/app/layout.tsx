@@ -1,12 +1,11 @@
-import { Header } from '@/components/Header';
-import './globals.css';
 import '../../styles/font.css';
 import '../../styles/typography.css';
-
-import type { Metadata } from 'next';
-import { OverlayProvider } from '@/components/Overlay/OverlayProvider';
+import './globals.css';
 
 import QueryProvider from './QueryProvider';
+import { OverlayProvider } from '@/components/Overlay/OverlayProvider';
+
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'PosePicker',
@@ -51,9 +50,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ko">
       <body className="flex h-[100dvh] w-screen touch-none justify-center bg-slate-100 py-px">
         <div className="h-full w-full max-w-440 bg-white text-primary drop-shadow-2xl">
-            <QueryProvider>
-              <OverlayProvider>{children}</OverlayProvider>
-            </QueryProvider>
+          <QueryProvider>
+            <OverlayProvider>{children}</OverlayProvider>
+          </QueryProvider>
           <div id="portal" />
         </div>
       </body>
