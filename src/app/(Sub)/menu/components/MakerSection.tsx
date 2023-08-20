@@ -1,7 +1,8 @@
-import BottomFixedDiv from '@/components/BottomFixedDiv';
-import { Spacing } from '@/components/Spacing';
 import Image from 'next/image';
 import Link from 'next/link';
+
+import BottomFixedDiv from '@/components/BottomFixedDiv';
+import { Spacing } from '@/components/Spacing';
 
 export default function MakerSection() {
   return (
