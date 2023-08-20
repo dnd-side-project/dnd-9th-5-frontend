@@ -1,10 +1,11 @@
-import { COLOR } from "../../src/constants/color";
+import { COLOR } from '../../src/constants/color';
 
 export const colors = {
   // bg
   white: COLOR.white,
   'sub-white': COLOR.gray[50],
   divider: COLOR.gray[100],
+  'card-ui': COLOR.gray[30],
 
   // border
   default: COLOR.gray[300],

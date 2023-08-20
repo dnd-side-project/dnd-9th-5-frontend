@@ -1,0 +1,27 @@
+name: CD-feature branch
+
+on:
+  push:
+    branches:
+      - 'feature/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: pandoc/latex
+    steps:
+      - uses: actions/checkout@v2
+      - name: Pushes to another repository
+        id: push_directory
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.PERSONAL_TOKEN }}
+        with:
+          source-directory: '.'
+          destination-github-username: guesung
+          destination-repository-name: posepicker-for-publish
+          user-email: gueit214@naver.com
+          commit-message: ${{ github.event.commits[0].message }}
+          target-branch: feature
+      - name: Test get variable exported by push-to-another-repository
+        run: echo $DESTINATION_CLONED_DIRECTORY

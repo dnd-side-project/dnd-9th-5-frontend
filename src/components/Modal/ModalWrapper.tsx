@@ -1,9 +1,10 @@
 'use client';
 import { useRef } from 'react';
 
-import type { StrictPropsWithChildren } from '@/types';
-import { AnimatedPortal, Portal } from '../Portal';
+import { AnimatedPortal } from '../Portal';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside';
+
+import type { StrictPropsWithChildren } from '@/types';
 
 interface ModalWrapperProps {
   onClose?: () => void;
