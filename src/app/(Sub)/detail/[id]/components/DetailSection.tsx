@@ -1,26 +1,25 @@
 'use client';
 
 import Image from 'next/image';
-import { useParams, useSearchParams } from 'next/navigation';
 
 import { usePoseDetailQuery } from '@/apis';
 
-interface DetailSectionProps {}
-export default function DetailSection() {
-  const { id } = useParams();
+interface DetailSectionProps {
+  poseId: number;
+}
 
-  const { data } = usePoseDetailQuery(+id);
+export default function DetailSection({ poseId }: DetailSectionProps) {
+  const { data } = usePoseDetailQuery(poseId);
 
   if (!data) return null;
 
   const { imageKey, tagAttributes } = data.poseInfo;
+
   return (
     <div>
       <Image src={imageKey} width={450} height={240} alt="detailImage" />
       <div className="flex gap-10 px-20 py-12">
-        {tagAttributes.split(',').map((tag, index) => (
-          <Tag key={index} name={tag} />
-        ))}
+        {tagAttributes?.split(',').map((tag, index) => <Tag key={index} name={tag} />)}
       </div>
     </div>
   );

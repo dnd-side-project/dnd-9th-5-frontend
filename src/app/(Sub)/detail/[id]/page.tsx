@@ -1,12 +1,21 @@
+import ButtonSection from './components/ButtonSection';
 import DetailHeader from './components/DetailHeader';
 import DetailSection from './components/DetailSection';
+import SourceSection from './components/SourceSection';
+import { getPoseDetail } from '@/apis';
+import { HydrationProvider } from '@/components/Provider/HydrationProvider';
 
-export default function DetailPage() {
+export default function DetailPage({ params }: { params: { id: number } }) {
+  const { id } = params;
+
   return (
     <div>
       <DetailHeader />
-      <div className="text-subtitle-2 flex h-26 justify-center text-tertiary">↗이미지 출처</div>
-      <DetailSection />
+      <SourceSection />
+      <HydrationProvider queryKey={['poseId', id]} queryFn={() => getPoseDetail(id)}>
+        <DetailSection poseId={id} />
+      </HydrationProvider>
+      <ButtonSection />
     </div>
   );
 }
