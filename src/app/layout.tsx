@@ -1,6 +1,9 @@
-import './globals.css';
 import '../../styles/font.css';
 import '../../styles/typography.css';
+import './globals.css';
+
+import QueryProvider from './QueryProvider';
+import { OverlayProvider } from '@/components/Overlay/OverlayProvider';
 
 import type { Metadata } from 'next';
 import RecoilContextProvider from './RecoilContextProvider';
@@ -47,12 +50,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko">
       <body className="flex h-[100dvh] w-screen touch-none justify-center bg-slate-100 py-px">
-        <RecoilContextProvider>
-          <div className="h-full w-full max-w-440 bg-white text-black drop-shadow-2xl">
-            {children}
-            <div id="portal" />
-          </div>
-        </RecoilContextProvider>
+       <RecoilContextProvider>
+        <div className="h-full w-full max-w-440 bg-white text-primary drop-shadow-2xl">
+          <QueryProvider>
+            <OverlayProvider>{children}</OverlayProvider>
+          </QueryProvider>
+          <div id="portal" />
+        </div>
+       </RecoilContextProvider>
       </body>
     </html>
   );
