@@ -3,13 +3,19 @@ import Image from 'next/image';
 interface Button {
   icon?: string;
   text: string;
-  onClick: () => void;
-  type?: 'fill' | 'outline';
+  onClick?: () => void;
+  type?: keyof style;
 }
 
-const style = {
+interface style {
+  fill: string;
+  outline: string;
+  secondary: string;
+}
+const style: style = {
   fill: `bg-main-violet text-white`,
   outline: `border-1 border-main-violet text-main-violet bg-main-violet-base`,
+  secondary: `bg-sub-white text-secondary w-fit`,
 };
 
 export default function PrimaryButton({ icon, text, onClick, type = 'fill' }: Button) {
