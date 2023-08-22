@@ -6,6 +6,9 @@ import {
   getPoseDetail,
   getPosePick,
   getPoseTalk,
+  PoseFeedResponse,
+  getPoseFeed,
+  PoseFeedParameter,
 } from '.';
 
 export const usePoseDetailQuery = (poseId: number) =>
@@ -22,3 +25,11 @@ export const usePosePickQuery = (
 
 export const usePoseTalkQuery = (options?: UseQueryOptions<PoseTalkResponse>) =>
   useQuery<PoseTalkResponse>(['poseTalk'], getPoseTalk, { enabled: false, ...options });
+
+export const usePoseFeedQuery = (
+  props: PoseFeedParameter,
+  options?: UseQueryOptions<PoseFeedResponse>
+) =>
+  useQuery<PoseFeedResponse>(['poseFeed', props], () => getPoseFeed(props), {
+    ...options,
+  });

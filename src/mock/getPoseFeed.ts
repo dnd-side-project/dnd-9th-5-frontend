@@ -1,4 +1,6 @@
-export const data = {
+import { PoseFeedResponse } from "@/apis";
+
+export const data: PoseFeedResponse = {
   "recommendation": true,
   "filteredContents": {
     "content": [],
