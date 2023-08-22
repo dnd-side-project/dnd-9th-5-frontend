@@ -49,9 +49,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body className="flex h-[100dvh] w-screen touch-none justify-center bg-slate-100 py-px">
+      <body className="flex min-h-[100vh] w-screen touch-none justify-center bg-slate-100 py-px">
         <RecoilContextProvider>
-          <div className="h-full w-full max-w-440 bg-white text-primary drop-shadow-2xl">
+          <div className="w-full max-w-440 bg-white text-primary drop-shadow-2xl">
             <QueryProvider>
               <OverlayProvider>{children}</OverlayProvider>
             </QueryProvider>
