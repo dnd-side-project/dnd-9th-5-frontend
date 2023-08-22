@@ -1,11 +1,15 @@
-import { data } from '../data';
+import { PoseInfo } from '@/apis';
 import Photo from './Photo';
 
-export default function PhotoList() {
+interface PhotoList {
+  data: { poseInfo: PoseInfo }[];
+}
+
+export default function PhotoList({ data }: PhotoList) {
   return (
     <>
       <div className="columns-2	overflow-y-scroll">
-        {data.recommendedContents.content.map((item) => (
+        {data.map((item) => (
           <Photo
             key={item.poseInfo.poseId}
             imageKey={item.poseInfo.imageKey}
