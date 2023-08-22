@@ -37,18 +37,10 @@ export default function PickSection() {
   };
 
   return (
-    <section className="flex flex-col px-20">
-      <div className="flex justify-evenly rounded-8 py-16">
-        {countList.map((count) => (
-          <CountItem
-            key={count}
-            onClick={() => !isLoading && setCountState(count)}
-            isSelected={count === countState}
-            count={count}
-          />
-        ))}
-      </div>
+    <section className="flex flex-col">
+      <SelectionBasic data={countList} setState={setCountState} state={countState} />
       <Spacing size={13} />
+      <Spacing size={16} />
       <div className="relative h-520">
         {isLoading ? (
           <Lottie loop animationData={lottiePick} play style={{ width: '100%', height: '100%' }} />
