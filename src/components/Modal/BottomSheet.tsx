@@ -10,14 +10,14 @@ export default function BottomSheet({ children }: StrictPropsWithChildren) {
   if (!isBottomSheetOpen) return null;
   return (
     <>
+      <div
+        className="fixed inset-x-0 inset-y-0 z-30 bg-dimmed opacity-30"
+        onClick={closeBottomSheet}
+      />
       <AnimatedPortal
         motionProps={{ initial: { opacity: 0 }, animate: { opacity: 1 }, exit: { opacity: 0 } }}
       >
-        <div
-          className="fixed inset-x-0 inset-y-0 bg-dimmed opacity-30"
-          onClick={closeBottomSheet}
-        />
-        <div className="fixed inset-x-0 bottom-0 rounded-t-16 bg-white">
+        <div className="fixed inset-x-0 bottom-0 z-30 rounded-t-16 bg-white">
           <div className="flex justify-end px-8 pt-12">
             <button className="p-12" onClick={closeBottomSheet}>
               <Image src={ICON.close} width={24} height={24} alt={'x'} />
