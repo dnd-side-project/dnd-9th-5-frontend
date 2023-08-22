@@ -26,7 +26,7 @@ export default function Tab() {
               <div className="relative border-b-2 border-b-main-violet" />
             </>
           ) : (
-            <Link className="py-12" href={item.path}>
+            <Link className="py-12" href={item.path} as={item.path}>
               <h5>{item.title}</h5>
             </Link>
           )}

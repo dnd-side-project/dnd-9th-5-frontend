@@ -1,10 +1,9 @@
 import { StrictPropsWithChildren } from '@/types';
 
-import type { ButtonHTMLAttributes, HTMLAttributes, PropsWithChildren } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
-  props?: PropsWithChildren<HTMLAttributes<HTMLButtonElement>>;
   type?: 'button' | 'submit';
 }
 

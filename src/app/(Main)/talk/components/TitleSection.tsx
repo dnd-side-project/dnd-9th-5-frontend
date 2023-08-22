@@ -1,8 +1,9 @@
 'use client';
-import { Spacing } from '@/components/Spacing';
 import Image from 'next/image';
 import { useState } from 'react';
 import { Tooltip } from 'react-tooltip';
+
+import { Spacing } from '@/components/Spacing';
 
 export default function TitleSection() {
   const [tooltipOpened, setTooltipOpened] = useState<boolean>(false);
@@ -24,7 +25,6 @@ export default function TitleSection() {
       </div>
       <Tooltip id="my-tooltip" style={{ fontSize: '1rem', fontWeight: 400 }} />
       <Spacing size={8} />
-      <h1>포즈로 말해요</h1>
     </section>
   );
 }

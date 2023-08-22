@@ -3,9 +3,9 @@ import { StrictPropsWithChildren } from '@/types';
 
 export default function SubLayout({ children }: StrictPropsWithChildren) {
   return (
-    <div>
-      <Spacing size={100} />
+    <>
+      <Spacing size={60} />
       {children}
-    </div>
+    </>
   );
 }
