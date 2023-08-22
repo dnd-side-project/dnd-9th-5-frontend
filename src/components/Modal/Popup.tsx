@@ -1,13 +1,14 @@
-import { StrictPropsWithChildren } from '@/types';
 import ModalWrapper from './ModalWrapper';
+import { StrictPropsWithChildren } from '@/types';
 
-interface ModalProps extends StrictPropsWithChildren {
-  isOpen: boolean;
+interface PopupProps {
+  className?: string;
 }
-export default function Popup({ isOpen, children }: ModalProps) {
+
+export default function Popup({ children }: StrictPropsWithChildren<PopupProps>) {
   return (
-    <ModalWrapper isOpen={isOpen}>
-      <section className="flex w-280 flex-col items-center rounded-16 bg-white px-16 py-12">
+    <ModalWrapper>
+      <section className="flex w-300 flex-col items-center rounded-16 bg-white px-16 py-12">
         {children}
       </section>
     </ModalWrapper>
