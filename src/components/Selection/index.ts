@@ -1,2 +1,2 @@
 export { default as SelectionBasic } from './SelectionBasic';
-export { default as SelectionTag } from './SelectionTag';
+export { default as SelectionTagList } from './SelectionTagList';

@@ -1,6 +1,6 @@
 import { PrimaryButton } from '@/components/Button';
 import BottomSheet from '@/components/Modal/BottomSheet';
-import { SelectionBasic, SelectionTag } from '@/components/Selection';
+import { SelectionBasic, SelectionTagList } from '@/components/Selection';
 import { ICON } from '@/constants/icon';
 import { useState } from 'react';
 
@@ -39,7 +39,7 @@ export default function FilterSheet() {
           <div id="subtitle-2" className="mb-8 text-secondary">
             태그
           </div>
-          <SelectionTag data={tagList} state={tagState} setState={setTagState} />
+          <SelectionTagList data={tagList} state={tagState} setState={setTagState} />
         </section>
         <div className="flex gap-8 py-20 [&>*]:flex-1">
           <PrimaryButton

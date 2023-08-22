@@ -1,13 +1,13 @@
 import { ICON } from '@/constants/icon';
 import Image from 'next/image';
 
-interface SelectionTag {
+interface SelectionTagList {
   data: string[];
   state: string[];
   setState: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-export default function SelectionTag({ data, state, setState }: SelectionTag) {
+export default function SelectionTagList({ data, state, setState }: SelectionTagList) {
   function clickTag(tag: string) {
     if (state.includes(tag)) {
       setState((prev) => prev.filter((item) => item !== tag));
