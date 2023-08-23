@@ -30,7 +30,7 @@ export default function PortalWrapper({
     >
       <div
         className={clsx(
-          'fixed left-1/2 top-0 z-10 h-full w-full max-w-440 -translate-x-1/2',
+          'fixed left-1/2 top-0 z-10 flex h-full w-full max-w-440 -translate-x-1/2 items-center justify-center',
           {
             'bg-neutral-900 bg-opacity-90': isBackGroundBlur,
           },
