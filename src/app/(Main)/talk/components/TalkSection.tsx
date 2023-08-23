@@ -9,7 +9,6 @@ import lottieTalkBeforeClick from '#/lotties/talk_before_click.json';
 import { usePoseTalkQuery } from '@/apis';
 import { BottomFixedButton } from '@/components/Button';
 
-interface TalkSectionProps {}
 export default function TalkSection() {
   const [isFirstLoading, setIsFirstLoading] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);

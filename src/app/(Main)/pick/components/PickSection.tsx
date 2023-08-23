@@ -9,12 +9,13 @@ import { usePosePickQuery } from '@/apis';
 import { BottomFixedButton } from '@/components/Button';
 import { Loading } from '@/components/Loading';
 import { Spacing } from '@/components/Spacing';
+import useLoading from '@/hooks/useLoading';
 
 const countList = ['1인', '2인', '3인', '4인', '5인+'];
 
 export default function PickSection() {
   const [countState, setCountState] = useState<string>('1인');
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const { isLoading, startLoading } = useLoading({ loadingDelay: 3000 });
   const [image, setImage] = useState<string>('');
   const { refetch } = usePosePickQuery(+countState[0], {
     onSuccess: (data) => {
@@ -23,16 +24,9 @@ export default function PickSection() {
     },
   });
 
-  useEffect(() => {
-    if (!isLoading) return;
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-  }, [isLoading]);
-
   const handlePickClick = () => {
+    startLoading();
     refetch();
-    setIsLoading(true);
   };
 
   return (
