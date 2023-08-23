@@ -31,11 +31,6 @@ export default function PickSection() {
 
   return (
     <section className="flex flex-col px-20">
-      {isLoading && (
-        <Loading>
-          <Lottie loop animationData={lottiePick} play style={{ width: '100%', height: '33rem' }} />
-        </Loading>
-      )}
       <div className="flex justify-evenly rounded-8 py-16">
         {countList.map((count) => (
           <CountItem
@@ -50,6 +45,9 @@ export default function PickSection() {
       <Spacing size={13} />
 
       <div className="relative h-520">
+        {true && (
+          <Lottie loop animationData={lottiePick} play style={{ width: '100%', height: '100%' }} />
+        )}
         <Image
           src={image || '/images/sample.png'}
           fill
