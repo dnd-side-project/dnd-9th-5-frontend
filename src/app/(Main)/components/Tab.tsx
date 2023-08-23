@@ -13,7 +13,7 @@ export default function Tab() {
   const path = usePathname();
 
   return (
-    <nav className="inset-x-0 mx-auto flex h-48 items-center gap-16 border-b-2 border-b-divider">
+    <nav className="inset-x-0 mx-auto flex h-48 items-center gap-16 border-b-2 border-b-divider px-20">
       {tabData.map((item) => (
         <div key={item.path}>
           {item.path === path ? (
