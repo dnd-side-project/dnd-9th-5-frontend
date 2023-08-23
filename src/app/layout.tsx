@@ -1,3 +1,4 @@
+import { StrictPropsWithChildren } from '@/types';
 import '../../styles/font.css';
 import '../../styles/typography.css';
 import './globals.css';

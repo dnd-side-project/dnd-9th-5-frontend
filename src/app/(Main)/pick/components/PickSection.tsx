@@ -1,21 +1,21 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Lottie from 'react-lottie-player';
 import { SelectionBasic } from '@/components/Selection';
 
+import lottiePick from '#/lotties/pick.json';
 import { usePosePickQuery } from '@/apis';
 import { BottomFixedButton } from '@/components/Button';
 import { Spacing } from '@/components/Spacing';
-
-import lottiePick from '#/lotties/pick.json';
+import useLoading from '@/hooks/useLoading';
 
 const countList = ['1인', '2인', '3인', '4인', '5인+'];
 
 export default function PickSection() {
   const [countState, setCountState] = useState<string>('1인');
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const { isLoading, startLoading } = useLoading({ loadingDelay: 3000 });
   const [image, setImage] = useState<string>('');
   const { refetch } = usePosePickQuery(+countState[0], {
     onSuccess: (data) => {
@@ -24,15 +24,8 @@ export default function PickSection() {
     },
   });
 
-  useEffect(() => {
-    if (!isLoading) return;
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-  }, [isLoading]);
-
   const handlePickClick = () => {
-    setIsLoading(true);
+    startLoading();
     refetch();
   };
 
@@ -42,22 +35,30 @@ export default function PickSection() {
         {countList.map((count) => (
           <CountItem
             key={count}
-            onClick={() => !isLoading && setCountState(count)}
+            onClick={() => setCountState(count)}
             isSelected={count === countState}
             count={count}
           />
         ))}
       </div>
       <Spacing size={13} />
+
       <div className="relative h-520">
-        {isLoading ? (
+        {true && (
           <Lottie loop animationData={lottiePick} play style={{ width: '100%', height: '100%' }} />
-        ) : (
-          <Image src={image || '/images/sample.png'} fill priority alt="sample" />
         )}
+        <Image
+          src={image || '/images/sample.png'}
+          fill
+          alt="sample"
+          priority
+          loading="eager"
+          className={isLoading ? 'hidden' : ''}
+        />
       </div>
+
       <BottomFixedButton className="bg-main-violet text-white" onClick={handlePickClick}>
-        포즈 pick!
+        {!!image ? '포즈 pick!' : '인원수 선택하고 포즈 pick!'}
       </BottomFixedButton>
     </section>
   );
