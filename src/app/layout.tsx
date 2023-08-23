@@ -1,3 +1,4 @@
+import { StrictPropsWithChildren } from '@/types';
 import '../../styles/font.css';
 import '../../styles/typography.css';
 import './globals.css';
@@ -47,14 +48,24 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko">
-      <body className="flex h-[100dvh] w-screen touch-none justify-center bg-slate-100 py-px">
-        <div className="h-full w-full max-w-440 bg-white text-primary drop-shadow-2xl">
-          <QueryProvider>
-            <OverlayProvider>{children}</OverlayProvider>
-          </QueryProvider>
-          <div id="portal" />
-        </div>
+    <Layout>
+      <QueryProvider>
+        <OverlayProvider>{children}</OverlayProvider>
+      </QueryProvider>
+      <div id="loading" />
+      <div id="portal" />
+    </Layout>
+  );
+}
+
+function Layout({ children }: StrictPropsWithChildren) {
+  return (
+    <html
+      lang="ko"
+      className="flex h-[100dvh] w-screen touch-none justify-center bg-slate-100 py-px"
+    >
+      <body className="h-full w-full max-w-440 bg-white text-primary drop-shadow-2xl">
+        {children}
       </body>
     </html>
   );

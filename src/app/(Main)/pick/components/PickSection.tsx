@@ -7,6 +7,7 @@ import Lottie from 'react-lottie-player';
 import lottiePick from '#/lotties/pick.json';
 import { usePosePickQuery } from '@/apis';
 import { BottomFixedButton } from '@/components/Button';
+import { Loading } from '@/components/Loading';
 import { Spacing } from '@/components/Spacing';
 
 const countList = ['1인', '2인', '3인', '4인', '5인+'];
@@ -36,6 +37,11 @@ export default function PickSection() {
 
   return (
     <section className="flex flex-col px-20">
+      {isLoading && (
+        <Loading>
+          <Lottie loop animationData={lottiePick} play style={{ width: '100%', height: '33rem' }} />
+        </Loading>
+      )}
       <div className="flex justify-evenly rounded-8 py-16">
         {countList.map((count) => (
           <CountItem
@@ -50,11 +56,14 @@ export default function PickSection() {
       <Spacing size={13} />
 
       <div className="relative h-520">
-        {isLoading ? (
-          <Lottie loop animationData={lottiePick} play style={{ width: '100%', height: '100%' }} />
-        ) : (
-          <Image src={image || '/images/sample.png'} fill alt="sample" priority />
-        )}
+        <Image
+          src={image || '/images/sample.png'}
+          fill
+          alt="sample"
+          priority
+          loading="eager"
+          className={isLoading ? 'hidden' : ''}
+        />
       </div>
 
       <BottomFixedButton className="bg-main-violet text-white" onClick={handlePickClick}>
