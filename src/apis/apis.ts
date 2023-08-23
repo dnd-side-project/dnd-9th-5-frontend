@@ -14,7 +14,7 @@ export const getPoseFeed = ({ frameCount, peopleCount, tags }: PoseFeedParameter
   publicApi.get<PoseFeedResponse>(`/pose`, {
     params: {
       frameCount,
-      pageNumber: 1,
+      pageNumber: 0,
       peopleCount,
       tags,
     },

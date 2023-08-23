@@ -1,6 +1,7 @@
+import { PoseFeedParameter } from '@/apis';
 import { atom, useRecoilState } from 'recoil';
 
-const filterStateAtom = atom({
+const filterStateAtom = atom<PoseFeedParameter>({
   key: 'filterState',
   default: { peopleCount: 0, frameCount: 0, tags: '' },
 });

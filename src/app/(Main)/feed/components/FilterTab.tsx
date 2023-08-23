@@ -2,7 +2,7 @@ import { ICON } from '@/constants/icon';
 import useBottomSheet from '@/hooks/useBottomSheet';
 import Image from 'next/image';
 
-export default function Filter() {
+export default function FilterTab() {
   const { openBottomSheet } = useBottomSheet();
 
   return (

@@ -2,17 +2,19 @@
 
 import { Spacing } from '@/components/Spacing';
 import EmptyCase from './components/EmptyCase';
-import Filter from './components/Filter';
+import FilterTab from './components/FilterTab';
 import FilterSheet from './components/FilterSheet';
 import PhotoList from './components/PhotoList';
 import { usePoseFeedQuery } from '@/apis';
+import useFilterState from '@/hooks/useFilterState';
 
 export default function Feed() {
-  const { data } = usePoseFeedQuery({ peopleCount: 0, frameCount: 0, tags: '' });
+  const { filterState } = useFilterState();
+  const { data } = usePoseFeedQuery(filterState);
 
   return (
     <>
-      <Filter />
+      <FilterTab />
       <Spacing size={56} />
       <div>
         {data &&
