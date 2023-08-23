@@ -1,5 +1,4 @@
 import Photo from './Photo';
-
 import { PoseInfo } from '@/apis';
 
 interface PhotoList {

@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Lottie from 'react-lottie-player';
-import lottiePick from '#/lotties/pick.json';
 
+import lottiePick from '#/lotties/pick.json';
 import { usePosePickQuery } from '@/apis';
 import { BottomFixedButton } from '@/components/Button';
 import { SelectionBasic } from '@/components/Selection';

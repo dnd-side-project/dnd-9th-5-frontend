@@ -5,7 +5,6 @@ import Lottie from 'react-lottie-player';
 
 import lottieTalkAfterClick from '#/lotties/talk_after_click.json';
 import lottieTalkBeforeClick from '#/lotties/talk_before_click.json';
-
 import { usePoseTalkQuery } from '@/apis';
 import { BottomFixedButton } from '@/components/Button';
 
