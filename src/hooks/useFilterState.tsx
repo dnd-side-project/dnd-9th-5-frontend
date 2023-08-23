@@ -1,4 +1,3 @@
-import { frameCountList, peopleCountList } from '@/constants/filterList';
 import { atom, useRecoilState } from 'recoil';
 
 export interface FilterState {
@@ -29,10 +28,10 @@ export default function useFilterState() {
     const { peopleCount, frameCount, tags } = filterState;
 
     if (peopleCount > 0) {
-      selectedList.push({ type: 'peopleCount', value: peopleCountList[peopleCount] });
+      selectedList.push({ type: 'peopleCount', value: `${peopleCount}인` });
     }
     if (frameCount > 0) {
-      selectedList.push({ type: 'frameCount', value: frameCountList[frameCount] });
+      selectedList.push({ type: 'frameCount', value: `${frameCount}컷` });
     }
     for (let tag of tags) {
       selectedList.push({ type: 'tag', value: tag });
