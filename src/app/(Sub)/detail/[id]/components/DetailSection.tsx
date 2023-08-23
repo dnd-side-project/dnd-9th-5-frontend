@@ -11,6 +11,7 @@ import { Button } from '@/components/Button';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { BASE_SITE_URL } from '@/constants';
 import useKakaoShare from '@/hooks/useKakaoShare';
+import { copy } from '@/utils/copy';
 
 interface DetailSectionProps {
   poseId: number;
@@ -26,19 +27,24 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
   const { imageKey, tagAttributes, sourceUrl } = data.poseInfo;
 
   const handleShareLink = async () => {
-    await navigator.clipboard.writeText(BASE_SITE_URL + pathname);
+    await copy(BASE_SITE_URL + pathname);
+
     open(({ exit }) => <LinkShareModal onClose={exit} />);
   };
 
   return (
     <div>
-      <Link
-        href={'https://' + sourceUrl}
-        className="text-subtitle-2 flex h-26 justify-center text-tertiary"
-      >
-        {sourceUrl && '↗ 이미지 출처'}
-      </Link>
-      <Image src={imageKey} width={450} height={240} alt="detailImage" />
+      {sourceUrl && (
+        <Link
+          href={'https://' + sourceUrl}
+          className="text-subtitle-2 flex h-26 justify-center text-tertiary"
+        >
+          ↗ 이미지 출처
+        </Link>
+      )}
+      <div className="relative h-520">
+        <Image src={imageKey} fill alt="detailImage" />
+      </div>
       <div className="flex gap-10 px-20 py-12">
         {tagAttributes?.split(',').map((tag, index) => <Tag key={index} name={tag} />)}
       </div>
