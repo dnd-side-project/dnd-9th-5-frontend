@@ -4,10 +4,10 @@ import TitleSection from './components/TitleSection';
 
 export default function Talk() {
   return (
-    <>
-      <Spacing size={100} />
+    <div>
+      <Spacing size={30} />
       <TitleSection />
       <TalkSection />
-    </>
+    </div>
   );
 }

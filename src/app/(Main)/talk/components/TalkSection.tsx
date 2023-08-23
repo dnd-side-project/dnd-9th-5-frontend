@@ -1,7 +1,6 @@
 'use client';
 
-import Image from 'next/image';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import Lottie from 'react-lottie-player';
 
 import lottieTalkAfterClick from '#/lotties/talk_after_click.json';
@@ -11,8 +10,16 @@ import { BottomFixedButton } from '@/components/Button';
 import useLoading from '@/hooks/useLoading';
 
 export default function TalkSection() {
-  const { isLoading: isFirstLoading, stopLoading: stopFirstLoading } = useLoading({
-    loadingDelay: 3000,
+  const [isFirstLoading, setIsFirstLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [talkWord, setTalkWord] = useState<string>('제시어에 맞춰 포즈를 취해요!');
+  const { refetch } = usePoseTalkQuery({
+    onSuccess: (data) => {
+      setTimeout(() => {
+        setIsLoading(false);
+        setTalkWord(data.poseWord.content);
+      }, 1000);
+    },
   });
   const ref = useRef(null);
 
@@ -25,16 +32,17 @@ export default function TalkSection() {
   const [talkWord, setTalkWord] = useState<string>('포즈로 말해요');
 
   const handleTalkClick = () => {
-    refetch();
-    stopFirstLoading();
-    startLoading();
+    setIsFirstLoading(false);
+    if (!isLoading) {
+      setIsLoading(true);
+      refetch();
+    }
   };
 
   return (
     <section className="flex flex-col items-center">
-      <h1 className="text-center">{talkWord}</h1>
-
-      {isFirstLoading && (
+      <h1 className="max-w-310 break-keep text-center">{talkWord}</h1>
+      {isFirstLoading ? (
         <Lottie
           loop
           animationData={lottieTalkBeforeClick}
@@ -43,23 +51,14 @@ export default function TalkSection() {
           ref={ref}
           onComplete={() => console.log('complete')}
         />
-      )}
-      {isLoading && !isFirstLoading && (
+      ) : isLoading ? (
         <Lottie
-          loop
           animationData={lottieTalkAfterClick}
           play
           style={{ width: '100%', height: '100%' }}
         />
-      )}
-      {!isFirstLoading && !isLoading && (
-        <Lottie
-          loop
-          animationData={lottieTalkAfterClick}
-          play
-          style={{ width: '100%', height: '100%' }}
-          speed={0}
-        />
+      ) : (
+        <img src="/lotties/talk_after_loading.png" alt="" />
       )}
       <BottomFixedButton className="bg-main-violet text-white" onClick={handleTalkClick}>
         제시어 뽑기

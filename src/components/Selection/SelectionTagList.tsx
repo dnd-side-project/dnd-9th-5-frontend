@@ -1,5 +1,4 @@
-import { ICON } from '@/constants/icon';
-import Image from 'next/image';
+import Tag from './Tag';
 
 interface SelectionTagList {
   data: string[];
@@ -17,22 +16,9 @@ export default function SelectionTagList({ data, state, setState }: SelectionTag
   }
   return (
     <div className="flex flex-wrap gap-8">
-      {data.map((item, idx) => {
+      {data.map((item) => {
         const selected = state.includes(item);
-        return (
-          <div
-            key={idx}
-            className={`flex gap-4 rounded-30 px-12 py-5 ${
-              selected ? 'bg-main-violet-bright' : 'bg-sub-white'
-            }`}
-            onClick={() => clickTag(item)}
-          >
-            <div id="subtitle-2" className={selected ? 'text-main-violet-dark' : 'text-secondary'}>
-              {item}
-            </div>
-            {selected && <Image src={ICON.close} width={12} height={12} alt="x" />}
-          </div>
-        );
+        return <Tag key={item} selected={selected} onClick={() => clickTag(item)} text={item} />;
       })}
     </div>
   );

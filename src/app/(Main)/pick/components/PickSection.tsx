@@ -11,41 +11,48 @@ import { BottomFixedButton } from '@/components/Button';
 import { Spacing } from '@/components/Spacing';
 import useLoading from '@/hooks/useLoading';
 
-const countList = ['1인', '2인', '3인', '4인', '5인+'];
+export const peopleCountList = [
+  { text: '1인', value: 1 },
+  { text: '2인', value: 2 },
+  { text: '3인', value: 3 },
+  { text: '4인', value: 4 },
+  { text: '5인+', value: 5 },
+];
 
 export default function PickSection() {
-  const [countState, setCountState] = useState<string>('1인');
-  const { isLoading, startLoading } = useLoading({ loadingDelay: 3000 });
+  const [countState, setCountState] = useState<number>(1);
+  const [isFirstLoading, setIsFirstLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [image, setImage] = useState<string>('');
-  const { refetch } = usePosePickQuery(+countState[0], {
+  const { refetch, isFetched } = usePosePickQuery(countState, {
     onSuccess: (data) => {
-      if (!data) return;
       setImage(data.poseInfo.imageKey);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
     },
   });
 
+  useEffect(() => setIsFirstLoading(true), [countState]);
+
   const handlePickClick = () => {
-    startLoading();
-    refetch();
+    setIsFirstLoading(false);
+    if (!isLoading) {
+      setIsLoading(true);
+      refetch();
+    }
   };
 
   return (
-    <section className="flex flex-col px-20">
-      <div className="flex justify-evenly rounded-8 py-16">
-        {countList.map((count) => (
-          <CountItem
-            key={count}
-            onClick={() => setCountState(count)}
-            isSelected={count === countState}
-            count={count}
-          />
-        ))}
-      </div>
+    <section className="flex flex-col">
+      <SelectionBasic data={peopleCountList} setState={setCountState} state={countState} />
       <Spacing size={13} />
-
+      <Spacing size={16} />
       <div className="relative h-520">
-        {true && (
-          <Lottie loop animationData={lottiePick} play style={{ width: '100%', height: '100%' }} />
+        {isFirstLoading || isLoading || !isFetched ? (
+          <Lottie loop animationData={lottiePick} play />
+        ) : (
+          <Image src={image} fill priority alt="이미지를 표시할 수 없습니다." />
         )}
         <Image
           src={image || '/images/sample.png'}
