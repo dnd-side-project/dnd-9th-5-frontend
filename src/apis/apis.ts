@@ -10,7 +10,7 @@ export const getPoseDetail = (poseId: number) => publicApi.get(`/pose/${poseId}`
 
 export const getPoseTalk = () => publicApi.get<PoseTalkResponse>('/pose/talk');
 
-export const getPoseFeed = (frameCount: number, peopleCount: number, tags: string) =>
+export const getPoseFeed = (peopleCount: number, frameCount: number, tags: string) =>
   publicApi.get<PoseFeedResponse>(`/pose`, {
     params: {
       frameCount,
