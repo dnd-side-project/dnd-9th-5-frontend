@@ -1,4 +1,4 @@
-import ModalWrapper from './ModalWrapper';
+import ModalWrapper from './PortalWrapper';
 import { StrictPropsWithChildren } from '@/types';
 
 interface PopupProps {
