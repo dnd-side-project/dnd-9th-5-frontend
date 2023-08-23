@@ -10,14 +10,13 @@ import { BottomFixedButton } from '@/components/Button';
 import { Spacing } from '@/components/Spacing';
 
 import lottiePick from '#/lotties/pick.json';
-
-const countList = ['1인', '2인', '3인', '4인', '5인+'];
+import { peopleCountList } from '@/constants/filterList';
 
 export default function PickSection() {
-  const [countState, setCountState] = useState<string>('1인');
+  const [countState, setCountState] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [image, setImage] = useState<string>('');
-  const { refetch } = usePosePickQuery(+countState[0], {
+  const { refetch } = usePosePickQuery(countState, {
     onSuccess: (data) => {
       if (!data) return;
       setImage(data.poseInfo.imageKey);
@@ -38,12 +37,12 @@ export default function PickSection() {
 
   return (
     <section className="flex flex-col">
-      <SelectionBasic data={countList} setState={setCountState} state={countState} />
+      <SelectionBasic data={peopleCountList} setState={setCountState} state={countState} />
       <Spacing size={13} />
       <Spacing size={16} />
       <div className="relative h-520">
         {isLoading ? (
-          <Lottie loop animationData={lottiePick} play style={{ width: '100%', height: '100%' }} />
+          <Lottie loop animationData={lottiePick} play />
         ) : (
           <Image src={image || '/images/sample.png'} fill priority alt="sample" />
         )}
