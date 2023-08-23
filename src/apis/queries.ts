@@ -8,8 +8,8 @@ import {
   getPoseTalk,
   PoseFeedResponse,
   getPoseFeed,
-  PoseFeedParameter,
 } from '.';
+import { FilterState } from '@/hooks/useFilterState';
 
 export const usePoseDetailQuery = (poseId: number) =>
   useQuery(['poseId', poseId], () => getPoseDetail(poseId));
@@ -27,9 +27,13 @@ export const usePoseTalkQuery = (options?: UseQueryOptions<PoseTalkResponse>) =>
   useQuery<PoseTalkResponse>(['poseTalk'], getPoseTalk, { enabled: false, ...options });
 
 export const usePoseFeedQuery = (
-  props: PoseFeedParameter,
+  { peopleCount, frameCount, tags }: FilterState,
   options?: UseQueryOptions<PoseFeedResponse>
 ) =>
-  useQuery<PoseFeedResponse>(['poseFeed', props], () => getPoseFeed(props), {
-    ...options,
-  });
+  useQuery<PoseFeedResponse>(
+    ['poseFeed', peopleCount, frameCount, tags],
+    () => getPoseFeed({ peopleCount, frameCount, tags: tags.join(',') }),
+    {
+      ...options,
+    }
+  );

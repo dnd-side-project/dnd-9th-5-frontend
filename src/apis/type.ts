@@ -8,23 +8,16 @@ export interface PoseInfo {
   sourceUrl: string;
   tagAttributes: string;
   updatedAt: string;
-};
+}
 
 // 포즈피드
-export interface PoseFeedParameter {
-  // pageNumber?: number;
-  frameCount: number;
-  peopleCount: number;
-  // pageSize?: number;
-  tags: string;
+interface PoseFeedContentsSort {
+  empty: boolean;
+  sorted: boolean;
+  unsorted: boolean;
 }
-interface PoseFeedContentsSort  {
-      empty: boolean;
-      sorted: boolean;
-      unsorted: boolean
-    }
 interface PoseFeedContents {
-  content: {poseInfo: PoseInfo}[];
+  content: { poseInfo: PoseInfo }[];
   pageable: {
     sort: PoseFeedContentsSort;
     offset: number;
@@ -32,7 +25,7 @@ interface PoseFeedContents {
     pageSize: number;
     paged: boolean;
     unpaged: boolean;
-  },
+  };
   number: number;
   sort: PoseFeedContentsSort;
   size: number;

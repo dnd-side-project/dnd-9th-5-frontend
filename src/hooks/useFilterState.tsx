@@ -1,23 +1,27 @@
-import { PoseFeedParameter } from '@/apis';
-import { frameCountList, peopleCountList, tagList } from '@/constants/filterList';
+import { frameCountList, peopleCountList } from '@/constants/filterList';
 import { atom, useRecoilState } from 'recoil';
+
+export interface FilterState {
+  peopleCount: number;
+  frameCount: number;
+  tags: string[];
+}
 
 interface SelectedFilterItem {
   type: 'peopleCount' | 'frameCount' | 'tag';
   value: string;
 }
 
-const filterStateAtom = atom<PoseFeedParameter>({
+const filterStateAtom = atom<FilterState>({
   key: 'filterState',
-  default: { peopleCount: 0, frameCount: 0, tags: '' },
+  default: { peopleCount: 0, frameCount: 0, tags: [] },
 });
 
 export default function useFilterState() {
   const [filterState, setFilterState] = useRecoilState(filterStateAtom);
 
-  function updateFilterState(peopleCount: number, frameCount: number, tagArray: string[]) {
-    const tagString = tagArray.join(',');
-    setFilterState({ peopleCount, frameCount, tags: tagString });
+  function updateFilterState({ peopleCount, frameCount, tags }: FilterState) {
+    setFilterState({ peopleCount, frameCount, tags });
   }
 
   const selectedFilterItems = () => {
@@ -30,11 +34,8 @@ export default function useFilterState() {
     if (frameCount > 0) {
       selectedList.push({ type: 'frameCount', value: frameCountList[frameCount] });
     }
-    if (tags !== '') {
-      const tagList = tags.split(',');
-      for (let tag of tagList) {
-        selectedList.push({ type: 'tag', value: tag });
-      }
+    for (let tag of tags) {
+      selectedList.push({ type: 'tag', value: tag });
     }
     return selectedList;
   };
@@ -49,10 +50,9 @@ export default function useFilterState() {
         return { ...prev, frameCount: 0 };
       });
     } else {
-      const tagArray = filterState.tags.split(',');
-      const newTagString = tagArray.filter((tag) => tag === item.value).join(',');
+      const newTags = filterState.tags.filter((tag) => tag === item.value);
       setFilterState((prev) => {
-        return { ...prev, tags: newTagString };
+        return { ...prev, tags: newTags };
       });
     }
     console.log(filterState);

@@ -5,11 +5,11 @@ import { frameCountList, peopleCountList, tagList } from '@/constants/filterList
 import { ICON } from '@/constants/icon';
 import useBottomSheet from '@/hooks/useBottomSheet';
 import useFilterState from '@/hooks/useFilterState';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function FilterSheet() {
   const { filterState, updateFilterState } = useFilterState();
-  const { closeBottomSheet } = useBottomSheet();
+  const { isBottomSheetOpen, closeBottomSheet } = useBottomSheet();
 
   const [countState, setCountState] = useState<number>(0);
   const [frameState, setFrameState] = useState<number>(0);
@@ -22,19 +22,19 @@ export default function FilterSheet() {
   }
 
   function decideFilter() {
-    updateFilterState(countState, frameState, tagState);
+    updateFilterState({ peopleCount: countState, frameCount: frameState, tags: tagState });
     closeBottomSheet();
   }
 
-  function cancelFilter() {
+  useEffect(() => {
     setCountState(filterState.peopleCount);
     setFrameState(filterState.frameCount);
-    setTagState(filterState.tags.split(','));
-  }
+    setTagState(filterState.tags);
+  }, [isBottomSheetOpen]);
 
   return (
     <>
-      <BottomSheet beforeClose={cancelFilter}>
+      <BottomSheet>
         <section>
           <div id="subtitle-2" className="mb-8 text-secondary">
             인원 수
