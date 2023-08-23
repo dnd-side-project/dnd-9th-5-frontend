@@ -1,6 +1,7 @@
+import Image from 'next/image';
+
 import { Header } from '@/components/Header';
 import { Spacing } from '@/components/Spacing';
-import Image from 'next/image';
 
 export default function BookmarkHeader() {
   const LeftNode = (
