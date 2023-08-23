@@ -40,6 +40,7 @@ export default function useFilterState() {
   };
 
   function deleteSelectedFilterItem(item: SelectedFilterItem) {
+    console.log(item);
     if (item.type === 'peopleCount') {
       setFilterState((prev) => {
         return { ...prev, peopleCount: 0 };
@@ -49,7 +50,7 @@ export default function useFilterState() {
         return { ...prev, frameCount: 0 };
       });
     } else {
-      const newTags = filterState.tags.filter((tag) => tag === item.value);
+      const newTags = filterState.tags.filter((tag) => tag !== item.value);
       setFilterState((prev) => {
         return { ...prev, tags: newTags };
       });

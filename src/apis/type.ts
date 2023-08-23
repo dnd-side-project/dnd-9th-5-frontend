@@ -40,6 +40,18 @@ export interface PoseFeedResponse {
   recommendedContents: PoseFeedContents;
 }
 
+// 필터 태그
+interface FilterTag {
+  createdAt: string;
+  updatedAt: string;
+  attributeId: number;
+  attribute: string;
+}
+export interface FilterTagsResponse {
+  poseTagAttributes: FilterTag[];
+}
+
+// 포즈픽
 export interface PosePickResponse {
   poseInfo: PoseInfo;
 }

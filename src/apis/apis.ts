@@ -1,6 +1,6 @@
 import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 
-import { PoseFeedParameter, PoseFeedResponse, PosePickResponse, PoseTalkResponse } from '.';
+import { FilterTagsResponse, PoseFeedResponse, PosePickResponse, PoseTalkResponse } from '.';
 import publicApi from './config/publicApi';
 
 export const getPosePick = (peopleCount: number) =>
@@ -10,7 +10,7 @@ export const getPoseDetail = (poseId: number) => publicApi.get(`/pose/${poseId}`
 
 export const getPoseTalk = () => publicApi.get<PoseTalkResponse>('/pose/talk');
 
-export const getPoseFeed = ({ frameCount, peopleCount, tags }: PoseFeedParameter) =>
+export const getPoseFeed = (frameCount: number, peopleCount: number, tags: string) =>
   publicApi.get<PoseFeedResponse>(`/pose`, {
     params: {
       frameCount,
@@ -19,3 +19,5 @@ export const getPoseFeed = ({ frameCount, peopleCount, tags }: PoseFeedParameter
       tags,
     },
   });
+
+export const getFilterTag = () => publicApi.get<FilterTagsResponse>('/pose/tags');

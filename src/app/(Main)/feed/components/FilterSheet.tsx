@@ -1,13 +1,16 @@
+import { FilterTagsResponse, useFilterTagQuery } from '@/apis';
 import { PrimaryButton } from '@/components/Button';
 import BottomSheet from '@/components/Modal/BottomSheet';
 import { SelectionBasic, SelectionTagList } from '@/components/Selection';
-import { frameCountList, peopleCountList, tagList } from '@/constants/filterList';
+import { frameCountList, peopleCountList } from '@/constants/filterList';
 import { ICON } from '@/constants/icon';
 import useBottomSheet from '@/hooks/useBottomSheet';
 import useFilterState from '@/hooks/useFilterState';
 import { useEffect, useState } from 'react';
 
 export default function FilterSheet() {
+  const { data: tagListData } = useFilterTagQuery();
+
   const { filterState, updateFilterState } = useFilterState();
   const { isBottomSheetOpen, closeBottomSheet } = useBottomSheet();
 
@@ -32,6 +35,14 @@ export default function FilterSheet() {
     setTagState(filterState.tags);
   }, [isBottomSheetOpen]);
 
+  function refineTagListData(tagListData: FilterTagsResponse) {
+    const tagList: string[] = [];
+    for (let tag of tagListData.poseTagAttributes) {
+      tagList.push(tag.attribute);
+    }
+    return tagList;
+  }
+
   return (
     <>
       <BottomSheet>
@@ -51,7 +62,13 @@ export default function FilterSheet() {
           <div id="subtitle-2" className="mb-8 text-secondary">
             태그
           </div>
-          <SelectionTagList data={tagList} state={tagState} setState={setTagState} />
+          {tagListData && (
+            <SelectionTagList
+              data={refineTagListData(tagListData)}
+              state={tagState}
+              setState={setTagState}
+            />
+          )}
         </section>
         <div className="flex gap-8 py-20 [&>*]:flex-1">
           <PrimaryButton

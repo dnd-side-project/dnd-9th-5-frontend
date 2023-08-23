@@ -8,6 +8,8 @@ import {
   getPoseTalk,
   PoseFeedResponse,
   getPoseFeed,
+  FilterTagsResponse,
+  getFilterTag,
 } from '.';
 import { FilterState } from '@/hooks/useFilterState';
 
@@ -32,8 +34,11 @@ export const usePoseFeedQuery = (
 ) =>
   useQuery<PoseFeedResponse>(
     ['poseFeed', peopleCount, frameCount, tags],
-    () => getPoseFeed({ peopleCount, frameCount, tags: tags.join(',') }),
+    () => getPoseFeed(peopleCount, frameCount, tags.join(',')),
     {
       ...options,
     }
   );
+
+export const useFilterTagQuery = (options?: UseQueryOptions<FilterTagsResponse>) =>
+  useQuery<FilterTagsResponse>(['filterTag'], () => getFilterTag(), { ...options });

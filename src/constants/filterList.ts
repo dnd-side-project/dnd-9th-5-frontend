@@ -15,5 +15,3 @@ export const frameCountList = [
   { text: '6컷', value: 6 },
   { text: '8컷+', value: 8 },
 ];
-
-export const tagList = ['친구', '연인', '유명프레임', '기념일', '소품'];
