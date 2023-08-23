@@ -48,7 +48,7 @@ export default function PickSection() {
           <Lottie loop animationData={lottiePick} play style={{ width: '100%', height: '100%' }} />
         )}
         <Image
-          src={image || '/images/sample.png'}
+          src={image || '/images/image-frame.png'}
           fill
           alt="sample"
           priority
