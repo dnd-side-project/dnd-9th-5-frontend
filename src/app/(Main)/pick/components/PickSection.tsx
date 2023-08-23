@@ -57,7 +57,11 @@ export default function PickSection() {
         />
       </div>
 
-      <BottomFixedButton className="bg-main-violet text-white" onClick={handlePickClick}>
+      <BottomFixedButton
+        className="bg-main-violet text-white"
+        onClick={handlePickClick}
+        disabled={isLoading}
+      >
         {!!image ? '포즈 pick!' : '인원수 선택하고 포즈 pick!'}
       </BottomFixedButton>
     </section>
