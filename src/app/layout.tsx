@@ -52,7 +52,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <QueryProvider>
         <OverlayProvider>{children}</OverlayProvider>
       </QueryProvider>
-      <div id="loading" />
       <div id="portal" />
     </Layout>
   );
