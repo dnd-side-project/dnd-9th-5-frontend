@@ -4,11 +4,10 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Lottie from 'react-lottie-player';
 
+import lottiePick from '#/lotties/pick.json';
 import { usePosePickQuery } from '@/apis';
 import { BottomFixedButton } from '@/components/Button';
 import { Spacing } from '@/components/Spacing';
-
-import lottiePick from '#/lotties/pick.json';
 
 const countList = ['1인', '2인', '3인', '4인', '5인+'];
 
@@ -31,8 +30,8 @@ export default function PickSection() {
   }, [isLoading]);
 
   const handlePickClick = () => {
-    setIsLoading(true);
     refetch();
+    setIsLoading(true);
   };
 
   return (
@@ -41,7 +40,7 @@ export default function PickSection() {
         {countList.map((count) => (
           <CountItem
             key={count}
-            onClick={() => !isLoading && setCountState(count)}
+            onClick={() => setCountState(count)}
             isSelected={count === countState}
             count={count}
           />
@@ -49,15 +48,17 @@ export default function PickSection() {
       </div>
 
       <Spacing size={13} />
+
       <div className="relative h-520">
         {isLoading ? (
           <Lottie loop animationData={lottiePick} play style={{ width: '100%', height: '100%' }} />
         ) : (
-          <Image src={image || '/images/sample.png'} fill priority alt="sample" />
+          <Image src={image || '/images/sample.png'} fill alt="sample" priority />
         )}
       </div>
+
       <BottomFixedButton className="bg-main-violet text-white" onClick={handlePickClick}>
-        포즈 pick!
+        {!!image ? '포즈 pick!' : '인원수 선택하고 포즈 pick!'}
       </BottomFixedButton>
     </section>
   );
