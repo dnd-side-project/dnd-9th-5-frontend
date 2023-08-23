@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import useIsMounted from './useIsMounted';
 
@@ -14,29 +14,29 @@ export default function useLoading({
   onStopLoading,
   isFirstLoadingInfinite = false,
 }: UseLoadingProps = {}) {
-  const [isLoading, setIsLoading] = useState(initialState ?? false);
+  const [isLoading, setIsLoading] = useState(initialState);
   const isMounted = useIsMounted();
 
   const stopLoading = useCallback(() => {
     setIsLoading(false);
-  }, []);
+    if (onStopLoading) {
+      onStopLoading();
+    }
+  }, [onStopLoading]);
 
   const startLoading = useCallback(() => {
     setIsLoading(true);
-
-    setTimeout(() => {
-      stopLoading();
-    }, loadingDelay);
+    if (loadingDelay) {
+      setTimeout(stopLoading, loadingDelay);
+    }
   }, [loadingDelay, stopLoading]);
 
-  if (isMounted) {
-    if (!isFirstLoadingInfinite) {
-      setTimeout(() => {
-        stopLoading();
-        onStopLoading && onStopLoading();
-      }, loadingDelay);
+  useEffect(() => {
+    if (isMounted && !isFirstLoadingInfinite && loadingDelay) {
+      const timer = setTimeout(stopLoading, loadingDelay);
+      return () => clearTimeout(timer);
     }
-  }
+  }, [isMounted, isFirstLoadingInfinite, loadingDelay, stopLoading]);
 
   return { isLoading, stopLoading, startLoading };
 }

@@ -28,7 +28,7 @@ export default function TitleSection() {
         openOnClick
         isOpen={isOpen}
         render={() => (
-          <div className="flex" onClick={() => setIsOpen(false)}>
+          <div className="flex cursor-pointer" onClick={() => setIsOpen(false)}>
             <div>
               <p>제시어에 맞춰 포즈를 취해 보세요!</p>
               <p>독특한 나만의 포즈가 완성된답니다.</p>
