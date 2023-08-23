@@ -1,5 +1,3 @@
-import { UseQueryOptions, useQuery } from '@tanstack/react-query';
-
 import { FilterTagsResponse, PoseFeedResponse, PosePickResponse, PoseTalkResponse } from '.';
 import publicApi from './config/publicApi';
 

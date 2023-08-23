@@ -1,17 +1,17 @@
 import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 
+import { FilterState } from '@/hooks/useFilterState';
 import {
-  type PosePickResponse,
-  type PoseTalkResponse,
+  FilterTagsResponse,
+  PoseFeedResponse,
+  PosePickResponse,
+  PoseTalkResponse,
+  getFilterTag,
   getPoseDetail,
+  getPoseFeed,
   getPosePick,
   getPoseTalk,
-  PoseFeedResponse,
-  getPoseFeed,
-  FilterTagsResponse,
-  getFilterTag,
 } from '.';
-import { FilterState } from '@/hooks/useFilterState';
 
 export const usePoseDetailQuery = (poseId: number) =>
   useQuery(['poseId', poseId], () => getPoseDetail(poseId));
@@ -41,4 +41,4 @@ export const usePoseFeedQuery = (
   );
 
 export const useFilterTagQuery = (options?: UseQueryOptions<FilterTagsResponse>) =>
-  useQuery<FilterTagsResponse>(['filterTag'], () => getFilterTag(), { ...options });
+  useQuery<FilterTagsResponse>(['filterTag'], getFilterTag, { ...options });

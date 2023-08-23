@@ -1,6 +1,7 @@
+import Link from 'next/link';
+
 import { PrimaryButton } from '@/components/Button';
 import { Spacing } from '@/components/Spacing';
-import Link from 'next/link';
 
 interface EmptyCase {
   title: string;

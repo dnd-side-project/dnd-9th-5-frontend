@@ -1,8 +1,9 @@
+import Image from 'next/image';
+
 import Tag from '@/components/Selection/Tag';
 import { ICON } from '@/constants/icon';
 import useBottomSheet from '@/hooks/useBottomSheet';
 import useFilterState from '@/hooks/useFilterState';
-import Image from 'next/image';
 
 export default function FilterTab() {
   const { openBottomSheet } = useBottomSheet();

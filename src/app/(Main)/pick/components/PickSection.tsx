@@ -3,13 +3,12 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import Lottie from 'react-lottie-player';
-import { SelectionBasic } from '@/components/Selection';
 
 import lottiePick from '#/lotties/pick.json';
 import { usePosePickQuery } from '@/apis';
 import { BottomFixedButton } from '@/components/Button';
+import { SelectionBasic } from '@/components/Selection';
 import { Spacing } from '@/components/Spacing';
-import useLoading from '@/hooks/useLoading';
 
 export const peopleCountList = [
   { text: '1인', value: 1 },
