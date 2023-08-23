@@ -6,11 +6,13 @@ interface UseLoadingProps {
   initialState?: boolean;
   loadingDelay?: number;
   onStopLoading?: () => void;
+  isFirstLoadingInfinite?: boolean;
 }
 export default function useLoading({
   initialState = true,
   loadingDelay,
   onStopLoading,
+  isFirstLoadingInfinite = false,
 }: UseLoadingProps = {}) {
   const [isLoading, setIsLoading] = useState(initialState ?? false);
   const isMounted = useIsMounted();
@@ -21,13 +23,14 @@ export default function useLoading({
 
   const startLoading = useCallback(() => {
     setIsLoading(true);
+
     setTimeout(() => {
       stopLoading();
     }, loadingDelay);
   }, [loadingDelay, stopLoading]);
 
   if (isMounted) {
-    if (loadingDelay) {
+    if (!isFirstLoadingInfinite) {
       setTimeout(() => {
         stopLoading();
         onStopLoading && onStopLoading();
