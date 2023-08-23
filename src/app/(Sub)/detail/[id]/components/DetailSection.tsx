@@ -10,6 +10,7 @@ import BottomFixedDiv from '@/components/BottomFixedDiv';
 import { Button } from '@/components/Button';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { BASE_SITE_URL } from '@/constants';
+import useKakaoShare from '@/hooks/useKakaoShare';
 
 interface DetailSectionProps {
   poseId: number;
@@ -17,21 +18,16 @@ interface DetailSectionProps {
 
 export default function DetailSection({ poseId }: DetailSectionProps) {
   const { data } = usePoseDetailQuery(poseId);
+  const { shareKakao } = useKakaoShare();
+  const { open } = useOverlay();
   const pathname = usePathname();
-  const { open, close } = useOverlay();
 
   if (!data) return null;
   const { imageKey, tagAttributes, sourceUrl } = data.poseInfo;
 
-  console.log(pathname);
-
   const handleShareLink = async () => {
-    try {
-      await navigator.clipboard.writeText(BASE_SITE_URL + pathname);
-      open(({ exit }) => <LinkShareModal onClose={exit} />);
-    } catch (err) {
-      console.log(err);
-    }
+    await navigator.clipboard.writeText(BASE_SITE_URL + pathname);
+    open(({ exit }) => <LinkShareModal onClose={exit} />);
   };
 
   return (
@@ -46,11 +42,17 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
       <div className="flex gap-10 px-20 py-12">
         {tagAttributes?.split(',').map((tag, index) => <Tag key={index} name={tag} />)}
       </div>
+
       <BottomFixedDiv className="flex gap-8">
         <Button className="w-160 bg-sub-white" type="button" onClick={handleShareLink}>
           링크 공유
         </Button>
-        <Button className="grow bg-main-violet text-white">카카오 공유</Button>
+        <Button
+          className="grow bg-main-violet text-white"
+          onClick={() => shareKakao(BASE_SITE_URL + pathname)}
+        >
+          카카오 공유
+        </Button>
       </BottomFixedDiv>
     </div>
   );

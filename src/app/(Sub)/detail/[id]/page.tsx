@@ -1,4 +1,3 @@
-import ButtonSection from './components/ButtonSection';
 import DetailHeader from './components/DetailHeader';
 import DetailSection from './components/DetailSection';
 import { getPoseDetail } from '@/apis';
