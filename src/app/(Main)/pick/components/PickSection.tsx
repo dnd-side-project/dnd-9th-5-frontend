@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Lottie from 'react-lottie-player';
 
 import lottiePick from '#/lotties/pick.json';
@@ -53,9 +53,18 @@ export default function PickSection() {
         ) : (
           <Image src={image} fill priority alt="이미지를 표시할 수 없습니다." />
         )}
+        <Image
+          src={image || '/images/sample.png'}
+          fill
+          alt="sample"
+          priority
+          loading="eager"
+          className={isLoading ? 'hidden' : ''}
+        />
       </div>
+
       <BottomFixedButton className="bg-main-violet text-white" onClick={handlePickClick}>
-        포즈 pick!
+        {!!image ? '포즈 pick!' : '인원수 선택하고 포즈 pick!'}
       </BottomFixedButton>
     </section>
   );

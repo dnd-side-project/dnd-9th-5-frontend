@@ -7,6 +7,7 @@ import lottieTalkAfterClick from '#/lotties/talk_after_click.json';
 import lottieTalkBeforeClick from '#/lotties/talk_before_click.json';
 import { usePoseTalkQuery } from '@/apis';
 import { BottomFixedButton } from '@/components/Button';
+import useLoading from '@/hooks/useLoading';
 
 export default function TalkSection() {
   const [isFirstLoading, setIsFirstLoading] = useState<boolean>(true);
@@ -20,6 +21,15 @@ export default function TalkSection() {
       }, 1000);
     },
   });
+  const ref = useRef(null);
+
+  const { refetch, data } = usePoseTalkQuery();
+
+  const { isLoading, startLoading } = useLoading({
+    loadingDelay: 3000,
+    onStopLoading: () => data && setTalkWord(data.poseWord.content),
+  });
+  const [talkWord, setTalkWord] = useState<string>('포즈로 말해요');
 
   const handleTalkClick = () => {
     setIsFirstLoading(false);
@@ -38,6 +48,8 @@ export default function TalkSection() {
           animationData={lottieTalkBeforeClick}
           play
           style={{ width: '100%', height: '100%' }}
+          ref={ref}
+          onComplete={() => console.log('complete')}
         />
       ) : isLoading ? (
         <Lottie
