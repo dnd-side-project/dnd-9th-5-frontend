@@ -1,7 +1,6 @@
 import ButtonSection from './components/ButtonSection';
 import DetailHeader from './components/DetailHeader';
 import DetailSection from './components/DetailSection';
-import SourceSection from './components/SourceSection';
 import { getPoseDetail } from '@/apis';
 import { HydrationProvider } from '@/components/Provider/HydrationProvider';
 
@@ -11,11 +10,9 @@ export default function DetailPage({ params }: { params: { id: number } }) {
   return (
     <div>
       <DetailHeader />
-      <SourceSection />
       <HydrationProvider queryKey={['poseId', id]} queryFn={() => getPoseDetail(id)}>
         <DetailSection poseId={id} />
       </HydrationProvider>
-      <ButtonSection />
     </div>
   );
 }
