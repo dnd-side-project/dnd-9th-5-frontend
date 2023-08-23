@@ -33,7 +33,7 @@ export default function useFilterState() {
     if (frameCount > 0) {
       selectedList.push({ type: 'frameCount', value: `${frameCount}컷` });
     }
-    for (let tag of tags) {
+    for (const tag of tags) {
       selectedList.push({ type: 'tag', value: tag });
     }
     return selectedList;

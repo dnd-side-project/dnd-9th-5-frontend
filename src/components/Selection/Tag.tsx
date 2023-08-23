@@ -1,5 +1,6 @@
-import { ICON } from '@/constants/icon';
 import Image from 'next/image';
+
+import { ICON } from '@/constants/icon';
 
 interface Tag {
   text: string;

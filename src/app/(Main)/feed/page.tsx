@@ -1,11 +1,11 @@
 'use client';
 
+import { usePoseFeedQuery } from '@/apis';
 import { Spacing } from '@/components/Spacing';
 import EmptyCase from './components/EmptyCase';
-import FilterTab from './components/FilterTab';
 import FilterSheet from './components/FilterSheet';
+import FilterTab from './components/FilterTab';
 import PhotoList from './components/PhotoList';
-import { usePoseFeedQuery } from '@/apis';
 import useFilterState from '@/hooks/useFilterState';
 
 export default function Feed() {

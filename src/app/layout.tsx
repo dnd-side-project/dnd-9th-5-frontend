@@ -2,15 +2,15 @@ import './globals.css';
 import '../../styles/font.css';
 import '../../styles/typography.css';
 
+import { OverlayProvider } from '@/components/Overlay/OverlayProvider';
 import QueryProvider from '@/provider/QueryProvider';
 import RecoilContextProvider from '@/provider/RecoilContextProvider';
-import { OverlayProvider } from '@/components/Overlay/OverlayProvider';
 
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'PosePicker',
-  description: 'PosePicker FE by @guesung, @seondal',
+  description: '포토부스에서 고민하는 당신을 위한 포즈 추천',
   openGraph: {
     title: 'PosePicker',
     description: 'PosePicker FE by @guesung, @seondal',

@@ -17,7 +17,7 @@ interface PoseFeedContentsSort {
   unsorted: boolean;
 }
 interface PoseFeedContents {
-  content: { poseInfo: PoseInfo }[];
+  content: Array<{ poseInfo: PoseInfo }>;
   pageable: {
     sort: PoseFeedContentsSort;
     offset: number;

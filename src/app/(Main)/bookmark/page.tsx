@@ -1,5 +1,5 @@
-import PhotoList from '../feed/components/PhotoList';
 import EmptyCase from '../feed/components/EmptyCase';
+import PhotoList from '../feed/components/PhotoList';
 
 export default function BookmarkPage() {
   return (

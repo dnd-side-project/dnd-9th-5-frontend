@@ -1,5 +1,5 @@
 interface SelectionBasic {
-  data: { text: string; value: number }[];
+  data: Array<{ text: string; value: number }>;
   state: number;
   setState: React.Dispatch<React.SetStateAction<number>>;
 }

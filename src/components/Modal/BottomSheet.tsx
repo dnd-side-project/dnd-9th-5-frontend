@@ -1,8 +1,9 @@
+import Image from 'next/image';
+
 import { AnimatedPortal } from '@/components/Portal';
 import { ICON } from '@/constants/icon';
 import useBottomSheet from '@/hooks/useBottomSheet';
 import { StrictPropsWithChildren } from '@/types';
-import Image from 'next/image';
 
 export default function BottomSheet({ children }: StrictPropsWithChildren) {
   const { isBottomSheetOpen, closeBottomSheet } = useBottomSheet();
