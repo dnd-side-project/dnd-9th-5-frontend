@@ -1,15 +1,15 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Lottie from 'react-lottie-player';
 import { SelectionBasic } from '@/components/Selection';
 
+import lottiePick from '#/lotties/pick.json';
 import { usePosePickQuery } from '@/apis';
 import { BottomFixedButton } from '@/components/Button';
 import { Spacing } from '@/components/Spacing';
-
-import lottiePick from '#/lotties/pick.json';
+import useLoading from '@/hooks/useLoading';
 
 export const peopleCountList = [
   { text: '1인', value: 1 },
@@ -54,9 +54,18 @@ export default function PickSection() {
         ) : (
           <Image src={image} fill priority alt="이미지를 표시할 수 없습니다." />
         )}
+        <Image
+          src={image || '/images/sample.png'}
+          fill
+          alt="sample"
+          priority
+          loading="eager"
+          className={isLoading ? 'hidden' : ''}
+        />
       </div>
+
       <BottomFixedButton className="bg-main-violet text-white" onClick={handlePickClick}>
-        포즈 pick!
+        {!!image ? '포즈 pick!' : '인원수 선택하고 포즈 pick!'}
       </BottomFixedButton>
     </section>
   );

@@ -3,7 +3,7 @@ name: CD-feature branch
 on:
   push:
     branches:
-      - 'feature/**'
+      - 'OZ-**'
 
 jobs:
   build:
