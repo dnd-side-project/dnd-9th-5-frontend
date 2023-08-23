@@ -15,7 +15,6 @@ export default function TalkSection() {
   const [talkWord, setTalkWord] = useState<string>('제시어에 맞춰 포즈를 취해요!');
   const { refetch } = usePoseTalkQuery({
     onSuccess: (data) => {
-      setIsLoading(true);
       setTimeout(() => {
         setIsLoading(false);
         setTalkWord(data.poseWord.content);
@@ -24,9 +23,11 @@ export default function TalkSection() {
   });
 
   const handleTalkClick = () => {
-    if (isLoading) return;
     setIsFirstLoading(false);
-    refetch();
+    if (!isLoading) {
+      setIsLoading(true);
+      refetch();
+    }
   };
 
   return (
@@ -41,7 +42,6 @@ export default function TalkSection() {
         />
       ) : isLoading ? (
         <Lottie
-          loop
           animationData={lottieTalkAfterClick}
           play
           style={{ width: '100%', height: '100%' }}
