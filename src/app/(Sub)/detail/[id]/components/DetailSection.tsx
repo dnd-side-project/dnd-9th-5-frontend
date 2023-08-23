@@ -4,9 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import LinkShareModal from './LinkShareModal';
 import { usePoseDetailQuery } from '@/apis';
 import BottomFixedDiv from '@/components/BottomFixedDiv';
 import { Button } from '@/components/Button';
+import { useOverlay } from '@/components/Overlay/useOverlay';
 import { BASE_SITE_URL } from '@/constants';
 
 interface DetailSectionProps {
@@ -16,6 +18,7 @@ interface DetailSectionProps {
 export default function DetailSection({ poseId }: DetailSectionProps) {
   const { data } = usePoseDetailQuery(poseId);
   const pathname = usePathname();
+  const { open, close } = useOverlay();
 
   if (!data) return null;
   const { imageKey, tagAttributes, sourceUrl } = data.poseInfo;
@@ -25,7 +28,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
   const handleShareLink = async () => {
     try {
       await navigator.clipboard.writeText(BASE_SITE_URL + pathname);
-      alert('클립보드에 링크가 복사되었어요.');
+      open(({ exit }) => <LinkShareModal onClose={exit} />);
     } catch (err) {
       console.log(err);
     }
