@@ -1,7 +1,6 @@
 'use client';
 
-import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import Lottie from 'react-lottie-player';
 
 import { usePoseTalkQuery } from '@/apis';
@@ -10,47 +9,45 @@ import { BottomFixedButton } from '@/components/Button';
 import lottieTalkAfterClick from '#/lotties/talk_after_click.json';
 import lottieTalkBeforeClick from '#/lotties/talk_before_click.json';
 
-interface TalkSectionProps {}
 export default function TalkSection() {
   const [isFirstLoading, setIsFirstLoading] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [talkWord, setTalkWord] = useState<string>('포즈로 말해요');
+  const [talkWord, setTalkWord] = useState<string>('제시어에 맞춰 포즈를 취해요!');
   const { refetch } = usePoseTalkQuery({
     onSuccess: (data) => {
-      setIsFirstLoading(false);
       setIsLoading(true);
       setTimeout(() => {
         setIsLoading(false);
         setTalkWord(data.poseWord.content);
-      }, 3000);
+      }, 1000);
     },
   });
 
   const handleTalkClick = () => {
+    if (isLoading) return;
+    setIsFirstLoading(false);
     refetch();
   };
 
   return (
     <section className="flex flex-col items-center">
-      <h1>{talkWord}</h1>
-      {isFirstLoading && (
+      <h1 className="max-w-310 break-keep text-center">{talkWord}</h1>
+      {isFirstLoading ? (
         <Lottie
           loop
           animationData={lottieTalkBeforeClick}
           play
           style={{ width: '100%', height: '100%' }}
         />
-      )}
-      {isLoading && (
+      ) : isLoading ? (
         <Lottie
           loop
           animationData={lottieTalkAfterClick}
           play
           style={{ width: '100%', height: '100%' }}
         />
-      )}
-      {!isFirstLoading && !isLoading && (
-        <Image src="/lotties/talk_after_loading.png" width={360} height={10} alt="lottie" />
+      ) : (
+        <img src="/lotties/talk_after_loading.png" alt="" />
       )}
       <BottomFixedButton className="bg-main-violet text-white" onClick={handleTalkClick}>
         제시어 뽑기

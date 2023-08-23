@@ -6,8 +6,7 @@ import { Tooltip } from 'react-tooltip';
 import { Spacing } from '@/components/Spacing';
 
 export default function TitleSection() {
-  const [tooltipOpened, setTooltipOpened] = useState<boolean>(false);
-  console.log(tooltipOpened);
+  const [, setTooltipOpened] = useState<boolean>(false);
 
   return (
     <section className="flex flex-col items-center">
