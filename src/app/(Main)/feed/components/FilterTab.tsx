@@ -13,7 +13,7 @@ export default function FilterTab() {
   return (
     <div className="fixed inset-x-0 top-104 z-10 flex h-56 items-center gap-8 bg-white px-20">
       <button
-        className={`flex items-center gap-8 rounded-8 ${
+        className={`flex min-w-fit items-center gap-8 rounded-8 ${
           isFiltered
             ? 'border-1 border-main-violet bg-main-violet-base text-main-violet'
             : 'bg-sub-white'
@@ -26,9 +26,11 @@ export default function FilterTab() {
       {isFiltered && (
         <>
           <div className="text-divider">|</div>
-          {tags.map((tag) => (
-            <Tag key={tag.value} text={tag.value} onClick={() => deleteSelectedFilterItem(tag)} />
-          ))}
+          <div className="flex gap-8 overflow-x-scroll">
+            {tags.map((tag) => (
+              <Tag key={tag.value} text={tag.value} onClick={() => deleteSelectedFilterItem(tag)} />
+            ))}
+          </div>
         </>
       )}
     </div>
