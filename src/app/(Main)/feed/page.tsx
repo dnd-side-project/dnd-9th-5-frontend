@@ -13,8 +13,8 @@ export default function Feed() {
   return (
     <>
       <Filter />
+      <Spacing size={56} />
       <div>
-        <Spacing size={40} />
         {data &&
           (data.recommendation ? (
             <>

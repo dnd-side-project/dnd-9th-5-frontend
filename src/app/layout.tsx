@@ -2,11 +2,11 @@ import './globals.css';
 import '../../styles/font.css';
 import '../../styles/typography.css';
 
-import QueryProvider from './QueryProvider';
+import QueryProvider from '@/provider/QueryProvider';
+import RecoilContextProvider from '@/provider/RecoilContextProvider';
 import { OverlayProvider } from '@/components/Overlay/OverlayProvider';
 
 import type { Metadata } from 'next';
-import RecoilContextProvider from './RecoilContextProvider';
 
 export const metadata: Metadata = {
   title: 'PosePicker',
