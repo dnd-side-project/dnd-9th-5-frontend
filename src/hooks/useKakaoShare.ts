@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 
+import { KAKAO_KEY } from '@/constants';
+
 export default function useKakaoShare() {
   useEffect(() => {
     const script = document.createElement('script');
@@ -15,7 +17,7 @@ export default function useKakaoShare() {
     if (window.Kakao) {
       const kakao = window.Kakao;
       if (!kakao.isInitialized()) {
-        kakao.init('af4c53eb4bc89eef44b86f7ed668bd05');
+        kakao.init(KAKAO_KEY);
       }
 
       kakao.Link.sendDefault({
