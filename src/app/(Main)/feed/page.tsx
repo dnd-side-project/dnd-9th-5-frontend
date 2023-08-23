@@ -4,9 +4,9 @@ import EmptyCase from './components/EmptyCase';
 import FilterSheet from './components/FilterSheet';
 import FilterTab from './components/FilterTab';
 import PhotoList from './components/PhotoList';
-import useFilterState from '@/hooks/useFilterState';
 import { usePoseFeedQuery } from '@/apis';
 import { Spacing } from '@/components/Spacing';
+import useFilterState from '@/hooks/useFilterState';
 
 export default function Feed() {
   const { filterState } = useFilterState();
