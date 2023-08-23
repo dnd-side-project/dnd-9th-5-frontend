@@ -2,27 +2,43 @@ import { PrimaryButton } from '@/components/Button';
 import BottomSheet from '@/components/Modal/BottomSheet';
 import { SelectionBasic, SelectionTagList } from '@/components/Selection';
 import { ICON } from '@/constants/icon';
-import { useState } from 'react';
+import useBottomSheet from '@/hooks/useBottomSheet';
+import useFilterState from '@/hooks/useFilterState';
+import { useEffect, useState } from 'react';
 
 export default function FilterSheet() {
+  const { filterState, updateFilterState } = useFilterState();
+  const { closeBottomSheet } = useBottomSheet();
+
   const countList = ['전체', '1인', '2인', '3인', '4인', '5인+'];
-  const [countState, setCountState] = useState<string>(countList[0]);
+  const [countState, setCountState] = useState<number>(0);
 
   const frameList = ['전체', '1컷', '3컷', '4컷', '6컷', '8컷+'];
-  const [frameState, setFrameState] = useState<string>(frameList[0]);
+  const [frameState, setFrameState] = useState<number>(0);
 
   const tagList = ['친구', '연인', '유명프레임', '기념일', '소품'];
   const [tagState, setTagState] = useState<string[]>([]);
 
   function resetFilter() {
-    setCountState(countList[0]);
-    setFrameState(frameList[0]);
+    setCountState(0);
+    setFrameState(0);
     setTagState([]);
+  }
+
+  function decideFilter() {
+    updateFilterState(countState, frameState, tagState);
+    closeBottomSheet();
+  }
+
+  function cancelFilter() {
+    setCountState(filterState.peopleCount);
+    setFrameState(filterState.frameCount);
+    setTagState(filterState.tags.split(','));
   }
 
   return (
     <>
-      <BottomSheet>
+      <BottomSheet beforeClose={cancelFilter}>
         <section>
           <div id="subtitle-2" className="mb-8 text-secondary">
             인원 수
@@ -48,7 +64,7 @@ export default function FilterSheet() {
             text="필터 초기화"
             onClick={resetFilter}
           />
-          <PrimaryButton type="fill" text="포즈보기" onClick={() => console.log('포즈보기')} />
+          <PrimaryButton type="fill" text="포즈보기" onClick={decideFilter} />
         </div>
       </BottomSheet>
     </>

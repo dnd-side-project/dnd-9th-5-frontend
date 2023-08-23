@@ -8,7 +8,7 @@ import PhotoList from './components/PhotoList';
 import { usePoseFeedQuery } from '@/apis';
 
 export default function Feed() {
-  const { refetch, data } = usePoseFeedQuery({ peopleCount: 0, frameCount: 0, tags: '' });
+  const { data } = usePoseFeedQuery({ peopleCount: 0, frameCount: 0, tags: '' });
 
   return (
     <>

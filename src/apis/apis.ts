@@ -15,7 +15,6 @@ export const getPoseFeed = ({ frameCount, peopleCount, tags }: PoseFeedParameter
     params: {
       frameCount,
       pageNumber: 1,
-      pageSize: 10,
       peopleCount,
       tags,
     },
