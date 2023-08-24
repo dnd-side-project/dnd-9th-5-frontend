@@ -1,8 +1,2 @@
-addReviewers: true
-addAssignees: true
-reviewers:
-  - guesung
-  - seondal
-skipKeywords:
-  - wip
-numberOfReviewers: 0
+addReviewers: false
+addAssignees: author
