@@ -7,16 +7,16 @@ import Lottie from 'react-lottie-player';
 import lottiePick from '#/lotties/pick.json';
 import { usePosePickQuery } from '@/apis';
 import { BottomFixedButton } from '@/components/Button';
+import { SelectionBasic } from '@/components/Selection';
 import { Spacing } from '@/components/Spacing';
+import { peopleCountList } from '@/constants/filterList';
 import useLoading from '@/hooks/useLoading';
 
-const countList = ['1인', '2인', '3인', '4인', '5인+'];
-
 export default function PickSection() {
-  const [countState, setCountState] = useState<string>('1인');
-  const { isLoading, startLoading } = useLoading({ loadingDelay: 3000 });
+  const [countState, setCountState] = useState<number>(1);
+  const { isLoading, startLoading } = useLoading({ loadingDelay: 1000 });
   const [image, setImage] = useState<string>('');
-  const { refetch } = usePosePickQuery(+countState[0], {
+  const { refetch } = usePosePickQuery(+0, {
     onSuccess: (data) => {
       if (!data) return;
       setImage(data.poseInfo.imageKey);
@@ -31,19 +31,16 @@ export default function PickSection() {
   return (
     <section className="flex flex-col">
       <div className="flex justify-evenly rounded-8 py-16">
-        {countList.map((count) => (
-          <CountItem
-            key={count}
-            onClick={() => setCountState(count)}
-            isSelected={count === countState}
-            count={count}
-          />
-        ))}
+        <SelectionBasic
+          data={peopleCountList.slice(1)}
+          state={countState}
+          setState={setCountState}
+        />
       </div>
 
       <Spacing size={13} />
 
-      <div className="relative h-520">
+      <div className="relative flex h-520 w-full justify-center bg-slate-500">
         {true && (
           <Lottie loop animationData={lottiePick} play style={{ width: '100%', height: '100%' }} />
         )}
