@@ -16,7 +16,7 @@ export default function Header({
   ...props
 }: HeaderProps) {
   return (
-    <div className="fixed inset-x-0 top-0 z-10 bg-white pt-8">
+    <div className="fixed inset-x-0 top-0 z-10 mx-auto max-w-440 bg-white pt-8">
       <header
         className={`flex h-48 items-center justify-between ${className ? className : ''}`}
         {...props}

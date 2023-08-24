@@ -1,3 +1,4 @@
+'use client';
 import { type HTMLMotionProps, motion } from 'framer-motion';
 
 import type { StrictPropsWithChildren } from '@/types';

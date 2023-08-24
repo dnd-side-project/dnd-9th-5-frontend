@@ -1,7 +1,6 @@
 'use client';
 import clsx from 'clsx';
 import { useRef } from 'react';
-import { twMerge } from 'tailwind-merge';
 
 import { AnimatedPortal } from '../Portal';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside';
