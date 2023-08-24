@@ -29,7 +29,7 @@ export default function PickSection() {
   };
 
   return (
-    <section className="flex flex-col px-20">
+    <section className="flex flex-col">
       <div className="flex justify-evenly rounded-8 py-16">
         {countList.map((count) => (
           <CountItem
