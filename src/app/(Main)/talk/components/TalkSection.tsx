@@ -50,7 +50,7 @@ export default function TalkSection() {
           loop
           animationData={lottieTalkAfterClick}
           play
-          style={{ width: '100%', height: '100%' }}
+          style={{ width: '120%', height: '100%' }}
         />
       )}
       {!isFirstLoading && !isLoading && (
@@ -58,10 +58,11 @@ export default function TalkSection() {
           loop
           animationData={lottieTalkAfterClick}
           play
-          style={{ width: '100%', height: '100%' }}
+          style={{ width: '120%', height: '100%' }}
           speed={0}
         />
       )}
+
       <BottomFixedButton
         className="bg-main-violet text-white"
         onClick={handleTalkClick}
