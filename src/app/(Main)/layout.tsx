@@ -5,7 +5,7 @@ import { StrictPropsWithChildren } from '@/types';
 export default function MainLayout({ children }: StrictPropsWithChildren) {
   return (
     <>
-      <Spacing size={104} />
+      <Spacing size={80} />
       <MainHeader />
       <div className="px-20 py-16">{children}</div>
     </>

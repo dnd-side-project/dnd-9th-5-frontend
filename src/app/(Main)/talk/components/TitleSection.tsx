@@ -1,14 +1,15 @@
 'use client';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Tooltip } from 'react-tooltip';
 
 import { Spacing } from '@/components/Spacing';
 
 export default function TitleSection() {
-  const [isOpen, setIsOpen] = useState<boolean>(
-    localStorage.getItem('tooltipIsIpen') === 'true' || !localStorage.getItem('tooltipIsIpen')
-  );
+  const [isOpen, setIsOpen] = useState<boolean>(true);
+  useEffect(() => {
+    if (localStorage.getItem('tooltipIsOpen') === 'false') setIsOpen(false);
+  }, []);
 
   return (
     <section className="flex flex-col items-center">
@@ -20,10 +21,10 @@ export default function TitleSection() {
           style={{ cursor: 'pointer' }}
           onClick={() => {
             if (isOpen) {
-              localStorage.setItem('tooltipIsIpen', 'false');
+              localStorage.setItem('tooltipIsOpen', 'false');
               setIsOpen(false);
             } else {
-              localStorage.setItem('tooltipIsIpen', 'true');
+              localStorage.setItem('tooltipIsOpen', 'true');
               setIsOpen(true);
             }
           }}
@@ -41,7 +42,7 @@ export default function TitleSection() {
           <div
             className="flex cursor-pointer"
             onClick={() => {
-              localStorage.setItem('tooltipIsIpen', 'false');
+              localStorage.setItem('tooltipIsOpen', 'false');
               setIsOpen(false);
             }}
           >
