@@ -6,7 +6,9 @@ import { Tooltip } from 'react-tooltip';
 import { Spacing } from '@/components/Spacing';
 
 export default function TitleSection() {
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(
+    localStorage.getItem('tooltipIsIpen') === 'true' || !localStorage.getItem('tooltipIsIpen')
+  );
 
   return (
     <section className="flex flex-col items-center">
@@ -16,7 +18,15 @@ export default function TitleSection() {
           data-tooltip-id="my-tooltip"
           data-tooltip-place="top"
           style={{ cursor: 'pointer' }}
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => {
+            if (isOpen) {
+              localStorage.setItem('tooltipIsIpen', 'false');
+              setIsOpen(false);
+            } else {
+              localStorage.setItem('tooltipIsIpen', 'true');
+              setIsOpen(true);
+            }
+          }}
         >
           <Image src="/icons/info.svg" width={24} height={24} alt="info" />
         </a>
@@ -28,7 +38,13 @@ export default function TitleSection() {
         openOnClick
         isOpen={isOpen}
         render={() => (
-          <div className="flex cursor-pointer" onClick={() => setIsOpen(false)}>
+          <div
+            className="flex cursor-pointer"
+            onClick={() => {
+              localStorage.setItem('tooltipIsIpen', 'false');
+              setIsOpen(false);
+            }}
+          >
             <div>
               <p>제시어에 맞춰 포즈를 취해 보세요!</p>
               <p>독특한 나만의 포즈가 완성된답니다.</p>
