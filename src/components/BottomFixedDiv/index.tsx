@@ -9,7 +9,7 @@ export default function BottomFixedDiv({
   className,
 }: StrictPropsWithChildren<BottomFixedDivProps>) {
   return (
-    <div className={`fixed inset-x-0 bottom-0 mx-auto max-w-440 px-20 pb-20 ${className}`}>
+    <div className={`fixed inset-x-0 bottom-20 mx-auto max-w-440 px-20 ${className}`}>
       {children}
     </div>
   );
