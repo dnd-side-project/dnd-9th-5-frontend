@@ -1,27 +1,37 @@
 'use client';
 
-import Filter from './components/Filter';
-import Thumbnails from './components/Thumbnails';
-
-const tmp = [
-  44, 203, 250, 7, 136, 44, 105, 193, 122, 270, 232, 213, 243, 35, 244, 73, 271, 109, 30, 76, 11,
-  198, 132, 48, 227, 201, 241, 140, 63, 115, 187, 80, 35, 6, 123, 55, 286, 220, 23, 293, 50, 297,
-  50, 265, 117, 89, 27, 77, 143, 37, 87, 267, 158, 11, 99, 203, 229, 287, 258, 78, 213, 176, 214,
-  11, 11, 141, 290, 258, 223, 109, 125, 217, 267, 288, 0, 274, 270, 34, 274, 219, 49, 137, 27, 2,
-  52, 202, 2, 101, 101, 287, 17, 43, 210, 146, 170, 68, 163, 89, 191, 62,
-];
+import EmptyCase from './components/EmptyCase';
+import FilterSheet from './components/FilterSheet';
+import FilterTab from './components/FilterTab';
+import PhotoList from './components/PhotoList';
+import { usePoseFeedQuery } from '@/apis';
+import { Spacing } from '@/components/Spacing';
+import useFilterState from '@/hooks/useFilterState';
 
 export default function Feed() {
+  const { filterState } = useFilterState();
+  const { data, isFetched } = usePoseFeedQuery(filterState);
+
   return (
     <>
-      <Filter />
-      <div className="pt-72">
-        <div className="columns-2	overflow-y-scroll">
-          {tmp.map((item, idx) => (
-            <Thumbnails height={item} key={idx} />
-          ))}
-        </div>
+      <FilterTab />
+      <Spacing size={56} />
+      <div>
+        {data?.recommendation && (
+          <>
+            <EmptyCase
+              title={'신비한 포즈를 찾으시는군요!'}
+              text={'찾고 싶은 포즈를 저희에게 알려주세요.'}
+              button={'문의사항 남기기'}
+              path={''}
+            />
+            <h4 className="mb-16">이런 포즈는 어때요?</h4>
+            <PhotoList data={data.recommendedContents.content} />
+          </>
+        )}
+        {isFetched ? <PhotoList data={data?.filteredContents.content} /> : <PhotoList />}
       </div>
+      <FilterSheet />
     </>
   );
 }

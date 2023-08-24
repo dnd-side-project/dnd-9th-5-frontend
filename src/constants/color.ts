@@ -16,7 +16,7 @@ export const COLOR = {
   },
   black: '#141218',
   violet: {
-    50: '#141218',
+    50: '#F4F1FE',
     100: '#E2D9FC',
     200: '#C8B8FA',
     300: '#B29BF8',

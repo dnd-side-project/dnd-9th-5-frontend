@@ -1,8 +1,8 @@
 'use client';
 
-import { useOverlay } from '@/components/Overlay/useOverlay';
 import MenuModal from './InqueryModal';
 import LogoutModal from './LogoutModal';
+import { useOverlay } from '@/components/Overlay/useOverlay';
 
 export default function MenuListSection() {
   const { open } = useOverlay();

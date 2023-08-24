@@ -3,8 +3,6 @@
 import { Spacing } from '@/components/Spacing';
 
 export default function LoginSection() {
-  const handleLoginClick = () => {};
-
   return (
     <section className="py-12">
       <div className="bg-violet flex items-center rounded-16 bg-main-violet-bright px-20 py-24">
