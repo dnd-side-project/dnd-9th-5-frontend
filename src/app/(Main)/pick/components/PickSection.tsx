@@ -16,7 +16,7 @@ export default function PickSection() {
   const [countState, setCountState] = useState<number>(1);
   const { isLoading, startLoading } = useLoading({ loadingDelay: 1000 });
   const [image, setImage] = useState<string>('');
-  const { refetch } = usePosePickQuery(+0, {
+  const { refetch } = usePosePickQuery(countState, {
     onSuccess: (data) => {
       if (!data) return;
       setImage(data.poseInfo.imageKey);
@@ -29,8 +29,9 @@ export default function PickSection() {
   };
 
   return (
-    <section className="flex flex-col">
-      <div className="flex justify-evenly rounded-8 py-16">
+    <section className="flex flex-col items-center">
+      <Spacing size={10} />
+      <div className="w-full">
         <SelectionBasic
           data={peopleCountList.slice(1)}
           state={countState}
@@ -38,12 +39,10 @@ export default function PickSection() {
         />
       </div>
 
-      <Spacing size={13} />
+      <Spacing size={12} />
 
-      <div className="relative flex h-520 w-full justify-center bg-slate-500">
-        {true && (
-          <Lottie loop animationData={lottiePick} play style={{ width: '100%', height: '100%' }} />
-        )}
+      <div className="relative flex h-460 w-300 items-center justify-center">
+        {true && <Lottie loop animationData={lottiePick} play />}
         <Image
           src={image || '/images/image-frame.png'}
           fill
