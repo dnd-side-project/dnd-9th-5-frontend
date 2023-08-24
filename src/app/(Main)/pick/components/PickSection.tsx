@@ -30,7 +30,7 @@ export default function PickSection() {
 
   return (
     <section className="flex flex-col items-center">
-      <Spacing size={10} />
+      <Spacing size={16} />
       <div className="w-full">
         <SelectionBasic
           data={peopleCountList.slice(1)}
@@ -39,7 +39,7 @@ export default function PickSection() {
         />
       </div>
 
-      <Spacing size={12} />
+      <Spacing size={16} />
 
       <div className="relative flex h-460 w-300 items-center justify-center">
         {true && <Lottie loop animationData={lottiePick} play />}
