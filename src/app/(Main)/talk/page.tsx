@@ -5,7 +5,7 @@ import { Spacing } from '@/components/Spacing';
 export default function Talk() {
   return (
     <div>
-      <Spacing size={30} />
+      <Spacing size={64} />
       <TitleSection />
       <TalkSection />
     </div>

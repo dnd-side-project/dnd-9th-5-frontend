@@ -1,4 +1,10 @@
-import { FilterTagsResponse, PoseFeedResponse, PosePickResponse, PoseTalkResponse } from '.';
+import {
+  FilterTagsResponse,
+  PoseDetailResponse,
+  PoseFeedResponse,
+  PosePickResponse,
+  PoseTalkResponse,
+} from '.';
 import publicApi from './config/publicApi';
 
 export const getPosePick = (peopleCount: number) =>

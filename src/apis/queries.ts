@@ -1,6 +1,5 @@
 import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 
-import { FilterState } from '@/hooks/useFilterState';
 import {
   FilterTagsResponse,
   PoseFeedResponse,
@@ -12,6 +11,7 @@ import {
   getPosePick,
   getPoseTalk,
 } from '.';
+import { FilterState } from '@/hooks/useFilterState';
 
 export const usePoseDetailQuery = (poseId: number) =>
   useQuery(['poseId', poseId], () => getPoseDetail(poseId));

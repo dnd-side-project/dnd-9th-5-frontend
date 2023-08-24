@@ -29,7 +29,7 @@ export default function PickSection() {
   };
 
   return (
-    <section className="flex flex-col px-20">
+    <section className="flex flex-col">
       <div className="flex justify-evenly rounded-8 py-16">
         {countList.map((count) => (
           <CountItem
@@ -48,7 +48,7 @@ export default function PickSection() {
           <Lottie loop animationData={lottiePick} play style={{ width: '100%', height: '100%' }} />
         )}
         <Image
-          src={image || '/images/sample.png'}
+          src={image || '/images/image-frame.png'}
           fill
           alt="sample"
           priority
@@ -57,7 +57,11 @@ export default function PickSection() {
         />
       </div>
 
-      <BottomFixedButton className="bg-main-violet text-white" onClick={handlePickClick}>
+      <BottomFixedButton
+        className="bg-main-violet text-white"
+        onClick={handlePickClick}
+        disabled={isLoading}
+      >
         {!!image ? '포즈 pick!' : '인원수 선택하고 포즈 pick!'}
       </BottomFixedButton>
     </section>

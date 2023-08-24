@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { useRef, useState } from 'react';
 import Lottie from 'react-lottie-player';
 
@@ -13,6 +12,7 @@ import useLoading from '@/hooks/useLoading';
 export default function TalkSection() {
   const { isLoading: isFirstLoading, stopLoading: stopFirstLoading } = useLoading({
     loadingDelay: 3000,
+    isFirstLoadingInfinite: true,
   });
   const ref = useRef(null);
 
@@ -21,13 +21,14 @@ export default function TalkSection() {
   const { isLoading, startLoading } = useLoading({
     loadingDelay: 3000,
     onStopLoading: () => data && setTalkWord(data.poseWord.content),
+    initialState: false,
   });
   const [talkWord, setTalkWord] = useState<string>('포즈로 말해요');
 
   const handleTalkClick = () => {
-    refetch();
-    stopFirstLoading();
+    if (isFirstLoading) stopFirstLoading();
     startLoading();
+    refetch();
   };
 
   return (
@@ -41,7 +42,6 @@ export default function TalkSection() {
           play
           style={{ width: '100%', height: '100%' }}
           ref={ref}
-          onComplete={() => console.log('complete')}
         />
       )}
       {isLoading && !isFirstLoading && (
@@ -61,7 +61,11 @@ export default function TalkSection() {
           speed={0}
         />
       )}
-      <BottomFixedButton className="bg-main-violet text-white" onClick={handleTalkClick}>
+      <BottomFixedButton
+        className="bg-main-violet text-white"
+        onClick={handleTalkClick}
+        disabled={isLoading}
+      >
         제시어 뽑기
       </BottomFixedButton>
     </section>
