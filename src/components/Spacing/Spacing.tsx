@@ -14,7 +14,7 @@ export default memo(function Spacing({
 }: SpacingProps) {
   return (
     <div
-      className={`flex-none bg-white ${className}`}
+      className={`flex-none ${className}`}
       style={{
         [direction === 'vertical' ? 'height' : 'width']: size + 'px',
       }}
