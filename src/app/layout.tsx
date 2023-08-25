@@ -5,47 +5,38 @@ import '../../styles/typography.css';
 import Script from 'next/script';
 
 import { OverlayProvider } from '@/components/Overlay/OverlayProvider';
-import { GA_ID } from '@/constants';
+import { BASE_SITE_URL, GA_ID } from '@/constants';
 import QueryProvider from '@/provider/QueryProvider';
 import RecoilContextProvider from '@/provider/RecoilContextProvider';
 
 import type { Metadata } from 'next';
 
+const DEFAULT_OG_TITLE = 'PosePicker';
+const DEFAULT_OG_DESC = '포토부스에서 고민하는 당신을 위한 포즈 추천';
+const DEFAULT_OG_IMAGE = '/images/main.png';
+
 export const metadata: Metadata = {
-  title: 'PosePicker',
-  description: '포토부스에서 고민하는 당신을 위한 포즈 추천',
-  openGraph: {
-    title: 'PosePicker',
-    description: 'PosePicker FE by @guesung, @seondal',
-    url: 'https://pose-picker.vercel.app/', // 웹사이트 URL
-    siteName: 'PosePicker',
-    images: [
-      {
-        url: '', // 이미지 URL
-        width: 1920,
-        height: 1080,
-      },
-    ],
-    locale: 'ko-KR',
-    type: 'website',
+  metadataBase: new URL(BASE_SITE_URL),
+  title: {
+    template: `${DEFAULT_OG_TITLE} / %s `,
+    default: DEFAULT_OG_TITLE,
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
+  description: DEFAULT_OG_DESC,
+  openGraph: {
+    title: DEFAULT_OG_TITLE,
+    description: DEFAULT_OG_DESC,
+    images: [DEFAULT_OG_IMAGE],
   },
   twitter: {
-    title: 'PosePicker',
-    card: 'summary_large_image',
+    title: DEFAULT_OG_TITLE,
+    description: DEFAULT_OG_DESC,
+    images: [DEFAULT_OG_IMAGE],
   },
-  icons: {
-    shortcut: '/favicon.ico',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
   },
   manifest: '/manifest.json',
   themeColor: '#ffffff',
