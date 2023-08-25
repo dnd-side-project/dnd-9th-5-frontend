@@ -34,7 +34,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
   };
 
   return (
-    <div className="overflow-y-auto pb-70">
+    <div className="overflow-y-auto pb-160">
       {sourceUrl && (
         <Link
           href={'https://' + sourceUrl}
@@ -44,10 +44,9 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
         </Link>
       )}
       <div className="flex justify-center">
-        <div className="relative h-520 w-440">
-          <Image
+        <div className="relative">
+          <img
             src={imageKey}
-            fill
             alt="detailImage"
             className="cursor-pointer"
             onClick={() =>
