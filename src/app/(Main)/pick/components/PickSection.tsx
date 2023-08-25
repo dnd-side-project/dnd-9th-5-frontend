@@ -1,5 +1,6 @@
 'use client';
 
+import clsx from 'clsx';
 import Image from 'next/image';
 import { useState } from 'react';
 import Lottie from 'react-lottie-player';
@@ -7,6 +8,8 @@ import Lottie from 'react-lottie-player';
 import lottiePick from '#/lotties/pick.json';
 import { usePosePickQuery } from '@/apis';
 import { BottomFixedButton } from '@/components/Button';
+import { Popup } from '@/components/Modal';
+import { useOverlay } from '@/components/Overlay/useOverlay';
 import { SelectionBasic } from '@/components/Selection';
 import { Spacing } from '@/components/Spacing';
 import { peopleCountList } from '@/constants/filterList';
@@ -14,6 +17,7 @@ import useLoading from '@/hooks/useLoading';
 
 export default function PickSection() {
   const [countState, setCountState] = useState<number>(1);
+  const { open } = useOverlay();
   const { isLoading, startLoading } = useLoading({ loadingDelay: 1000 });
   const [image, setImage] = useState<string>('');
   const { refetch } = usePosePickQuery(countState, {
@@ -49,7 +53,23 @@ export default function PickSection() {
           alt="sample"
           priority
           loading="eager"
-          className={isLoading ? 'hidden' : ''}
+          className={clsx({ hidden: isLoading }, 'cursor-pointer')}
+          onClick={() =>
+            open(({ exit }) => (
+              <Popup>
+                <Image
+                  src={image || '/images/image-frame.png'}
+                  alt="enlargementImage"
+                  priority
+                  loading="eager"
+                  onClick={exit}
+                  width={500}
+                  height={440}
+                  className="cursor-pointer"
+                />
+              </Popup>
+            ))
+          }
         />
       </div>
 
@@ -61,26 +81,5 @@ export default function PickSection() {
         {!!image ? '포즈 pick!' : '인원수 선택하고 포즈 pick!'}
       </BottomFixedButton>
     </section>
-  );
-}
-
-interface CountItemProps {
-  isSelected: boolean;
-  count: string;
-  onClick: () => void;
-}
-
-function CountItem({ isSelected, count, onClick }: CountItemProps) {
-  return (
-    <div
-      className={`flex h-40 grow cursor-pointer items-center justify-center first:rounded-l-8 last:rounded-r-8 ${
-        isSelected
-          ? 'border-1 border-main-violet bg-main-violet-bright'
-          : 'border-default border-1 bg-sub-white'
-      }`}
-      onClick={onClick}
-    >
-      <h6 className={isSelected ? 'text-main-violet-dark' : ''}>{count}</h6>
-    </div>
   );
 }
