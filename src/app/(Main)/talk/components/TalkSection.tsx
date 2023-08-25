@@ -24,8 +24,7 @@ export default function TalkSection() {
     onStopLoading: () => data && setTalkWord(data.poseWord.content),
     initialState: false,
   });
-  const [talkWord, setTalkWord] = useState<string>(`제시어에 맞춰
-  포즈를 취해요!`);
+  const [talkWord, setTalkWord] = useState<string>(`제시어에 맞춰 포즈를 취해요!`);
 
   const handleTalkClick = () => {
     if (isFirstLoading) stopFirstLoading();
@@ -35,7 +34,7 @@ export default function TalkSection() {
 
   return (
     <section className="flex flex-col items-center">
-      <h1 className="text-center">{talkWord}</h1>
+      <h1 className="max-w-310 break-keep text-center">{talkWord}</h1>
 
       <Spacing size={10} />
 
