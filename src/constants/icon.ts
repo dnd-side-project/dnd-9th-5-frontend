@@ -1,7 +1,7 @@
 export const ICON = {
   close: {
     black: '/icons/close.svg',
-    gray: '/icons/gray.svg',
+    gray: '/icons/close_gray.svg',
   },
   restart: '/icons/restart.svg',
   bookmark: {
