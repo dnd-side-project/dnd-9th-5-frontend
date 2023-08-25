@@ -2,7 +2,10 @@ import './globals.css';
 import '../../styles/font.css';
 import '../../styles/typography.css';
 
+import Script from 'next/script';
+
 import { OverlayProvider } from '@/components/Overlay/OverlayProvider';
+import { GA_ID } from '@/constants';
 import QueryProvider from '@/provider/QueryProvider';
 import RecoilContextProvider from '@/provider/RecoilContextProvider';
 
@@ -50,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko">
       <body className="flex min-h-[100vh] w-screen touch-none justify-center bg-slate-100 py-px">
+        <Gtag />
         <RecoilContextProvider>
           <div className="w-full max-w-440 bg-white text-primary">
             <QueryProvider>
@@ -60,5 +64,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </RecoilContextProvider>
       </body>
     </html>
+  );
+}
+
+function Gtag() {
+  return (
+    <>
+      <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+      <Script id="google-analytics">
+        {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '${GA_ID}');
+      `}
+      </Script>
+    </>
   );
 }
