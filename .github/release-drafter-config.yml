@@ -32,3 +32,5 @@ template: | # 릴리즈 내용
   ## Changes (v$RESOLVED_VERSION)
 
   $CHANGES
+  $PREVIOUS_TAG 
+  $CONTRIBUTORS 
