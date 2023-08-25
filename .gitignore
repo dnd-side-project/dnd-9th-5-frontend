@@ -5,3 +5,7 @@
 /build
 .DS_Store
 .env
+
+# Next-PWA
+public/sw.js
+public/workbox-*.js
