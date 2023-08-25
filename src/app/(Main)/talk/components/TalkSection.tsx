@@ -7,6 +7,7 @@ import lottieTalkAfterClick from '#/lotties/talk_after_click.json';
 import lottieTalkBeforeClick from '#/lotties/talk_before_click.json';
 import { usePoseTalkQuery } from '@/apis';
 import { BottomFixedButton } from '@/components/Button';
+import { Spacing } from '@/components/Spacing';
 import useLoading from '@/hooks/useLoading';
 
 export default function TalkSection() {
@@ -35,6 +36,8 @@ export default function TalkSection() {
   return (
     <section className="flex flex-col items-center">
       <h1 className="text-center">{talkWord}</h1>
+
+      <Spacing size={10} />
 
       {isFirstLoading && (
         <Lottie
