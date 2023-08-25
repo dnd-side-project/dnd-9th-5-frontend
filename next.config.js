@@ -1,9 +1,19 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import withPWA from 'next-pwa';
+import runtimeCaching from 'next-pwa/cache.js';
+
+const isProduction = process.env.NODE_ENV === 'production';
+
+const config = {
   reactStrictMode: true,
-  images: {
+  configurationimages: {
     domains: ['posepicker-image.s3.ap-northeast-2.amazonaws.com'],
   },
 };
 
-module.exports = nextConfig;
+const nextConfig = withPWA({
+  dest: 'public',
+  disable: !isProduction,
+  runtimeCaching,
+})(config);
+
+export default nextConfig;
