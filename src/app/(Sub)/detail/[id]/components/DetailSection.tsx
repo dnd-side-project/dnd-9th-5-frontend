@@ -67,7 +67,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
           }
         />
       </div>
-      <div className="flex gap-10 px-20 py-12">
+      <div className="flex flex-wrap gap-10 px-20 py-12">
         {tagAttributes?.split(',').map((tag, index) => <Tag key={index} name={tag} />)}
       </div>
 
@@ -94,7 +94,7 @@ function Tag({ name }: TagProps) {
     <Link
       href={`/feed?filter=${name}`}
       type="button"
-      className="text-subtitle-2 rounded-30 bg-sub-white px-12 py-5 text-secondary"
+      className="text-subtitle-2 whitespace-nowrap rounded-30 bg-sub-white px-12 py-5 text-secondary"
     >
       {name}
     </Link>
