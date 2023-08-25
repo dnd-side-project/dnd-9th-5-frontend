@@ -8,6 +8,7 @@ import LinkShareModal from './LinkShareModal';
 import { usePoseDetailQuery } from '@/apis';
 import BottomFixedDiv from '@/components/BottomFixedDiv';
 import { Button } from '@/components/Button';
+import { Popup } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { BASE_SITE_URL } from '@/constants';
 import useKakaoShare from '@/hooks/useKakaoShare';
@@ -43,7 +44,28 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
         </Link>
       )}
       <div className="relative h-520">
-        <Image src={imageKey} fill alt="detailImage" />
+        <Image
+          src={imageKey}
+          fill
+          alt="detailImage"
+          className="cursor-pointer"
+          onClick={() =>
+            open(({ exit }) => (
+              <Popup>
+                <Image
+                  src={imageKey}
+                  alt="enlargementImage"
+                  priority
+                  loading="eager"
+                  onClick={exit}
+                  width={500}
+                  height={440}
+                  className="cursor-pointer"
+                />
+              </Popup>
+            ))
+          }
+        />
       </div>
       <div className="flex gap-10 px-20 py-12">
         {tagAttributes?.split(',').map((tag, index) => <Tag key={index} name={tag} />)}
@@ -69,11 +91,12 @@ interface TagProps {
 
 function Tag({ name }: TagProps) {
   return (
-    <button
+    <Link
+      href={`/feed?filter=${name}`}
       type="button"
       className="text-subtitle-2 rounded-30 bg-sub-white px-12 py-5 text-secondary"
     >
       {name}
-    </button>
+    </Link>
   );
 }
