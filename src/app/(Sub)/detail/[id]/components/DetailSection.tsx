@@ -50,7 +50,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
       </div>
 
       <BottomFixedDiv className="flex gap-8">
-        <Button className="w-160 bg-sub-white" type="button" onClick={handleShareLink}>
+        <Button className="max-w-120 bg-sub-white" type="button" onClick={handleShareLink}>
           링크 공유
         </Button>
         <Button
