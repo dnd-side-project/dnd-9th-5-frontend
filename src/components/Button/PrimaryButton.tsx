@@ -22,7 +22,7 @@ export default function PrimaryButton({ icon, text, onClick, type = 'fill' }: Bu
   return (
     <div
       onClick={onClick}
-      className={`flex items-center justify-center gap-8 rounded-12 px-24 py-14 ${style[type]}`}
+      className={`flex cursor-pointer items-center justify-center gap-8 rounded-12 px-24 py-14 ${style[type]}`}
     >
       {icon && <Image src={icon} alt={''} width={24} height={24} />}
       <div id="subtitle-1">{text}</div>
