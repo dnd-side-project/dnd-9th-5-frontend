@@ -7,7 +7,7 @@ import { useOnClickOutside } from '@/hooks/useOnClickOutside';
 
 import type { StrictPropsWithChildren } from '@/types';
 
-interface PortalWrapperProps {
+interface PortalWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
   onClose?: () => void;
   isBackGroundBlur?: boolean;
   className?: string;
@@ -18,6 +18,7 @@ export default function PortalWrapper({
   children,
   isBackGroundBlur = true,
   className,
+  ...props
 }: StrictPropsWithChildren<PortalWrapperProps>) {
   const portalRef = useRef<HTMLDivElement>(null);
 
@@ -35,6 +36,7 @@ export default function PortalWrapper({
           },
           className
         )}
+        {...props}
       >
         {children}
       </div>

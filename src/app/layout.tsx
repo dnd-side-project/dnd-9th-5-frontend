@@ -13,7 +13,7 @@ import type { Metadata } from 'next';
 
 const DEFAULT_OG_TITLE = 'PosePicker';
 const DEFAULT_OG_DESC = '포토부스에서 고민하는 당신을 위한 포즈 추천';
-const DEFAULT_OG_IMAGE = '/images/main.png';
+const DEFAULT_OG_IMAGE = '/images/main_star.png';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_SITE_URL),
