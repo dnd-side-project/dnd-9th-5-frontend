@@ -1,18 +1,17 @@
-const withPWA = require('next-pwa');
+const withPWA = require('next-pwa')({
+  dest: 'public',
+});
 
-const isProduction = process.env.NODE_ENV === 'production';
-
-const config = {
+const nextConfig = {
   reactStrictMode: true,
-  configurationimages: {
-    domains: ['posepicker-image.s3.ap-northeast-2.amazonaws.com'],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*',
+      },
+    ],
   },
 };
 
-const nextConfig = withPWA({
-  dest: 'public',
-  // disable: !isProduction,
-  runtimeCaching: [],
-})(config);
-
-module.exports = nextConfig;
+module.exports = withPWA(nextConfig);
