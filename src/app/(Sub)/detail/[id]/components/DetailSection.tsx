@@ -34,7 +34,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
       {sourceUrl && (
         <Link
           href={'https://' + sourceUrl}
@@ -43,7 +43,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
           ↗ 이미지 출처
         </Link>
       )}
-      <div className="relative h-520">
+      <div className="relative h-520 w-400">
         <Image
           src={imageKey}
           fill
