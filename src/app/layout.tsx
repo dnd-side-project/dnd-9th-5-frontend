@@ -2,7 +2,10 @@ import './globals.css';
 import '../../styles/font.css';
 import '../../styles/typography.css';
 
+import Script from 'next/script';
+
 import { OverlayProvider } from '@/components/Overlay/OverlayProvider';
+import { GA_ID } from '@/constants';
 import QueryProvider from '@/provider/QueryProvider';
 import RecoilContextProvider from '@/provider/RecoilContextProvider';
 
@@ -44,6 +47,8 @@ export const metadata: Metadata = {
   icons: {
     shortcut: '/favicon.ico',
   },
+  manifest: '/manifest.json',
+  themeColor: '#ffffff',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -60,5 +65,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </RecoilContextProvider>
       </body>
     </html>
+  );
+}
+
+function Gtag() {
+  return (
+    <>
+      <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+      <Script id="google-analytics">
+        {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '${GA_ID}');
+      `}
+      </Script>
+    </>
   );
 }
