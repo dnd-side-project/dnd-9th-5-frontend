@@ -8,9 +8,10 @@ let elementId = 1;
 
 interface Options {
   exitOnUnmount?: boolean;
+  delay?: number;
 }
 
-export function useOverlay({ exitOnUnmount = true }: Options = {}) {
+export function useOverlay({ exitOnUnmount = true, delay }: Options = {}) {
   const context = useContext(OverlayContext);
 
   if (context == null) {
@@ -44,6 +45,11 @@ export function useOverlay({ exitOnUnmount = true }: Options = {}) {
             }}
           />
         );
+        if (!delay) return;
+        const timer = setTimeout(() => {
+          unmount(id);
+        }, delay);
+        return () => clearTimeout(timer);
       },
       close: () => {
         overlayRef.current?.close();
@@ -52,6 +58,6 @@ export function useOverlay({ exitOnUnmount = true }: Options = {}) {
         unmount(id);
       },
     }),
-    [id, mount, unmount]
+    [delay, id, mount, unmount]
   );
 }

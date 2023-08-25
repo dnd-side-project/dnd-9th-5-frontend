@@ -23,8 +23,8 @@ export default function useKakaoShare() {
       kakao.Link.sendDefault({
         objectType: 'feed',
         content: {
-          title: '포즈를 뽑아봐 !',
-          description: '당신에게 어울리는 포즈를 추천해드립니다.',
+          title: 'PosePicker',
+          description: '포토부스에서 고민하는 당신을 위한 포즈 추천',
           imageUrl:
             'https://github.com/gloddy-dev/gloddy-client/assets/62178788/a145c7ca-b487-4b2a-9913-cc1589e44f91',
           link: {
