@@ -22,7 +22,13 @@ export default function FilterTab() {
         onClick={openBottomSheet}
       >
         <h5 id="subtitle-2">필터</h5>
-        <Image src={ICON.carat.down} alt="▾" width={16} height={16} priority />
+        <Image
+          src={isFiltered ? ICON.carat.down_purple : ICON.carat.down}
+          alt="▾"
+          width={16}
+          height={16}
+          priority
+        />
       </button>
       {isFiltered && (
         <>

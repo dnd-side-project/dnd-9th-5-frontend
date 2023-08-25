@@ -19,8 +19,8 @@ export default function Tag({ selected, onClick, text }: Tag) {
       <div id="subtitle-2" className={selected ? 'text-main-violet-dark' : 'text-secondary'}>
         {text}
       </div>
-      {selected && <Image src={ICON.close} width={12} height={12} alt="x" />}
-      {selected ?? <Image src={ICON.close} width={12} height={12} alt="x" />}
+      {selected && <Image src={ICON.close.gray} width={12} height={12} alt="x" />}
+      {selected ?? <Image src={ICON.close.gray} width={12} height={12} alt="x" />}
     </div>
   );
 }

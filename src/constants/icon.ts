@@ -1,5 +1,8 @@
 export const ICON = {
-  close: '/icons/close.svg',
+  close: {
+    black: '/icons/close.svg',
+    gray: '/icons/gray.svg',
+  },
   restart: '/icons/restart.svg',
   bookmark: {
     fill: '/icons/bookmark_fill.svg',
@@ -10,6 +13,7 @@ export const ICON = {
   },
   carat: {
     up: '/icons/carat_up.svg',
-    down: '/icons/carat_down.svg',
+    down_purple: '/icons/carat_down.svg',
+    down: '/icons/carat_down_gray.svg',
   },
 } as const;
