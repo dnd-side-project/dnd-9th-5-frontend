@@ -34,7 +34,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
   };
 
   return (
-    <div>
+    <div className="overflow-y-auto pb-70">
       {sourceUrl && (
         <Link
           href={'https://' + sourceUrl}
