@@ -3,7 +3,7 @@ name: Release Drafter
 on:
   push:
     branches:
-      - OZ-80* 
+      - main
 
 permissions:
   contents: read
