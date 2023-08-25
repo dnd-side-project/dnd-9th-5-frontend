@@ -45,7 +45,7 @@ export default function PickSection() {
 
       <Spacing size={16} />
 
-      <div className="relative flex h-460 w-300 items-center justify-center">
+      <div className="relative flex items-center justify-center">
         {true && <Lottie loop animationData={lottiePick} play />}
         <Image
           src={image || '/images/image-frame.png'}
