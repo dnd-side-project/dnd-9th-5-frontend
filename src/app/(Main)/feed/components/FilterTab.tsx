@@ -12,7 +12,7 @@ export default function FilterTab() {
   const isFiltered = tags.length !== 0;
 
   return (
-    <div className="fixed inset-x-0 top-104 z-10 flex h-56 items-center gap-8 bg-white px-20">
+    <div className="fixed inset-x-0 top-104 z-10 mx-auto flex h-56 max-w-440 items-center gap-8 bg-white px-20">
       <button
         className={`flex min-w-fit items-center gap-8 rounded-8 ${
           isFiltered

@@ -1,5 +1,6 @@
 'use client';
 
+import clsx from 'clsx';
 import Image from 'next/image';
 import { useState } from 'react';
 import Lottie from 'react-lottie-player';
@@ -7,16 +8,19 @@ import Lottie from 'react-lottie-player';
 import lottiePick from '#/lotties/pick.json';
 import { usePosePickQuery } from '@/apis';
 import { BottomFixedButton } from '@/components/Button';
+import { Popup } from '@/components/Modal';
+import { useOverlay } from '@/components/Overlay/useOverlay';
+import { SelectionBasic } from '@/components/Selection';
 import { Spacing } from '@/components/Spacing';
+import { peopleCountList } from '@/constants/filterList';
 import useLoading from '@/hooks/useLoading';
 
-const countList = ['1인', '2인', '3인', '4인', '5인+'];
-
 export default function PickSection() {
-  const [countState, setCountState] = useState<string>('1인');
-  const { isLoading, startLoading } = useLoading({ loadingDelay: 3000 });
+  const [countState, setCountState] = useState<number>(1);
+  const { open } = useOverlay();
+  const { isLoading, startLoading } = useLoading({ loadingDelay: 1000 });
   const [image, setImage] = useState<string>('');
-  const { refetch } = usePosePickQuery(+countState[0], {
+  const { refetch } = usePosePickQuery(countState, {
     onSuccess: (data) => {
       if (!data) return;
       setImage(data.poseInfo.imageKey);
@@ -29,31 +33,43 @@ export default function PickSection() {
   };
 
   return (
-    <section className="flex flex-col">
-      <div className="flex justify-evenly rounded-8 py-16">
-        {countList.map((count) => (
-          <CountItem
-            key={count}
-            onClick={() => setCountState(count)}
-            isSelected={count === countState}
-            count={count}
-          />
-        ))}
+    <section className="flex flex-col items-center">
+      <Spacing size={16} />
+      <div className="w-full">
+        <SelectionBasic
+          data={peopleCountList.slice(1)}
+          state={countState}
+          setState={setCountState}
+        />
       </div>
 
-      <Spacing size={13} />
+      <Spacing size={16} />
 
-      <div className="relative h-520">
-        {true && (
-          <Lottie loop animationData={lottiePick} play style={{ width: '100%', height: '100%' }} />
-        )}
+      <div className="relative flex h-460 w-300 items-center justify-center">
+        {true && <Lottie loop animationData={lottiePick} play />}
         <Image
           src={image || '/images/image-frame.png'}
           fill
           alt="sample"
           priority
           loading="eager"
-          className={isLoading ? 'hidden' : ''}
+          className={clsx({ hidden: isLoading }, 'cursor-pointer')}
+          onClick={() =>
+            open(({ exit }) => (
+              <Popup>
+                <Image
+                  src={image || '/images/image-frame.png'}
+                  alt="enlargementImage"
+                  priority
+                  loading="eager"
+                  onClick={exit}
+                  width={500}
+                  height={440}
+                  className="cursor-pointer"
+                />
+              </Popup>
+            ))
+          }
         />
       </div>
 
@@ -65,26 +81,5 @@ export default function PickSection() {
         {!!image ? '포즈 pick!' : '인원수 선택하고 포즈 pick!'}
       </BottomFixedButton>
     </section>
-  );
-}
-
-interface CountItemProps {
-  isSelected: boolean;
-  count: string;
-  onClick: () => void;
-}
-
-function CountItem({ isSelected, count, onClick }: CountItemProps) {
-  return (
-    <div
-      className={`flex h-40 grow cursor-pointer items-center justify-center first:rounded-l-8 last:rounded-r-8 ${
-        isSelected
-          ? 'border-1 border-main-violet bg-main-violet-bright'
-          : 'border-default border-1 bg-sub-white'
-      }`}
-      onClick={onClick}
-    >
-      <h6 className={isSelected ? 'text-main-violet-dark' : ''}>{count}</h6>
-    </div>
   );
 }
