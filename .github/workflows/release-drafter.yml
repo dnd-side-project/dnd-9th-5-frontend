@@ -1,17 +1,20 @@
 name: Release Drafter
+
 on:
   push:
     branches:
-      - OZ-80-F-QA-4
+      - main
+
+permissions:
+  contents: read
+
 jobs:
   update_release_draft:
+    permissions:
+      contents: write
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - uses: release-drafter/release-drafter@v5
-        # (Optional)
-        # workflow 에서 여러 구성이 필요할 때 config-name 에 오버라이드 해줍니다.
-        # 반드시 .github/ 에 위치해야합니다.
-        with:
-          config-name: release-drafter-config.yml
         env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
