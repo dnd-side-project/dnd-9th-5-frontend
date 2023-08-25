@@ -34,7 +34,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div>
       {sourceUrl && (
         <Link
           href={'https://' + sourceUrl}
@@ -43,29 +43,31 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
           ↗ 이미지 출처
         </Link>
       )}
-      <div className="relative h-520 w-400">
-        <Image
-          src={imageKey}
-          fill
-          alt="detailImage"
-          className="cursor-pointer"
-          onClick={() =>
-            open(({ exit }) => (
-              <Popup>
-                <Image
-                  src={imageKey}
-                  alt="enlargementImage"
-                  priority
-                  loading="eager"
-                  onClick={exit}
-                  width={500}
-                  height={440}
-                  className="cursor-pointer"
-                />
-              </Popup>
-            ))
-          }
-        />
+      <div className="flex justify-center">
+        <div className="relative h-520 w-440">
+          <Image
+            src={imageKey}
+            fill
+            alt="detailImage"
+            className="cursor-pointer"
+            onClick={() =>
+              open(({ exit }) => (
+                <Popup>
+                  <Image
+                    src={imageKey}
+                    alt="enlargementImage"
+                    priority
+                    loading="eager"
+                    onClick={exit}
+                    width={500}
+                    height={440}
+                    className="cursor-pointer"
+                  />
+                </Popup>
+              ))
+            }
+          />
+        </div>
       </div>
       <div className="flex flex-wrap gap-10 px-20 py-12">
         {tagAttributes?.split(',').map((tag, index) => <Tag key={index} name={tag} />)}
