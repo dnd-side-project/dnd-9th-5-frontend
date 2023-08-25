@@ -32,5 +32,9 @@ template: | # 릴리즈 내용
   ## Changes (v$RESOLVED_VERSION)
 
   $CHANGES
+
+  ## Previos Tag
   $PREVIOUS_TAG 
+
+  ## Contributors
   $CONTRIBUTORS 
