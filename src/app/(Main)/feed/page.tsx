@@ -1,30 +1,16 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
-
 import EmptyCase from './components/EmptyCase';
 import FilterSheet from './components/FilterSheet';
 import FilterTab from './components/FilterTab';
 import PhotoList from './components/PhotoList';
 import { usePoseFeedQuery } from '@/apis';
 import { Spacing } from '@/components/Spacing';
-import useDidMount from '@/hooks/useDidMount';
 import useFilterState from '@/hooks/useFilterState';
 
 export default function Feed() {
-  const params = useSearchParams();
-
-  const { filterState, updateFilterState } = useFilterState();
+  const { filterState } = useFilterState();
   const { data, isFetched } = usePoseFeedQuery(filterState);
-
-  useDidMount(() => {
-    if (!params.get('filter')) return;
-    updateFilterState({
-      tags: new Array(params.get('filter') || ''),
-      frameCount: 0,
-      peopleCount: 0,
-    });
-  });
 
   return (
     <>
