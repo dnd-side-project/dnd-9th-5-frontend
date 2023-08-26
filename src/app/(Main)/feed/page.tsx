@@ -49,7 +49,11 @@ export default function Feed() {
             <PhotoList data={data.recommendedContents.content} />
           </>
         )}
-        {isFetched ? <PhotoList data={data?.filteredContents.content} /> : <PhotoList />}
+        {isFetched ? (
+          <PhotoList data={data?.filteredContents.content.slice(0, 16)} />
+        ) : (
+          <PhotoList />
+        )}
       </div>
       <FilterSheet />
     </>
