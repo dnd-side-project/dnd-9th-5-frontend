@@ -49,6 +49,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
             src={imageKey}
             alt="detailImage"
             className="cursor-pointer"
+            fill
             onClick={() =>
               open(({ exit }) => (
                 <Popup>
