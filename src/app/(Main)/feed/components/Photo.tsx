@@ -19,13 +19,7 @@ export default function Photo({ imageKey, source, id }: Photo) {
       <div className={`relative z-0 mb-16 inline-block h-fit w-full rounded-8`}>
         {imageKey && (
           <>
-            <Image
-              src={imageKey}
-              alt={source || ''}
-              width={200}
-              height={100}
-              className="rounded-8"
-            />
+            <img src={imageKey} alt={source || ''} className="rounded-8" />
             <div className="absolute bottom-6 right-6 h-36 w-36 rounded-24 bg-white bg-opacity-30 p-6">
               <Image
                 src={ICON.bookmark.empty}
