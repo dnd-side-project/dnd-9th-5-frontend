@@ -44,12 +44,13 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
         </Link>
       )}
       <div className="flex justify-center">
-        <div className="relative h-520 w-440">
+        <div className="relative">
           <Image
             src={imageKey}
             alt="detailImage"
             className="cursor-pointer"
-            fill
+            width={450}
+            height={440}
             onClick={() =>
               open(({ exit }) => (
                 <Popup>
