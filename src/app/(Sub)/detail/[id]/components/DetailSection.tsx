@@ -34,7 +34,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
   };
 
   return (
-    <div>
+    <div className="overflow-y-auto pb-160">
       {sourceUrl && (
         <Link
           href={'https://' + sourceUrl}
@@ -44,12 +44,13 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
         </Link>
       )}
       <div className="flex justify-center">
-        <div className="relative h-520 w-440">
+        <div className="relative">
           <Image
             src={imageKey}
-            fill
             alt="detailImage"
             className="cursor-pointer"
+            width={450}
+            height={440}
             onClick={() =>
               open(({ exit }) => (
                 <Popup>
