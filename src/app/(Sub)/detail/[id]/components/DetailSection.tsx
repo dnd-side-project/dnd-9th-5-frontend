@@ -44,8 +44,8 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
         </Link>
       )}
       <div className="flex justify-center">
-        <div className="relative">
-          <img
+        <div className="relative h-520 w-440">
+          <Image
             src={imageKey}
             alt="detailImage"
             className="cursor-pointer"
