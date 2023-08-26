@@ -50,7 +50,7 @@ export default function Feed() {
           </>
         )}
         {isFetched ? (
-          <PhotoList data={data?.filteredContents.content.slice(0, 16)} />
+          <PhotoList data={data?.filteredContents.content.slice(0, 20)} />
         ) : (
           <PhotoList />
         )}
