@@ -12,7 +12,6 @@ import useFilterState from '@/hooks/useFilterState';
 
 export default function FilterSheet() {
   const { data: tagListData } = useFilterTagQuery();
-  const router = useRouter();
 
   const { filterState, updateFilterState } = useFilterState();
   const { isBottomSheetOpen, closeBottomSheet } = useBottomSheet();
@@ -28,7 +27,6 @@ export default function FilterSheet() {
   }
 
   function decideFilter() {
-    router.replace('/feed');
     updateFilterState({ peopleCount: countState, frameCount: frameState, tags: tagState });
     closeBottomSheet();
   }

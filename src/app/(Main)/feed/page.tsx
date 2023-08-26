@@ -1,6 +1,6 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import EmptyCase from './components/EmptyCase';
 import FilterSheet from './components/FilterSheet';
@@ -13,6 +13,7 @@ import useFilterState from '@/hooks/useFilterState';
 
 export default function Feed() {
   const params = useSearchParams();
+  const router = useRouter();
 
   const { filterState, updateFilterState } = useFilterState();
   const { data, isFetched } = usePoseFeedQuery(filterState);
@@ -24,6 +25,7 @@ export default function Feed() {
       frameCount: 0,
       peopleCount: 0,
     });
+    router.replace('/feed');
   });
 
   return (
