@@ -3,7 +3,9 @@ import '../../styles/font.css';
 import '../../styles/typography.css';
 
 import Script from 'next/script';
+import { Suspense } from 'react';
 
+import { Analytics } from '@/components/Analytics';
 import { OverlayProvider } from '@/components/Overlay/OverlayProvider';
 import { BASE_SITE_URL, GA_ID } from '@/constants';
 import QueryProvider from '@/provider/QueryProvider';
@@ -46,14 +48,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko">
       <body className="flex min-h-[100dvh] w-screen touch-none justify-center bg-slate-100 py-px">
-        <RecoilContextProvider>
-          <div className="w-full max-w-440 overflow-hidden bg-white text-primary">
+        <div className="w-full max-w-440 overflow-hidden bg-white text-primary">
+          <Suspense>
+            <Analytics />
+          </Suspense>
+          <RecoilContextProvider>
             <QueryProvider>
               <OverlayProvider>{children}</OverlayProvider>
             </QueryProvider>
             <div id="portal" />
-          </div>
-        </RecoilContextProvider>
+          </RecoilContextProvider>
+        </div>
       </body>
       <Gtag />
     </html>
