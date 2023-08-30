@@ -60,24 +60,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </RecoilContextProvider>
         </div>
       </body>
-      <Gtag />
     </html>
-  );
-}
-
-function Gtag() {
-  return (
-    <>
-      <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
-      <Script id="google-analytics">
-        {`
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', '${GA_ID}');
-      `}
-      </Script>
-    </>
   );
 }
