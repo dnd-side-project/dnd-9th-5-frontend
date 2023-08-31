@@ -4,7 +4,7 @@
 ---
 *다음 포즈 뭐하지? 포즈피커가 포즈 고민을 해결해 드릴게요!*
 
-<a href="https://www.posepicker.site/pick">Website</a> |  <a href=''>Instagram</a> | <a href=''>Feedback</a>
+<a href="https://www.posepicker.site/pick">Website</a> |  <a href=''>Instagram</a> | <a href='https://github.com/pose-picker'>Github</a> | <a href=''>Feedback</a>
 
 <br/>
 
@@ -34,10 +34,6 @@
 *“또 어떤 포즈가 있을까? 우리 이 포즈로 찍어볼까?”* <br/>
 **포즈피드**에서 특정한 상황을 빛내줄 포즈를 찾고, 친구한테 공유해보세요.
 
-
-
-
-
 <br/>
 
 ## 📱 Feature
@@ -52,7 +48,6 @@
 ## 🎞 Demo
 
 [PosePicker Demo Video](https://youtube.com/shorts/dP7VdyoieMs?si=hv7ou7y1iZwkc7m3)
-로컬비디오 첨부예정 !!
 
 <br/>
 
