@@ -15,7 +15,7 @@ export default function Popup({
   return (
     <ModalWrapper onClick={onCloseOutside}>
       <section
-        className={`flex flex-col items-center  bg-white px-16 py-12 ${className}`}
+        className={`flex flex-col items-center rounded-12 bg-white px-16 py-12 ${className}`}
         {...props}
       >
         {children}

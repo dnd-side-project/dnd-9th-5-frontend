@@ -5,6 +5,7 @@ interface Button {
   text: string;
   onClick?: () => void;
   type?: keyof Style;
+  className?: string;
 }
 
 interface Style {
@@ -18,11 +19,11 @@ const style: Style = {
   secondary: `bg-sub-white text-secondary w-fit`,
 };
 
-export default function PrimaryButton({ icon, text, onClick, type = 'fill' }: Button) {
+export default function PrimaryButton({ icon, text, onClick, type = 'fill', className }: Button) {
   return (
     <div
       onClick={onClick}
-      className={`flex cursor-pointer items-center justify-center gap-8 rounded-12 px-24 py-14 ${style[type]}`}
+      className={`flex cursor-pointer items-center justify-center gap-8 rounded-12 px-24 py-14 ${style[type]} ${className}`}
     >
       {icon && <Image src={icon} alt={''} width={24} height={24} />}
       <div id="subtitle-1">{text}</div>
