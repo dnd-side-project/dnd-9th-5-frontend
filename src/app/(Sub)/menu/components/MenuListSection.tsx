@@ -1,16 +1,27 @@
-import Image from 'next/image';
+'use client';
 
-import { Header } from '@/components/Header';
-import { Spacing } from '@/components/Spacing';
+import MenuModal from './InqueryModal';
+import LogoutModal from './LogoutModal';
+import { useOverlay } from '@/components/Overlay/useOverlay';
 
-export default function MenuHeader() {
-  const LeftNode = (
-    <div className="flex px-20">
-      <Image width={24} height={24} src="/icons/close.svg" alt="back" />
-      <Spacing size={12} direction="horizontal" />
-      <h4>메뉴</h4>
-    </div>
+export default function MenuListSection() {
+  const { open } = useOverlay();
+  const handleInquiryClick = () => {
+    open(({ exit }) => <MenuModal onClose={exit} />);
+  };
+
+  const handleLogoutClick = () => {
+    open(({ exit }) => <LogoutModal onClose={exit} />);
+  };
+
+  return (
+    <section className="flex flex-col">
+      <div className="flex flex-col py-12" onClick={handleInquiryClick}>
+        서비스 이용 문의
+      </div>
+      <div className="flex flex-col py-12 text-tertiary" onClick={handleLogoutClick}>
+        로그아웃
+      </div>
+    </section>
   );
-
-  return <Header leftNode={LeftNode} />;
 }
