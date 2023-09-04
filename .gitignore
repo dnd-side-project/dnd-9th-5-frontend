@@ -7,6 +7,5 @@
 .env
 
 # Next-PWA
-public/sw.js
-public/workbox-*.js
-public/sw.js.map
+public/*.js
+public/*.js.map
