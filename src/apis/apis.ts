@@ -15,11 +15,16 @@ export const getPoseDetail = (poseId: number) =>
 
 export const getPoseTalk = () => publicApi.get<PoseTalkResponse>('/pose/talk');
 
-export const getPoseFeed = (peopleCount: number, frameCount: number, tags: string) =>
-  publicApi.get<PoseFeedResponse>(`/pose`, {
+export const getPoseFeed = async (
+  peopleCount: number,
+  frameCount: number,
+  tags: string,
+  pageNumber: number
+) =>
+  await publicApi.get<PoseFeedResponse>(`/pose`, {
     params: {
       frameCount,
-      pageNumber: 0,
+      pageNumber,
       peopleCount,
       tags,
     },

@@ -1,4 +1,9 @@
-import { UseQueryOptions, useQuery } from '@tanstack/react-query';
+import {
+  UseInfiniteQueryOptions,
+  UseQueryOptions,
+  useInfiniteQuery,
+  useQuery,
+} from '@tanstack/react-query';
 
 import {
   FilterTagsResponse,
@@ -30,12 +35,19 @@ export const usePoseTalkQuery = (options?: UseQueryOptions<PoseTalkResponse>) =>
 
 export const usePoseFeedQuery = (
   { peopleCount, frameCount, tags }: FilterState,
-  options?: UseQueryOptions<PoseFeedResponse>
+  options?: UseInfiniteQueryOptions<PoseFeedResponse>
 ) =>
-  useQuery<PoseFeedResponse>(
+  useInfiniteQuery<PoseFeedResponse>(
     ['poseFeed', peopleCount, frameCount, tags],
-    () => getPoseFeed(peopleCount, frameCount, tags.join(',')),
+    ({ pageParam = '' }) => getPoseFeed(peopleCount, frameCount, tags.join(','), pageParam),
     {
+      getNextPageParam: (lastPage) => {
+        if (lastPage.recommendation) return false;
+        const pageable = lastPage.filteredContents;
+        const page = pageable.number;
+        if (page === pageable.size) return false;
+        return page + 1;
+      },
       ...options,
     }
   );
