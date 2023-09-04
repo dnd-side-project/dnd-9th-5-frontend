@@ -1,14 +1,24 @@
 'use client';
 
 import { Spacing } from '@/components/Spacing';
+import { IMAGE } from '@/constants/image';
+import Image from 'next/image';
+
+function DefaultProfile() {
+  return (
+    <div className="rounded-full bg-white p-6">
+      <Image width={40} height={40} alt="🪄" src={IMAGE.profile_default} />
+    </div>
+  );
+}
 
 export default function LoginSection() {
   return (
     <section className="py-12">
       <div className="bg-violet flex items-center rounded-16 bg-main-violet-bright px-20 py-24">
-        <div className="h-40 w-40 rounded-full bg-black" />
+        <DefaultProfile />
         <Spacing size={16} direction="horizontal" />
-        <p className="text-subtitle-1">dnd9_5_ozteam@kakao.com</p>
+        <div id="subtitle-1">로그인하기</div>
       </div>
     </section>
   );

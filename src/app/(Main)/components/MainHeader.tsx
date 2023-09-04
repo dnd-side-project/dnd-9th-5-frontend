@@ -12,7 +12,11 @@ export default function MainHeader() {
           <h4>PosePicker</h4>
         </Link>
       }
-      rightNode={<Image src="/icons/menu.svg" width={24} height={24} alt="24" />}
+      rightNode={
+        <Link href={'/menu'}>
+          <Image src="/icons/menu.svg" width={24} height={24} alt="24" />
+        </Link>
+      }
       headerDownNode={<Tab />}
       className="px-20"
     />

@@ -88,3 +88,7 @@ caption {
   line-height: 1.125rem;
   letter-spacing: 0.4px;
 }
+
+button {
+  cursor: pointer;
+}
