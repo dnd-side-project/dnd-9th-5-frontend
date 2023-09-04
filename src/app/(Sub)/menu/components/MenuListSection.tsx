@@ -38,9 +38,9 @@ export default function MenuListSection() {
       <button className="flex flex-col py-12" onClick={handleInquiryClick}>
         서비스 이용 문의
       </button>
-      <button className="flex flex-col py-12 text-tertiary" onClick={handleLogoutClick}>
+      {/* <button className="flex flex-col py-12 text-tertiary" onClick={handleLogoutClick}>
         로그아웃
-      </button>
+      </button> */}
     </section>
   );
 }

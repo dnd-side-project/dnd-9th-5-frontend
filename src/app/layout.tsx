@@ -2,7 +2,6 @@ import './globals.css';
 import '../../styles/font.css';
 import '../../styles/typography.css';
 
-import Script from 'next/script';
 import { Suspense } from 'react';
 
 import { Analytics } from '@/components/Analytics';
@@ -20,7 +19,7 @@ const DEFAULT_OG_IMAGE = '/images/main_star.png';
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_SITE_URL),
   title: {
-    template: `${DEFAULT_OG_TITLE} / %s `,
+    template: `${DEFAULT_OG_TITLE} / %s `, // 요건 뭔가용?
     default: DEFAULT_OG_TITLE,
   },
   description: DEFAULT_OG_DESC,

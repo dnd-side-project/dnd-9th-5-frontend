@@ -4,7 +4,7 @@ import CloseButton from '@/components/Header/CloseButton';
 
 export default function MenuHeader() {
   const LeftNode = (
-    <div className="flex items-center px-20">
+    <div className="flex items-center px-4">
       <CloseButton />
       <Spacing size={12} direction="horizontal" />
       <h4>메뉴</h4>

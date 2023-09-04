@@ -5,7 +5,7 @@ import MenuListSection from './components/MenuListSection';
 
 export default function MenuPage() {
   return (
-    <div className="h-full px-20">
+    <div className="px-20">
       <MenuHeader />
       <LoginSection />
       <MenuListSection />
