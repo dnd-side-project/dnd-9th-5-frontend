@@ -6,7 +6,7 @@ export default function MainLayout({ children }: StrictPropsWithChildren) {
   return (
     <>
       <MainHeader />
-      <div className="flex h-[100vh] flex-col overflow-hidden px-20">
+      <div className="flex h-screen flex-col overflow-hidden px-20">
         <Spacing size={100} />
         {children}
       </div>

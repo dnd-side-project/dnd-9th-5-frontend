@@ -33,8 +33,8 @@ export default function Feed() {
   return (
     <>
       <FilterTab />
-      <Spacing size={56} />
-      <div>
+      <Spacing size={40} />
+      <div className="h-fit overflow-y-scroll">
         {data?.recommendation && (
           <>
             <EmptyCase
