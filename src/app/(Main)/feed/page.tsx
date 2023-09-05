@@ -1,8 +1,6 @@
 'use client';
 
-import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-
 import EmptyCase from './components/EmptyCase';
 import FilterSheet from './components/FilterSheet';
 import FilterTab from './components/FilterTab';
@@ -11,15 +9,17 @@ import { usePoseFeedQuery } from '@/apis';
 import { Spacing } from '@/components/Spacing';
 import useDidMount from '@/hooks/useDidMount';
 import useFilterState from '@/hooks/useFilterState';
-import { useRef } from 'react';
-import useObserver from '@/hooks/useObserver';
+// import { useRef } from 'react';
+// import useObserver from '@/hooks/useObserver';
+import { URL } from '@/constants/url';
+import { PrimaryButton } from '@/components/Button';
 
 export default function Feed() {
   const params = useSearchParams();
   const router = useRouter();
 
   const { filterState, updateFilterState } = useFilterState();
-  const { data, fetchNextPage, isFetching, hasNextPage } = usePoseFeedQuery(filterState);
+  const { data, fetchNextPage, hasNextPage } = usePoseFeedQuery(filterState);
 
   useDidMount(() => {
     if (!params.get('filter')) return;
@@ -39,13 +39,7 @@ export default function Feed() {
       <FilterTab />
       <Spacing size={40} />
       <div className="h-fit overflow-y-scroll">
-        <div className="columns-2	py-16">
-          {data?.pages.map((page) => (
-            <PhotoList key={page.filteredContents.number} data={page.filteredContents.content} />
-          ))}
-        </div>
-        {hasNextPage && <button onClick={() => fetchNextPage()}>더보기</button>}
-        {/* {data?.recommendation && (
+        {data?.pages[0].recommendation ? (
           <>
             <EmptyCase
               title={'신비한 포즈를 찾으시는군요!'}
@@ -53,12 +47,33 @@ export default function Feed() {
               button={'문의사항 남기기'}
               path={URL.inquiry}
             />
-
             <h4 className="mb-16">이런 포즈는 어때요?</h4>
-            <PhotoList data={data.recommendedContents.content} />
+            <div className="columns-2	py-16">
+              {data?.pages.map((page) => (
+                <PhotoList
+                  key={page.recommendedContents.number}
+                  data={page.recommendedContents.content}
+                />
+              ))}
+            </div>
           </>
-        )} */}
-        {/* {isFetched ? <PhotoList data={data?.filteredContents.content} /> : <PhotoList />} */}
+        ) : (
+          <div className="columns-2	py-16">
+            {data?.pages.map((page) => (
+              <PhotoList key={page.filteredContents.number} data={page.filteredContents.content} />
+            ))}
+          </div>
+        )}
+        {hasNextPage && (
+          <div className="flex pb-20">
+            <PrimaryButton
+              onClick={() => fetchNextPage()}
+              text="더보기"
+              type="secondary"
+              className="flex-1"
+            />
+          </div>
+        )}
       </div>
       {/* <div ref={bottom} /> */}
       <FilterSheet />

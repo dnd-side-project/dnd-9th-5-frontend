@@ -42,11 +42,12 @@ export const usePoseFeedQuery = (
     ({ pageParam = '' }) => getPoseFeed(peopleCount, frameCount, tags.join(','), pageParam),
     {
       getNextPageParam: (lastPage) => {
-        if (lastPage.recommendation) return false;
-        const pageable = lastPage.filteredContents;
-        const page = pageable.number;
-        if (page === pageable.size) return false;
-        return page + 1;
+        let target = lastPage.filteredContents;
+        if (lastPage.recommendation) {
+          target = lastPage.recommendedContents;
+        }
+        if (target.last) return false;
+        return target.number + 1;
       },
       ...options,
     }
