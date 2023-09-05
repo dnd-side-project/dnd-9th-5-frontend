@@ -19,7 +19,7 @@ export default function Feed() {
   const router = useRouter();
 
   const { filterState, updateFilterState } = useFilterState();
-  const { data, fetchNextPage, isFetching } = usePoseFeedQuery(filterState);
+  const { data, fetchNextPage, isFetching, hasNextPage } = usePoseFeedQuery(filterState);
 
   useDidMount(() => {
     if (!params.get('filter')) return;
@@ -31,8 +31,8 @@ export default function Feed() {
     router.replace('/feed');
   });
 
-  const bottom = useRef(null);
-  useObserver({ target: bottom, root: null, onIntersect: fetchNextPage });
+  // const bottom = useRef(null);
+  // useObserver({ target: bottom, root: null, onIntersect: fetchNextPage });
 
   return (
     <>
@@ -43,8 +43,8 @@ export default function Feed() {
           {data?.pages.map((page) => (
             <PhotoList key={page.filteredContents.number} data={page.filteredContents.content} />
           ))}
-          {isFetching && <div>Loading...</div>}
         </div>
+        {hasNextPage && <button onClick={() => fetchNextPage()}>더보기</button>}
         {/* {data?.recommendation && (
           <>
             <EmptyCase
@@ -60,7 +60,7 @@ export default function Feed() {
         )} */}
         {/* {isFetched ? <PhotoList data={data?.filteredContents.content} /> : <PhotoList />} */}
       </div>
-      <div ref={bottom} />
+      {/* <div ref={bottom} /> */}
       <FilterSheet />
     </>
   );

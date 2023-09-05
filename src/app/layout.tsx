@@ -39,6 +39,9 @@ export const metadata: Metadata = {
     maximumScale: 1,
     userScalable: false,
   },
+  icons: {
+    icon: '/pwa-icons/icon-48x48.png',
+  },
   manifest: '/manifest.json',
   themeColor: '#ffffff',
 };
