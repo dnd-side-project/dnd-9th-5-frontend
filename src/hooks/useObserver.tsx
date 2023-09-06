@@ -1,26 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
-interface UseObserver extends IntersectionObserverInit {
-  target: any;
-  onIntersect: () => void;
-}
+const useIntersect = (callback: () => void, options?: IntersectionObserverInit) => {
+  const target = useRef(null);
 
-export default function useObserver({
-  target,
-  root,
-  rootMargin = '0px',
-  threshold = 1.0,
-  onIntersect,
-}: UseObserver) {
   useEffect(() => {
-    let observer: IntersectionObserver;
-    if (target && target.current) {
-      observer = new IntersectionObserver(
-        (entries) => entries.forEach((entry) => entry.isIntersecting && onIntersect()),
-        { root, rootMargin, threshold }
-      );
-      observer.observe(target.current);
-    }
-    return () => observer && observer.disconnect();
-  }, [target, rootMargin, threshold]);
-}
+    if (!target.current) return;
+    const observer = new IntersectionObserver(callback, options);
+    observer.observe(target.current);
+    return () => observer.disconnect();
+  }, [callback, options]);
+
+  return target;
+};
+
+export default useIntersect;

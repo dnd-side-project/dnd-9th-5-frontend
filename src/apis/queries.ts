@@ -45,6 +45,8 @@ export const usePoseFeedQuery = (
         let target = lastPage.filteredContents;
         if (lastPage.recommendation) {
           target = lastPage.recommendedContents;
+        } else {
+          target = lastPage.filteredContents;
         }
         if (target.last) return false;
         return target.number + 1;

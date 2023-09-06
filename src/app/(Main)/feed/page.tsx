@@ -1,25 +1,25 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useCallback } from 'react';
+
 import EmptyCase from './components/EmptyCase';
 import FilterSheet from './components/FilterSheet';
 import FilterTab from './components/FilterTab';
 import PhotoList from './components/PhotoList';
 import { usePoseFeedQuery } from '@/apis';
 import { Spacing } from '@/components/Spacing';
+import { URL } from '@/constants/url';
 import useDidMount from '@/hooks/useDidMount';
 import useFilterState from '@/hooks/useFilterState';
-// import { useRef } from 'react';
-// import useObserver from '@/hooks/useObserver';
-import { URL } from '@/constants/url';
-import { PrimaryButton } from '@/components/Button';
+import useIntersect from '@/hooks/useObserver';
 
 export default function Feed() {
   const params = useSearchParams();
   const router = useRouter();
 
   const { filterState, updateFilterState } = useFilterState();
-  const { data, fetchNextPage, hasNextPage } = usePoseFeedQuery(filterState);
+  const { data, fetchNextPage, hasNextPage, isLoading } = usePoseFeedQuery(filterState);
 
   useDidMount(() => {
     if (!params.get('filter')) return;
@@ -31,8 +31,13 @@ export default function Feed() {
     router.replace('/feed');
   });
 
-  // const bottom = useRef(null);
-  // useObserver({ target: bottom, root: null, onIntersect: fetchNextPage });
+  const onIntersect = useCallback(async () => {
+    if (hasNextPage && !isLoading) {
+      await fetchNextPage();
+    }
+  }, [fetchNextPage, hasNextPage, isLoading]);
+
+  const target = useIntersect(onIntersect);
 
   return (
     <>
@@ -64,18 +69,8 @@ export default function Feed() {
             ))}
           </div>
         )}
-        {hasNextPage && (
-          <div className="flex pb-20">
-            <PrimaryButton
-              onClick={() => fetchNextPage()}
-              text="더보기"
-              type="secondary"
-              className="flex-1"
-            />
-          </div>
-        )}
+        <div ref={target} className="h-1" />
       </div>
-      {/* <div ref={bottom} /> */}
       <FilterSheet />
     </>
   );
