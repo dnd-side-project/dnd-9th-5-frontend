@@ -1,7 +1,7 @@
 'use client';
 
-import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useCallback } from 'react';
 
 import EmptyCase from './components/EmptyCase';
 import FilterSheet from './components/FilterSheet';
@@ -9,16 +9,17 @@ import FilterTab from './components/FilterTab';
 import PhotoList from './components/PhotoList';
 import { usePoseFeedQuery } from '@/apis';
 import { Spacing } from '@/components/Spacing';
+import { URL } from '@/constants/url';
 import useDidMount from '@/hooks/useDidMount';
 import useFilterState from '@/hooks/useFilterState';
-import { URL } from '@/constants/url';
+import useIntersect from '@/hooks/useObserver';
 
 export default function Feed() {
   const params = useSearchParams();
   const router = useRouter();
 
   const { filterState, updateFilterState } = useFilterState();
-  const { data, isFetched } = usePoseFeedQuery(filterState);
+  const { data, fetchNextPage, hasNextPage, isLoading } = usePoseFeedQuery(filterState);
 
   useDidMount(() => {
     if (!params.get('filter')) return;
@@ -30,12 +31,20 @@ export default function Feed() {
     router.replace('/feed');
   });
 
+  const onIntersect = useCallback(async () => {
+    if (hasNextPage && !isLoading) {
+      await fetchNextPage();
+    }
+  }, [fetchNextPage, hasNextPage, isLoading]);
+
+  const target = useIntersect(onIntersect);
+
   return (
     <>
       <FilterTab />
       <Spacing size={40} />
       <div className="h-fit overflow-y-scroll">
-        {data?.recommendation && (
+        {data?.pages[0].recommendation ? (
           <>
             <EmptyCase
               title={'신비한 포즈를 찾으시는군요!'}
@@ -43,12 +52,24 @@ export default function Feed() {
               button={'문의사항 남기기'}
               path={URL.inquiry}
             />
-
             <h4 className="mb-16">이런 포즈는 어때요?</h4>
-            <PhotoList data={data.recommendedContents.content} />
+            <div className="columns-2	py-16">
+              {data?.pages.map((page) => (
+                <PhotoList
+                  key={page.recommendedContents.number}
+                  data={page.recommendedContents.content}
+                />
+              ))}
+            </div>
           </>
+        ) : (
+          <div className="columns-2	py-16">
+            {data?.pages.map((page) => (
+              <PhotoList key={page.filteredContents.number} data={page.filteredContents.content} />
+            ))}
+          </div>
         )}
-        {isFetched ? <PhotoList data={data?.filteredContents.content} /> : <PhotoList />}
+        <div ref={target} className="h-1" />
       </div>
       <FilterSheet />
     </>

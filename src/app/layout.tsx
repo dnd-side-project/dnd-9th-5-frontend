@@ -19,7 +19,7 @@ const DEFAULT_OG_IMAGE = '/images/main_star.png';
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_SITE_URL),
   title: {
-    template: `${DEFAULT_OG_TITLE} / %s `, // 요건 뭔가용?
+    template: DEFAULT_OG_TITLE,
     default: DEFAULT_OG_TITLE,
   },
   description: DEFAULT_OG_DESC,
@@ -38,6 +38,9 @@ export const metadata: Metadata = {
     initialScale: 1,
     maximumScale: 1,
     userScalable: false,
+  },
+  icons: {
+    icon: './favicon.ico',
   },
   manifest: '/manifest.json',
   themeColor: '#ffffff',
