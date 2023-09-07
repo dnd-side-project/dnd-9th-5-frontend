@@ -33,28 +33,22 @@ export default function PickSection() {
   };
 
   return (
-    <section className="flex flex-col items-center">
-      <Spacing size={16} />
-      <div className="w-full">
+    <>
+      <div className="py-16">
         <SelectionBasic
           data={peopleCountList.slice(1)}
           state={countState}
           setState={setCountState}
         />
       </div>
-
-      <Spacing size={16} />
-
-      <div className="flex h-460 w-full items-center justify-center bg-black">
-        <div className="relative flex h-460 w-300 items-center justify-center">
-          {true && <Lottie loop animationData={lottiePick} play />}
+      <div className="relative flex flex-1">
+        <div className="absolute inset-0 flex justify-center bg-black">
+          {isLoading && <Lottie loop animationData={lottiePick} play />}
           <Image
             src={image || '/images/image-frame.png'}
             fill
-            alt="sample"
             priority
-            loading="eager"
-            className={clsx({ hidden: isLoading }, 'cursor-pointer')}
+            className={clsx({ hidden: isLoading }, 'cursor-pointer object-contain')}
             onClick={() =>
               open(({ exit }) => (
                 <Popup>
@@ -71,10 +65,11 @@ export default function PickSection() {
                 </Popup>
               ))
             }
+            alt="이미지"
           />
         </div>
       </div>
-
+      <Spacing size={100} />
       <BottomFixedButton
         className="bg-main-violet text-white"
         onClick={handlePickClick}
@@ -82,6 +77,6 @@ export default function PickSection() {
       >
         {!!image ? '포즈 pick!' : '인원수 선택하고 포즈 pick!'}
       </BottomFixedButton>
-    </section>
+    </>
   );
 }

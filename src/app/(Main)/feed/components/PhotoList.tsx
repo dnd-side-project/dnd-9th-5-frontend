@@ -7,7 +7,7 @@ interface PhotoList {
 
 export default function PhotoList({ data }: PhotoList) {
   return (
-    <div className="columns-2	overflow-y-scroll py-16">
+    <>
       {data ? (
         data.map((item) => (
           <Photo
@@ -20,6 +20,6 @@ export default function PhotoList({ data }: PhotoList) {
       ) : (
         <Photo />
       )}
-    </div>
+    </>
   );
 }

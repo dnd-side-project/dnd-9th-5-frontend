@@ -4,10 +4,12 @@ import { Spacing } from '@/components/Spacing';
 
 export default function Talk() {
   return (
-    <div>
+    <>
+      <div className="flex flex-1 flex-col items-center justify-center">
+        <TitleSection />
+        <TalkSection />
+      </div>
       <Spacing size={80} />
-      <TitleSection />
-      <TalkSection />
-    </div>
+    </>
   );
 }
