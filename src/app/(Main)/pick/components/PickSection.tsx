@@ -48,7 +48,7 @@ export default function PickSection() {
             src={image || '/images/image-frame.png'}
             fill
             priority
-            className={clsx({ hidden: isLoading }, 'cursor-pointer')}
+            className={clsx({ hidden: isLoading }, 'cursor-pointer object-contain')}
             onClick={() =>
               open(({ exit }) => (
                 <Popup>
@@ -65,7 +65,6 @@ export default function PickSection() {
                 </Popup>
               ))
             }
-            style={{ objectFit: 'contain' }}
             alt="이미지"
           />
         </div>

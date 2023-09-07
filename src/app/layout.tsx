@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     userScalable: false,
   },
   icons: {
-    icon: '/pwa-icons/icon-48x48.png',
+    icon: './favicon.ico',
   },
   manifest: '/manifest.json',
   themeColor: '#ffffff',

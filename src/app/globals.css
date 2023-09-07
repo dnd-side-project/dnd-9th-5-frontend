@@ -14,13 +14,15 @@
   display: none;
 }
 
-html {
-  font-size: calc(16vw / 440 * 100);
-}
-
 @media (min-width: 440px) {
   html {
     font-size: 16px;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  .h-screen {
+    height: -webkit-fill-available;
   }
 }
 
