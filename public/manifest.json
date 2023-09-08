@@ -1,6 +1,6 @@
 {
   "name": "PosePicker",
-  "short_name": "PosePicker",
+  "short_name": "포즈피커",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
