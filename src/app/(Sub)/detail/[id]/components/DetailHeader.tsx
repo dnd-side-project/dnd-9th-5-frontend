@@ -1,23 +1,17 @@
 'use client';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import IconButton from '@/components/Button/IconButton';
 import { Header } from '@/components/Header';
 import { Popup } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
+import CloseButton from '@/components/Header/CloseButton';
 
 export default function DetailHeader() {
   const { open } = useOverlay();
   return (
     <Header
-      leftNode={
-        <Link href="/feed">
-          <IconButton size="large">
-            <Image src="/icons/close.svg" width={24} height={24} alt="back" />
-          </IconButton>
-        </Link>
-      }
+      leftNode={<CloseButton />}
       rightNode={
         <IconButton
           size="large"

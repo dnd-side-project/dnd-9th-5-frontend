@@ -14,13 +14,15 @@
   display: none;
 }
 
-html {
-  font-size: calc(16vw / 440 * 100);
-}
-
 @media (min-width: 440px) {
   html {
     font-size: 16px;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  .h-screen {
+    height: -webkit-fill-available;
   }
 }
 
@@ -87,4 +89,8 @@ caption {
   font-size: 0.75rem;
   line-height: 1.125rem;
   letter-spacing: 0.4px;
+}
+
+button {
+  cursor: pointer;
 }
