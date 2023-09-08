@@ -13,7 +13,7 @@ import RecoilContextProvider from '@/provider/RecoilContextProvider';
 import type { Metadata } from 'next';
 
 const DEFAULT_OG_TITLE = 'PosePicker';
-const DEFAULT_OG_DESC = '다음 포즈 뭐하지? 포즈피커의 포즈 추천으로 포즈 고민을 해결해 드릴게요!';
+const DEFAULT_OG_DESC = '다음 포즈 뭐하지? 포즈피커가 포즈 고민을 해결해 드릴게요!';
 const DEFAULT_OG_IMAGE = '/images/main_star.png';
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     default: DEFAULT_OG_TITLE,
     template: `${DEFAULT_OG_TITLE} | %s`,
   },
-  description: DEFAULT_OG_DESC,
+  description: '다음 포즈 뭐하지? 포즈피커의 포즈 추천으로 포즈 고민을 해결해 드릴게요!',
   verification: {
     google: 'MB7qV_Oa4G4gR0jHgjtnE6S4g4blocE2mjo7z-z2f6Q',
   },
