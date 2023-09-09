@@ -23,6 +23,9 @@ module.exports = {
       700: '700',
       900: '900',
     },
+    zIndex: {
+      modal: 1000,
+    },
   },
   plugins: [require('prettier-plugin-tailwindcss')],
 };

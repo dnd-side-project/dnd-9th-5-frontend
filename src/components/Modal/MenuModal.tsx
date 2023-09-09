@@ -11,7 +11,7 @@ interface MenuModalProps extends PropsWithChildren {
 
 export default function MenuModal({ children, onConfirm, onClose }: MenuModalProps) {
   return (
-    <Modal className="w-300">
+    <Modal className="py-20">
       <Spacing size={20} />
       {children}
       <Spacing size={20} />

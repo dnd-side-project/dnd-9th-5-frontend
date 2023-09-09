@@ -26,7 +26,7 @@ export default function ModalWrapper({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="z-modal fixed left-1/2 top-0 h-full w-full max-w-450 -translate-x-1/2 bg-[rgba(0,0,0,0.4)]"
+      className="fixed left-1/2 top-0 z-modal h-full w-full max-w-450 -translate-x-1/2 bg-[rgba(0,0,0,0.4)]"
     >
       <div
         ref={modalRef}
