@@ -2,7 +2,7 @@ const withPWA = require('next-pwa')({
   dest: 'public',
 });
 
-const nextConfig = {
+const nextConfig = withPWA({
   reactStrictMode: true,
   images: {
     remotePatterns: [
@@ -12,6 +12,17 @@ const nextConfig = {
       },
     ],
   },
-};
+});
 
-module.exports = withPWA(nextConfig);
+module.exports = {
+  ...nextConfig,
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/pick',
+        permanent: true,
+      },
+    ];
+  },
+};
