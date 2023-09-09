@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+
 import FeedSection from './FeedSection';
 
 export const metadata: Metadata = {

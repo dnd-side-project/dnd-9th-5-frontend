@@ -3,12 +3,13 @@ import Image from 'next/image';
 
 import IconButton from '@/components/Button/IconButton';
 import { Header } from '@/components/Header';
+import CloseButton from '@/components/Header/CloseButton';
 import { Popup } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
-import CloseButton from '@/components/Header/CloseButton';
 
 export default function DetailHeader() {
   const { open } = useOverlay();
+
   return (
     <Header
       leftNode={<CloseButton />}

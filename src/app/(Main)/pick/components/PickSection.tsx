@@ -22,7 +22,6 @@ export default function PickSection() {
   const [image, setImage] = useState<string>('');
   const { refetch } = usePosePickQuery(countState, {
     onSuccess: (data) => {
-      if (!data) return;
       setImage(data.poseInfo.imageKey);
     },
   });
