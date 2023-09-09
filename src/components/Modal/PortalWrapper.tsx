@@ -1,45 +1,40 @@
 'use client';
-import clsx from 'clsx';
 import { useRef } from 'react';
 
-import { AnimatedPortal } from '../Portal';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside';
+import cn from '@/utils/cn';
 
 import type { StrictPropsWithChildren } from '@/types';
 
-interface PortalWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ModalWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
   onClose?: () => void;
   isBackGroundBlur?: boolean;
   className?: string;
 }
 
-export default function PortalWrapper({
+export default function ModalWrapper({
   onClose = () => {},
   children,
   isBackGroundBlur = true,
   className,
   ...props
-}: StrictPropsWithChildren<PortalWrapperProps>) {
+}: StrictPropsWithChildren<ModalWrapperProps>) {
   const portalRef = useRef<HTMLDivElement>(null);
 
   useOnClickOutside(portalRef, onClose);
 
   return (
-    <AnimatedPortal
-      motionProps={{ initial: { opacity: 0 }, animate: { opacity: 1 }, exit: { opacity: 0 } }}
+    <div
+      className={cn(
+        'fixed left-1/2 top-0 z-10 flex h-full w-full max-w-440 -translate-x-1/2 items-center justify-center',
+        {
+          'bg-neutral-900 bg-opacity-90': isBackGroundBlur,
+        },
+        className
+      )}
+      {...props}
     >
-      <div
-        className={clsx(
-          'fixed left-1/2 top-0 z-10 flex h-full w-full max-w-440 -translate-x-1/2 items-center justify-center',
-          {
-            'bg-neutral-900 bg-opacity-90': isBackGroundBlur,
-          },
-          className
-        )}
-        {...props}
-      >
-        {children}
-      </div>
-    </AnimatedPortal>
+      {children}
+    </div>
   );
 }

@@ -16,7 +16,7 @@ export default function DetailPage({ params }: { params: { id: number } }) {
       <DetailHeader />
       <QueryAsyncBoundary
         rejectedFallback={RejectedFallback}
-        pendingFallback={<Loading className="h-[calc(100dvh-178px)]" />}
+        pendingFallback={<Loading className="h-[calc(100dvh-400px)]" />}
       >
         <PageAnimation>
           <HydrationProvider queryKey={['poseId', id]} queryFn={() => getPoseDetail(id)}>
