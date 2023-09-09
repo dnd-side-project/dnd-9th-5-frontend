@@ -21,9 +21,14 @@ export default function ImageModal({ image, onClose }: ImageModalProps) {
   return (
     <ModalWrapper onClose={onClose} className="w-full">
       <Spacing size={12} />
-      <div className="relative w-full before:block before:pb-[100%]">
-        <Image src={image} alt="fullImage" className="object-cover" fill onClick={onClose} />
-      </div>
+      <Image
+        src={image}
+        alt="fullImage"
+        className="object-cover"
+        width={440}
+        height={500}
+        onClick={onClose}
+      />
     </ModalWrapper>
   );
 }
