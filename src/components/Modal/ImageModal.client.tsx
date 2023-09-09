@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import ModalWrapper from './ModalWrapper';
 import { Spacing } from '../Spacing';

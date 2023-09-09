@@ -8,7 +8,6 @@ import LinkShareModal from './LinkShareModal';
 import { usePoseDetailQuery } from '@/apis';
 import BottomFixedDiv from '@/components/BottomFixedDiv';
 import { Button } from '@/components/Button';
-import { Modal } from '@/components/Modal';
 import ImageModal from '@/components/Modal/ImageModal.client';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { BASE_SITE_URL } from '@/constants';

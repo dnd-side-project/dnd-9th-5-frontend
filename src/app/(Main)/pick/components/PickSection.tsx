@@ -74,7 +74,7 @@ export default function PickSection() {
         onClick={handlePickClick}
         disabled={isLoading}
       >
-        {!!image ? '포즈 pick!' : '인원수 선택하고 포즈 pick!'}
+        {!!image ? '포즈 뽑기' : '인원수 선택하고 포즈 뽑기'}
       </BottomFixedButton>
     </>
   );
