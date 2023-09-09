@@ -1,7 +1,8 @@
-import { PrimaryButton } from '@/components/Button';
-import { Popup } from '@/components/Modal';
-import { Spacing } from '@/components/Spacing';
 import { PropsWithChildren } from 'react';
+
+import { PrimaryButton } from '@/components/Button';
+import { Modal } from '@/components/Modal';
+import { Spacing } from '@/components/Spacing';
 
 interface MenuModalProps extends PropsWithChildren {
   onConfirm?: () => void;
@@ -10,7 +11,7 @@ interface MenuModalProps extends PropsWithChildren {
 
 export default function MenuModal({ children, onConfirm, onClose }: MenuModalProps) {
   return (
-    <Popup className="w-300">
+    <Modal className="w-300">
       <Spacing size={20} />
       {children}
       <Spacing size={20} />
@@ -18,6 +19,6 @@ export default function MenuModal({ children, onConfirm, onClose }: MenuModalPro
         <PrimaryButton type="secondary" onClick={onClose} text="취소" className="flex-1" />
         <PrimaryButton type="fill" onClick={onConfirm} text="확인" className="flex-1" />
       </div>
-    </Popup>
+    </Modal>
   );
 }

@@ -8,7 +8,7 @@ import Lottie from 'react-lottie-player';
 import lottiePick from '#/lotties/pick.json';
 import { usePosePickQuery } from '@/apis';
 import { BottomFixedButton } from '@/components/Button';
-import { Popup } from '@/components/Modal';
+import { Modal } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { SelectionBasic } from '@/components/Selection';
 import { Spacing } from '@/components/Spacing';
@@ -50,7 +50,7 @@ export default function PickSection() {
             className={clsx({ hidden: isLoading }, 'cursor-pointer object-contain')}
             onClick={() =>
               open(({ exit }) => (
-                <Popup>
+                <Modal>
                   <Image
                     src={image || '/images/image-frame.png'}
                     alt="enlargementImage"
@@ -61,7 +61,7 @@ export default function PickSection() {
                     height={440}
                     className="cursor-pointer"
                   />
-                </Popup>
+                </Modal>
               ))
             }
             alt="이미지"

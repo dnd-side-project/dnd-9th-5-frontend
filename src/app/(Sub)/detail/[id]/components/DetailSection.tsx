@@ -8,7 +8,7 @@ import LinkShareModal from './LinkShareModal';
 import { usePoseDetailQuery } from '@/apis';
 import BottomFixedDiv from '@/components/BottomFixedDiv';
 import { Button } from '@/components/Button';
-import { Popup } from '@/components/Modal';
+import { Modal } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { BASE_SITE_URL } from '@/constants';
 import useKakaoShare from '@/hooks/useKakaoShare';
@@ -53,7 +53,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
             height={440}
             onClick={() =>
               open(({ exit }) => (
-                <Popup>
+                <Modal>
                   <Image
                     src={imageKey}
                     alt="enlargementImage"
@@ -64,7 +64,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
                     height={440}
                     className="cursor-pointer"
                   />
-                </Popup>
+                </Modal>
               ))
             }
           />
