@@ -12,17 +12,17 @@ import RecoilContextProvider from '@/provider/RecoilContextProvider';
 
 import type { Metadata } from 'next';
 
-const DEFAULT_OG_TITLE = 'PosePicker';
-const DEFAULT_OG_DESC = '다음 포즈 뭐하지? 포즈피커가 포즈 고민을 해결해 드릴게요!';
-const DEFAULT_OG_IMAGE = '/images/main_star.png';
+const META_TITLE = 'PosePicker';
+const META_DESCRIPTION = '다음 포즈 뭐하지? 포즈피커가 포즈고민을 해결해 드릴게요!';
+const META_OG_IMAGE = '/images/main_star.png';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_SITE_URL),
   title: {
-    default: DEFAULT_OG_TITLE,
-    template: `${DEFAULT_OG_TITLE} | %s`,
+    default: `${META_TITLE} - 포즈피커`,
+    template: `${META_TITLE} | %s`,
   },
-  description: '다음 포즈 뭐하지? 포즈피커의 포즈 추천으로 포즈 고민을 해결해 드릴게요!',
+  description: META_DESCRIPTION,
   verification: {
     google: 'MB7qV_Oa4G4gR0jHgjtnE6S4g4blocE2mjo7z-z2f6Q',
   },
@@ -30,14 +30,14 @@ export const metadata: Metadata = {
     'naver-site-verification': '65f3aba9349cce28018ac7a97d4f87ff00709aa3',
   },
   openGraph: {
-    title: DEFAULT_OG_TITLE,
-    description: DEFAULT_OG_DESC,
-    images: [DEFAULT_OG_IMAGE],
+    title: META_TITLE,
+    description: META_DESCRIPTION,
+    images: [META_OG_IMAGE],
   },
   twitter: {
-    title: DEFAULT_OG_TITLE,
-    description: DEFAULT_OG_DESC,
-    images: [DEFAULT_OG_IMAGE],
+    title: META_TITLE,
+    description: META_DESCRIPTION,
+    images: [META_OG_IMAGE],
   },
   viewport: {
     width: 'device-width',
