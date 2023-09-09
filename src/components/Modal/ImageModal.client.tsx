@@ -25,7 +25,7 @@ export default function ImageModal({ image, onClose }: ImageModalProps) {
         src={image}
         alt="fullImage"
         className="object-cover"
-        width={440}
+        width={500}
         height={500}
         onClick={onClose}
       />
