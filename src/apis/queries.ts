@@ -18,7 +18,10 @@ import type { UseInfiniteQueryOptions, UseQueryOptions } from '@tanstack/react-q
 export const usePoseDetailQuery = (poseId: number) =>
   useSuspenseQuery(['poseId', poseId], () => getPoseDetail(poseId));
 
-export const usePosePickQuery = (peopleCount: number, options?: UseQueryOptions<PosePickResponse>) =>
+export const usePosePickQuery = (
+  peopleCount: number,
+  options?: UseQueryOptions<PosePickResponse>
+) =>
   useSuspenseQuery<PosePickResponse>(['posePick', peopleCount], () => getPosePick(peopleCount), {
     enabled: false,
     ...options,
