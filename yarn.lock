@@ -1354,9 +1354,9 @@
   integrity sha512-UbvejQEWOQRjbIIy3WYLeAjujYf3Jr9KmtwH9NfaYSd882jpORFdcsHX1rwwkYnpogbl9AABRBNvRABfrvHbYA==
 
 "@suspensive/react@^1.13.0":
-  version "1.13.0"
-  resolved "https://registry.yarnpkg.com/@suspensive/react/-/react-1.13.0.tgz#9d08379dd2b0f42000cb730d968a696e6a3010c1"
-  integrity sha512-Gkvl17eNamUenknrJbUpC+ygHaw1l1xX02xQklndMv79J/sppU+zp9eqf+ufR0kK6lbtaGIZQoyA2evPdaHZoA==
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/@suspensive/react/-/react-1.14.0.tgz#902450c0bd01515e3846ef1e941d8e4b92775382"
+  integrity sha512-DjE7nurk0nMOpXRqD2gPnFdsaEAnZwTstI4bGd9NKMdCoGl9iyRY0W3BwFcxCc4m2bvL+d7ZyIjdMwpwDxUgwg==
 
 "@swc/helpers@0.5.1":
   version "0.5.1"
