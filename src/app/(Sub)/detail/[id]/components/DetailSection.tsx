@@ -9,6 +9,7 @@ import { usePoseDetailQuery } from '@/apis';
 import BottomFixedDiv from '@/components/BottomFixedDiv';
 import { Button } from '@/components/Button';
 import { Modal } from '@/components/Modal';
+import ImageModal from '@/components/Modal/ImageModal.client';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { BASE_SITE_URL } from '@/constants';
 import useKakaoShare from '@/hooks/useKakaoShare';
@@ -51,22 +52,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
             className="cursor-pointer"
             width={450}
             height={440}
-            onClick={() =>
-              open(({ exit }) => (
-                <Modal>
-                  <Image
-                    src={imageKey}
-                    alt="enlargementImage"
-                    priority
-                    loading="eager"
-                    onClick={exit}
-                    width={500}
-                    height={440}
-                    className="cursor-pointer"
-                  />
-                </Modal>
-              ))
-            }
+            onClick={() => open(({ exit }) => <ImageModal image={imageKey} onClose={exit} />)}
           />
         </div>
       </div>

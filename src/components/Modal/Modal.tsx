@@ -1,4 +1,4 @@
-import ModalWrapper from './PortalWrapper';
+import ModalWrapper from './ModalWrapper';
 import { StrictPropsWithChildren } from '@/types';
 
 interface ModalProps extends React.HTMLAttributes<HTMLTableSectionElement> {
@@ -13,7 +13,7 @@ export default function Modal({
   ...props
 }: StrictPropsWithChildren<ModalProps>) {
   return (
-    <ModalWrapper onClick={onCloseOutside}>
+    <ModalWrapper onClose={onCloseOutside}>
       <section
         className={`flex flex-col items-center rounded-12 bg-white px-16 py-12 ${className}`}
         {...props}

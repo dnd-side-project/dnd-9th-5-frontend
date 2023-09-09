@@ -44,7 +44,7 @@ export default function FeedSection() {
       <FilterTab />
       <Spacing size={40} />
       <div className="h-fit overflow-y-scroll">
-        {data?.pages[0].recommendation ? (
+        {data.pages[0].recommendation ? (
           <>
             <EmptyCase
               title={'신비한 포즈를 찾으시는군요!'}
@@ -54,7 +54,7 @@ export default function FeedSection() {
             />
             <h4 className="mb-16">이런 포즈는 어때요?</h4>
             <div className="columns-2	py-16">
-              {data?.pages.map((page) => (
+              {data.pages.map((page) => (
                 <PhotoList
                   key={page.recommendedContents.number}
                   data={page.recommendedContents.content}
@@ -64,7 +64,7 @@ export default function FeedSection() {
           </>
         ) : (
           <div className="columns-2	py-16">
-            {data?.pages.map((page) => (
+            {data.pages.map((page) => (
               <PhotoList key={page.filteredContents.number} data={page.filteredContents.content} />
             ))}
           </div>
