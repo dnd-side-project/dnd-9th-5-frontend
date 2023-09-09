@@ -27,7 +27,7 @@ export default function FeedSection() {
   return (
     <>
       <FilterTab />
-      <Spacing size={40} />
+      <Spacing size={50} />
       <div>
         {data.pages[0].recommendation ? (
           <>

@@ -16,7 +16,7 @@ export default function Photo({ imageKey, source, id }: Photo) {
   const { open } = useOverlay();
   return (
     <Link href={`detail/${id}`} scroll={false}>
-      <div className={`z-0 relative mb-16 inline-block h-fit w-full rounded-8`}>
+      <div className="relative mb-16 inline-block h-fit w-full rounded-8">
         {imageKey && (
           <>
             <img src={imageKey} alt={source || ''} className="rounded-8" />

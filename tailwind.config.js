@@ -14,6 +14,9 @@ module.exports = {
         sizeUpAndDown3: 'sizeUpAndDown 2s 0.5s ease infinite ',
         sizeUpAndDown4: 'sizeUpAndDown 2s 0.75s ease infinite ',
       },
+      zIndex: {
+        modal: 1000,
+      },
     },
     fontWeight: {
       100: '100',
@@ -22,9 +25,6 @@ module.exports = {
       400: '400',
       700: '700',
       900: '900',
-    },
-    zIndex: {
-      modal: 1000,
     },
   },
   plugins: [require('prettier-plugin-tailwindcss')],
