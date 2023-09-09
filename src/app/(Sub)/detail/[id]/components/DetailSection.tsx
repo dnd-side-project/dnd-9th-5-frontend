@@ -11,6 +11,7 @@ import { Button } from '@/components/Button';
 import ImageModal from '@/components/Modal/ImageModal.client';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { BASE_SITE_URL } from '@/constants';
+import useFilterState from '@/hooks/useFilterState';
 import useKakaoShare from '@/hooks/useKakaoShare';
 import { copy } from '@/utils/copy';
 
@@ -78,12 +79,22 @@ interface TagProps {
 }
 
 function Tag({ name }: TagProps) {
+  const { updateFilterState } = useFilterState();
+  const handleTag = () => {
+    updateFilterState({
+      tags: new Array(name),
+      frameCount: 0,
+      peopleCount: 0,
+    });
+  };
+
   return (
     <Link
-      href={`/feed?filter=${name}`}
+      href="/feed"
       type="button"
       className="text-subtitle-2 whitespace-nowrap rounded-30 bg-sub-white px-12 py-5 text-secondary"
       scroll={false}
+      onClick={handleTag}
     >
       {name}
     </Link>

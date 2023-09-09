@@ -1,6 +1,5 @@
 'use client';
 
-import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 
 import EmptyCase from './components/EmptyCase';
@@ -10,26 +9,12 @@ import PhotoList from './components/PhotoList';
 import { usePoseFeedQuery } from '@/apis';
 import { Spacing } from '@/components/Spacing';
 import { URL } from '@/constants/url';
-import useDidMount from '@/hooks/useDidMount';
 import useFilterState from '@/hooks/useFilterState';
 import useIntersect from '@/hooks/useObserver';
 
 export default function FeedSection() {
-  const params = useSearchParams();
-  const router = useRouter();
-
-  const { filterState, updateFilterState } = useFilterState();
+  const { filterState } = useFilterState();
   const { data, fetchNextPage, hasNextPage, isLoading } = usePoseFeedQuery(filterState);
-
-  useDidMount(() => {
-    if (!params.get('filter')) return;
-    updateFilterState({
-      tags: new Array(params.get('filter') || ''),
-      frameCount: 0,
-      peopleCount: 0,
-    });
-    router.replace('/feed');
-  });
 
   const onIntersect = useCallback(async () => {
     if (hasNextPage && !isLoading) {
