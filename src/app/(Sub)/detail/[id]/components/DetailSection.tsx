@@ -36,12 +36,12 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
   return (
     <div className="overflow-y-auto pb-160">
       {sourceUrl && (
-        <Link
-          href={'https://' + sourceUrl}
+        <p
           className="text-subtitle-2 flex h-26 justify-center text-tertiary"
+          onClick={() => window.open('https://' + sourceUrl)}
         >
           ↗ 이미지 출처
-        </Link>
+        </p>
       )}
       <div className="flex justify-center">
         <div className="relative">
@@ -83,6 +83,7 @@ function Tag({ name }: TagProps) {
       href={`/feed?filter=${name}`}
       type="button"
       className="text-subtitle-2 whitespace-nowrap rounded-30 bg-sub-white px-12 py-5 text-secondary"
+      scroll={false}
     >
       {name}
     </Link>
