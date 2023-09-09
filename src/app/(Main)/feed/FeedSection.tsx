@@ -43,7 +43,7 @@ export default function FeedSection() {
     <>
       <FilterTab />
       <Spacing size={40} />
-      <div className="h-fit overflow-y-scroll">
+      <div>
         {data.pages[0].recommendation ? (
           <>
             <EmptyCase
@@ -69,7 +69,7 @@ export default function FeedSection() {
             ))}
           </div>
         )}
-        <div ref={target} className="h-1" />
+        <div ref={target} />
       </div>
       <FilterSheet />
     </>
