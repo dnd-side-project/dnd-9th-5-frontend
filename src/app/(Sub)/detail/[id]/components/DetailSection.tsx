@@ -8,9 +8,10 @@ import LinkShareModal from './LinkShareModal';
 import { usePoseDetailQuery } from '@/apis';
 import BottomFixedDiv from '@/components/BottomFixedDiv';
 import { Button } from '@/components/Button';
-import { Popup } from '@/components/Modal';
+import ImageModal from '@/components/Modal/ImageModal.client';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { BASE_SITE_URL } from '@/constants';
+import useFilterState from '@/hooks/useFilterState';
 import useKakaoShare from '@/hooks/useKakaoShare';
 import { copy } from '@/utils/copy';
 
@@ -36,12 +37,12 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
   return (
     <div className="overflow-y-auto pb-160">
       {sourceUrl && (
-        <Link
-          href={'https://' + sourceUrl}
+        <p
           className="text-subtitle-2 flex h-26 justify-center text-tertiary"
+          onClick={() => window.open('https://' + sourceUrl)}
         >
           ↗ 이미지 출처
-        </Link>
+        </p>
       )}
       <div className="flex justify-center">
         <div className="relative">
@@ -51,22 +52,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
             className="cursor-pointer"
             width={450}
             height={440}
-            onClick={() =>
-              open(({ exit }) => (
-                <Popup>
-                  <Image
-                    src={imageKey}
-                    alt="enlargementImage"
-                    priority
-                    loading="eager"
-                    onClick={exit}
-                    width={500}
-                    height={440}
-                    className="cursor-pointer"
-                  />
-                </Popup>
-              ))
-            }
+            onClick={() => open(({ exit }) => <ImageModal image={imageKey} onClose={exit} />)}
           />
         </div>
       </div>
@@ -93,11 +79,22 @@ interface TagProps {
 }
 
 function Tag({ name }: TagProps) {
+  const { updateFilterState } = useFilterState();
+  const handleTag = () => {
+    updateFilterState({
+      tags: new Array(name),
+      frameCount: 0,
+      peopleCount: 0,
+    });
+  };
+
   return (
     <Link
-      href={`/feed?filter=${name}`}
+      href="/feed"
       type="button"
       className="text-subtitle-2 whitespace-nowrap rounded-30 bg-sub-white px-12 py-5 text-secondary"
+      scroll={false}
+      onClick={handleTag}
     >
       {name}
     </Link>

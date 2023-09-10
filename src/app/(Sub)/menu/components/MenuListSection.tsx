@@ -2,8 +2,8 @@
 
 import MenuModal from '@/components/Modal/MenuModal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
-import { URL } from '@/constants/url';
 import { Spacing } from '@/components/Spacing';
+import { URL } from '@/constants/url';
 
 const InquiryModalContent = () => <p>문의사항을 남기시겠습니까?</p>;
 const LogoutModalContent = () => (

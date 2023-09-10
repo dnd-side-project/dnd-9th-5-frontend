@@ -1,9 +1,4 @@
-import {
-  UseInfiniteQueryOptions,
-  UseQueryOptions,
-  useInfiniteQuery,
-  useQuery,
-} from '@tanstack/react-query';
+import { useSuspenseInfiniteQuery, useSuspenseQuery } from '@suspensive/react-query';
 
 import {
   FilterTagsResponse,
@@ -18,26 +13,28 @@ import {
 } from '.';
 import { FilterState } from '@/hooks/useFilterState';
 
+import type { UseInfiniteQueryOptions, UseQueryOptions } from '@tanstack/react-query';
+
 export const usePoseDetailQuery = (poseId: number) =>
-  useQuery(['poseId', poseId], () => getPoseDetail(poseId));
+  useSuspenseQuery(['poseId', poseId], () => getPoseDetail(poseId));
 
 export const usePosePickQuery = (
   peopleCount: number,
   options?: UseQueryOptions<PosePickResponse>
 ) =>
-  useQuery<PosePickResponse>(['posePick', peopleCount], () => getPosePick(peopleCount), {
+  useSuspenseQuery<PosePickResponse>(['posePick', peopleCount], () => getPosePick(peopleCount), {
     enabled: false,
     ...options,
   });
 
 export const usePoseTalkQuery = (options?: UseQueryOptions<PoseTalkResponse>) =>
-  useQuery<PoseTalkResponse>(['poseTalk'], getPoseTalk, { enabled: false, ...options });
+  useSuspenseQuery<PoseTalkResponse>(['poseTalk'], getPoseTalk, { enabled: false, ...options });
 
 export const usePoseFeedQuery = (
   { peopleCount, frameCount, tags }: FilterState,
   options?: UseInfiniteQueryOptions<PoseFeedResponse>
 ) =>
-  useInfiniteQuery<PoseFeedResponse>(
+  useSuspenseInfiniteQuery<PoseFeedResponse>(
     ['poseFeed', peopleCount, frameCount, tags],
     ({ pageParam = '' }) => getPoseFeed(peopleCount, frameCount, tags.join(','), pageParam),
     {
@@ -56,4 +53,4 @@ export const usePoseFeedQuery = (
   );
 
 export const useFilterTagQuery = (options?: UseQueryOptions<FilterTagsResponse>) =>
-  useQuery<FilterTagsResponse>(['filterTag'], getFilterTag, { ...options });
+  useSuspenseQuery<FilterTagsResponse>(['filterTag'], getFilterTag, { ...options });

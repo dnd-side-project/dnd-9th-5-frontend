@@ -9,7 +9,13 @@ module.exports = {
       colors,
       keyframes: animations,
       animation: {
-        slideUp: 'slideUp 0.5s ease-in-out',
+        sizeUpAndDown1: 'sizeUpAndDown 2s ease infinite ',
+        sizeUpAndDown2: 'sizeUpAndDown 2s 0.25s ease infinite ',
+        sizeUpAndDown3: 'sizeUpAndDown 2s 0.5s ease infinite ',
+        sizeUpAndDown4: 'sizeUpAndDown 2s 0.75s ease infinite ',
+      },
+      zIndex: {
+        modal: 1000,
       },
     },
     fontWeight: {

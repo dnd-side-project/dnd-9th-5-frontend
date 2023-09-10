@@ -1,5 +1,7 @@
 import { HTMLAttributes, memo } from 'react';
 
+import cn from '@/utils/cn';
+
 interface SpacingProps extends HTMLAttributes<HTMLDivElement> {
   direction?: 'horizontal' | 'vertical';
   className?: string;
@@ -14,7 +16,7 @@ export default memo(function Spacing({
 }: SpacingProps) {
   return (
     <div
-      className={`flex-none ${className}`}
+      className={cn('flex-none', className)}
       style={{
         [direction === 'vertical' ? 'height' : 'width']: size + 'px',
       }}

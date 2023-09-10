@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -8,13 +9,21 @@ export default function MakerSection() {
   return (
     <BottomFixedDiv>
       <div className="flex justify-center">
-        <Link href="https://www.instagram.com">
-          <Image alt="instagram" src="/icons/instagram.svg" width={48} height={48} />
-        </Link>
+        <Image
+          alt="instagram"
+          src="/icons/instagram.svg"
+          width={48}
+          height={48}
+          onClick={() => window.open('https://www.instagram.com/posepicker')}
+        />
         <Spacing size={16} direction="horizontal" />
-        <Link href="https://github.com/dnd-side-project/dnd-9th-5-frontend">
-          <Image alt="github" src="/icons/github.svg" width={48} height={48} />
-        </Link>
+        <Image
+          alt="github"
+          src="/icons/github.svg"
+          width={48}
+          height={48}
+          onClick={() => window.open('https://github.com/dnd-side-project/dnd-9th-5-frontend')}
+        />
       </div>
       <Spacing size={8} />
       <div className="flex justify-center">
