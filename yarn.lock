@@ -1348,6 +1348,16 @@
     magic-string "^0.25.0"
     string.prototype.matchall "^4.0.6"
 
+"@suspensive/react-query@^1.13.0":
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/@suspensive/react-query/-/react-query-1.13.0.tgz#d7d90022576850bdb11b1703510a644bf3cc758b"
+  integrity sha512-UbvejQEWOQRjbIIy3WYLeAjujYf3Jr9KmtwH9NfaYSd882jpORFdcsHX1rwwkYnpogbl9AABRBNvRABfrvHbYA==
+
+"@suspensive/react@^1.13.0":
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/@suspensive/react/-/react-1.14.0.tgz#902450c0bd01515e3846ef1e941d8e4b92775382"
+  integrity sha512-DjE7nurk0nMOpXRqD2gPnFdsaEAnZwTstI4bGd9NKMdCoGl9iyRY0W3BwFcxCc4m2bvL+d7ZyIjdMwpwDxUgwg==
+
 "@swc/helpers@0.5.1":
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/@swc/helpers/-/helpers-0.5.1.tgz#e9031491aa3f26bfcc974a67f48bd456c8a5357a"

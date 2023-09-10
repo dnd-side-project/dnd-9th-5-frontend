@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import Lottie from 'react-lottie-player';
 
 import lottieTalkAfterClick from '#/lotties/talk_after_click.json';
@@ -15,7 +15,6 @@ export default function TalkSection() {
     loadingDelay: 1000,
     isFirstLoadingInfinite: true,
   });
-  const ref = useRef(null);
 
   const { refetch, data } = usePoseTalkQuery();
 
@@ -44,7 +43,6 @@ export default function TalkSection() {
           animationData={lottieTalkBeforeClick}
           play
           style={{ width: '100%', height: '100%' }}
-          ref={ref}
         />
       )}
       {isLoading && !isFirstLoading && (

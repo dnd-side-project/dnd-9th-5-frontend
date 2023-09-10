@@ -1,5 +1,6 @@
 'use client';
 
+import { AnimatePresence } from 'framer-motion';
 import React, {
   PropsWithChildren,
   ReactNode,
@@ -41,9 +42,11 @@ export function OverlayProvider({ children }: PropsWithChildren) {
   return (
     <OverlayContext.Provider value={context}>
       {children}
-      {Array.from(overlayById.entries()).map(([id, element]) => (
-        <React.Fragment key={id}>{element}</React.Fragment>
-      ))}
+      <AnimatePresence>
+        {Array.from(overlayById.entries()).map(([id, element]) => (
+          <React.Fragment key={id}>{element}</React.Fragment>
+        ))}
+      </AnimatePresence>
     </OverlayContext.Provider>
   );
 }

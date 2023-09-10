@@ -10,10 +10,5 @@ export const pageview = (url: string) => {
       event: 'pageview',
       page: url,
     });
-  } else {
-    console.log({
-      event: 'pageview',
-      page: url,
-    });
   }
 };

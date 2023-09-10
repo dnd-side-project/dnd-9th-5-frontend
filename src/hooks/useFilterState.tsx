@@ -40,7 +40,6 @@ export default function useFilterState() {
   };
 
   function deleteSelectedFilterItem(item: SelectedFilterItem) {
-    console.log(item);
     if (item.type === 'peopleCount') {
       setFilterState((prev) => {
         return { ...prev, peopleCount: 0 };
@@ -55,7 +54,6 @@ export default function useFilterState() {
         return { ...prev, tags: newTags };
       });
     }
-    console.log(filterState);
   }
 
   return { filterState, updateFilterState, selectedFilterItems, deleteSelectedFilterItem };

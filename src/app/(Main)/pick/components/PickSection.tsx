@@ -8,7 +8,7 @@ import Lottie from 'react-lottie-player';
 import lottiePick from '#/lotties/pick.json';
 import { usePosePickQuery } from '@/apis';
 import { BottomFixedButton } from '@/components/Button';
-import { Popup } from '@/components/Modal';
+import { ImageModal } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { SelectionBasic } from '@/components/Selection';
 import { Spacing } from '@/components/Spacing';
@@ -22,7 +22,6 @@ export default function PickSection() {
   const [image, setImage] = useState<string>('');
   const { refetch } = usePosePickQuery(countState, {
     onSuccess: (data) => {
-      if (!data) return;
       setImage(data.poseInfo.imageKey);
     },
   });
@@ -51,18 +50,7 @@ export default function PickSection() {
             className={clsx({ hidden: isLoading }, 'cursor-pointer object-contain')}
             onClick={() =>
               open(({ exit }) => (
-                <Popup>
-                  <Image
-                    src={image || '/images/image-frame.png'}
-                    alt="enlargementImage"
-                    priority
-                    loading="eager"
-                    onClick={exit}
-                    width={500}
-                    height={440}
-                    className="cursor-pointer"
-                  />
-                </Popup>
+                <ImageModal image={image || '/images/image-frame.png'} onClose={exit} />
               ))
             }
             alt="이미지"
@@ -75,7 +63,7 @@ export default function PickSection() {
         onClick={handlePickClick}
         disabled={isLoading}
       >
-        {!!image ? '포즈 pick!' : '인원수 선택하고 포즈 pick!'}
+        {!!image ? '포즈 뽑기' : '인원수 선택하고 포즈 뽑기'}
       </BottomFixedButton>
     </>
   );

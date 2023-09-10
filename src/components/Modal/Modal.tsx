@@ -1,21 +1,25 @@
-import ModalWrapper from './PortalWrapper';
+import ModalWrapper from './ModalWrapper';
 import { StrictPropsWithChildren } from '@/types';
+import cn from '@/utils/cn';
 
-interface PopupProps extends React.HTMLAttributes<HTMLTableSectionElement> {
+interface ModalProps extends React.HTMLAttributes<HTMLTableSectionElement> {
   className?: string;
   onCloseOutside?: () => void;
 }
 
-export default function Popup({
+export default function Modal({
   className,
   children,
   onCloseOutside,
   ...props
-}: StrictPropsWithChildren<PopupProps>) {
+}: StrictPropsWithChildren<ModalProps>) {
   return (
-    <ModalWrapper onClick={onCloseOutside}>
+    <ModalWrapper onClose={onCloseOutside}>
       <section
-        className={`flex flex-col items-center rounded-12 bg-white px-16 py-12 ${className}`}
+        className={cn(
+          'flex w-300 flex-col items-center rounded-16 bg-white px-16 text-center',
+          className
+        )}
         {...props}
       >
         {children}
