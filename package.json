@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write --ignore-path .gitignore ."
+    "format": "prettier --write --ignore-path .gitignore .",
+    "make-sprite": "rm public/sprite/sprite.svg && svgstore -o public/sprite/sprite.svg public/sprite/icons/**/*.svg"
   },
   "dependencies": {
     "@emotion/css": "^11.11.2",
