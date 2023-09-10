@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
+import { useEffect, useState } from 'react';
 import Lottie from 'react-lottie-player';
 
 import lottieTalkAfterClick from '#/lotties/talk_after_click.json';
@@ -30,6 +31,14 @@ export default function TalkSection() {
     startLoading();
     refetch();
   };
+
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
+    return () => {
+      queryClient.resetQueries(['poseTalk']);
+    };
+  }, [queryClient]);
 
   return (
     <section className="flex flex-col items-center">
