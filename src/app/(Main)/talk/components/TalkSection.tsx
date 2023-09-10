@@ -12,19 +12,23 @@ import { Spacing } from '@/components/Spacing';
 import useLoading from '@/hooks/useLoading';
 
 export default function TalkSection() {
+  const [talkWord, setTalkWord] = useState<string>(`제시어에 맞춰 포즈를 취해요!`);
   const { isLoading: isFirstLoading, stopLoading: stopFirstLoading } = useLoading({
     loadingDelay: 1000,
     isFirstLoadingInfinite: true,
   });
-
-  const { refetch, data } = usePoseTalkQuery();
+  const { refetch, data } = usePoseTalkQuery({
+    onSuccess: (data) => {
+      setTimeout(() => {
+        setTalkWord(data.poseWord.content);
+      }, 1000);
+    },
+  });
 
   const { isLoading, startLoading } = useLoading({
     loadingDelay: 1000,
-    onStopLoading: () => data && setTalkWord(data.poseWord.content),
     initialState: false,
   });
-  const [talkWord, setTalkWord] = useState<string>(`제시어에 맞춰 포즈를 취해요!`);
 
   const handleTalkClick = () => {
     if (isFirstLoading) stopFirstLoading();
