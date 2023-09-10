@@ -36,17 +36,13 @@ export const usePoseFeedQuery = (
 ) =>
   useSuspenseInfiniteQuery<PoseFeedResponse>(
     ['poseFeed', peopleCount, frameCount, tags],
-    ({ pageParam = '' }) => getPoseFeed(peopleCount, frameCount, tags.join(','), pageParam),
+    ({ pageParam = 0 }) => getPoseFeed(peopleCount, frameCount, tags.join(','), pageParam),
     {
       getNextPageParam: (lastPage) => {
-        let target = lastPage.filteredContents;
-        if (lastPage.recommendation) {
-          target = lastPage.recommendedContents;
-        } else {
-          target = lastPage.filteredContents;
-        }
-        if (target.last) return false;
-        return target.number + 1;
+        const target = lastPage.recommendation
+          ? lastPage.recommendedContents
+          : lastPage.filteredContents;
+        return target.last ? undefined : target.number + 1;
       },
       ...options,
     }
