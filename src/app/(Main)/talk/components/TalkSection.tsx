@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
+import { useEffect, useState } from 'react';
 import Lottie from 'react-lottie-player';
 
 import lottieTalkAfterClick from '#/lotties/talk_after_click.json';
@@ -11,25 +12,37 @@ import { Spacing } from '@/components/Spacing';
 import useLoading from '@/hooks/useLoading';
 
 export default function TalkSection() {
+  const [talkWord, setTalkWord] = useState<string>(`제시어에 맞춰 포즈를 취해요!`);
   const { isLoading: isFirstLoading, stopLoading: stopFirstLoading } = useLoading({
     loadingDelay: 1000,
     isFirstLoadingInfinite: true,
   });
-
-  const { refetch, data } = usePoseTalkQuery();
+  const { refetch, data } = usePoseTalkQuery({
+    onSuccess: (data) => {
+      setTimeout(() => {
+        setTalkWord(data.poseWord.content);
+      }, 1000);
+    },
+  });
 
   const { isLoading, startLoading } = useLoading({
     loadingDelay: 1000,
-    onStopLoading: () => data && setTalkWord(data.poseWord.content),
     initialState: false,
   });
-  const [talkWord, setTalkWord] = useState<string>(`제시어에 맞춰 포즈를 취해요!`);
 
   const handleTalkClick = () => {
     if (isFirstLoading) stopFirstLoading();
     startLoading();
     refetch();
   };
+
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
+    return () => {
+      queryClient.resetQueries(['poseTalk']);
+    };
+  }, [queryClient]);
 
   return (
     <section className="flex flex-col items-center">

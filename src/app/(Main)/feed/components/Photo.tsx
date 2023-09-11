@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Modal, PreparingModal } from '@/components/Modal';
+import { PreparingModal } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { ICON } from '@/constants/icon';
 

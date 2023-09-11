@@ -1,6 +1,5 @@
 'use client';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import BottomFixedDiv from '@/components/BottomFixedDiv';
 import { Spacing } from '@/components/Spacing';
