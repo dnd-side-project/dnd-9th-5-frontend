@@ -11,18 +11,15 @@ import QueryProvider from '@/provider/QueryProvider';
 import RecoilContextProvider from '@/provider/RecoilContextProvider';
 
 import type { Metadata } from 'next';
-
-const META_TITLE = 'PosePicker';
-const META_DESCRIPTION = '다음 포즈 뭐하지? 포즈피커가 포즈고민을 해결해 드릴게요!';
-const META_OG_IMAGE = '/images/main_star.png';
+import { META_STRING } from '@/constants/meta';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_SITE_URL),
   title: {
-    default: `${META_TITLE} - 포즈피커`,
-    template: `${META_TITLE} | %s`,
+    default: `${META_STRING.title}`,
+    template: `${META_STRING.title} | %s`,
   },
-  description: META_DESCRIPTION,
+  description: META_STRING.description.main,
   verification: {
     google: 'MB7qV_Oa4G4gR0jHgjtnE6S4g4blocE2mjo7z-z2f6Q',
   },
@@ -30,23 +27,20 @@ export const metadata: Metadata = {
     'naver-site-verification': '65f3aba9349cce28018ac7a97d4f87ff00709aa3',
   },
   openGraph: {
-    title: META_TITLE,
-    description: META_DESCRIPTION,
-    images: [META_OG_IMAGE],
+    title: META_STRING.title,
+    description: META_STRING.description.sub,
+    images: [META_STRING.image.og],
   },
   twitter: {
-    title: META_TITLE,
-    description: META_DESCRIPTION,
-    images: [META_OG_IMAGE],
+    title: META_STRING.title,
+    description: META_STRING.description.sub,
+    images: [META_STRING.image.detail],
   },
   viewport: {
     width: 'device-width',
     initialScale: 1,
     maximumScale: 1,
     userScalable: false,
-  },
-  icons: {
-    icon: './favicon.ico',
   },
   manifest: '/manifest.json',
   themeColor: '#ffffff',

@@ -25,6 +25,7 @@ export async function generateMetadata(
     openGraph: {
       title: defaultOgTitle,
       description: '이 포즈는 어때요?',
+      images: ['/meta/og_detail.png'],
     },
   };
 }
