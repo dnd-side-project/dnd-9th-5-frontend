@@ -38,6 +38,7 @@ export default function TitleSection() {
         closeOnEsc
         openOnClick
         isOpen={isOpen}
+        className="z-tooltip"
         render={() => (
           <div
             className="flex cursor-pointer"

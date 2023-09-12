@@ -16,9 +16,10 @@ import { peopleCountList } from '@/constants/filterList';
 import useLoading from '@/hooks/useLoading';
 
 export default function PickSection() {
-  const [countState, setCountState] = useState<number>(1);
+  const [countState, setCountState] = useState(1);
   const { open } = useOverlay();
   const { isLoading, startLoading } = useLoading({ loadingDelay: 1000 });
+  const [isButtonAcitve, setIsButtonActive] = useState(false);
   const [image, setImage] = useState<string>('');
   const { refetch } = usePosePickQuery(countState, {
     onSuccess: (data) => {
@@ -31,6 +32,14 @@ export default function PickSection() {
     refetch();
   };
 
+  const handleChangeState = () => {
+    setIsButtonActive(true);
+    const a = setTimeout(() => {
+      setIsButtonActive(false);
+    }, 1000);
+    return () => clearTimeout(a);
+  };
+
   return (
     <>
       <div className="py-16">
@@ -38,6 +47,7 @@ export default function PickSection() {
           data={peopleCountList.slice(1)}
           state={countState}
           setState={setCountState}
+          onChangeState={handleChangeState}
         />
       </div>
       <div className="relative flex flex-1">
@@ -62,8 +72,9 @@ export default function PickSection() {
         className="bg-main-violet text-white"
         onClick={handlePickClick}
         disabled={isLoading}
+        isActive={isButtonAcitve}
       >
-        {!!image ? '포즈 뽑기' : '인원수 선택하고 포즈 뽑기'}
+        {!!image ? `${countState}인 포즈 뽑기` : '인원수 선택하고 포즈 뽑기'}
       </BottomFixedButton>
     </>
   );
