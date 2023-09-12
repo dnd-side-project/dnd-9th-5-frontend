@@ -42,6 +42,14 @@ export const metadata: Metadata = {
     maximumScale: 1,
     userScalable: false,
   },
+  icons: {
+    icon: META_STRING.favicon,
+    apple: META_STRING.appleIcon,
+    other: {
+      rel: 'apple-touch-icon-precomposed',
+      url: META_STRING.appleIcon,
+    },
+  },
   manifest: '/manifest.json',
   themeColor: '#ffffff',
 };

@@ -9,4 +9,6 @@ export const META_STRING = {
     detail: '/meta/og_detail.png',
     kakao_share: '/meta/og_kakao.png',
   },
+  favicon: '/meta/favicon.ico',
+  appleIcon: '/meta/apple_touch_icon.png',
 };
