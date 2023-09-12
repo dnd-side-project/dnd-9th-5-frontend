@@ -74,7 +74,7 @@ export default function PickSection() {
         disabled={isLoading}
         isActive={isButtonAcitve}
       >
-        {!!image ? '포즈 뽑기' : '인원수 선택하고 포즈 뽑기'}
+        {!!image ? `${countState}인 포즈 뽑기` : '인원수 선택하고 포즈 뽑기'}
       </BottomFixedButton>
     </>
   );
