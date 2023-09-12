@@ -1,9 +1,9 @@
 'use client';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 import IconButton from '@/components/Button/IconButton';
 import { Header } from '@/components/Header';
+import { Icon } from '@/components/Icon';
 import { PreparingModal } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 
@@ -15,7 +15,7 @@ export default function DetailHeader() {
     <Header
       leftNode={
         <IconButton size="large" onClick={() => router.back()}>
-          <Image src="/icons/close.svg" width={24} height={24} alt="back" />
+          <Icon id="close" />
         </IconButton>
       }
       rightNode={
@@ -23,7 +23,7 @@ export default function DetailHeader() {
           size="large"
           onClick={() => open(({ exit }) => <PreparingModal onClose={exit} />)}
         >
-          <Image src="/icons/bookmark.svg" width={24} height={24} alt="bookmark" />
+          <Icon id="bookmark" />
         </IconButton>
       }
       className="px-4"

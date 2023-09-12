@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 
 import IconButton from '@/components/Button/IconButton';
 import { Header } from '@/components/Header';
+import { Icon } from '@/components/Icon';
 import { Spacing } from '@/components/Spacing';
 
 export default function MenuHeader() {
@@ -11,7 +12,7 @@ export default function MenuHeader() {
   const LeftNode = (
     <div className="flex items-center px-4">
       <IconButton size="large" onClick={() => router.back()}>
-        <Image src="/icons/close.svg" width={24} height={24} alt="back" />
+        <Icon id="close" />
       </IconButton>
       <Spacing size={12} direction="horizontal" />
       <h4>메뉴</h4>

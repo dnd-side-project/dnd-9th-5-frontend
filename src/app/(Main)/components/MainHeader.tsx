@@ -1,8 +1,8 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
 import Tab from './Tab';
 import { Header } from '@/components/Header';
+import { Icon } from '@/components/Icon';
 
 export default function MainHeader() {
   return (
@@ -14,7 +14,7 @@ export default function MainHeader() {
       }
       rightNode={
         <Link href={'/menu'}>
-          <Image src="/icons/menu.svg" width={24} height={24} alt="24" />
+          <Icon id="menu" />
         </Link>
       }
       headerDownNode={<Tab />}
