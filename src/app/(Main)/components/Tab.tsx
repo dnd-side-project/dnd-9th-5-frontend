@@ -26,10 +26,9 @@ export default function Tab() {
                 </h5>
                 <motion.div
                   layoutId="underline"
-                  className="text-subtitle-2 absolute bottom-0 left-0 w-full border-b-1 border-main-violet text-main-violet"
+                  className="absolute bottom-0 left-0 w-full border-b-2 border-main-violet"
                 />
               </div>
-              <div className="relative border-b-2" />
             </>
           ) : (
             <Link className="py-12 text-tertiary" href={item.path} as={item.path}>
