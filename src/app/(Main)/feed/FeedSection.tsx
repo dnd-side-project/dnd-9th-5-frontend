@@ -1,6 +1,7 @@
 'use client';
 
-import { useCallback } from 'react';
+import { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 import EmptyCase from './components/EmptyCase';
 import FilterSheet from './components/FilterSheet';
@@ -10,19 +11,16 @@ import { usePoseFeedQuery } from '@/apis';
 import { Spacing } from '@/components/Spacing';
 import { URL } from '@/constants/url';
 import useFilterState from '@/hooks/useFilterState';
-import useIntersect from '@/hooks/useObserver';
 
 export default function FeedSection() {
   const { filterState } = useFilterState();
-  const { data, fetchNextPage, hasNextPage, isLoading } = usePoseFeedQuery(filterState);
+  const { data, fetchNextPage } = usePoseFeedQuery(filterState);
 
-  const onIntersect = useCallback(async () => {
-    if (hasNextPage && !isLoading) {
-      await fetchNextPage();
-    }
-  }, [fetchNextPage, hasNextPage, isLoading]);
+  const { ref, inView } = useInView();
 
-  const target = useIntersect(onIntersect);
+  useEffect(() => {
+    if (inView) fetchNextPage();
+  }, [inView, fetchNextPage]);
 
   return (
     <>
@@ -54,7 +52,7 @@ export default function FeedSection() {
             ))}
           </div>
         )}
-        <div ref={target} />
+        <div ref={ref} />
       </div>
       <FilterSheet />
     </>
