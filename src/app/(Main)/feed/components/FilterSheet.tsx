@@ -5,7 +5,6 @@ import { PrimaryButton } from '@/components/Button';
 import BottomSheet from '@/components/Modal/BottomSheet';
 import { SelectionBasic, SelectionTagList } from '@/components/Selection';
 import { frameCountList, peopleCountList } from '@/constants/filterList';
-import { ICON } from '@/constants/icon';
 import useBottomSheet from '@/hooks/useBottomSheet';
 import useFilterState from '@/hooks/useFilterState';
 
@@ -71,12 +70,7 @@ export default function FilterSheet() {
         )}
       </section>
       <div className="flex gap-8 py-20 [&>*]:flex-1">
-        <PrimaryButton
-          type="outline"
-          icon={ICON.restart}
-          text="필터 초기화"
-          onClick={resetFilter}
-        />
+        <PrimaryButton type="outline" icon="restart" text="필터 초기화" onClick={resetFilter} />
         <PrimaryButton type="fill" text="포즈보기" onClick={decideFilter} />
       </div>
     </BottomSheet>
