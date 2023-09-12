@@ -26,7 +26,7 @@ export default function useKakaoShare() {
         content: {
           title: META_STRING.title,
           description: META_STRING.description.main,
-          imageUrl: '/',
+          imageUrl: META_STRING.image.kakao_share,
           link: {
             mobileWebUrl: uri,
             webUrl: uri,
@@ -34,7 +34,7 @@ export default function useKakaoShare() {
         },
         buttons: [
           {
-            title: 'Pick for Pose !',
+            title: META_STRING.description.sub,
             link: {
               mobileWebUrl: uri,
               webUrl: uri,
