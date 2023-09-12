@@ -34,9 +34,10 @@ export default function PickSection() {
 
   const handleChangeState = () => {
     setIsButtonActive(true);
-    setTimeout(() => {
+    const a = setTimeout(() => {
       setIsButtonActive(false);
     }, 1000);
+    return () => clearTimeout(a);
   };
 
   return (
