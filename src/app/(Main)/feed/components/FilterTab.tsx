@@ -1,7 +1,5 @@
-import Image from 'next/image';
-
+import { Icon } from '@/components/Icon';
 import Tag from '@/components/Selection/Tag';
-import { ICON } from '@/constants/icon';
 import useBottomSheet from '@/hooks/useBottomSheet';
 import useFilterState from '@/hooks/useFilterState';
 
@@ -22,13 +20,7 @@ export default function FilterTab() {
         onClick={openBottomSheet}
       >
         <h5 id="subtitle-2">필터</h5>
-        <Image
-          src={isFiltered ? ICON.carat.down_purple : ICON.carat.down}
-          alt="▾"
-          width={16}
-          height={16}
-          priority
-        />
+        <Icon id={isFiltered ? 'carat_down' : 'carat_down_gray'} />
       </button>
       {isFiltered && (
         <>
