@@ -27,14 +27,22 @@ export default function FeedSection() {
       <FilterTab />
       <Spacing size={50} />
       <div>
-        {data.pages[0].recommendation ? (
+        {data.pages[0].filteredContents.empty ? (
+          <EmptyCase
+            title={'신비한 포즈를 찾으시는군요!'}
+            text={'찾고 싶은 포즈를 저희에게 알려주세요.'}
+            button={'문의사항 남기기'}
+            path={URL.inquiry}
+          />
+        ) : (
+          <div className="columns-2	py-16">
+            {data.pages.map((page) => (
+              <PhotoList key={page.filteredContents.number} data={page.filteredContents.content} />
+            ))}
+          </div>
+        )}
+        {data.pages[0].recommendation && (
           <>
-            <EmptyCase
-              title={'신비한 포즈를 찾으시는군요!'}
-              text={'찾고 싶은 포즈를 저희에게 알려주세요.'}
-              button={'문의사항 남기기'}
-              path={URL.inquiry}
-            />
             <h4 className="mb-16">이런 포즈는 어때요?</h4>
             <div className="columns-2	py-16">
               {data.pages.map((page) => (
@@ -45,12 +53,6 @@ export default function FeedSection() {
               ))}
             </div>
           </>
-        ) : (
-          <div className="columns-2	py-16">
-            {data.pages.map((page) => (
-              <PhotoList key={page.filteredContents.number} data={page.filteredContents.content} />
-            ))}
-          </div>
         )}
         <div ref={ref} />
       </div>
