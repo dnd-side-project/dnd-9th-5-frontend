@@ -1,7 +1,5 @@
-import { BASE_SITE_URL } from '.';
-
 export const META_STRING = {
-  title: 'PosePicker',
+  title: 'PosePicker | 포즈피커',
   description: {
     main: '포토부스에서 고민하는 당신을 위한 포즈 추천 서비스',
     sub: '포즈가 고민될 땐? 포즈피커!',
@@ -15,5 +13,5 @@ export const META_STRING = {
     kakao_share: 'https://www.posepicker.site/meta/og_kakao.png',
   },
   favicon: '/meta/favicon.ico',
-  appleIcon: '/meta/apple_touch_icon.png',
+  appleIcon: '/pwa-icons/favicon-192-rounded.png',
 };
