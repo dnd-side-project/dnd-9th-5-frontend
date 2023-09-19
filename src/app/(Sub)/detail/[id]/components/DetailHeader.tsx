@@ -5,20 +5,25 @@ import IconButton from '@/components/Button/IconButton';
 import { Header } from '@/components/Header';
 import { PreparingModal } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
-import Link from 'next/link';
 import { ICON } from '@/constants/icon';
+import { useRouter } from 'next/navigation';
 
 export default function DetailHeader() {
   const { open } = useOverlay();
+  const router = useRouter();
 
   return (
     <Header
       leftNode={
-        <Link href={'/feed'}>
-          <IconButton size="large">
-            <Image src="/icons/close.svg" width={24} height={24} alt="back" />
-          </IconButton>
-        </Link>
+        <IconButton
+          size="large"
+          onClick={() => {
+            if (document.referrer) router.back();
+            else router.replace('/feed');
+          }}
+        >
+          <Image src="/icons/close.svg" width={24} height={24} alt="back" />
+        </IconButton>
       }
       rightNode={
         <IconButton
