@@ -4,7 +4,7 @@
 ---
 *다음 포즈 뭐하지? 포즈피커가 포즈 고민을 해결해 드릴게요!*
 
-<a href="https://www.posepicker.site/pick">Website</a> |  <a href=''>Instagram</a> | <a href='https://github.com/pose-picker'>Github</a> | <a href=''>Feedback</a>
+<a href="https://www.posepicker.site/pick">Website</a> |  <a href=''>Instagram</a> | <a href='https://github.com/pose-picker'>Github</a> | <a href='https://litt.ly/posepicker'>Feedback</a>
 
 <br/>
 
