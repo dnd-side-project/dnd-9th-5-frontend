@@ -7,6 +7,7 @@ export const ICON = {
   bookmark: {
     fill: '/icons/bookmark_fill.svg',
     empty: '/icons/bookmark.svg',
+    black: '/icons/bookmark_black.svg',
   },
   arrow: {
     back: '/icons/arrow_back.svg',
