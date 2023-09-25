@@ -1,10 +1,11 @@
-<img align="left" width="180" src="https://github.com/pose-picker/.github/assets/75469131/012da976-4d52-45e9-abfc-fdd700b927be" />
+<img align="left" width="170" src="https://github.com/pose-picker/.github/assets/75469131/012da976-4d52-45e9-abfc-fdd700b927be" />
 
-<img height="30" src="https://github.com/pose-picker/.github/assets/75469131/87357edf-8a99-4d4e-88ce-afb48752e45e"/> <br/>
+<img height="30" src="https://github.com/pose-picker/.github/assets/75469131/87357edf-8a99-4d4e-88ce-afb48752e45e"/> &nbsp;
 ---
-*다음 포즈 뭐하지? 포즈피커가 포즈 고민을 해결해 드릴게요!*
 
-<a href="https://www.posepicker.site/pick">Website</a> |  <a href=''>Instagram</a> | <a href='https://github.com/pose-picker'>Github</a> | <a href='https://litt.ly/posepicker'>Feedback</a>
+*포토부스에서 고민하는 당신을 위한 포즈추천 서비스*
+
+<a href="https://www.posepicker.site/pick">Website</a> |  <a href='https://www.instagram.com/posepicker/'>Instagram</a> | <a href='https://github.com/pose-picker'>Github</a> | <a href='https://litt.ly/posepicker'>Feedback</a>
 
 <br/>
 
