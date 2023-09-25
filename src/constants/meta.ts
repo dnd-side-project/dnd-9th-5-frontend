@@ -13,5 +13,5 @@ export const META_STRING = {
     kakao_share: 'https://www.posepicker.site/meta/og_kakao.png',
   },
   favicon: '/meta/favicon.ico',
-  appleIcon: '/pwa-icons/favicon-192-rounded.png',
+  appleIcon: '/pwa-icons/apple.png',
 };

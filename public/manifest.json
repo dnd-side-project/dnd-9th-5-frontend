@@ -8,37 +8,37 @@
   "start_url": "/",
   "icons": [
     {
-      "src": "/pwa-icons/favicon-16-square.png",
+      "src": "/pwa-icons/16.png",
       "sizes": "16x16",
       "type": "image/png"
     },
     {
-      "src": "/pwa-icons/favicon-32-square.png",
+      "src": "/pwa-icons/32.png",
       "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "/pwa-icons/favicon-64-square.png",
+      "src": "/pwa-icons/64.png",
       "sizes": "64x64",
       "type": "image/png"
     },
     {
-      "src": "/pwa-icons/favicon-180-square.png",
+      "src": "/pwa-icons/180.png",
       "sizes": "180x180",
       "type": "image/png"
     },
     {
-      "src": "/pwa-icons/favicon-192-square.png",
+      "src": "/pwa-icons/192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/pwa-icons/favicon-256-square.png",
+      "src": "/pwa-icons/256.png",
       "sizes": "256x256",
       "type": "image/png"
     },
     {
-      "src": "/pwa-icons/favicon-512-square.png",
+      "src": "/pwa-icons/512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
