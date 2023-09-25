@@ -45,10 +45,6 @@ export const metadata: Metadata = {
   icons: {
     icon: META_STRING.favicon,
     apple: META_STRING.appleIcon,
-    other: {
-      rel: 'apple-touch-icon-precomposed',
-      url: META_STRING.appleIcon,
-    },
   },
   manifest: '/manifest.json',
   themeColor: '#ffffff',
