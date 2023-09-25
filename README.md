@@ -40,10 +40,9 @@
 ## 📱 Feature
 
 ![15](https://github.com/dnd-side-project/dnd-9th-5-frontend/assets/75469131/d9f2d92c-ffbd-452b-a00f-57d68487c2c1)
-![19](https://github.com/dnd-side-project/dnd-9th-5-frontend/assets/75469131/a3fc9896-5fc4-4612-949e-557f3f088815)
-![18](https://github.com/dnd-side-project/dnd-9th-5-frontend/assets/75469131/7b4bfdb1-a8bf-4cde-b57c-c254fe221985)
 ![17](https://github.com/dnd-side-project/dnd-9th-5-frontend/assets/75469131/1d427144-023c-401d-ab3b-90190cb1cb4d)
-
+![18](https://github.com/dnd-side-project/dnd-9th-5-frontend/assets/75469131/7b4bfdb1-a8bf-4cde-b57c-c254fe221985)
+![19](https://github.com/dnd-side-project/dnd-9th-5-frontend/assets/75469131/a3fc9896-5fc4-4612-949e-557f3f088815)
 
 
 <br/>
