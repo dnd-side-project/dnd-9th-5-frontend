@@ -14,10 +14,10 @@ import useLoading from '@/hooks/useLoading';
 export default function TalkSection() {
   const [talkWord, setTalkWord] = useState<string>(`제시어에 맞춰 포즈를 취해요!`);
   const { isLoading: isFirstLoading, stopLoading: stopFirstLoading } = useLoading({
-    loadingDelay: 1000,
     isFirstLoadingInfinite: true,
   });
-  const { refetch, data } = usePoseTalkQuery({
+
+  const { refetch } = usePoseTalkQuery({
     onSuccess: (data) => {
       setTimeout(() => {
         setTalkWord(data.poseWord.content);
@@ -46,35 +46,19 @@ export default function TalkSection() {
 
   return (
     <section className="flex flex-col items-center">
-      <h1 className="max-w-310 break-keep text-center">{talkWord}</h1>
+      <h1 className="h-100 max-w-310 items-center break-keep text-center">{talkWord}</h1>
 
       <Spacing size={10} />
 
-      {isFirstLoading && (
-        <Lottie
-          loop
-          animationData={lottieTalkBeforeClick}
-          play
-          style={{ width: '100%', height: '100%' }}
-        />
-      )}
-      {isLoading && !isFirstLoading && (
-        <Lottie
-          loop
-          animationData={lottieTalkAfterClick}
-          play
-          style={{ width: '120%', height: '100%' }}
-        />
-      )}
-      {!isFirstLoading && !isLoading && (
-        <Lottie
-          loop
-          animationData={lottieTalkAfterClick}
-          play
-          style={{ width: '120%', height: '100%' }}
-          speed={0}
-        />
-      )}
+      <div className="flex h-300 justify-center">
+        {isFirstLoading && <Lottie loop animationData={lottieTalkBeforeClick} play />}
+        {!isFirstLoading && isLoading && (
+          <Lottie loop animationData={lottieTalkAfterClick} play speed={1.2} className="w-500" />
+        )}
+        {!isFirstLoading && !isLoading && (
+          <Lottie loop animationData={lottieTalkAfterClick} play speed={0} className="w-500" />
+        )}
+      </div>
 
       <BottomFixedButton
         className="bg-main-violet text-white"
