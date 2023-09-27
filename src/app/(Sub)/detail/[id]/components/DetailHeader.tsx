@@ -22,7 +22,7 @@ export default function DetailHeader() {
             else router.replace('/feed');
           }}
         >
-          <Image src="/icons/close.svg" width={24} height={24} alt="back" />
+          <Image src="/sprite/icons/close.svg" width={24} height={24} alt="back" />
         </IconButton>
       }
       rightNode={
