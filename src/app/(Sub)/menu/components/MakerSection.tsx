@@ -9,14 +9,20 @@ export default function MakerSection() {
   return (
     <BottomFixedDiv>
       <div className="flex justify-center">
-        <Image alt="instagram" src="/icons/instagram.svg" width={48} height={48} />
+        <Icon
+          id="instagram"
+          width={48}
+          height={48}
+          onClick={() => window.open('https://www.instagram.com/posepicker')}
+          className="cursor-pointer"
+        />
         <Spacing size={16} direction="horizontal" />
-        <Image
-          alt="github"
-          src="/icons/github.svg"
+        <Icon
+          id="github"
           width={48}
           height={48}
           onClick={() => window.open('https://github.com/dnd-side-project/dnd-9th-5-frontend')}
+          className="cursor-pointer"
         />
       </div>
       <Spacing size={8} />

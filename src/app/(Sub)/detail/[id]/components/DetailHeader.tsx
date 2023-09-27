@@ -4,9 +4,9 @@ import { useRouter } from 'next/navigation';
 
 import IconButton from '@/components/Button/IconButton';
 import { Header } from '@/components/Header';
+import { Icon } from '@/components/Icon';
 import { PreparingModal } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
-import { ICON } from '@/constants/icon';
 
 export default function DetailHeader() {
   const { open } = useOverlay();
@@ -30,7 +30,7 @@ export default function DetailHeader() {
           size="large"
           onClick={() => open(({ exit }) => <PreparingModal onClose={exit} />)}
         >
-          <Image src={ICON.bookmark.black} width={24} height={24} alt="bookmark" />
+          <Icon id="bookmark" />
         </IconButton>
       }
       className="px-4"
