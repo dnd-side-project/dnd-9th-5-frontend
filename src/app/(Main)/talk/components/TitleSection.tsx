@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { Tooltip } from 'react-tooltip';
 
+import { Icon } from '@/components/Icon';
 import { Spacing } from '@/components/Spacing';
 
 export default function TitleSection() {
@@ -29,7 +30,7 @@ export default function TitleSection() {
             }
           }}
         >
-          <Image src="/icons/info.svg" width={24} height={24} alt="info" />
+          <Icon id="info" />
         </a>
       </div>
       <Tooltip
@@ -52,13 +53,7 @@ export default function TitleSection() {
               <p>독특한 나만의 포즈가 완성된답니다.</p>
             </div>
             <Spacing size={8} direction="horizontal" />
-            <Image
-              src="/icons/close_white.svg"
-              width={20}
-              height={20}
-              alt="close"
-              className="mb-auto"
-            />
+            <Icon width={20} hanging={20} id="close_white" />
           </div>
         )}
         clickable

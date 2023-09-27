@@ -1,16 +1,14 @@
 'use client';
 
-import Image from 'next/image';
-
+import { Icon } from '@/components/Icon';
 import { PreparingModal } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { Spacing } from '@/components/Spacing';
-import { IMAGE } from '@/constants/image';
 
 function DefaultProfile() {
   return (
     <div className="rounded-full bg-white p-6">
-      <Image width={40} height={40} alt="🪄" src={IMAGE.profile_default} />
+      <Icon id="profile_default" />
     </div>
   );
 }
