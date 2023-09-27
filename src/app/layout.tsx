@@ -11,33 +11,30 @@ import QueryProvider from '@/provider/QueryProvider';
 import RecoilContextProvider from '@/provider/RecoilContextProvider';
 
 import type { Metadata } from 'next';
-
-const DEFAULT_OG_TITLE = 'PosePicker';
-const DEFAULT_OG_DESC = '다음 포즈 뭐하지? 포즈피커가 포즈 고민을 해결해 드릴게요!';
-const DEFAULT_OG_IMAGE = '/images/main_star.png';
+import { META_STRING } from '@/constants/meta';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_SITE_URL),
   title: {
-    default: DEFAULT_OG_TITLE,
-    template: `${DEFAULT_OG_TITLE} | %s`,
+    default: `${META_STRING.title}`,
+    template: `${META_STRING.title} | %s`,
   },
-  description: '다음 포즈 뭐하지? 포즈피커의 포즈 추천으로 포즈 고민을 해결해 드릴게요!',
+  description: META_STRING.description.main,
   verification: {
     google: 'MB7qV_Oa4G4gR0jHgjtnE6S4g4blocE2mjo7z-z2f6Q',
   },
   other: {
-    'naver-site-verification': '65f3aba9349cce28018ac7a97d4f87ff00709aa3',
+    'naver-site-verification': 'eb9f471cae26de34e6bc71849e73f04cb8b00d83',
   },
   openGraph: {
-    title: DEFAULT_OG_TITLE,
-    description: DEFAULT_OG_DESC,
-    images: [DEFAULT_OG_IMAGE],
+    title: META_STRING.title,
+    description: META_STRING.description.sub,
+    images: [META_STRING.image.og],
   },
   twitter: {
-    title: DEFAULT_OG_TITLE,
-    description: DEFAULT_OG_DESC,
-    images: [DEFAULT_OG_IMAGE],
+    title: META_STRING.title,
+    description: META_STRING.description.sub,
+    images: [META_STRING.image.detail],
   },
   viewport: {
     width: 'device-width',
@@ -46,7 +43,8 @@ export const metadata: Metadata = {
     userScalable: false,
   },
   icons: {
-    icon: './favicon.ico',
+    icon: META_STRING.favicon,
+    apple: META_STRING.appleIcon,
   },
   manifest: '/manifest.json',
   themeColor: '#ffffff',

@@ -16,6 +16,7 @@ module.exports = {
       },
       zIndex: {
         modal: 1000,
+        tooltip: 500,
       },
     },
     fontWeight: {

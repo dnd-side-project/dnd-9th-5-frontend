@@ -1,10 +1,11 @@
-<img align="left" width="180" src="https://github.com/pose-picker/.github/assets/75469131/012da976-4d52-45e9-abfc-fdd700b927be" />
+<img align="left" width="170" src="https://github.com/pose-picker/.github/assets/75469131/012da976-4d52-45e9-abfc-fdd700b927be" />
 
-<img height="30" src="https://github.com/pose-picker/.github/assets/75469131/87357edf-8a99-4d4e-88ce-afb48752e45e"/> <br/>
+<img height="30" src="https://github.com/pose-picker/.github/assets/75469131/87357edf-8a99-4d4e-88ce-afb48752e45e"/> &nbsp;
 ---
-*다음 포즈 뭐하지? 포즈피커가 포즈 고민을 해결해 드릴게요!*
 
-<a href="https://www.posepicker.site/pick">Website</a> |  <a href=''>Instagram</a> | <a href='https://github.com/pose-picker'>Github</a> | <a href=''>Feedback</a>
+*포토부스에서 고민하는 당신을 위한 포즈추천 서비스*
+
+<a href="https://www.posepicker.site/pick">Website</a> |  <a href='https://www.instagram.com/posepicker/'>Instagram</a> | <a href='https://github.com/pose-picker'>Github</a> | <a href='https://litt.ly/posepicker'>Feedback</a>
 
 <br/>
 
@@ -39,10 +40,9 @@
 ## 📱 Feature
 
 ![15](https://github.com/dnd-side-project/dnd-9th-5-frontend/assets/75469131/d9f2d92c-ffbd-452b-a00f-57d68487c2c1)
-![19](https://github.com/dnd-side-project/dnd-9th-5-frontend/assets/75469131/a3fc9896-5fc4-4612-949e-557f3f088815)
-![18](https://github.com/dnd-side-project/dnd-9th-5-frontend/assets/75469131/7b4bfdb1-a8bf-4cde-b57c-c254fe221985)
 ![17](https://github.com/dnd-side-project/dnd-9th-5-frontend/assets/75469131/1d427144-023c-401d-ab3b-90190cb1cb4d)
-
+![18](https://github.com/dnd-side-project/dnd-9th-5-frontend/assets/75469131/7b4bfdb1-a8bf-4cde-b57c-c254fe221985)
+![19](https://github.com/dnd-side-project/dnd-9th-5-frontend/assets/75469131/a3fc9896-5fc4-4612-949e-557f3f088815)
 
 
 <br/>

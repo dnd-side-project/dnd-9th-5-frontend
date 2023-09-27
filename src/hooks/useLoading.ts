@@ -5,13 +5,11 @@ import useIsMounted from './useIsMounted';
 interface UseLoadingProps {
   initialState?: boolean;
   loadingDelay?: number;
-  onStopLoading?: () => void;
   isFirstLoadingInfinite?: boolean;
 }
 export default function useLoading({
   initialState = true,
   loadingDelay,
-  onStopLoading,
   isFirstLoadingInfinite = false,
 }: UseLoadingProps = {}) {
   const [isLoading, setIsLoading] = useState(initialState);
@@ -19,10 +17,7 @@ export default function useLoading({
 
   const stopLoading = useCallback(() => {
     setIsLoading(false);
-    if (onStopLoading) {
-      onStopLoading();
-    }
-  }, [onStopLoading]);
+  }, []);
 
   const startLoading = useCallback(() => {
     setIsLoading(true);

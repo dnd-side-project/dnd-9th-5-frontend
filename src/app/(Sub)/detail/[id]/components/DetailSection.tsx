@@ -26,7 +26,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
   const pathname = usePathname();
 
   if (!data) return null;
-  const { imageKey, tagAttributes, sourceUrl } = data.poseInfo;
+  const { imageKey, tagAttributes, sourceUrl, peopleCount, frameCount } = data.poseInfo;
 
   const handleShareLink = async () => {
     await copy(BASE_SITE_URL + pathname);
@@ -57,6 +57,8 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
         </div>
       </div>
       <div className="flex flex-wrap gap-10 px-20 py-12">
+        <Tag type="people" value={peopleCount} name={`${peopleCount}인`} />
+        <Tag type="frame" value={frameCount} name={`${frameCount}컷`} />
         {tagAttributes?.split(',').map((tag, index) => <Tag key={index} name={tag} />)}
       </div>
 
@@ -75,17 +77,35 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
   );
 }
 interface TagProps {
+  type?: 'people' | 'frame' | 'tag';
+  value?: number;
   name: string;
 }
 
-function Tag({ name }: TagProps) {
+function Tag({ type = 'tag', value, name }: TagProps) {
   const { updateFilterState } = useFilterState();
   const handleTag = () => {
-    updateFilterState({
-      tags: new Array(name),
-      frameCount: 0,
-      peopleCount: 0,
-    });
+    let filterState;
+    if (type === 'people') {
+      filterState = {
+        tags: [],
+        frameCount: 0,
+        peopleCount: value || 0,
+      };
+    } else if (type === 'frame') {
+      filterState = {
+        tags: [],
+        frameCount: value || 0,
+        peopleCount: 0,
+      };
+    } else {
+      filterState = {
+        tags: new Array(name),
+        frameCount: 0,
+        peopleCount: 0,
+      };
+    }
+    updateFilterState(filterState);
   };
 
   return (

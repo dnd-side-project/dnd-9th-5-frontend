@@ -1,11 +1,12 @@
 'use client';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 import IconButton from '@/components/Button/IconButton';
 import { Header } from '@/components/Header';
-import { Icon } from '@/components/Icon';
 import { PreparingModal } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
+import { ICON } from '@/constants/icon';
 
 export default function DetailHeader() {
   const { open } = useOverlay();
@@ -14,8 +15,14 @@ export default function DetailHeader() {
   return (
     <Header
       leftNode={
-        <IconButton size="large" onClick={() => router.back()}>
-          <Icon id="close" />
+        <IconButton
+          size="large"
+          onClick={() => {
+            if (document.referrer) router.back();
+            else router.replace('/feed');
+          }}
+        >
+          <Image src="/icons/close.svg" width={24} height={24} alt="back" />
         </IconButton>
       }
       rightNode={
@@ -23,7 +30,7 @@ export default function DetailHeader() {
           size="large"
           onClick={() => open(({ exit }) => <PreparingModal onClose={exit} />)}
         >
-          <Icon id="bookmark" />
+          <Image src={ICON.bookmark.black} width={24} height={24} alt="bookmark" />
         </IconButton>
       }
       className="px-4"

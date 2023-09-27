@@ -21,7 +21,7 @@ export default function EmptyCase(props: EmptyCase) {
       <Spacing size={32} />
       <div className="flex justify-center">
         <Link href={path}>
-          <PrimaryButton text={button} type="secondary" />
+          <PrimaryButton text={button} type="fill" />
         </Link>
       </div>
     </div>

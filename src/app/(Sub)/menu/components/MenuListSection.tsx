@@ -25,18 +25,21 @@ export default function MenuListSection() {
     ));
   };
 
-  const handleLogoutClick = () => {
-    open(({ exit }) => (
-      <MenuModal onClose={exit} onConfirm={() => console.log('로그아웃')}>
-        <LogoutModalContent />
-      </MenuModal>
-    ));
-  };
+  // const handleLogoutClick = () => {
+  //   open(({ exit }) => (
+  //     <MenuModal onClose={exit} onConfirm={() => console.log('로그아웃')}>
+  //       <LogoutModalContent />
+  //     </MenuModal>
+  //   ));
+  // };
 
   return (
     <section className="flex flex-col">
       <button className="flex flex-col py-12" onClick={handleInquiryClick}>
         서비스 이용 문의
+      </button>
+      <button className="flex flex-col py-12" onClick={() => window.open(URL.information)}>
+        서비스 정보
       </button>
       {/* <button className="flex flex-col py-12 text-tertiary" onClick={handleLogoutClick}>
         로그아웃

@@ -6,20 +6,17 @@ interface PhotoList {
 }
 
 export default function PhotoList({ data }: PhotoList) {
+  if (!data) return <Photo />;
   return (
     <>
-      {data ? (
-        data.map((item) => (
-          <Photo
-            key={item.poseInfo.poseId}
-            imageKey={item.poseInfo.imageKey}
-            source={item.poseInfo.source}
-            id={item.poseInfo.poseId}
-          />
-        ))
-      ) : (
-        <Photo />
-      )}
+      {data.map((item) => (
+        <Photo
+          key={item.poseInfo.poseId}
+          imageKey={item.poseInfo.imageKey}
+          source={item.poseInfo.source}
+          id={item.poseInfo.poseId}
+        />
+      ))}
     </>
   );
 }
