@@ -78,3 +78,7 @@ export interface PoseTalkResponse {
     wordId: number;
   };
 }
+
+export interface ResgisterRequest {
+  access_token: string;
+}

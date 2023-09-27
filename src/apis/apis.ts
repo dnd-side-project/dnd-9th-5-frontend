@@ -4,6 +4,7 @@ import {
   PoseFeedResponse,
   PosePickResponse,
   PoseTalkResponse,
+  ResgisterRequest,
 } from '.';
 import publicApi from './config/publicApi';
 
@@ -32,4 +33,5 @@ export const getPoseFeed = async (
 
 export const getFilterTag = () => publicApi.get<FilterTagsResponse>('/pose/tags');
 
-export const postRegister = () => publicApi.post('/users/register');
+export const postRegister = ({ access_token }: ResgisterRequest) =>
+  publicApi.post('/users/register', { access_token });
