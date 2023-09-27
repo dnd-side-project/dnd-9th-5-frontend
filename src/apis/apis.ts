@@ -31,3 +31,5 @@ export const getPoseFeed = async (
   });
 
 export const getFilterTag = () => publicApi.get<FilterTagsResponse>('/pose/tags');
+
+export const postRegister = () => publicApi.post('/users/register');
