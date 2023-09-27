@@ -1,10 +1,9 @@
 'use client';
 
-import Script from 'next/script';
-
+import LoginModal from './LoginModal';
 import { Icon } from '@/components/Icon';
+import { useOverlay } from '@/components/Overlay/useOverlay';
 import { Spacing } from '@/components/Spacing';
-import { kakaoInit, kakaoLogin } from '@/utils/kakaoLogin';
 
 function DefaultProfile() {
   return (
@@ -15,13 +14,14 @@ function DefaultProfile() {
 }
 
 export default function LoginSection() {
+  const { open, exit } = useOverlay();
+
   return (
     <section className="py-12">
-      <Script src="https://developers.kakao.com/sdk/js/kakao.js" onLoad={kakaoInit} />
       <div className="bg-violet flex items-center rounded-16 bg-main-violet-bright px-20 py-24">
         <DefaultProfile />
         <Spacing size={16} direction="horizontal" />
-        <div id="subtitle-1" onClick={kakaoLogin}>
+        <div id="subtitle-1" onClick={() => open(() => <LoginModal onClose={exit} />)}>
           로그인하기
         </div>
       </div>
