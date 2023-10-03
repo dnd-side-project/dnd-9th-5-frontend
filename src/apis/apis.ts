@@ -4,7 +4,7 @@ import {
   PoseFeedResponse,
   PosePickResponse,
   PoseTalkResponse,
-  ResgisterRequest,
+  RegisterResponse,
 } from '.';
 import publicApi from './config/publicApi';
 
@@ -33,5 +33,5 @@ export const getPoseFeed = async (
 
 export const getFilterTag = () => publicApi.get<FilterTagsResponse>('/pose/tags');
 
-export const postRegister = ({ access_token }: ResgisterRequest) =>
-  publicApi.post('/users/register', { access_token });
+export const getRegister = (code: string) =>
+  publicApi.get<RegisterResponse>(`/users/login/oauth/kakao?code=${code}`);

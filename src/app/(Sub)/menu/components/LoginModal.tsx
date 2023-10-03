@@ -1,17 +1,20 @@
 import Image from 'next/image';
-import Script from 'next/script';
 
 import { Modal } from '@/components/Modal';
 import { Spacing } from '@/components/Spacing';
-import { kakaoInit, kakaoLogin } from '@/utils/kakaoLogin';
 
 interface LoginModalProps {
   onClose: () => void;
 }
 export default function LoginModal({ onClose }: LoginModalProps) {
+  const link = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_KAKAO_SERVER_KEY}&redirect_uri=${process.env.NEXT_PUBLIC_SITE_URL}/api/users/login/oauth/kakao&response_type=code`;
+
+  const handleLogin = () => {
+    window.location.href = link;
+  };
+
   return (
     <Modal onCloseOutside={onClose}>
-      <Script src="https://developers.kakao.com/sdk/js/kakao.js" onLoad={kakaoInit} />
       <Spacing size={32} />
       <h4>간편 로그인</h4>
       <Spacing size={8} />
@@ -27,7 +30,7 @@ export default function LoginModal({ onClose }: LoginModalProps) {
         height={54}
         alt="kakao-login"
         className="cursor-pointer"
-        onClick={kakaoLogin}
+        onClick={handleLogin}
       />
       <Spacing size={32} />
     </Modal>
