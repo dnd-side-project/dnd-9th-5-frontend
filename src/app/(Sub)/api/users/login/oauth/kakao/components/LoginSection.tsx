@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 
 import { useRegisterQuery } from '@/apis';
+import { Loading } from '@/components/Loading';
 import { setCookie } from '@/utils/cookieController';
 
 interface LoginSectionProps {
@@ -18,5 +19,5 @@ export default function LoginSection({ code }: LoginSectionProps) {
   setCookie('refreshToken', refreshToken);
   router.replace('/menu');
 
-  return <div></div>;
+  return <Loading />;
 }
