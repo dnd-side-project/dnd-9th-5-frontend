@@ -11,6 +11,7 @@ interface LoginSectionProps {
 export default function LoginSection({ code }: LoginSectionProps) {
   const router = useRouter();
   const { data } = useRegisterQuery(code);
+  console.log(data);
   const { token, email, nickname } = data;
   const { accessToken, refreshToken, expiresIn } = token;
   setCookie('accessToken', accessToken);

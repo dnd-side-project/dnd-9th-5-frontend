@@ -1,5 +1,4 @@
 import { QueryAsyncBoundary } from '@suspensive/react-query';
-import { useSearchParams } from 'next/navigation';
 
 import LoginSection from './components/LoginSection';
 import { getRegister } from '@/apis';
@@ -17,10 +16,7 @@ export default function Page({ searchParams }: PageProps) {
   const { code } = searchParams;
 
   return (
-    <QueryAsyncBoundary
-      rejectedFallback={RejectedFallback}
-      pendingFallback={<Loading className="h-[calc(100dvh-400px)]" />}
-    >
+    <QueryAsyncBoundary rejectedFallback={RejectedFallback} pendingFallback={<Loading />}>
       <HydrationProvider queryKey={['register']} queryFn={() => getRegister(code)}>
         <LoginSection code={code} />
       </HydrationProvider>
