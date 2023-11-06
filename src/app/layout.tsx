@@ -2,7 +2,7 @@ import './globals.css';
 import '../../styles/font.css';
 import '../../styles/typography.css';
 
-import { Suspense, useEffect } from 'react';
+import { Suspense } from 'react';
 
 import { Analytics } from '@/components/Analytics';
 import { OverlayProvider } from '@/components/Overlay/OverlayProvider';
@@ -52,11 +52,9 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  useEffect(() => {
-    if (process.env.NODE_ENV !== 'development') {
-      hotjar.initialize(HOTJAR.HJID, HOTJAR.HJSV);
-    }
-  }, []);
+  if (process.env.NODE_ENV !== 'development') {
+    hotjar.initialize(HOTJAR.HJID, HOTJAR.HJSV);
+  }
 
   return (
     <html lang="ko">
