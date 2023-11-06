@@ -27,6 +27,7 @@
     "next": "13.4.12",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hotjar": "^6.1.0",
     "react-intersection-observer": "^9.5.2",
     "react-lottie-player": "^1.5.4",
     "react-tooltip": "^5.20.0",
