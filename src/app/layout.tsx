@@ -2,16 +2,17 @@ import './globals.css';
 import '../../styles/font.css';
 import '../../styles/typography.css';
 
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 
 import { Analytics } from '@/components/Analytics';
 import { OverlayProvider } from '@/components/Overlay/OverlayProvider';
-import { BASE_SITE_URL } from '@/constants';
+import { BASE_SITE_URL, HOTJAR } from '@/constants';
 import QueryProvider from '@/provider/QueryProvider';
 import RecoilContextProvider from '@/provider/RecoilContextProvider';
 
 import type { Metadata } from 'next';
 import { META_STRING } from '@/constants/meta';
+import { hotjar } from 'react-hotjar';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_SITE_URL),
@@ -51,6 +52,12 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    if (process.env.NODE_ENV !== 'development') {
+      hotjar.initialize(HOTJAR.HJID, HOTJAR.HJSV);
+    }
+  }, []);
+
   return (
     <html lang="ko">
       <body className="flex min-h-[100dvh] w-screen touch-none justify-center bg-slate-100 py-px">
