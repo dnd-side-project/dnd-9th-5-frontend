@@ -1,5 +1,4 @@
 'use client';
-import Image from 'next/image';
 
 import BottomFixedDiv from '@/components/BottomFixedDiv';
 import { Icon } from '@/components/Icon';

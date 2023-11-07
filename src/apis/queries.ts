@@ -5,11 +5,13 @@ import {
   PoseFeedResponse,
   PosePickResponse,
   PoseTalkResponse,
+  RegisterResponse,
   getFilterTag,
   getPoseDetail,
   getPoseFeed,
   getPosePick,
   getPoseTalk,
+  getRegister,
 } from '.';
 import { FilterState } from '@/hooks/useFilterState';
 
@@ -50,3 +52,6 @@ export const usePoseFeedQuery = (
 
 export const useFilterTagQuery = (options?: UseQueryOptions<FilterTagsResponse>) =>
   useSuspenseQuery<FilterTagsResponse>(['filterTag'], getFilterTag, { ...options });
+
+export const useRegisterQuery = (code: string) =>
+  useSuspenseQuery<RegisterResponse>(['register'], () => getRegister(code), {});

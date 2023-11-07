@@ -1,7 +1,7 @@
 'use client';
 
+import LoginModal from './LoginModal';
 import { Icon } from '@/components/Icon';
-import { PreparingModal } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { Spacing } from '@/components/Spacing';
 
@@ -14,17 +14,16 @@ function DefaultProfile() {
 }
 
 export default function LoginSection() {
-  const { open } = useOverlay();
+  const { open, exit } = useOverlay();
 
   return (
     <section className="py-12">
-      <div
-        className="bg-violet flex items-center rounded-16 bg-main-violet-bright px-20 py-24"
-        onClick={() => open(({ exit }) => <PreparingModal onClose={exit} />)}
-      >
+      <div className="bg-violet flex items-center rounded-16 bg-main-violet-bright px-20 py-24">
         <DefaultProfile />
         <Spacing size={16} direction="horizontal" />
-        <div id="subtitle-1">로그인하기</div>
+        <div id="subtitle-1" onClick={() => open(() => <LoginModal onClose={exit} />)}>
+          로그인하기
+        </div>
       </div>
     </section>
   );

@@ -78,3 +78,17 @@ export interface PoseTalkResponse {
     wordId: number;
   };
 }
+
+export interface Token {
+  accessToken: string;
+  refreshToken: string;
+  grantType: string;
+  expiresIn: number;
+}
+
+export interface RegisterResponse {
+  id: number;
+  nickname: string;
+  email: string;
+  token: Token;
+}
