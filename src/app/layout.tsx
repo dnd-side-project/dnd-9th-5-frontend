@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   other: {
     'naver-site-verification': 'eb9f471cae26de34e6bc71849e73f04cb8b00d83',
-    'last-updated': '2023-11-06',
+    'last-updated': '2023-11-08',
   },
   openGraph: {
     title: META_STRING.title,
