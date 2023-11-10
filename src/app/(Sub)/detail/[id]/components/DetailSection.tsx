@@ -10,7 +10,7 @@ import BottomFixedDiv from '@/components/BottomFixedDiv';
 import { Button } from '@/components/Button';
 import ImageModal from '@/components/Modal/ImageModal.client';
 import { useOverlay } from '@/components/Overlay/useOverlay';
-import { BASE_SITE_URL } from '@/constants';
+import { SITE_URL } from '@/constants';
 import useFilterState from '@/hooks/useFilterState';
 import useKakaoShare from '@/hooks/useKakaoShare';
 import { copy } from '@/utils/copy';
@@ -29,7 +29,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
   const { imageKey, tagAttributes, sourceUrl, peopleCount, frameCount } = data.poseInfo;
 
   const handleShareLink = async () => {
-    await copy(BASE_SITE_URL + pathname);
+    await copy(SITE_URL + pathname);
 
     open(({ exit }) => <LinkShareModal onClose={exit} />);
   };
@@ -68,7 +68,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
         </Button>
         <Button
           className="grow bg-main-violet text-white"
-          onClick={() => shareKakao(BASE_SITE_URL + pathname)}
+          onClick={() => shareKakao(SITE_URL + pathname)}
         >
           카카오 공유
         </Button>

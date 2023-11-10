@@ -6,7 +6,6 @@ import { Suspense } from 'react';
 
 import { Analytics } from '@/components/Analytics';
 import { OverlayProvider } from '@/components/Overlay/OverlayProvider';
-import { BASE_SITE_URL } from '@/constants';
 import QueryProvider from '@/provider/QueryProvider';
 import RecoilContextProvider from '@/provider/RecoilContextProvider';
 
@@ -14,7 +13,6 @@ import type { Metadata } from 'next';
 import { META_STRING } from '@/constants/meta';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(BASE_SITE_URL),
   title: {
     default: `${META_STRING.title}`,
     template: `${META_STRING.title} | %s`,
