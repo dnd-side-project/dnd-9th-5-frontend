@@ -9,7 +9,7 @@ export default function CloseButton() {
   const router = useRouter();
   return (
     <IconButton size="large" onClick={() => router.back()}>
-      <Icon id="close" />
+      <Icon id="carat_down" />
     </IconButton>
   );
 }

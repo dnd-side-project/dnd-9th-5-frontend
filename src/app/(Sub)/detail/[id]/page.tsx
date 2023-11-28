@@ -1,13 +1,13 @@
 import { QueryAsyncBoundary } from '@suspensive/react-query';
 import { Metadata, ResolvingMetadata } from 'next';
 
-import DetailHeader from './components/DetailHeader';
 import DetailSection from './components/DetailSection';
 import { getPoseDetail } from '@/apis';
 import { RejectedFallback } from '@/components/ErrorBoundary';
 import { Loading } from '@/components/Loading';
 import { PageAnimation } from '@/components/PageAnimation';
 import { HydrationProvider } from '@/components/Provider/HydrationProvider';
+import SubHeader from '@/components/Header/SubHeader';
 
 export async function generateMetadata(
   { params }: { params: { id: string } },
@@ -35,7 +35,7 @@ export default function DetailPage({ params }: { params: { id: number } }) {
 
   return (
     <div>
-      <DetailHeader />
+      <SubHeader />
       <QueryAsyncBoundary
         rejectedFallback={RejectedFallback}
         pendingFallback={<Loading className="h-[calc(100dvh-400px)]" />}
