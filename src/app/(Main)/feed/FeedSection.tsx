@@ -3,14 +3,14 @@
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-import EmptyCase from './components/EmptyCase';
 import FilterSheet from './components/FilterSheet';
 import FilterTab from './components/FilterTab';
-import PhotoList from './components/PhotoList';
 import { usePoseFeedQuery } from '@/apis';
 import { Spacing } from '@/components/Spacing';
 import { URL } from '@/constants/url';
 import useFilterState from '@/hooks/useFilterState';
+import PhotoList from '@/components/Feed/PhotoList';
+import EmptyCase from '@/components/Feed/EmptyCase';
 
 export default function FeedSection() {
   const { filterState } = useFilterState();
