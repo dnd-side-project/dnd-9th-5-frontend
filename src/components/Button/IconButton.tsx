@@ -3,13 +3,8 @@ import clsx from 'clsx';
 import type { StrictPropsWithChildren } from '@/types';
 
 interface IconButtonProps {
-  /**
-   * 버튼의 크기를 설정합니다. small: 24px, medium: 40px, large: 48px (default: small)
-   */
+  icon?: string;
   size?: 'small' | 'medium' | 'large';
-  /**
-   * 버튼의 클릭 이벤트를 설정합니다.
-   */
   onClick?: () => void;
 }
 export default function IconButton({

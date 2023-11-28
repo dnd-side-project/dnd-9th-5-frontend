@@ -1,7 +1,7 @@
-// export default function Icon({ id, width = 24, height = 24, fill = 'none', ...rest }: IconProps) {
+// import Image from "next/image";
+
+// export default function Icon() {
 //   return (
-//     <svg width={width} height={height} fill={fill} {...rest}>
-//       <use href={`/sprite/sprite.svg#${id}`} />
-//     </svg>
+//     <div><Image src={}/></div>
 //   );
 // }
