@@ -19,7 +19,7 @@ export default function BottomSheet({ children }: StrictPropsWithChildren) {
         <div className="fixed inset-x-0 bottom-0 z-30 mx-auto max-w-440 rounded-t-16 bg-white">
           <div className="flex justify-end px-8 pt-12">
             <button className="p-12" onClick={closeBottomSheet}>
-              <Icon id="close" />
+              <Icon id="close" fill="black" />
             </button>
           </div>
           <div className="column flex flex-col gap-20 p-20">{children}</div>
