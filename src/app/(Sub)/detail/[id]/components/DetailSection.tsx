@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import LinkShareModal from './LinkShareModal';
@@ -10,10 +9,10 @@ import BottomFixedDiv from '@/components/BottomFixedDiv';
 import { Button } from '@/components/Button';
 import ImageModal from '@/components/Modal/ImageModal.client';
 import { useOverlay } from '@/components/Overlay/useOverlay';
-import useFilterState from '@/hooks/useFilterState';
 import useKakaoShare from '@/hooks/useKakaoShare';
 import { copy } from '@/utils/copy';
 import { BASE_SITE_URL } from '@/constants';
+import TagButton from './TagButton';
 
 interface DetailSectionProps {
   poseId: number;
@@ -57,9 +56,9 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
         </div>
       </div>
       <div className="flex flex-wrap gap-10 px-20 py-12">
-        <Tag type="people" value={peopleCount} name={`${peopleCount}인`} />
-        <Tag type="frame" value={frameCount} name={`${frameCount}컷`} />
-        {tagAttributes?.split(',').map((tag, index) => <Tag key={index} name={tag} />)}
+        <TagButton type="people" value={peopleCount} name={`${peopleCount}인`} />
+        <TagButton type="frame" value={frameCount} name={`${frameCount}컷`} />
+        {tagAttributes?.split(',').map((tag, index) => <TagButton key={index} name={tag} />)}
       </div>
 
       <BottomFixedDiv className="flex gap-8">
@@ -74,49 +73,5 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
         </Button>
       </BottomFixedDiv>
     </div>
-  );
-}
-interface TagProps {
-  type?: 'people' | 'frame' | 'tag';
-  value?: number;
-  name: string;
-}
-
-function Tag({ type = 'tag', value, name }: TagProps) {
-  const { updateFilterState } = useFilterState();
-  const handleTag = () => {
-    let filterState;
-    if (type === 'people') {
-      filterState = {
-        tags: [],
-        frameCount: 0,
-        peopleCount: value || 0,
-      };
-    } else if (type === 'frame') {
-      filterState = {
-        tags: [],
-        frameCount: value || 0,
-        peopleCount: 0,
-      };
-    } else {
-      filterState = {
-        tags: new Array(name),
-        frameCount: 0,
-        peopleCount: 0,
-      };
-    }
-    updateFilterState(filterState);
-  };
-
-  return (
-    <Link
-      href="/feed"
-      type="button"
-      className="text-subtitle-2 whitespace-nowrap rounded-30 bg-sub-white px-12 py-5 text-secondary"
-      scroll={false}
-      onClick={handleTag}
-    >
-      {name}
-    </Link>
   );
 }
