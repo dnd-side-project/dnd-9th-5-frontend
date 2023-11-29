@@ -8,14 +8,13 @@ const tabData = [
   { path: '/pick', title: '포즈픽' },
   { path: '/talk', title: '포즈톡' },
   { path: '/feed', title: '포즈피드' },
-  { path: '/bookmark', title: '북마크' },
 ];
 
 export default function Tab() {
   const path = usePathname();
 
   return (
-    <nav className="inset-x-0 mx-auto flex h-48 items-center gap-16 border-b-2 border-b-divider px-20">
+    <nav className="flex h-48 items-center gap-16 border-b-2 border-b-divider px-20">
       {tabData.map((item) => (
         <div key={item.path}>
           {item.path === path ? (

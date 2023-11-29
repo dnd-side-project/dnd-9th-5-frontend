@@ -4,11 +4,12 @@ import { Icon } from '@/components/Button/Icon';
 import LoginModal from './LoginModal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { Spacing } from '@/components/Spacing';
+import { ICON } from '@/constants/icon';
 
 function DefaultProfile() {
   return (
     <div className="rounded-full bg-white p-6">
-      <Icon icon="profile_default" />
+      <Icon icon={ICON.profile} />
     </div>
   );
 }
