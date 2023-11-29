@@ -1,7 +1,7 @@
 'use client';
 
-import { Icon } from '@/components/Button/Icon';
 import LoginModal from './LoginModal';
+import { Icon } from '@/components/Button/Icon';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { Spacing } from '@/components/Spacing';
 import { ICON } from '@/constants/icon';

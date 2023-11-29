@@ -1,11 +1,10 @@
-import { ICON } from '@/constants/icon';
-import { IconButton } from '../Button/Icon';
-import { PropsWithChildren } from 'react';
 import Link from 'next/link';
+import { PropsWithChildren } from 'react';
+
 import CloseButton from './CloseButton';
 import Tab from './Tab';
-import Source from '../../app/(Sub)/detail/[id]/components/Source';
-import { StrictPropsWithChildren } from '@/types';
+import { IconButton } from '../Button/Icon';
+import { ICON } from '@/constants/icon';
 
 interface Header {
   title?: string;

@@ -6,12 +6,12 @@ import { useInView } from 'react-intersection-observer';
 import FilterSheet from './components/FilterSheet';
 import FilterTab from './components/FilterTab';
 import { usePoseFeedQuery } from '@/apis';
+import EmptyCase from '@/components/Feed/EmptyCase';
+import PhotoList from '@/components/Feed/PhotoList';
+import { MainHeader } from '@/components/Header';
 import { Spacing } from '@/components/Spacing';
 import { URL } from '@/constants/url';
 import useFilterState from '@/hooks/useFilterState';
-import PhotoList from '@/components/Feed/PhotoList';
-import EmptyCase from '@/components/Feed/EmptyCase';
-import { MainHeader } from '@/components/Header';
 
 export default function FeedSection() {
   const { filterState } = useFilterState();

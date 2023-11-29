@@ -1,5 +1,5 @@
-import { ICON } from '@/constants/icon';
 import { Icon } from '../Button/Icon';
+import { ICON } from '@/constants/icon';
 
 interface Tag {
   text: string;

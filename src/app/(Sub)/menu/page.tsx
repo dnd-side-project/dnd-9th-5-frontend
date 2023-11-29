@@ -1,7 +1,7 @@
-import { MenuHeader } from '@/components/Header';
 import LoginSection from './components/LoginSection';
 import MakerSection from './components/MakerSection';
 import MenuListSection from './components/MenuListSection';
+import { MenuHeader } from '@/components/Header';
 
 export default function MenuPage() {
   return (

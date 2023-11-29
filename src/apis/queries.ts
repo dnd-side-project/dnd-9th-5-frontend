@@ -1,4 +1,9 @@
 import { useSuspenseInfiniteQuery, useSuspenseQuery } from '@suspensive/react-query';
+import {
+  type UseInfiniteQueryOptions,
+  type UseQueryOptions,
+  useQuery,
+} from '@tanstack/react-query';
 
 import {
   FilterTagsResponse,
@@ -14,12 +19,6 @@ import {
   getRegister,
 } from '.';
 import { FilterState } from '@/hooks/useFilterState';
-
-import {
-  useQuery,
-  type UseInfiniteQueryOptions,
-  type UseQueryOptions,
-} from '@tanstack/react-query';
 
 export const usePoseDetailQuery = (poseId: number) =>
   useQuery(['poseId', poseId], () => getPoseDetail(poseId));
