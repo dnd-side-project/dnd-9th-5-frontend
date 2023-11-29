@@ -16,12 +16,12 @@ export default function TagButton({ type = 'tag', value, name }: TagButtonProps)
       filterState = {
         tags: [],
         frameCount: 0,
-        peopleCount: value || 0,
+        peopleCount: value ? (value > 5 ? 5 : value) : 0,
       };
     } else if (type === 'frame') {
       filterState = {
         tags: [],
-        frameCount: value || 0,
+        frameCount: value ? (value > 8 ? 8 : value) : 0,
         peopleCount: 0,
       };
     } else {
