@@ -2,12 +2,13 @@ import Image from 'next/image';
 
 import { Modal } from '@/components/Modal';
 import { Spacing } from '@/components/Spacing';
+import { BASE_SITE_URL, KAKAO_SERVER_KEY } from '@/constants/env';
 
 interface LoginModalProps {
   onClose: () => void;
 }
 export default function LoginModal({ onClose }: LoginModalProps) {
-  const link = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_KAKAO_SERVER_KEY}&redirect_uri=${process.env.NEXT_PUBLIC_SITE_URL}/api/users/login/oauth/kakao&response_type=code`;
+  const link = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_SERVER_KEY}&redirect_uri=${BASE_SITE_URL}/api/users/login/oauth/kakao&response_type=code`;
 
   const handleLogin = () => {
     window.location.href = link;

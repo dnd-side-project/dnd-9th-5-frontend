@@ -4,7 +4,7 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import Script from 'next/script';
 import { useEffect } from 'react';
 
-import { GA_ID, HOTJAR } from '@/constants';
+import { GA_ID, HOTJAR } from '@/constants/env';
 import { pageview } from '@/utils/gtm';
 
 export default function Analytics() {
