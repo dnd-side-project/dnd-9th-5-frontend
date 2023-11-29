@@ -1,4 +1,4 @@
-import { Icon } from '@/components/Icon';
+import { Icon } from '@/components/Button/Icon';
 import Tag from '@/components/Selection/Tag';
 import useBottomSheet from '@/hooks/useBottomSheet';
 import useFilterState from '@/hooks/useFilterState';
@@ -20,7 +20,7 @@ export default function FilterTab() {
         onClick={openBottomSheet}
       >
         <h5 id="subtitle-2">필터</h5>
-        <Icon id={isFiltered ? 'carat_down' : 'carat_down_gray'} />
+        <Icon icon={isFiltered ? 'carat_down' : 'carat_down_gray'} />
       </button>
       {isFiltered && (
         <>

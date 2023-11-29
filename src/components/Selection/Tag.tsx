@@ -1,4 +1,4 @@
-import { Icon } from '../Icon';
+import { Icon } from '../Button/Icon';
 
 interface Tag {
   text: string;
@@ -17,7 +17,7 @@ export default function Tag({ selected, onClick, text }: Tag) {
       <div id="subtitle-2" className={selected ? 'text-main-violet-dark' : 'text-secondary'}>
         {text}
       </div>
-      {selected && <Icon id="close_gray" width={12} height={12} />}
+      {selected && <Icon icon="close_gray" size={12} />}
     </div>
   );
 }

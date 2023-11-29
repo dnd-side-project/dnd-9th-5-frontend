@@ -1,14 +1,14 @@
 'use client';
 
+import { Icon } from '@/components/Button/Icon';
 import LoginModal from './LoginModal';
-import { Icon } from '@/components/Icon';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { Spacing } from '@/components/Spacing';
 
 function DefaultProfile() {
   return (
     <div className="rounded-full bg-white p-6">
-      <Icon id="profile_default" />
+      <Icon icon="profile_default" />
     </div>
   );
 }

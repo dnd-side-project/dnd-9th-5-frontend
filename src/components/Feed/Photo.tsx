@@ -1,9 +1,9 @@
 'use client';
 import Link from 'next/link';
 
-import { Icon } from '@/components/Icon';
 import { PreparingModal } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
+import { Icon } from '../Button/Icon';
 
 interface Photo {
   imageKey?: string;
@@ -19,14 +19,14 @@ export default function Photo({ imageKey, source, id }: Photo) {
         {imageKey && (
           <>
             <img src={imageKey} alt={source || ''} className="rounded-8" />
-            <div className="absolute bottom-6 right-6 h-36 w-36 rounded-24 bg-white bg-opacity-30 p-6">
-              <Icon
-                id="bookmark"
-                onClick={(e) => {
-                  e.preventDefault();
-                  open(({ exit }) => <PreparingModal onClose={exit} />);
-                }}
-              />
+            <div
+              className="absolute bottom-6 right-6 h-36 w-36 rounded-24 bg-white bg-opacity-30 p-6"
+              onClick={(e) => {
+                e.preventDefault();
+                open(({ exit }) => <PreparingModal onClose={exit} />);
+              }}
+            >
+              <Icon icon="bookmark" />
             </div>
           </>
         )}

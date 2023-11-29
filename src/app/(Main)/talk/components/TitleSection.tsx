@@ -1,10 +1,9 @@
 'use client';
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { Tooltip } from 'react-tooltip';
 
-import { Icon } from '@/components/Icon';
 import { Spacing } from '@/components/Spacing';
+import { Icon } from '@/components/Button/Icon';
 
 export default function TitleSection() {
   const [isOpen, setIsOpen] = useState<boolean>(true);
@@ -30,7 +29,7 @@ export default function TitleSection() {
             }
           }}
         >
-          <Icon id="info" />
+          <Icon icon="info" />
         </a>
       </div>
       <Tooltip
@@ -53,7 +52,7 @@ export default function TitleSection() {
               <p>독특한 나만의 포즈가 완성된답니다.</p>
             </div>
             <Spacing size={8} direction="horizontal" />
-            <Icon width={20} hanging={20} id="close_white" />
+            <Icon size={20} icon="close_white" />
           </div>
         )}
         clickable
