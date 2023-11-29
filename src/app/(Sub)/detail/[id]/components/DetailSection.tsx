@@ -13,6 +13,7 @@ import useKakaoShare from '@/hooks/useKakaoShare';
 import { copy } from '@/utils/copy';
 import { BASE_SITE_URL } from '@/constants';
 import TagButton from './TagButton';
+import Source from './Source';
 
 interface DetailSectionProps {
   poseId: number;
@@ -25,7 +26,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
   const pathname = usePathname();
 
   if (!data) return null;
-  const { imageKey, tagAttributes, sourceUrl, peopleCount, frameCount } = data.poseInfo;
+  const { imageKey, tagAttributes, source, sourceUrl, peopleCount, frameCount } = data.poseInfo;
 
   const handleShareLink = async () => {
     await copy(BASE_SITE_URL + pathname);
@@ -35,14 +36,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
 
   return (
     <div className="overflow-y-auto pb-160">
-      {sourceUrl && (
-        <p
-          className="text-subtitle-2 flex h-26 justify-center text-tertiary"
-          onClick={() => window.open('https://' + sourceUrl)}
-        >
-          ↗ 이미지 출처
-        </p>
-      )}
+      <Source source={source} url={sourceUrl} />
       <div className="flex justify-center">
         <div className="relative">
           <Image

@@ -15,10 +15,14 @@ import {
 } from '.';
 import { FilterState } from '@/hooks/useFilterState';
 
-import type { UseInfiniteQueryOptions, UseQueryOptions } from '@tanstack/react-query';
+import {
+  useQuery,
+  type UseInfiniteQueryOptions,
+  type UseQueryOptions,
+} from '@tanstack/react-query';
 
 export const usePoseDetailQuery = (poseId: number) =>
-  useSuspenseQuery(['poseId', poseId], () => getPoseDetail(poseId));
+  useQuery(['poseId', poseId], () => getPoseDetail(poseId));
 
 export const usePosePickQuery = (
   peopleCount: number,
