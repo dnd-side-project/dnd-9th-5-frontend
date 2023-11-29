@@ -18,7 +18,15 @@ export default function SelectionTagList({ data, state, setState }: SelectionTag
     <div className="flex flex-wrap gap-8">
       {data.map((item) => {
         const selected = state.includes(item);
-        return <Tag key={item} selected={selected} onClick={() => clickTag(item)} text={item} />;
+        return (
+          <Tag
+            key={item}
+            violet={selected}
+            x={selected}
+            onClick={() => clickTag(item)}
+            text={item}
+          />
+        );
       })}
     </div>
   );
