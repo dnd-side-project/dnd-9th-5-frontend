@@ -4,6 +4,8 @@ import { PropsWithChildren } from 'react';
 import Link from 'next/link';
 import CloseButton from './CloseButton';
 import Tab from './Tab';
+import Source from '../../app/(Sub)/detail/[id]/components/Source';
+import { StrictPropsWithChildren } from '@/types';
 
 interface Header {
   title?: string;
@@ -36,6 +38,7 @@ function Header({ title = '', close = false, menu = false, children }: PropsWith
 }
 
 export const DetailHeader = () => <Header close={true} menu={true} />;
+
 export const BookmarkHeader = () => <Header close={true} title="북마크" />;
 export const MenuHeader = () => <Header close={true} title="메뉴" />;
 
