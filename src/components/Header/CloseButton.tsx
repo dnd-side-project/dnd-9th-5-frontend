@@ -1,8 +1,9 @@
 'use client';
 
-import { ICON } from '@/constants/icon';
-import { IconButton } from '../Button/Icon';
 import { useRouter } from 'next/navigation';
+
+import { IconButton } from '../Button/Icon';
+import { ICON } from '@/constants/icon';
 
 export default function CloseButton() {
   const router = useRouter();

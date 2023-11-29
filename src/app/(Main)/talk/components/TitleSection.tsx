@@ -2,8 +2,8 @@
 import { useEffect, useState } from 'react';
 import { Tooltip } from 'react-tooltip';
 
-import { Spacing } from '@/components/Spacing';
 import { Icon } from '@/components/Button/Icon';
+import { Spacing } from '@/components/Spacing';
 import { ICON } from '@/constants/icon';
 
 export default function TitleSection() {

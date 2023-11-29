@@ -1,9 +1,9 @@
 'use client';
 import Link from 'next/link';
 
+import { Icon } from '../Button/Icon';
 import { PreparingModal } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
-import { Icon } from '../Button/Icon';
 import { ICON } from '@/constants/icon';
 
 interface Photo {

@@ -1,6 +1,6 @@
-import { MainHeader } from '@/components/Header';
 import TalkSection from './components/TalkSection';
 import TitleSection from './components/TitleSection';
+import { MainHeader } from '@/components/Header';
 import { PageAnimation } from '@/components/PageAnimation';
 import { Spacing } from '@/components/Spacing';
 

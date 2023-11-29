@@ -18,17 +18,15 @@ export default function Tab() {
       {tabData.map((item) => (
         <div key={item.path}>
           {item.path === path ? (
-            <>
-              <div className="relative py-12">
-                <h5 id="subtitle-1" className="text-brand">
-                  {item.title}
-                </h5>
-                <motion.div
-                  layoutId="underline"
-                  className="absolute bottom-0 left-0 w-full border-b-2 border-main-violet"
-                />
-              </div>
-            </>
+            <div className="relative py-12">
+              <h5 id="subtitle-1" className="text-brand">
+                {item.title}
+              </h5>
+              <motion.div
+                layoutId="underline"
+                className="absolute bottom-0 left-0 w-full border-b-2 border-main-violet"
+              />
+            </div>
           ) : (
             <Link className="py-12 text-tertiary" href={item.path} as={item.path}>
               <h5>{item.title}</h5>

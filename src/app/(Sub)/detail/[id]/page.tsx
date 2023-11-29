@@ -4,11 +4,10 @@ import { Metadata, ResolvingMetadata } from 'next';
 import DetailSection from './components/DetailSection';
 import { getPoseDetail } from '@/apis';
 import { RejectedFallback } from '@/components/ErrorBoundary';
+import { DetailHeader } from '@/components/Header';
 import { Loading } from '@/components/Loading';
 import { PageAnimation } from '@/components/PageAnimation';
 import { HydrationProvider } from '@/components/Provider/HydrationProvider';
-import { Spacing } from '@/components/Spacing';
-import { DetailHeader } from '@/components/Header';
 
 export async function generateMetadata(
   { params }: { params: { id: string } },

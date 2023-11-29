@@ -13,8 +13,8 @@ export default function LoginSection({ code }: LoginSectionProps) {
   const router = useRouter();
   const { data } = useRegisterQuery(code);
   console.log(data);
-  const { token, email, nickname } = data;
-  const { accessToken, refreshToken, expiresIn } = token;
+  const { token } = data;
+  const { accessToken, refreshToken } = token;
   setCookie('accessToken', accessToken);
   setCookie('refreshToken', refreshToken);
   router.replace('/menu');
