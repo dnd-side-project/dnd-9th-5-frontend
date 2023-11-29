@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { PreparingModal } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { Icon } from '../Button/Icon';
+import { ICON } from '@/constants/icon';
 
 interface Photo {
   imageKey?: string;
@@ -26,7 +27,7 @@ export default function Photo({ imageKey, source, id }: Photo) {
                 open(({ exit }) => <PreparingModal onClose={exit} />);
               }}
             >
-              <Icon icon="bookmark" />
+              <Icon icon={ICON.bookmark.white.empty} />
             </div>
           </>
         )}

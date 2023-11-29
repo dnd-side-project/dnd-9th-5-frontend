@@ -11,6 +11,7 @@ import { URL } from '@/constants/url';
 import useFilterState from '@/hooks/useFilterState';
 import PhotoList from '@/components/Feed/PhotoList';
 import EmptyCase from '@/components/Feed/EmptyCase';
+import { MainHeader } from '@/components/Header';
 
 export default function FeedSection() {
   const { filterState } = useFilterState();
@@ -24,7 +25,9 @@ export default function FeedSection() {
 
   return (
     <>
-      <FilterTab />
+      <MainHeader>
+        <FilterTab />
+      </MainHeader>
       <Spacing size={50} />
       <div>
         {data.pages[0].filteredContents.empty ? (

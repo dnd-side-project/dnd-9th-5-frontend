@@ -4,6 +4,7 @@ import { Tooltip } from 'react-tooltip';
 
 import { Spacing } from '@/components/Spacing';
 import { Icon } from '@/components/Button/Icon';
+import { ICON } from '@/constants/icon';
 
 export default function TitleSection() {
   const [isOpen, setIsOpen] = useState<boolean>(true);
@@ -29,7 +30,7 @@ export default function TitleSection() {
             }
           }}
         >
-          <Icon icon="info" />
+          <Icon icon={ICON.info} />
         </a>
       </div>
       <Tooltip

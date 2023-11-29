@@ -7,7 +7,7 @@ import { RejectedFallback } from '@/components/ErrorBoundary';
 import { Loading } from '@/components/Loading';
 import { PageAnimation } from '@/components/PageAnimation';
 import { HydrationProvider } from '@/components/Provider/HydrationProvider';
-import SubHeader from '@/components/Header/SubHeader';
+import { DetailHeader } from '@/components/Header';
 
 export async function generateMetadata(
   { params }: { params: { id: string } },
@@ -35,7 +35,7 @@ export default function DetailPage({ params }: { params: { id: number } }) {
 
   return (
     <div>
-      <SubHeader />
+      <DetailHeader />
       <QueryAsyncBoundary
         rejectedFallback={RejectedFallback}
         pendingFallback={<Loading className="h-[calc(100dvh-400px)]" />}
