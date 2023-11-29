@@ -1,4 +1,4 @@
-import { Icon } from '../Icon';
+import { Icon } from './Icon';
 
 interface Button {
   icon?: string;
@@ -25,7 +25,7 @@ export default function PrimaryButton({ icon, text, onClick, type = 'fill', clas
       onClick={onClick}
       className={`flex cursor-pointer items-center justify-center gap-8 rounded-12 px-24 py-14 ${style[type]} ${className}`}
     >
-      {icon && <Icon id={icon} />}
+      {icon && <Icon icon={icon} />}
       <div id="subtitle-1">{text}</div>
     </div>
   );

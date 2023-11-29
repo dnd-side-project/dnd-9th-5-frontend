@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import Tab from './Tab';
 import { Header } from '@/components/Header';
-import { Icon } from '@/components/Icon';
+import { Icon } from '@/components/Button/Icon';
 
 export default function MainHeader() {
   return (
@@ -14,7 +14,7 @@ export default function MainHeader() {
       }
       rightNode={
         <Link href={'/menu'}>
-          <Icon id="menu" />
+          <Icon icon="menu" />
         </Link>
       }
       headerDownNode={<Tab />}

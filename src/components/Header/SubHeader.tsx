@@ -1,10 +1,10 @@
 'use client';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import IconButton from '@/components/Button/IconButton';
 import { Header } from '@/components/Header';
 import { Spacing } from '@/components/Spacing';
+import { ICON } from '@/constants/icon';
+import { IconButton } from '../Button/Icon';
 
 interface MenuHeader {
   title?: string;
@@ -16,14 +16,12 @@ export default function SubHeader({ title, rightNode }: MenuHeader) {
     <div className="flex items-center px-4">
       <div className="flex items-center">
         <IconButton
-          size="large"
+          icon={ICON.close.black}
           onClick={() => {
             if (document.referrer) router.back();
             else router.replace('/feed');
           }}
-        >
-          <Image src="/sprite/icons/close.svg" width={24} height={24} alt="close" />
-        </IconButton>
+        />
         <Spacing size={12} direction="horizontal" />
         {title && <h4>{title}</h4>}
       </div>

@@ -1,7 +1,7 @@
-import { Icon } from '../Icon';
 import { AnimatedPortal } from '@/components/Portal';
 import useBottomSheet from '@/hooks/useBottomSheet';
 import { StrictPropsWithChildren } from '@/types';
+import { Icon } from '../Button/Icon';
 
 export default function BottomSheet({ children }: StrictPropsWithChildren) {
   const { isBottomSheetOpen, closeBottomSheet } = useBottomSheet();
@@ -19,7 +19,7 @@ export default function BottomSheet({ children }: StrictPropsWithChildren) {
         <div className="fixed inset-x-0 bottom-0 z-30 mx-auto max-w-440 rounded-t-16 bg-white">
           <div className="flex justify-end px-8 pt-12">
             <button className="p-12" onClick={closeBottomSheet}>
-              <Icon id="close" fill="black" />
+              <Icon icon="close" />
             </button>
           </div>
           <div className="column flex flex-col gap-20 p-20">{children}</div>
