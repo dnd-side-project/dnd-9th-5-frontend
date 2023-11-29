@@ -36,7 +36,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
 
   return (
     <div className="overflow-y-auto pb-160">
-      <Source source={source} url={sourceUrl} />
+      {source && <Source source={source} url={sourceUrl} />}
       <div className="flex justify-center">
         <div className="relative">
           <Image
@@ -54,7 +54,6 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
         <TagButton type="frame" value={frameCount} name={`${frameCount}컷`} />
         {tagAttributes?.split(',').map((tag, index) => <TagButton key={index} name={tag} />)}
       </div>
-
       <BottomFixedDiv className="flex gap-8">
         <Button className="max-w-120 bg-sub-white" type="button" onClick={handleShareLink}>
           링크 공유

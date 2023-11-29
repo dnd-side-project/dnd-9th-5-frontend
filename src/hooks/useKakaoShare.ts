@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect } from 'react';
 
 import { KAKAO_KEY } from '@/constants';
