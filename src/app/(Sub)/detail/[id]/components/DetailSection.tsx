@@ -11,7 +11,7 @@ import BottomFixedDiv from '@/components/BottomFixedDiv';
 import { Button } from '@/components/Button';
 import ImageModal from '@/components/Modal/ImageModal.client';
 import { useOverlay } from '@/components/Overlay/useOverlay';
-import { BASE_SITE_URL } from '@/constants';
+import { BASE_SITE_URL } from '@/constants/env';
 import useKakaoShare from '@/hooks/useKakaoShare';
 import { copy } from '@/utils/copy';
 

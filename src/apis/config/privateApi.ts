@@ -1,6 +1,6 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 
-import { BASE_API_URL } from '@/constants';
+import { BASE_API_URL } from '@/constants/env';
 import { getCookie } from '@/utils/cookieController';
 
 import type { CustomInstance } from './type';
