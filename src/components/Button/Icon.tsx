@@ -6,7 +6,7 @@ interface IconProps {
 }
 
 export function Icon({ icon, size = 24 }: IconProps) {
-  return <Image src={`/icons/${icon}.svg`} width={size} height={size} alt="icon" />;
+  return <Image src={`/icons/${icon}.svg`} width={size} height={size} alt="icon" priority />;
 }
 
 interface IconButtonProps {
