@@ -5,7 +5,7 @@ interface IconProps {
   size?: number;
 }
 
-function Icon({ icon, size = 24 }: IconProps) {
+export function Icon({ icon, size = 24 }: IconProps) {
   return <Image src={`/icons/${icon}.svg`} width={size} height={size} alt="icon" />;
 }
 
@@ -14,12 +14,10 @@ interface IconButtonProps {
   onClick?: () => void;
 }
 
-function IconButton({ icon, onClick }: IconButtonProps) {
+export function IconButton({ icon, onClick }: IconButtonProps) {
   return (
     <button className={'flex h-48 w-48 items-center justify-center'} onClick={onClick}>
       <Icon icon={icon} />
     </button>
   );
 }
-
-export { Icon, IconButton };

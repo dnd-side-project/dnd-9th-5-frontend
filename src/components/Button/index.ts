@@ -1,3 +1,3 @@
-export { default as Button } from './Button';
-export { default as BottomFixedButton } from './BottomFixedButton';
+export { BottomFixedDiv, ButtonList, BottomDiv } from './BottomFixedDiv';
+export { Icon, IconButton } from './Icon';
 export { default as PrimaryButton } from './PrimaryButton';

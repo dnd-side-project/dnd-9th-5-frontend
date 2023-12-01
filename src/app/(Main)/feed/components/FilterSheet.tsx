@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { FilterTagsResponse, useFilterTagQuery } from '@/apis';
-import { PrimaryButton } from '@/components/Button';
+import { BottomDiv, PrimaryButton } from '@/components/Button';
 import BottomSheet from '@/components/Modal/BottomSheet';
 import { SelectionBasic, SelectionTagList } from '@/components/Selection';
 import { frameCountList, peopleCountList } from '@/constants/filterList';
@@ -45,34 +45,36 @@ export default function FilterSheet() {
 
   return (
     <BottomSheet>
-      <section>
-        <div id="subtitle-2" className="mb-8 text-secondary">
-          인원 수
-        </div>
-        <SelectionBasic data={peopleCountList} state={countState} setState={setCountState} />
-      </section>
-      <section>
-        <div id="subtitle-2" className="mb-8 text-secondary">
-          프레임 수
-        </div>
-        <SelectionBasic data={frameCountList} state={frameState} setState={setFrameState} />
-      </section>
-      <section>
-        <div id="subtitle-2" className="mb-8 text-secondary">
-          태그
-        </div>
-        {tagListData && (
-          <SelectionTagList
-            data={refineTagListData(tagListData)}
-            state={tagState}
-            setState={setTagState}
-          />
-        )}
-      </section>
-      <div className="flex gap-8 py-20 [&>*]:flex-1">
+      <div className="flex flex-col gap-20 px-20 pb-32">
+        <section>
+          <div id="subtitle-2" className="mb-8 text-secondary">
+            인원 수
+          </div>
+          <SelectionBasic data={peopleCountList} state={countState} setState={setCountState} />
+        </section>
+        <section>
+          <div id="subtitle-2" className="mb-8 text-secondary">
+            프레임 수
+          </div>
+          <SelectionBasic data={frameCountList} state={frameState} setState={setFrameState} />
+        </section>
+        <section>
+          <div id="subtitle-2" className="mb-8 text-secondary">
+            태그
+          </div>
+          {tagListData && (
+            <SelectionTagList
+              data={refineTagListData(tagListData)}
+              state={tagState}
+              setState={setTagState}
+            />
+          )}
+        </section>
+      </div>
+      <BottomDiv>
         <PrimaryButton type="outline" icon="restart" text="필터 초기화" onClick={resetFilter} />
         <PrimaryButton type="fill" text="포즈보기" onClick={decideFilter} />
-      </div>
+      </BottomDiv>
     </BottomSheet>
   );
 }

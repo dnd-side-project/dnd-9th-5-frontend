@@ -7,8 +7,7 @@ import LinkShareModal from './LinkShareModal';
 import Source from './Source';
 import TagButton from './TagButton';
 import { usePoseDetailQuery } from '@/apis';
-import BottomFixedDiv from '@/components/BottomFixedDiv';
-import { Button } from '@/components/Button';
+import { BottomFixedDiv, PrimaryButton } from '@/components/Button';
 import ImageModal from '@/components/Modal/ImageModal.client';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { BASE_SITE_URL } from '@/constants/env';
@@ -54,16 +53,14 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
         <TagButton type="frame" value={frameCount} name={`${frameCount}컷`} />
         {tagAttributes?.split(',').map((tag, index) => <TagButton key={index} name={tag} />)}
       </div>
-      <BottomFixedDiv className="flex gap-8">
-        <Button className="max-w-120 bg-sub-white" type="button" onClick={handleShareLink}>
-          링크 공유
-        </Button>
-        <Button
-          className="grow bg-main-violet text-white"
-          onClick={() => shareKakao(BASE_SITE_URL + pathname)}
-        >
-          카카오 공유
-        </Button>
+      <BottomFixedDiv>
+        <PrimaryButton
+          text="링크 공유"
+          onClick={handleShareLink}
+          type="secondary"
+          className="border border-border-default"
+        />
+        <PrimaryButton text="카카오 공유" onClick={() => shareKakao(BASE_SITE_URL + pathname)} />
       </BottomFixedDiv>
     </div>
   );

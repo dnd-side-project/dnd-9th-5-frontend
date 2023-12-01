@@ -1,7 +1,7 @@
 'use client';
 
-import BottomFixedDiv from '@/components/BottomFixedDiv';
-import { IconButton } from '@/components/Button/Icon';
+import { IconButton } from '@/components/Button';
+import { BottomFixedDiv } from '@/components/Button/BottomFixedDiv';
 import { Spacing } from '@/components/Spacing';
 
 export default function MakerSection() {

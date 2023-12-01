@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-import { IconButton } from '../Button/Icon';
+import { IconButton } from '../Button';
 import { ICON } from '@/constants/icon';
 
 export default function CloseButton() {
