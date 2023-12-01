@@ -21,12 +21,12 @@ const style: Style = {
 
 export default function PrimaryButton({ icon, text, onClick, type = 'fill', className }: Button) {
   return (
-    <div
+    <button
       onClick={onClick}
-      className={`flex cursor-pointer items-center justify-center gap-8 rounded-12 px-24 py-14 ${style[type]} ${className}`}
+      className={`flex h-60 items-center justify-center gap-8 rounded-12 px-24 transition-all hover:scale-105 active:scale-95 ${style[type]} ${className}`}
     >
       {icon && <Icon icon={icon} />}
       <div id="subtitle-1">{text}</div>
-    </div>
+    </button>
   );
 }

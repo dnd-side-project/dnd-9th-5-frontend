@@ -3,7 +3,7 @@ import { PropsWithChildren } from 'react';
 
 import CloseButton from './CloseButton';
 import Tab from './Tab';
-import { IconButton } from '../Button/Icon';
+import { IconButton } from '../Button';
 import { ICON } from '@/constants/icon';
 
 interface Header {
