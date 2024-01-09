@@ -79,16 +79,15 @@ export interface PoseTalkResponse {
   };
 }
 
-export interface Token {
-  accessToken: string;
-  refreshToken: string;
-  grantType: string;
-  expiresIn: number;
-}
-
+// 로그인
 export interface RegisterResponse {
   id: number;
   nickname: string;
   email: string;
-  token: Token;
+  token: {
+    accessToken: string;
+    refreshToken: string;
+    grantType: string;
+    expiresIn: number;
+  };
 }

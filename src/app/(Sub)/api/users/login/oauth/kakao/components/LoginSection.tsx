@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 
 import { useRegisterQuery } from '@/apis';
 import { Loading } from '@/components/Loading';
+import useUserState from '@/context/userState';
 import { setCookie } from '@/utils/cookieController';
 
 interface LoginSectionProps {
@@ -13,6 +14,11 @@ export default function LoginSection({ code }: LoginSectionProps) {
   const router = useRouter();
   const { data } = useRegisterQuery(code);
   console.log(data);
+
+  const { setLoginState, setUserState } = useUserState();
+  setLoginState(true);
+  setUserState(data);
+
   const { token } = data;
   const { accessToken, refreshToken } = token;
   setCookie('accessToken', accessToken);
