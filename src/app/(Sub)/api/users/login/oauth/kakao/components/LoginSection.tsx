@@ -1,10 +1,11 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { useSetRecoilState } from 'recoil';
 
 import { useRegisterQuery } from '@/apis';
 import { Loading } from '@/components/Loading';
-import useUserState from '@/context/userState';
+import { isLoginAtom, userAtom } from '@/context/userState';
 import { setCookie } from '@/utils/cookieController';
 
 interface LoginSectionProps {
@@ -15,7 +16,8 @@ export default function LoginSection({ code }: LoginSectionProps) {
   const { data } = useRegisterQuery(code);
   console.log(data);
 
-  const { setLoginState, setUserState } = useUserState();
+  const setLoginState = useSetRecoilState(isLoginAtom);
+  const setUserState = useSetRecoilState(userAtom);
   setLoginState(true);
   setUserState(data);
 
