@@ -19,7 +19,7 @@ export default function LoginSection() {
 
   return (
     <section className="py-12">
-      <div className="bg-violet flex items-center rounded-16 bg-main-violet-bright px-20 py-24">
+      <div className="bg-violet flex items-center rounded-16 bg-main-violet-base px-20 py-24">
         <DefaultProfile />
         <Spacing size={16} direction="horizontal" />
         <div id="subtitle-1" onClick={() => open(() => <LoginModal onClose={exit} />)}>
