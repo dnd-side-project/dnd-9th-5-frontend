@@ -1,6 +1,4 @@
 import './globals.css';
-import '../../styles/font.css';
-import '../../styles/typography.css';
 
 import { Suspense } from 'react';
 
