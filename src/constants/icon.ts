@@ -23,6 +23,8 @@ export const ICON = {
   social: {
     github: 'github',
     instagram: 'instagram',
+    kakao: 'kakao',
+    apple: 'apple',
   },
   help: 'help',
   info: 'info',

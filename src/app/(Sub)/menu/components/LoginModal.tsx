@@ -1,5 +1,4 @@
-import Image from 'next/image';
-
+import { AppleButton, KakaoButton } from './LoginButton';
 import { Modal } from '@/components/Modal';
 import { Spacing } from '@/components/Spacing';
 import { BASE_SITE_URL, KAKAO_SERVER_KEY } from '@/constants/env';
@@ -7,6 +6,7 @@ import { BASE_SITE_URL, KAKAO_SERVER_KEY } from '@/constants/env';
 interface LoginModalProps {
   onClose: () => void;
 }
+
 export default function LoginModal({ onClose }: LoginModalProps) {
   const link = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_SERVER_KEY}&redirect_uri=${BASE_SITE_URL}/api/users/login/oauth/kakao&response_type=code`;
 
@@ -16,24 +16,19 @@ export default function LoginModal({ onClose }: LoginModalProps) {
 
   return (
     <Modal onCloseOutside={onClose}>
-      <Spacing size={32} />
-      <h4>간편 로그인</h4>
-      <Spacing size={8} />
-      <p>
-        로그인해야 북마크를 쓸 수 있어요.
-        <br />
-        카카오로 3초만에 가입할 수 있어요!
-      </p>
-      <Spacing size={16} />
-      <Image
-        src="/images/kakao-login.png"
-        width={268}
-        height={54}
-        alt="kakao-login"
-        className="cursor-pointer"
-        onClick={handleLogin}
-      />
-      <Spacing size={32} />
+      <div className="py-32">
+        <h4>간편 로그인</h4>
+        <Spacing size={8} />
+        <p>
+          로그인하면 북마크도 쓸 수 있어요!
+          <br />
+          간편 로그인으로 3초만에 가입해요.
+        </p>
+      </div>
+      <div className="flex w-full flex-col gap-8 pb-16">
+        <KakaoButton onClick={handleLogin} />
+        <AppleButton onClick={() => alert('앱스토어 준비중입니다.')} />
+      </div>
     </Modal>
   );
 }
