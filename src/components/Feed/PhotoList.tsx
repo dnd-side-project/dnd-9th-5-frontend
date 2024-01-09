@@ -1,5 +1,5 @@
-import Photo from './Photo';
 import { PoseInfo } from '@/apis';
+import Photo from './Photo';
 
 interface PhotoList {
   data?: Array<{ poseInfo: PoseInfo }>;

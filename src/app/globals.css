@@ -26,6 +26,26 @@
   }
 }
 
+/* Font */
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 700;
+  src: url('/fonts/Pretendard-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 500;
+  src: url('/fonts/Pretendard-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 400;
+  src: url('/fonts/Pretendard-Regular.woff2') format('woff2');
+}
+
+/* Typography */
 h1 {
   font-weight: 700;
   font-size: 3rem;

@@ -1,22 +1,27 @@
 import { useSuspenseInfiniteQuery, useSuspenseQuery } from '@suspensive/react-query';
+import {
+  type UseInfiniteQueryOptions,
+  type UseQueryOptions,
+  useQuery,
+} from '@tanstack/react-query';
 
 import {
   FilterTagsResponse,
   PoseFeedResponse,
   PosePickResponse,
   PoseTalkResponse,
+  RegisterResponse,
   getFilterTag,
   getPoseDetail,
   getPoseFeed,
   getPosePick,
   getPoseTalk,
+  getRegister,
 } from '.';
 import { FilterState } from '@/hooks/useFilterState';
 
-import type { UseInfiniteQueryOptions, UseQueryOptions } from '@tanstack/react-query';
-
 export const usePoseDetailQuery = (poseId: number) =>
-  useSuspenseQuery(['poseId', poseId], () => getPoseDetail(poseId));
+  useQuery(['poseId', poseId], () => getPoseDetail(poseId));
 
 export const usePosePickQuery = (
   peopleCount: number,
@@ -50,3 +55,6 @@ export const usePoseFeedQuery = (
 
 export const useFilterTagQuery = (options?: UseQueryOptions<FilterTagsResponse>) =>
   useSuspenseQuery<FilterTagsResponse>(['filterTag'], getFilterTag, { ...options });
+
+export const useRegisterQuery = (code: string) =>
+  useSuspenseQuery<RegisterResponse>(['register'], () => getRegister(code), {});

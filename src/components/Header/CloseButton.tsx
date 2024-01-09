@@ -1,16 +1,20 @@
 'use client';
 
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import IconButton from '../Button/IconButton';
-import { Icon } from '../Icon';
+import { IconButton } from '../Button';
+import { ICON } from '@/constants/icon';
 
 export default function CloseButton() {
   const router = useRouter();
+
   return (
-    <IconButton size="large" onClick={() => router.back()}>
-      <Icon id="close" />
-    </IconButton>
+    <IconButton
+      icon={ICON.close.black}
+      onClick={() => {
+        if (document.referrer) router.back();
+        else router.replace('/feed');
+      }}
+    />
   );
 }

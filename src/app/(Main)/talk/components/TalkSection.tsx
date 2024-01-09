@@ -7,7 +7,7 @@ import Lottie from 'react-lottie-player';
 import lottieTalkAfterClick from '#/lotties/talk_after_click.json';
 import lottieTalkBeforeClick from '#/lotties/talk_before_click.json';
 import { usePoseTalkQuery } from '@/apis';
-import { BottomFixedButton } from '@/components/Button';
+import { BottomFixedDiv, PrimaryButton } from '@/components/Button';
 import { Spacing } from '@/components/Spacing';
 import useLoading from '@/hooks/useLoading';
 
@@ -47,9 +47,7 @@ export default function TalkSection() {
   return (
     <section className="flex flex-col items-center">
       <h1 className="h-100 max-w-310 items-center break-keep text-center">{talkWord}</h1>
-
       <Spacing size={10} />
-
       <div className="flex h-300 justify-center">
         {isFirstLoading && <Lottie loop animationData={lottieTalkBeforeClick} play />}
         {!isFirstLoading && isLoading && (
@@ -59,14 +57,9 @@ export default function TalkSection() {
           <Lottie loop animationData={lottieTalkAfterClick} play speed={0} className="w-500" />
         )}
       </div>
-
-      <BottomFixedButton
-        className="bg-main-violet text-white"
-        onClick={handleTalkClick}
-        disabled={isLoading}
-      >
-        제시어 뽑기
-      </BottomFixedButton>
+      <BottomFixedDiv>
+        <PrimaryButton onClick={handleTalkClick} text="제시어 뽑기" />
+      </BottomFixedDiv>
     </section>
   );
 }

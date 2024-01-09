@@ -7,7 +7,7 @@ import Lottie from 'react-lottie-player';
 
 import lottiePick from '#/lotties/pick.json';
 import { usePosePickQuery } from '@/apis';
-import { BottomFixedButton } from '@/components/Button';
+import { BottomFixedDiv, PrimaryButton } from '@/components/Button';
 import { ImageModal } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { SelectionBasic } from '@/components/Selection';
@@ -19,7 +19,6 @@ export default function PickSection() {
   const [countState, setCountState] = useState(1);
   const { open } = useOverlay();
   const { isLoading, startLoading } = useLoading({ loadingDelay: 1000 });
-  const [isButtonAcitve, setIsButtonActive] = useState(false);
   const [image, setImage] = useState<string>('');
   const { refetch } = usePosePickQuery(countState, {
     onSuccess: (data) => {
@@ -32,14 +31,6 @@ export default function PickSection() {
     refetch();
   };
 
-  const handleChangeState = () => {
-    setIsButtonActive(true);
-    const a = setTimeout(() => {
-      setIsButtonActive(false);
-    }, 1000);
-    return () => clearTimeout(a);
-  };
-
   return (
     <>
       <div className="py-16">
@@ -47,7 +38,6 @@ export default function PickSection() {
           data={peopleCountList.slice(1)}
           state={countState}
           setState={setCountState}
-          onChangeState={handleChangeState}
         />
       </div>
       <div className="relative flex flex-1">
@@ -68,14 +58,12 @@ export default function PickSection() {
         </div>
       </div>
       <Spacing size={100} />
-      <BottomFixedButton
-        className="bg-main-violet text-white"
-        onClick={handlePickClick}
-        disabled={isLoading}
-        isActive={isButtonAcitve}
-      >
-        {!!image ? `${countState}인 포즈 뽑기` : '인원수 선택하고 포즈 뽑기'}
-      </BottomFixedButton>
+      <BottomFixedDiv>
+        <PrimaryButton
+          text={!!image ? `${countState}인 포즈 뽑기` : '인원수 선택하고 포즈 뽑기'}
+          onClick={handlePickClick}
+        />
+      </BottomFixedDiv>
     </>
   );
 }

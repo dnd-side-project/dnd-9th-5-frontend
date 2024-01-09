@@ -1,20 +1,16 @@
 import './globals.css';
-import '../../styles/font.css';
-import '../../styles/typography.css';
 
 import { Suspense } from 'react';
 
 import { Analytics } from '@/components/Analytics';
 import { OverlayProvider } from '@/components/Overlay/OverlayProvider';
-import { BASE_SITE_URL } from '@/constants';
+import { META_STRING } from '@/constants/meta';
 import QueryProvider from '@/provider/QueryProvider';
 import RecoilContextProvider from '@/provider/RecoilContextProvider';
 
 import type { Metadata } from 'next';
-import { META_STRING } from '@/constants/meta';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(BASE_SITE_URL),
   title: {
     default: `${META_STRING.title}`,
     template: `${META_STRING.title} | %s`,
@@ -25,7 +21,7 @@ export const metadata: Metadata = {
   },
   other: {
     'naver-site-verification': 'eb9f471cae26de34e6bc71849e73f04cb8b00d83',
-    'last-updated': '2023-11-06',
+    'last-updated': '2023-11-08',
   },
   openGraph: {
     title: META_STRING.title,

@@ -3,11 +3,12 @@
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-import EmptyCase from './components/EmptyCase';
 import FilterSheet from './components/FilterSheet';
 import FilterTab from './components/FilterTab';
-import PhotoList from './components/PhotoList';
 import { usePoseFeedQuery } from '@/apis';
+import EmptyCase from '@/components/Feed/EmptyCase';
+import PhotoList from '@/components/Feed/PhotoList';
+import { MainHeader } from '@/components/Header';
 import { Spacing } from '@/components/Spacing';
 import { URL } from '@/constants/url';
 import useFilterState from '@/hooks/useFilterState';
@@ -24,7 +25,9 @@ export default function FeedSection() {
 
   return (
     <>
-      <FilterTab />
+      <MainHeader>
+        <FilterTab />
+      </MainHeader>
       <Spacing size={50} />
       <div>
         {data.pages[0].filteredContents.empty ? (

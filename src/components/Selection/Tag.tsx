@@ -1,23 +1,25 @@
-import { Icon } from '../Icon';
+import { Icon } from '../Button/Icon';
+import { ICON } from '@/constants/icon';
 
 interface Tag {
   text: string;
-  selected?: boolean;
+  x?: boolean;
+  violet?: boolean;
   onClick?: () => void;
 }
 
-export default function Tag({ selected, onClick, text }: Tag) {
+export default function Tag({ violet = false, x = false, onClick, text }: Tag) {
   return (
     <div
       className={`flex min-w-fit cursor-pointer items-center gap-6 rounded-30 px-12 py-5 ${
-        selected ? 'bg-main-violet-bright' : 'bg-sub-white'
+        violet ? 'bg-main-violet-bright' : 'bg-sub-white'
       }`}
       onClick={onClick}
     >
-      <div id="subtitle-2" className={selected ? 'text-main-violet-dark' : 'text-secondary'}>
+      <div id="subtitle-2" className={violet ? 'text-main-violet-dark' : 'text-secondary'}>
         {text}
       </div>
-      {selected && <Icon id="close_gray" width={12} height={12} />}
+      {x && <Icon icon={ICON.close.gray} size={12} />}
     </div>
   );
 }
