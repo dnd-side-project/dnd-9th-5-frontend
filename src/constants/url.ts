@@ -1,6 +1,7 @@
 export const URL = {
   site: 'https://www.posepicker.site',
   inquiry: 'https://litt.ly/posepicker',
+  instagram: 'https://www.instagram.com/posepicker',
   menu: {
     notice: 'https://shineshine.notion.site/fde248040bed45f68fbfa3004e2c4856',
     faq: 'https://shineshine.notion.site/cc71decc2e534ae6abb195bb10a501c0',
