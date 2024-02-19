@@ -8,7 +8,7 @@ interface LoginModalProps {
 }
 
 export default function LoginModal({ onClose }: LoginModalProps) {
-  const link = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_SERVER_KEY}&redirect_uri=${BASE_SITE_URL}/api/users/login/oauth/kakao&response_type=code`;
+  const link = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_SERVER_KEY}&redirect_uri=${BASE_SITE_URL}/auth&response_type=code`;
 
   const handleLogin = () => {
     window.location.href = link;

@@ -56,5 +56,5 @@ export const usePoseFeedQuery = (
 export const useFilterTagQuery = (options?: UseQueryOptions<FilterTagsResponse>) =>
   useSuspenseQuery<FilterTagsResponse>(['filterTag'], getFilterTag, { ...options });
 
-export const useRegisterQuery = (code: string) =>
-  useSuspenseQuery<RegisterResponse>(['register'], () => getRegister(code), {});
+// export const useRegisterQuery = (code: string) =>
+//   useQuery<RegisterResponse>(['register'], () => getRegister(code));
