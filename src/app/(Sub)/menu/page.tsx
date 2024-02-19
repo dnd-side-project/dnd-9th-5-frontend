@@ -1,4 +1,3 @@
-import LoginSection from './components/LoginSection';
 import MenuListSection from './components/MenuListSection';
 import { MenuHeader } from '@/components/Header';
 
@@ -6,7 +5,6 @@ export default function MenuPage() {
   return (
     <div className="px-20">
       <MenuHeader />
-      <LoginSection />
       <MenuListSection />
     </div>
   );
