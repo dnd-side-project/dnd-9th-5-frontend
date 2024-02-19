@@ -6,20 +6,22 @@
 // import { Loading } from '@/components/Loading';
 // import { HydrationProvider } from '@/components/Provider/HydrationProvider';
 
-// interface PageProps {
-//   searchParams: {
-//     code: string;
-//   };
-// }
+interface PageProps {
+  searchParams: {
+    code: string;
+  };
+}
 
-// export default function Page({ searchParams }: PageProps) {
-//   const { code } = searchParams;
+export default function Page({ searchParams }: PageProps) {
+  const { code } = searchParams;
+  console.log('🚀 ~ Page ~ code:', code);
 
-//   return (
-//     <QueryAsyncBoundary rejectedFallback={RejectedFallback} pendingFallback={<Loading />}>
-//       <HydrationProvider queryKey={['register']} queryFn={() => getRegister(code)}>
-//         <LoginSection code={code} />
-//       </HydrationProvider>
-//     </QueryAsyncBoundary>
-//   );
-// }
+  return (
+    <>asdf</>
+    // <QueryAsyncBoundary rejectedFallback={RejectedFallback} pendingFallback={<Loading />}>
+    //   <HydrationProvider queryKey={['register']} queryFn={() => getRegister(code)}>
+    //     <LoginSection code={code} />
+    //   </HydrationProvider>
+    // </QueryAsyncBoundary>
+  );
+}
