@@ -16,11 +16,15 @@ interface TabItemI {
 const TabItem = ({ title, path, current }: TabItemI) =>
   current ? (
     <Link href={path} className="flex flex-1 items-center justify-center rounded-8 bg-white">
-      <span className="text-main-violet">{title}</span>
+      <div id="subtitle-1" className="text-main-violet">
+        {title}
+      </div>
     </Link>
   ) : (
     <Link href={path} className="flex flex-1 items-center justify-center rounded-8">
-      <span className="text-tertiary">{title}</span>
+      <div id="subtitle-1" className="text-tertiary">
+        {title}
+      </div>
     </Link>
   );
 

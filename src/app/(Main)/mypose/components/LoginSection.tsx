@@ -32,7 +32,9 @@ export default function LoginSection() {
         <DefaultProfile />
         <div className="text-start">
           <div id="subtitle-1">회원가입 / 로그인</div>
-          <div id="subtitle-2">간편 로그인으로 3초만에 가입할 수 있어요.</div>
+          <div id="subtitle-3" className="text-tertiary">
+            간편 로그인으로 3초만에 가입할 수 있어요.
+          </div>
         </div>
       </button>
     </section>
