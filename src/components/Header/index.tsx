@@ -20,14 +20,9 @@ function Header({ title = '', close = false, menu = false, children }: PropsWith
         <h4 className="flex flex-1">{title}</h4>
         <div className="flex">
           {menu && (
-            <>
-              <Link href="/bookmark">
-                <IconButton icon={ICON.bookmark.black} />
-              </Link>
-              <Link href="/menu">
-                <IconButton icon={ICON.menu} />
-              </Link>
-            </>
+            <Link href="/menu">
+              <IconButton icon={ICON.menu} />
+            </Link>
           )}
         </div>
       </div>

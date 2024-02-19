@@ -4,7 +4,6 @@ export const ICON = {
   },
   bookmark: {
     white: { fill: 'bookmark_fill', empty: 'bookmark' },
-    black: 'bookmark_black_fill',
   },
   carat: {
     down: {
