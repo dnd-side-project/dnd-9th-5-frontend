@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 import LoginSection from './components/LoginSection';
 import MyposeTab from './components/MyposeTab';
 import { StrictPropsWithChildren } from '@/types';

@@ -1,11 +1,13 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 import FilterSheet from './components/FilterSheet';
 import FilterTab from './components/FilterTab';
 import { usePoseFeedQuery } from '@/apis';
+import { PrimaryButton } from '@/components/Button';
 import EmptyCase from '@/components/Feed/EmptyCase';
 import PhotoList from '@/components/Feed/PhotoList';
 import { MainHeader } from '@/components/Header';
@@ -34,9 +36,11 @@ export default function FeedSection() {
           <EmptyCase
             title={'신비한 포즈를 찾으시는군요!'}
             text={'찾고 싶은 포즈를 저희에게 알려주세요.'}
-            button={'문의사항 남기기'}
-            path={URL.inquiry}
-          />
+          >
+            <Link href={URL.inquiry}>
+              <PrimaryButton text={'문의사항 남기기'} />
+            </Link>
+          </EmptyCase>
         ) : (
           <div className="columns-2	py-16">
             {data.pages.map((page) => (
