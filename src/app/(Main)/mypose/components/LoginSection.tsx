@@ -25,7 +25,10 @@ export default function LoginSection() {
 
   return (
     <section className="py-24">
-      <button className="flex gap-16" onClick={() => open(() => <LoginModal onClose={exit} />)}>
+      <button
+        className="flex items-center gap-16"
+        onClick={() => open(() => <LoginModal onClose={exit} />)}
+      >
         <DefaultProfile />
         <div className="text-start">
           <div id="subtitle-1">회원가입 / 로그인</div>
