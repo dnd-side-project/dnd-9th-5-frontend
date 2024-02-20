@@ -11,9 +11,9 @@ interface PageProps {
 }
 
 export default function Page({ searchParams }: PageProps) {
-  //   useEffect(() => {
-  //     getRegister(searchParams.code);
-  //   });
+  useEffect(() => {
+    getRegister(searchParams.code);
+  });
 
   return <>Loading...</>;
 }
