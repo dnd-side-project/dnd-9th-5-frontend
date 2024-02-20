@@ -12,6 +12,7 @@ interface PageProps {
 
 export default function Page({ searchParams }: PageProps) {
   useEffect(() => {
+    console.log(searchParams.code);
     getRegister(searchParams.code);
   });
 
