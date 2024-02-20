@@ -7,6 +7,7 @@ import {
   RegisterResponse,
 } from '.';
 import publicApi from './config/publicApi';
+import { KAKAO_REDIRECT_URI } from '@/constants/env';
 
 export const getPosePick = (peopleCount: number) =>
   publicApi.get<PosePickResponse>(`/pose/pick/${peopleCount}`);
@@ -34,4 +35,6 @@ export const getPoseFeed = async (
 export const getFilterTag = () => publicApi.get<FilterTagsResponse>('/pose/tags');
 
 export const getRegister = (code: string) =>
-  publicApi.get<RegisterResponse>(`/users/login/oauth/kakao?code=${code}`);
+  publicApi.get<RegisterResponse>(
+    `/users/login/oauth/kakao?code=${code}&redirectURI=${KAKAO_REDIRECT_URI}`
+  );

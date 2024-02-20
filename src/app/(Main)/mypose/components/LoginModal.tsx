@@ -1,17 +1,15 @@
 import { AppleButton, KakaoButton } from './LoginButton';
 import { Modal } from '@/components/Modal';
 import { Spacing } from '@/components/Spacing';
-import { BASE_SITE_URL, KAKAO_SERVER_KEY } from '@/constants/env';
+import { KAKAO_AUTHORIZE } from '@/constants/env';
 
 interface LoginModalProps {
   onClose: () => void;
 }
 
 export default function LoginModal({ onClose }: LoginModalProps) {
-  const link = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_SERVER_KEY}&redirect_uri=${BASE_SITE_URL}/api/users/login/oauth/kakao&response_type=code`;
-
   const handleLogin = () => {
-    window.location.href = link;
+    window.location.href = KAKAO_AUTHORIZE;
   };
 
   return (
