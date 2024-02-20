@@ -1,3 +1,5 @@
+'use client';
+
 import MenuListSection from './components/MenuListSection';
 import LoginSection from '@/app/(Main)/mypose/components/LoginSection';
 import { MenuHeader } from '@/components/Header';

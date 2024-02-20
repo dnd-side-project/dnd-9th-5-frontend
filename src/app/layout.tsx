@@ -6,7 +6,7 @@ import { Analytics } from '@/components/Analytics';
 import { OverlayProvider } from '@/components/Overlay/OverlayProvider';
 import { META_STRING } from '@/constants/meta';
 import QueryProvider from '@/provider/QueryProvider';
-import RecoilContextProvider from '@/provider/RecoilContextProvider';
+import RecoilProvider from '@/provider/RecoilProvider';
 
 import type { Metadata } from 'next';
 
@@ -55,12 +55,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Suspense>
             <Analytics />
           </Suspense>
-          <RecoilContextProvider>
-            <QueryProvider>
+          <QueryProvider>
+            <RecoilProvider>
               <OverlayProvider>{children}</OverlayProvider>
-            </QueryProvider>
-            <div id="portal" />
-          </RecoilContextProvider>
+            </RecoilProvider>
+          </QueryProvider>
+          <div id="portal" />
         </div>
       </body>
     </html>

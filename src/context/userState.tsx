@@ -1,5 +1,17 @@
-import { atom } from 'recoil';
+import { atom, useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { RegisterResponse } from '@/apis';
 
-export const userAtom = atom<RegisterResponse>({ key: 'user' });
+const userAtom = atom<RegisterResponse>({ key: 'user', default: undefined });
+
+export default function useUserState() {
+  const getUserAtom = useRecoilValue(userAtom);
+  const setUserAtom = useSetRecoilState(userAtom);
+
+  const isLogin = getUserAtom === undefined;
+  const userData = getUserAtom;
+  const accessToken = () => getUserAtom.token.accessToken;
+  const setUser = (data: RegisterResponse) => setUserAtom(data);
+
+  return { isLogin, userData, accessToken, setUser };
+}
