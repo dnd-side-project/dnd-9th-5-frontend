@@ -1,19 +1,18 @@
 'use client';
 
+import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 
 import { getRegister } from '@/apis';
 
-interface PageProps {
-  searchParams: {
-    code: string;
-  };
-}
+export default function Page() {
+  const code = useSearchParams().get('code');
 
-export default function Page({ searchParams }: PageProps) {
   useEffect(() => {
-    console.log(searchParams.code);
-    getRegister(searchParams.code);
+    if (code) {
+      console.log(code);
+      getRegister(code);
+    }
   });
 
   return <>Loading...</>;
