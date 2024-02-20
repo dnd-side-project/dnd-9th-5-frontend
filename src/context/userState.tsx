@@ -1,8 +1,15 @@
 import { atom, useRecoilValue, useSetRecoilState } from 'recoil';
+import { recoilPersist } from 'recoil-persist';
 
 import { RegisterResponse } from '@/apis';
 
-const userAtom = atom<RegisterResponse>({ key: 'user', default: undefined });
+const { persistAtom } = recoilPersist();
+
+const userAtom = atom<RegisterResponse>({
+  key: 'user',
+  default: undefined,
+  effects_UNSTABLE: [persistAtom],
+});
 
 export default function useUserState() {
   const getUserAtom = useRecoilValue(userAtom);
