@@ -15,7 +15,7 @@ export default function useUserState() {
   const getUserAtom = useRecoilValue(userAtom);
   const setUserAtom = useSetRecoilState(userAtom);
 
-  const isLogin = getUserAtom === undefined;
+  const isLogin = getUserAtom !== undefined;
   const userData = getUserAtom;
   const accessToken = () => getUserAtom.token.accessToken;
   const setUser = (data: RegisterResponse) => setUserAtom(data);
