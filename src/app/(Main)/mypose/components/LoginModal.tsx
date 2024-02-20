@@ -1,3 +1,7 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
+
 import { AppleButton, KakaoButton } from './LoginButton';
 import { Modal } from '@/components/Modal';
 import { Spacing } from '@/components/Spacing';
@@ -8,8 +12,10 @@ interface LoginModalProps {
 }
 
 export default function LoginModal({ onClose }: LoginModalProps) {
+  const router = useRouter();
+
   const handleLogin = () => {
-    window.location.href = KAKAO_AUTHORIZE;
+    router.replace(KAKAO_AUTHORIZE);
   };
 
   return (
