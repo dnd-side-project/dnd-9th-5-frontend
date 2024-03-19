@@ -3,11 +3,11 @@
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
-import LinkShareModal from './LinkShareModal';
 import Source from './Source';
 import TagButton from './TagButton';
 import { usePoseDetailQuery } from '@/apis';
 import { BottomFixedDiv, PrimaryButton } from '@/components/Button';
+import { Popup } from '@/components/Modal';
 import ImageModal from '@/components/Modal/ImageModal.client';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { BASE_SITE_URL } from '@/constants/env';
@@ -30,7 +30,11 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
   const handleShareLink = async () => {
     await copy(BASE_SITE_URL + pathname);
 
-    open(({ exit }) => <LinkShareModal onClose={exit} />);
+    open(({ exit }) => (
+      <Popup content="링크가 복사되었습니다.">
+        <PrimaryButton text="확인" onClick={exit} />
+      </Popup>
+    ));
   };
 
   return (

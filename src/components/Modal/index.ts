@@ -1,3 +1,3 @@
-export { default as Modal } from './Modal';
+export { default as Popup } from './Popup';
 export { default as ImageModal } from './ImageModal.client';
-export { default as PreparingModal } from './PreparingModal';
+export { default as PreparingPopup } from './PreparingPopup';
