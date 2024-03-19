@@ -1,6 +1,6 @@
 'use client';
 
-import MenuList from '@/constants/menuList';
+import { menuList } from '@/constants/data';
 import useUserState from '@/context/userState';
 
 export default function MenuListSection() {
@@ -8,7 +8,7 @@ export default function MenuListSection() {
 
   return (
     <section className="flex flex-col">
-      {MenuList.map((item, idx) =>
+      {menuList.map((item, idx) =>
         item.text ? (
           <div
             key={idx}

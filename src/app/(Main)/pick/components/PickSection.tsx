@@ -12,7 +12,7 @@ import { ImageModal } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { SelectionBasic } from '@/components/Selection';
 import { Spacing } from '@/components/Spacing';
-import { peopleCountList } from '@/constants/filterList';
+import { peopleCountList } from '@/constants/data';
 import useLoading from '@/hooks/useLoading';
 
 export default function PickSection() {
