@@ -1,8 +1,7 @@
 'use client';
 
-import clsx from 'clsx';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Lottie from 'react-lottie-player';
 
 import lottiePick from '#/lotties/pick.json';
@@ -13,22 +12,26 @@ import { useOverlay } from '@/components/Overlay/useOverlay';
 import { SelectionBasic } from '@/components/Selection';
 import { Spacing } from '@/components/Spacing';
 import { peopleCountList } from '@/constants/data';
-import useLoading from '@/hooks/useLoading';
 
 export default function PickSection() {
   const [countState, setCountState] = useState(1);
   const { open } = useOverlay();
-  const { isLoading, startLoading } = useLoading({ loadingDelay: 1000 });
-  const [image, setImage] = useState<string>('');
+  const [image, setImage] = useState<string>('/images/image-frame.png');
+  const [isLottie, setIsLottie] = useState(true);
   const { refetch } = usePosePickQuery(countState, {
     onSuccess: (data) => {
       setImage(data.poseInfo.imageKey);
     },
   });
 
+  useEffect(() => {
+    setTimeout(() => setIsLottie(false), 2200);
+  }, []);
+
   const handlePickClick = () => {
-    startLoading();
     refetch();
+    setIsLottie(true);
+    setTimeout(() => setIsLottie(false), 800);
   };
 
   return (
@@ -41,19 +44,19 @@ export default function PickSection() {
         />
       </div>
       <div className="relative flex flex-1">
+        {isLottie && (
+          <div className="absolute inset-0 z-10 flex justify-center bg-black">
+            <Lottie animationData={lottiePick} play />
+          </div>
+        )}
         <div className="absolute inset-0 flex justify-center bg-black">
-          {isLoading && <Lottie loop animationData={lottiePick} play />}
           <Image
-            src={image || '/images/image-frame.png'}
+            src={image}
             fill
             priority
-            className={clsx({ hidden: isLoading }, 'cursor-pointer object-contain')}
-            onClick={() =>
-              open(({ exit }) => (
-                <ImageModal image={image || '/images/image-frame.png'} onClose={exit} />
-              ))
-            }
-            alt="이미지"
+            className="cursor-pointer object-contain"
+            onClick={() => open(({ exit }) => <ImageModal image={image} onClose={exit} />)}
+            alt="포즈픽"
           />
         </div>
       </div>

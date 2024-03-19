@@ -17,10 +17,10 @@ export const metadata: Metadata = {
   },
   description: META_STRING.description.main,
   verification: {
-    google: 'MB7qV_Oa4G4gR0jHgjtnE6S4g4blocE2mjo7z-z2f6Q',
+    google: META_STRING.verification.google,
   },
   other: {
-    'naver-site-verification': 'eb9f471cae26de34e6bc71849e73f04cb8b00d83',
+    'naver-site-verification': META_STRING.verification.naver,
     'last-updated': '2023-11-08',
   },
   openGraph: {
