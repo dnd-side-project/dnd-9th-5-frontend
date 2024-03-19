@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 import Source from './Source';
@@ -8,7 +7,7 @@ import TagButton from './TagButton';
 import { usePoseDetailQuery } from '@/apis';
 import { BottomFixedDiv, PrimaryButton } from '@/components/Button';
 import { Popup } from '@/components/Modal';
-import ImageModal from '@/components/Modal/ImageModal.client';
+import PoseImage from '@/components/Modal/PoseImage';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { BASE_SITE_URL } from '@/constants/env';
 import useKakaoShare from '@/hooks/useKakaoShare';
@@ -29,7 +28,6 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
 
   const handleShareLink = async () => {
     await copy(BASE_SITE_URL + pathname);
-
     open(({ exit }) => (
       <Popup content="링크가 복사되었습니다.">
         <PrimaryButton text="확인" onClick={exit} />
@@ -40,17 +38,8 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
   return (
     <div className="overflow-y-auto pb-160">
       {source && <Source source={source} url={sourceUrl} />}
-      <div className="flex justify-center">
-        <div className="relative">
-          <Image
-            src={imageKey}
-            alt="detailImage"
-            className="cursor-pointer"
-            width={450}
-            height={440}
-            onClick={() => open(({ exit }) => <ImageModal image={imageKey} onClose={exit} />)}
-          />
-        </div>
+      <div className="block">
+        <PoseImage src={imageKey} responsive={true} />
       </div>
       <div className="flex flex-wrap gap-10 px-20 py-12">
         <TagButton type="people" value={peopleCount} name={`${peopleCount}인`} />

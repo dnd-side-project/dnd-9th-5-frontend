@@ -1,21 +1,18 @@
 'use client';
 
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Lottie from 'react-lottie-player';
 
 import lottiePick from '#/lotties/pick.json';
 import { usePosePickQuery } from '@/apis';
 import { BottomFixedDiv, PrimaryButton } from '@/components/Button';
-import { ImageModal } from '@/components/Modal';
-import { useOverlay } from '@/components/Overlay/useOverlay';
+import PoseImage from '@/components/Modal/PoseImage';
 import { SelectionBasic } from '@/components/Selection';
 import { Spacing } from '@/components/Spacing';
 import { peopleCountList } from '@/constants/data';
 
 export default function PickSection() {
   const [countState, setCountState] = useState(1);
-  const { open } = useOverlay();
   const [image, setImage] = useState<string>('/images/image-frame.png');
   const [isLottie, setIsLottie] = useState(true);
   const { refetch } = usePosePickQuery(countState, {
@@ -50,14 +47,7 @@ export default function PickSection() {
           </div>
         )}
         <div className="absolute inset-0 flex justify-center bg-black">
-          <Image
-            src={image}
-            fill
-            priority
-            className="cursor-pointer object-contain"
-            onClick={() => open(({ exit }) => <ImageModal image={image} onClose={exit} />)}
-            alt="포즈픽"
-          />
+          <PoseImage src={image} />
         </div>
       </div>
       <Spacing size={100} />
