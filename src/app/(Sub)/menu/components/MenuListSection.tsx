@@ -1,10 +1,22 @@
 'use client';
 
+import { patchLogout } from '@/apis';
 import { menuList } from '@/constants/data';
 import useUserState from '@/context/userState';
 
 export default function MenuListSection() {
-  const { isLogin } = useUserState();
+  const { isLogin, accessToken, clearUser } = useUserState();
+
+  function handleLogout() {
+    if (accessToken) {
+      clearUser();
+      patchLogout(accessToken, accessToken);
+    }
+  }
+
+  function handleDeleteAccount() {
+    clearUser();
+  }
 
   return (
     <section className="flex flex-col">
@@ -23,10 +35,10 @@ export default function MenuListSection() {
       )}
       {isLogin && (
         <>
-          <div className="cursor-pointer py-12" onClick={() => console.log('로그아웃')}>
+          <div className="cursor-pointer py-12" onClick={() => handleLogout()}>
             <span id="subtitle-1">로그아웃</span>
           </div>
-          <div className="cursor-pointer py-12" onClick={() => console.log('회원탈퇴')}>
+          <div className="cursor-pointer py-12" onClick={() => handleDeleteAccount()}>
             <span id="subtitle-1" className="text-tertiary">
               탈퇴하기
             </span>

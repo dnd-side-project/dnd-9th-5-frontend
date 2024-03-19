@@ -38,3 +38,20 @@ export const getRegister = (code: string) =>
   publicApi.get<RegisterResponse>(
     `/users/login/oauth/kakao?code=${code}&redirectURI=${KAKAO_REDIRECT_URI}`
   );
+
+export const patchLogout = (accessToken: string, refreshToken: string) =>
+  publicApi.patch('/users/logout', {
+    accessToken: `Bearer ${accessToken}`,
+    refreshToken: `Bearer ${refreshToken}`,
+  });
+
+export const patchDeleteAccount = (
+  accessToken: string,
+  refreshToken: string,
+  withdrawalReason: string
+) =>
+  publicApi.patch('/users/logout', {
+    accessToken: `Bearer ${accessToken}`,
+    refreshToken: `Bearer ${refreshToken}`,
+    withdrawalReason,
+  });
