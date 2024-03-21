@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { IconButton } from '../Button';
 import { ICON } from '@/constants/icon';
 
-export default function CloseButton() {
+export function CloseButton() {
   const router = useRouter();
 
   return (
@@ -14,6 +14,18 @@ export default function CloseButton() {
       onClick={() => {
         if (document.referrer) router.back();
         else router.replace('/feed');
+      }}
+    />
+  );
+}
+
+export function MenuButton() {
+  const router = useRouter();
+  return (
+    <IconButton
+      icon={ICON.menu}
+      onClick={() => {
+        router.push('/menu');
       }}
     />
   );

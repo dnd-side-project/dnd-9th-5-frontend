@@ -1,10 +1,7 @@
-import Link from 'next/link';
 import { PropsWithChildren } from 'react';
 
-import CloseButton from './CloseButton';
+import { CloseButton, MenuButton } from './HeaderButton';
 import Tab from './Tab';
-import { IconButton } from '../Button';
-import { ICON } from '@/constants/icon';
 
 interface Header {
   title?: string;
@@ -23,13 +20,7 @@ export default function Header({
       <div className="flex h-48 items-center justify-between gap-12 px-4 pt-8">
         {close ? <CloseButton /> : <div className="w-4" />}
         <h4 className="flex flex-1">{title}</h4>
-        <div className="flex">
-          {menu && (
-            <Link href="/menu">
-              <IconButton icon={ICON.menu} />
-            </Link>
-          )}
-        </div>
+        <div className="flex">{menu && <MenuButton />}</div>
       </div>
       {children}
     </div>
