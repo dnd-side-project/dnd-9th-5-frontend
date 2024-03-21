@@ -4,8 +4,9 @@ import { useState } from 'react';
 interface DetailedImageI {
   src: string;
   responsive?: boolean;
+  onLoad?: () => void;
 }
-export default function PoseImage({ src, responsive = false }: DetailedImageI) {
+export default function PoseImage({ src, responsive = false, onLoad }: DetailedImageI) {
   const [isModalShow, setIsModalShow] = useState(false);
   return (
     <>
@@ -23,10 +24,11 @@ export default function PoseImage({ src, responsive = false }: DetailedImageI) {
       {responsive ? (
         <Image
           src={src}
-          alt="이미지"
+          alt="상세보기"
           layout="responsive"
           width={400}
           height={400}
+          onLoad={onLoad}
           className="cursor-pointer object-contain"
           onClick={() => setIsModalShow(true)}
         />
@@ -34,9 +36,11 @@ export default function PoseImage({ src, responsive = false }: DetailedImageI) {
         <Image
           src={src}
           fill
-          priority
           className="cursor-pointer object-contain"
+          placeholder="blur"
+          blurDataURL={src}
           alt="포즈픽"
+          onLoad={onLoad}
           onClick={() => setIsModalShow(true)}
         />
       )}

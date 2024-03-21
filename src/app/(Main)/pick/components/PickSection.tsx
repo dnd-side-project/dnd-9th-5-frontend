@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Lottie from 'react-lottie-player';
 
@@ -14,6 +15,7 @@ import { peopleCountList } from '@/constants/data';
 export default function PickSection() {
   const [countState, setCountState] = useState(1);
   const [image, setImage] = useState<string>('/images/image-frame.png');
+  const [isRendered, setIsRendered] = useState(false);
   const [isLottie, setIsLottie] = useState(true);
   const { refetch } = usePosePickQuery(countState, {
     onSuccess: (data) => {
@@ -26,9 +28,10 @@ export default function PickSection() {
   }, []);
 
   const handlePickClick = () => {
+    setIsRendered(false);
     refetch();
-    setIsLottie(true);
-    setTimeout(() => setIsLottie(false), 800);
+    // setIsLottie(true);
+    // setTimeout(() => setIsLottie(false), 600);
   };
 
   return (
@@ -41,13 +44,13 @@ export default function PickSection() {
         />
       </div>
       <div className="relative flex flex-1">
-        {isLottie && (
+        {(isLottie || !isRendered) && (
           <div className="absolute inset-0 z-10 flex justify-center bg-black">
             <Lottie animationData={lottiePick} play />
           </div>
         )}
         <div className="absolute inset-0 flex justify-center bg-black">
-          <PoseImage src={image} />
+          <PoseImage src={image} onLoad={() => setIsRendered(true)} />
         </div>
       </div>
       <Spacing size={100} />
