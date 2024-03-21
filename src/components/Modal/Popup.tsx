@@ -1,5 +1,7 @@
 import { PropsWithChildren } from 'react';
 
+import { ButtonList } from '../Button';
+
 interface PopupI extends PropsWithChildren {
   title?: string;
   content?: string;
@@ -17,9 +19,7 @@ export default function Popup({ title, content, children, onClose }: PopupI) {
             <div>{content}</div>
           </div>
         )}
-        <div className="&:flex-1 flex w-full justify-evenly gap-8 [&>button]:flex-1">
-          {children}
-        </div>
+        <ButtonList>{children}</ButtonList>
       </div>
     </div>
   );

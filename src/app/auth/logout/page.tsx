@@ -20,5 +20,5 @@ export default function Page() {
     router.replace('/menu');
   });
 
-  return <>로그아웃 중...</>;
+  return <>로그아웃</>;
 }

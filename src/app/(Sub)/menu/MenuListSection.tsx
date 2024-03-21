@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 import { PrimaryButton } from '@/components/Button';
 import { Popup } from '@/components/Modal';
@@ -9,6 +12,7 @@ import useUserState from '@/context/userState';
 export default function MenuListSection() {
   const { isLogin } = useUserState();
   const { open } = useOverlay();
+  const router = useRouter();
 
   function handleLogout() {
     open(({ exit }) => (
@@ -17,9 +21,11 @@ export default function MenuListSection() {
         content={`북마크는 로그인 시에만 유지되어요.\n정말 로그아웃하시겠어요?`}
       >
         <>
-          <Link href={'/auth/logout'}>
-            <PrimaryButton text={'로그아웃'} type="secondary" />
-          </Link>
+          <PrimaryButton
+            text={'로그아웃'}
+            type="secondary"
+            onClick={() => router.replace('/auth/logout')}
+          />
           <PrimaryButton text="로그인 유지" onClick={exit} />
         </>
       </Popup>

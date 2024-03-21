@@ -50,7 +50,7 @@ export const patchDeleteAccount = (
   refreshToken: string,
   withdrawalReason: string
 ) =>
-  publicApi.patch('/users/logout', {
+  publicApi.patch('/users/deleteAccount', {
     accessToken: `Bearer ${accessToken}`,
     refreshToken: `Bearer ${refreshToken}`,
     withdrawalReason,

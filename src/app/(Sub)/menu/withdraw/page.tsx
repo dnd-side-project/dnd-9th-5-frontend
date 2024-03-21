@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import { BottomFixedDiv, PrimaryButton } from '@/components/Button';
@@ -12,6 +13,7 @@ export default function Page() {
   const [withdrawalReason, setWithdrawalReason] = useState<string>();
   const [etc, setEtc] = useState(false);
   const { open } = useOverlay();
+  const router = useRouter();
 
   function handleWithdraw() {
     open(({ exit }) => (
@@ -21,7 +23,10 @@ export default function Page() {
       >
         <>
           <PrimaryButton onClick={exit} text="취소" />
-          <PrimaryButton text="탈퇴" />
+          <PrimaryButton
+            text="탈퇴"
+            onClick={() => router.replace(`/auth/withdraw?reason=${withdrawalReason}`)}
+          />
         </>
       </Popup>
     ));
@@ -70,7 +75,7 @@ export default function Page() {
         )}
       </div>
       <BottomFixedDiv>
-        <PrimaryButton text="계속 쓸래요" type="outline" />
+        <PrimaryButton text="계속 쓸래요" type="outline" onClick={() => router.back()} />
         {withdrawalReason ? (
           <PrimaryButton text="탈퇴할래요" type="fill" onClick={handleWithdraw} />
         ) : (
