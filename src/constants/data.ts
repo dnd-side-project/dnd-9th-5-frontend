@@ -32,3 +32,10 @@ export const frameCountList = [
   { text: '6컷', value: 6 },
   { text: '8컷+', value: 8 },
 ];
+
+export const withdrawReasonList = [
+  '사용을 잘 안하게 돼요',
+  '원하는 포즈가 없어요',
+  '포즈 탐색이 어려워요',
+  '재가입 할 거 에요',
+];

@@ -12,6 +12,7 @@ export default function Page() {
   const { setUser } = useUserState();
 
   useEffect(() => {
+    console.log('ya');
     if (code) {
       getRegister(code).then((response) => setUser(response));
       router.replace('/menu');
