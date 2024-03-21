@@ -26,8 +26,9 @@ export default function PoseImage({ src, responsive = false, onLoad }: DetailedI
           src={src}
           alt="상세보기"
           layout="responsive"
+          priority
           width={400}
-          height={400}
+          height={0}
           onLoad={onLoad}
           className="cursor-pointer object-contain"
           onClick={() => setIsModalShow(true)}
