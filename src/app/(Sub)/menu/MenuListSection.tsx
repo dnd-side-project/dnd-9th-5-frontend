@@ -26,10 +26,6 @@ export default function MenuListSection() {
     ));
   }
 
-  function handleDeleteAccount() {
-    // clearUser();
-  }
-
   return (
     <section className="flex flex-col">
       {menuList.map((item, idx) =>
@@ -47,14 +43,14 @@ export default function MenuListSection() {
       )}
       {isLogin && (
         <>
-          <div className="cursor-pointer py-12" onClick={() => handleLogout()}>
+          <div className="cursor-pointer py-12" onClick={handleLogout}>
             <span id="subtitle-1">로그아웃</span>
           </div>
-          <div className="cursor-pointer py-12" onClick={() => handleDeleteAccount()}>
+          <Link href={'/menu/withdraw'} className="cursor-pointer py-12">
             <span id="subtitle-1" className="text-tertiary">
               탈퇴하기
             </span>
-          </div>
+          </Link>
         </>
       )}
     </section>

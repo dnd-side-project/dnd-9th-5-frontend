@@ -1,10 +1,10 @@
 import { QueryAsyncBoundary } from '@suspensive/react-query';
 import { Metadata, ResolvingMetadata } from 'next';
 
-import DetailSection from './components/DetailSection';
+import DetailSection from './DetailSection';
 import { getPoseDetail } from '@/apis';
 import { RejectedFallback } from '@/components/ErrorBoundary';
-import { DetailHeader } from '@/components/Header';
+import Header from '@/components/Header';
 import { Loading } from '@/components/Loading';
 import { PageAnimation } from '@/components/PageAnimation';
 import { HydrationProvider } from '@/components/Provider/HydrationProvider';
@@ -35,7 +35,7 @@ export default function DetailPage({ params }: { params: { id: number } }) {
 
   return (
     <div>
-      <DetailHeader />
+      <Header close={true} menu={true} />
       <QueryAsyncBoundary
         rejectedFallback={RejectedFallback}
         pendingFallback={<Loading className="h-[calc(100dvh-400px)]" />}

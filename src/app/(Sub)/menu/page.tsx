@@ -1,13 +1,13 @@
 'use client';
 
-import MenuListSection from './components/MenuListSection';
+import MenuListSection from './MenuListSection';
 import LoginSection from '@/app/(Main)/mypose/components/LoginSection';
-import { MenuHeader } from '@/components/Header';
+import Header from '@/components/Header';
 
 export default function MenuPage() {
   return (
     <div className="px-20">
-      <MenuHeader />
+      <Header close={true} title="메뉴" />
       <LoginSection />
       <MenuListSection />
     </div>

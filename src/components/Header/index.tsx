@@ -12,7 +12,12 @@ interface Header {
   menu?: boolean;
 }
 
-function Header({ title = '', close = false, menu = false, children }: PropsWithChildren<Header>) {
+export default function Header({
+  title = '',
+  close = false,
+  menu = false,
+  children,
+}: PropsWithChildren<Header>) {
   return (
     <div className="fixed inset-x-0 top-0 z-10 mx-auto max-w-440 bg-white">
       <div className="flex h-48 items-center justify-between gap-12 px-4 pt-8">
@@ -30,9 +35,6 @@ function Header({ title = '', close = false, menu = false, children }: PropsWith
     </div>
   );
 }
-
-export const DetailHeader = () => <Header close={true} menu={true} />;
-export const MenuHeader = () => <Header close={true} title="메뉴" />;
 
 export const MainHeader = ({ children }: PropsWithChildren) => (
   <Header title="PosePicker" menu={true}>
