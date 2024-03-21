@@ -18,5 +18,5 @@ export default function Page() {
     }
   });
 
-  return <>Loading...</>;
+  return <>로그인 중</>;
 }

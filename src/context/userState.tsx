@@ -17,9 +17,10 @@ export default function useUserState() {
 
   const isLogin = getUserAtom !== null;
   const userData = getUserAtom;
-  const accessToken = getUserAtom?.token.accessToken;
+  const token = getUserAtom?.token;
+
   const setUser = (data: RegisterResponse) => setUserAtom(data);
   const clearUser = () => setUserAtom(null);
 
-  return { isLogin, userData, accessToken, setUser, clearUser };
+  return { isLogin, userData, token, setUser, clearUser };
 }
