@@ -26,11 +26,22 @@ export default function PickSection() {
     setTimeout(() => setIsLottie(false), 2200);
   }, []);
 
+  // useEffect(() => {
+  //   if (!isLottie) {
+  //     setTimeout(() => {
+  //       if (!isRendered) {
+  //         // refetch();
+  //         console.log('no!');
+  //       }
+  //     }, 2000);
+  //   }
+  // }, [isLottie]);
+
   const handlePickClick = () => {
     setIsRendered(false);
     refetch();
-    // setIsLottie(true);
-    // setTimeout(() => setIsLottie(false), 600);
+    setIsLottie(true);
+    setTimeout(() => setIsLottie(false), 900);
   };
 
   return (
