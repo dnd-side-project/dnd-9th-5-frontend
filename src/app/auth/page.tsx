@@ -15,6 +15,7 @@ export default function Page() {
     if (code) {
       getRegister(code).then((response) => {
         setUser(response);
+        localStorage.setItem('accesstoken', response.token.accessToken);
         alert(`로그인에 성공했어요!`);
         router.back();
       });

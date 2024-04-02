@@ -13,8 +13,8 @@ export default function Page() {
   useEffect(() => {
     if (token) {
       patchLogout(token.accessToken, token.refreshToken).then((response) => {
-        console.log(response);
         alert('로그아웃 성공!');
+        localStorage.removeItem('accesstoken');
       });
     }
     clearUser();

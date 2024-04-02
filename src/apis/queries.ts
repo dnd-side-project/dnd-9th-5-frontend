@@ -38,8 +38,8 @@ export const usePoseTalkQuery = (options?: UseQueryOptions<PoseTalkResponse>) =>
 export const usePoseFeedQuery = (
   { peopleCount, frameCount, tags }: FilterState,
   options?: UseInfiniteQueryOptions<PoseFeedResponse>
-) =>
-  useSuspenseInfiniteQuery<PoseFeedResponse>(
+) => {
+  return useSuspenseInfiniteQuery<PoseFeedResponse>(
     ['poseFeed', peopleCount, frameCount, tags],
     ({ pageParam = 0 }) => getPoseFeed(peopleCount, frameCount, tags.join(','), pageParam),
     {
@@ -52,6 +52,7 @@ export const usePoseFeedQuery = (
       ...options,
     }
   );
+};
 
 export const useBookmarkFeedQuery = (
   accesstoken: string,
@@ -59,7 +60,7 @@ export const useBookmarkFeedQuery = (
 ) =>
   useSuspenseInfiniteQuery<PoseFeedContents>(
     ['bookmarkFeed'],
-    ({ pageParam = 0 }) => getBookmarkFeed(accesstoken, pageParam),
+    ({ pageParam = 0 }) => getBookmarkFeed(pageParam),
     {
       getNextPageParam: (lastPage) => {
         return lastPage.last ? undefined : lastPage.number + 1;

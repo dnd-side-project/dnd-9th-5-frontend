@@ -24,11 +24,11 @@ export default function BookmarkButton({ poseId, isMarked }: BookmarkButtonI) {
       return;
     }
     if (marked) {
-      deleteBookmark(token?.accessToken, poseId).then(() => {
+      deleteBookmark(poseId).then(() => {
         setMarked(false);
       });
     } else {
-      postBookmark(token?.accessToken, poseId).then(() => {
+      postBookmark(poseId).then(() => {
         setMarked(true);
       });
     }

@@ -7,6 +7,7 @@ import {
   PoseTalkResponse,
   RegisterResponse,
 } from '.';
+import privateApi from './config/privateApi';
 import publicApi from './config/publicApi';
 import { KAKAO_REDIRECT_URI } from '@/constants/env';
 
@@ -24,7 +25,7 @@ export const getPoseFeed = async (
   tags: string,
   pageNumber: number
 ) =>
-  await publicApi.get<PoseFeedResponse>(`/pose`, {
+  await privateApi.get<PoseFeedResponse>(`/pose`, {
     params: {
       frameCount,
       pageNumber,
@@ -57,20 +58,17 @@ export const patchDeleteAccount = (
     withdrawalReason,
   });
 
-export const postBookmark = (accesstoken: string, poseId: number) =>
-  publicApi.post(`/bookmark`, null, {
+export const postBookmark = (poseId: number) =>
+  privateApi.post(`/bookmark`, null, {
     params: { poseId },
-    headers: { Authorization: `Bearer ${accesstoken}` },
   });
 
-export const deleteBookmark = (accesstoken: string, poseId: number) =>
-  publicApi.delete(`/bookmark`, {
+export const deleteBookmark = (poseId: number) =>
+  privateApi.delete(`/bookmark`, {
     params: { poseId },
-    headers: { Authorization: `Bearer ${accesstoken}` },
   });
 
-export const getBookmarkFeed = (accesstoken: string, pageNumber: number) =>
-  publicApi.get<PoseFeedContents>('/bookmark/feed', {
-    headers: { Authorization: `Bearer ${accesstoken}` },
+export const getBookmarkFeed = (pageNumber: number) =>
+  privateApi.get<PoseFeedContents>('/bookmark/feed', {
     params: { pageNumber, pageSize: 10 },
   });
