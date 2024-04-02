@@ -1,22 +1,45 @@
 'use client';
 
+import { useState } from 'react';
+
 import { Icon } from '../Button/Icon';
-import { PreparingPopup } from '@/components/Modal';
+import { deleteBookmark, postBookmark } from '@/apis';
+import LoginModal from '@/app/(Main)/mypose/components/LoginModal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { ICON } from '@/constants/icon';
+import useUserState from '@/context/userState';
 
-export default function BookmarkButton() {
+interface BookmarkButtonI {
+  poseId: number;
+  isMarked: boolean;
+}
+export default function BookmarkButton({ poseId, isMarked }: BookmarkButtonI) {
   const { open } = useOverlay();
+  const { token } = useUserState();
+  const [marked, setMarked] = useState(isMarked);
+
+  function onClick() {
+    if (!token) {
+      open(({ exit }) => <LoginModal onClose={exit} />);
+      return;
+    }
+    if (marked) {
+      deleteBookmark(token?.accessToken, poseId).then((response) => {
+        setMarked(false);
+      });
+    } else {
+      postBookmark(token?.accessToken, poseId).then((response) => {
+        setMarked(true);
+      });
+    }
+  }
 
   return (
-    <div
+    <button
       className="absolute bottom-6 right-6 h-36 w-36 rounded-24 bg-[#141218] bg-opacity-30 p-6"
-      onClick={(e) => {
-        e.preventDefault();
-        open(({ exit }) => <PreparingPopup onClose={exit} />);
-      }}
+      onClick={onClick}
     >
-      <Icon icon={ICON.bookmark.white.empty} />
-    </div>
+      <Icon icon={marked ? ICON.bookmark.white.fill : ICON.bookmark.white.empty} />
+    </button>
   );
 }
