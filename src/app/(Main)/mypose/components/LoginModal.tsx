@@ -12,9 +12,8 @@ interface LoginModalProps {
 
 export default function LoginModal({ onClose }: LoginModalProps) {
   const router = useRouter();
-
   const handleLogin = () => {
-    router.push(KAKAO_AUTHORIZE);
+    router.replace(KAKAO_AUTHORIZE);
   };
 
   return (

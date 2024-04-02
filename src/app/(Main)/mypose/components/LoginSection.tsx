@@ -1,6 +1,7 @@
 'use client';
 
 import LoginModal from './LoginModal';
+import LogoutModal from './LogoutModal';
 import { Icon } from '@/components/Button/Icon';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { ICON } from '@/constants/icon';
@@ -22,7 +23,11 @@ export default function LoginSection() {
     <section className="py-24">
       <button
         className="flex w-full items-center gap-16"
-        onClick={() => !isLogin && open(() => <LoginModal onClose={exit} />)}
+        onClick={() =>
+          isLogin
+            ? open(({ exit }) => <LogoutModal exit={exit} />)
+            : open(() => <LoginModal onClose={exit} />)
+        }
       >
         <DefaultProfile />
         <div className="text-start">

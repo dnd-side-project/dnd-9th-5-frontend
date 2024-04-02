@@ -7,18 +7,18 @@ import { patchLogout } from '@/apis';
 import useUserState from '@/context/userState';
 
 export default function Page() {
-  const router = useRouter();
   const { token, clearUser } = useUserState();
+  const router = useRouter();
 
   useEffect(() => {
     if (token) {
-      patchLogout(token.accessToken, token.refreshToken).then((response) => {
+      patchLogout(token.accessToken, token.refreshToken).then(() => {
         alert('로그아웃 성공!');
-        localStorage.removeItem('accesstoken');
       });
     }
     clearUser();
-    router.replace('/menu');
+    localStorage.removeItem('accesstoken');
+    router.back();
   });
 
   return <>로그아웃</>;

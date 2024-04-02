@@ -8,8 +8,8 @@ import useUserState from '@/context/userState';
 
 export default function Page() {
   const code = useSearchParams().get('code');
-  const router = useRouter();
   const { setUser } = useUserState();
+  const router = useRouter();
 
   useEffect(() => {
     if (code) {
@@ -17,7 +17,7 @@ export default function Page() {
         setUser(response);
         localStorage.setItem('accesstoken', response.token.accessToken);
         alert(`로그인에 성공했어요!`);
-        router.back();
+        router.replace('/mypose/bookmark');
       });
     }
   });
