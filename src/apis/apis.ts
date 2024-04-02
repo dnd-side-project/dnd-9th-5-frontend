@@ -1,6 +1,7 @@
 import {
   FilterTagsResponse,
   PoseDetailResponse,
+  PoseFeedContents,
   PoseFeedResponse,
   PosePickResponse,
   PoseTalkResponse,
@@ -68,5 +69,8 @@ export const deleteBookmark = (accesstoken: string, poseId: number) =>
     headers: { Authorization: `Bearer ${accesstoken}` },
   });
 
-export const getBookmarkFeed = (accessToken: string, pageNumber: number) =>
-  publicApi.get<PoseFeedResponse>('/bookmark/feed', { params: { pageNumber, pageSize: 10 } });
+export const getBookmarkFeed = (accesstoken: string, pageNumber: number) =>
+  publicApi.get<PoseFeedContents>('/bookmark/feed', {
+    headers: { Authorization: `Bearer ${accesstoken}` },
+    params: { pageNumber, pageSize: 10 },
+  });

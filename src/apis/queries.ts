@@ -7,6 +7,7 @@ import {
 
 import {
   FilterTagsResponse,
+  PoseFeedContents,
   PoseFeedResponse,
   PosePickResponse,
   PoseTalkResponse,
@@ -54,17 +55,14 @@ export const usePoseFeedQuery = (
 
 export const useBookmarkFeedQuery = (
   accesstoken: string,
-  options?: UseInfiniteQueryOptions<PoseFeedResponse>
+  options?: UseInfiniteQueryOptions<PoseFeedContents>
 ) =>
-  useSuspenseInfiniteQuery<PoseFeedResponse>(
+  useSuspenseInfiniteQuery<PoseFeedContents>(
     ['bookmarkFeed'],
     ({ pageParam = 0 }) => getBookmarkFeed(accesstoken, pageParam),
     {
       getNextPageParam: (lastPage) => {
-        const target = lastPage.recommendation
-          ? lastPage.recommendedContents
-          : lastPage.filteredContents;
-        return target.last ? undefined : target.number + 1;
+        return lastPage.last ? undefined : lastPage.number + 1;
       },
       ...options,
     }

@@ -9,10 +9,10 @@ import useFilterState from '@/hooks/useFilterState';
 
 export default function FeedContent() {
   const { filterState } = useFilterState();
-  const { data, fetchNextPage } = usePoseFeedQuery(filterState);
+  const query = usePoseFeedQuery(filterState);
 
   return (
-    <FeedSection data={data} fetchNextPage={fetchNextPage}>
+    <FeedSection query={query}>
       <EmptyCase
         title={'신비한 포즈를 찾으시는군요!'}
         text={'찾고 싶은 포즈를 저희에게 알려주세요.'}

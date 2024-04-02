@@ -7,10 +7,10 @@ interface BookmarkSecionI {
 }
 
 export default function BookmarkSecion({ accesstoken }: BookmarkSecionI) {
-  const { data, fetchNextPage } = useBookmarkFeedQuery(accesstoken);
+  const query = useBookmarkFeedQuery(accesstoken);
 
   return (
-    <FeedSection data={data} fetchNextPage={fetchNextPage}>
+    <FeedSection query={query}>
       <BookmarkEmpty />
     </FeedSection>
   );
