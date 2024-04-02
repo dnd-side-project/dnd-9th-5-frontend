@@ -19,7 +19,10 @@ export default function useUserState() {
   const userData = getUserAtom;
   const token = getUserAtom?.token;
 
-  const setUser = (data: RegisterResponse) => setUserAtom(data);
+  const setUser = (data: RegisterResponse) => {
+    setUserAtom(data);
+    console.log(data.email + '님 로그인 성공');
+  };
   const clearUser = () => setUserAtom(null);
 
   return { isLogin, userData, token, setUser, clearUser };

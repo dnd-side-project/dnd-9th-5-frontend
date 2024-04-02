@@ -55,3 +55,15 @@ export const patchDeleteAccount = (
     refreshToken: `Bearer ${refreshToken}`,
     withdrawalReason,
   });
+
+export const postBookmark = (accesstoken: string, poseId: number) =>
+  publicApi.post(`/bookmark`, null, {
+    params: { poseId },
+    headers: { Authorization: `Bearer ${accesstoken}` },
+  });
+
+export const deleteBookmark = (accesstoken: string, poseId: number) =>
+  publicApi.delete(`/bookmark`, {
+    params: { poseId },
+    headers: { Authorization: `Bearer ${accesstoken}` },
+  });

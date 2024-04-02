@@ -13,8 +13,9 @@ export default function Page() {
 
   useEffect(() => {
     if (code) {
+      console.log('로그인');
       getRegister(code).then((response) => setUser(response));
-      router.replace('/menu');
+      router.back();
     }
   });
 

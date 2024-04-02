@@ -1,7 +1,7 @@
 import { StrictPropsWithChildren } from '@/types';
 
 export function ButtonList({ children }: StrictPropsWithChildren) {
-  return <div className="flex gap-8 [&>*]:grow">{children}</div>;
+  return <div className="flex gap-8 [&>*]:flex-1 [&>*]:grow">{children}</div>;
 }
 
 export function BottomDiv({ children }: StrictPropsWithChildren) {

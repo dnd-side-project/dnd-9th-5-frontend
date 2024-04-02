@@ -8,6 +8,7 @@ export interface PoseInfo {
   sourceUrl: string;
   tagAttributes: string;
   updatedAt: string;
+  bookmarkCheck: boolean;
 }
 
 // 포즈피드
