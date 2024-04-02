@@ -13,10 +13,9 @@ export default function Page() {
 
   useEffect(() => {
     if (code) {
-      console.log('로그인');
       getRegister(code).then((response) => {
         setUser(response);
-        alert('로그인 성공');
+        alert(`로그인에 성공했어요!`);
         router.back();
       });
     }

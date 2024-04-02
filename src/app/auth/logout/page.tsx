@@ -14,6 +14,7 @@ export default function Page() {
     if (token) {
       patchLogout(token.accessToken, token.refreshToken).then((response) => {
         console.log(response);
+        alert('로그아웃 성공!');
       });
     }
     clearUser();
