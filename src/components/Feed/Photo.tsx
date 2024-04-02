@@ -14,7 +14,7 @@ interface Photo {
 }
 
 export default function Photo({ imageKey, source, id, isMarked }: Photo) {
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(isMarked);
   const router = useRouter();
 
   return (

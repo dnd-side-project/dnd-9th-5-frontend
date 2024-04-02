@@ -16,12 +16,13 @@ export default function FeedSection({ children, query }: FeedSecionI) {
   const { data, fetchNextPage, refetch } = query;
 
   useEffect(() => {
-    if (inView) fetchNextPage();
-  }, [inView, fetchNextPage]);
+    refetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
-    refetch?.();
-  }, []);
+    if (inView) fetchNextPage();
+  }, [inView, fetchNextPage]);
 
   if ('filteredContents' in data.pages[0])
     return (
