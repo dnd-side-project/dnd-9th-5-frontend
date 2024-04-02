@@ -38,4 +38,4 @@ export const withdrawReasonList = [
   '원하는 포즈가 없어요',
   '포즈 탐색이 어려워요',
   '재가입 할 거 에요',
-];
+] as const;
