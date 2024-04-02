@@ -14,8 +14,11 @@ export default function Page() {
   useEffect(() => {
     if (code) {
       console.log('로그인');
-      getRegister(code).then((response) => setUser(response));
-      router.back();
+      getRegister(code).then((response) => {
+        setUser(response);
+        alert('로그인 성공');
+        router.back();
+      });
     }
   });
 
