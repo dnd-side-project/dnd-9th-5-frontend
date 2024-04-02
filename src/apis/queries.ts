@@ -10,13 +10,12 @@ import {
   PoseFeedResponse,
   PosePickResponse,
   PoseTalkResponse,
-  RegisterResponse,
+  getBookmarkFeed,
   getFilterTag,
   getPoseDetail,
   getPoseFeed,
   getPosePick,
   getPoseTalk,
-  getRegister,
 } from '.';
 import { FilterState } from '@/hooks/useFilterState';
 
@@ -53,8 +52,23 @@ export const usePoseFeedQuery = (
     }
   );
 
+export const useBookmarkFeedQuery = (
+  accesstoken: string,
+  options?: UseInfiniteQueryOptions<PoseFeedResponse>
+) =>
+  useSuspenseInfiniteQuery<PoseFeedResponse>(
+    ['bookmarkFeed'],
+    ({ pageParam = 0 }) => getBookmarkFeed(accesstoken, pageParam),
+    {
+      getNextPageParam: (lastPage) => {
+        const target = lastPage.recommendation
+          ? lastPage.recommendedContents
+          : lastPage.filteredContents;
+        return target.last ? undefined : target.number + 1;
+      },
+      ...options,
+    }
+  );
+
 export const useFilterTagQuery = (options?: UseQueryOptions<FilterTagsResponse>) =>
   useSuspenseQuery<FilterTagsResponse>(['filterTag'], getFilterTag, { ...options });
-
-// export const useRegisterQuery = (code: string) =>
-//   useQuery<RegisterResponse>(['register'], () => getRegister(code));

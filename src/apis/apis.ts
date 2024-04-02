@@ -1,5 +1,3 @@
-import { access } from 'fs';
-
 import {
   FilterTagsResponse,
   PoseDetailResponse,
@@ -70,5 +68,5 @@ export const deleteBookmark = (accesstoken: string, poseId: number) =>
     headers: { Authorization: `Bearer ${accesstoken}` },
   });
 
-export const getBookmarkFeed = (accessToken: string, pageNumber: number, pageSize: number) =>
-  publicApi.get<PoseFeedResponse>('/bookmark/feed', { params: { pageNumber, pageSize } });
+export const getBookmarkFeed = (accessToken: string, pageNumber: number) =>
+  publicApi.get<PoseFeedResponse>('/bookmark/feed', { params: { pageNumber, pageSize: 10 } });
