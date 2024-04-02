@@ -10,6 +10,7 @@ import useFilterState from '@/hooks/useFilterState';
 export default function FeedContent() {
   const { filterState } = useFilterState();
   const { data, fetchNextPage } = usePoseFeedQuery(filterState);
+
   return (
     <FeedSection data={data} fetchNextPage={fetchNextPage}>
       <EmptyCase

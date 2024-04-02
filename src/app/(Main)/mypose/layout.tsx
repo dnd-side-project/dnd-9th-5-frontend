@@ -1,5 +1,8 @@
+import { QueryAsyncBoundary } from '@suspensive/react-query';
+
 import LoginSection from './components/LoginSection';
 import MyposeTab from './components/MyposeTab';
+import { RejectedFallback } from '@/components/ErrorBoundary';
 import { StrictPropsWithChildren } from '@/types';
 
 export default function Layout({ children }: StrictPropsWithChildren) {
@@ -7,7 +10,7 @@ export default function Layout({ children }: StrictPropsWithChildren) {
     <>
       <LoginSection />
       <MyposeTab />
-      {children}
+      <QueryAsyncBoundary rejectedFallback={RejectedFallback}>{children}</QueryAsyncBoundary>
     </>
   );
 }
