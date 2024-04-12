@@ -10,7 +10,7 @@ export default function Talk() {
         <TitleSection />
         <TalkSection />
       </PageAnimation>
-      <Spacing size={80} />
+      <Spacing size={100} />
     </>
   );
 }
