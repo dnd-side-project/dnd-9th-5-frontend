@@ -23,5 +23,5 @@ export default function Page() {
     router.back();
   });
 
-  return <>회원탈퇴</>;
+  return;
 }

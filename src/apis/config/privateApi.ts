@@ -15,27 +15,27 @@ const privateApi: CustomInstance = axios.create({
   withCredentials: true,
 });
 
-privateApi.interceptors.response.use((response) => response.data);
-privateApi.interceptors.request.use(
-  (config) => {
-    const accessToken = getAccesstoken();
-
-    if (accessToken) {
-      config.headers.Authorization = `Bearer ${accessToken}`;
-    }
-
-    return config;
-  },
+privateApi.interceptors.response.use(
+  (response) => response.data,
   (error) => {
-    alert('오류가 발생했습니다. 다시 시도해주세요!');
-    location.href = '/auth/logout';
-    // if (error.response.status === 415) {
-    //   if (confirm('세션이 만료되었습니다. 다시 로그인해주세요!')) {
-    //     open('/menu');
-    //   }
-    // }
+    if (error.response.status === 401) {
+      if (confirm('세션이 만료되었습니다. 다시 로그인해주세요!')) {
+        location.href = '/auth/logout';
+      }
+    } else {
+      alert('오류가 발생했습니다. 다시 시도해주세요!');
+    }
     return Promise.reject(error);
   }
 );
+privateApi.interceptors.request.use((config) => {
+  const accessToken = getAccesstoken();
+
+  if (accessToken) {
+    config.headers.Authorization = `Bearer ${accessToken}`;
+  }
+
+  return config;
+});
 
 export default privateApi;

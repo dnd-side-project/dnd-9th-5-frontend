@@ -13,7 +13,7 @@ export default function Page() {
   useEffect(() => {
     if (token) {
       patchLogout(token.accessToken, token.refreshToken).then(() => {
-        alert('로그아웃 성공!');
+        alert('로그아웃 되었어요');
       });
     }
     clearUser();
@@ -21,5 +21,5 @@ export default function Page() {
     router.back();
   });
 
-  return <>로그아웃</>;
+  return;
 }

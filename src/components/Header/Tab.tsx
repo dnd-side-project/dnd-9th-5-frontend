@@ -12,13 +12,13 @@ const tabData = [
 ] as const;
 
 export default function Tab() {
-  const path = usePathname();
+  const curPath = usePathname();
 
   return (
     <nav className="flex h-48 items-center gap-16 border-b-2 border-b-divider px-20">
       {tabData.map((item) => (
         <div key={item.path}>
-          {path.includes(item.path) ? (
+          {item.path.includes(curPath) ? (
             <div className="relative py-12">
               <h5 id="subtitle-1" className="text-brand">
                 {item.title}
