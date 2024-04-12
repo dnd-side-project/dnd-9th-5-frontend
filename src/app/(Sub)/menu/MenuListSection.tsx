@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import LogoutModal from '@/app/(Main)/mypose/components/LogoutModal';
+import LogoutModal from '@/components/Login/LogoutModal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { menuList } from '@/constants/data';
 import useUserState from '@/context/userState';

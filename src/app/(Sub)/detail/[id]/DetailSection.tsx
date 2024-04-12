@@ -36,7 +36,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
   };
 
   return (
-    <div className="overflow-y-auto pb-160">
+    <div className="overflow-y-auto">
       {source && <Source source={source} url={sourceUrl} />}
       <div className="block">
         <PoseImage src={imageKey} responsive={true} />

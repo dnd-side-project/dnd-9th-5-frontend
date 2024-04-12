@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { Icon } from '../Button/Icon';
 import { deleteBookmark, postBookmark } from '@/apis';
-import LoginModal from '@/app/(Main)/mypose/components/LoginModal';
+import LoginModal from '@/components/Login/LoginModal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { ICON } from '@/constants/icon';
 import useUserState from '@/context/userState';

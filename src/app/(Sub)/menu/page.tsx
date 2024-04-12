@@ -1,8 +1,8 @@
 'use client';
 
 import MenuListSection from './MenuListSection';
-import LoginSection from '@/app/(Main)/mypose/components/LoginSection';
 import Header from '@/components/Header';
+import LoginSection from '@/components/Login/LoginSection';
 
 export default function MenuPage() {
   return (

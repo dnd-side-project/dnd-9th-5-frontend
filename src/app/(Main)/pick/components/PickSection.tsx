@@ -63,7 +63,6 @@ export default function PickSection() {
           <PoseImage src={image} onLoad={() => setIsRendered(true)} />
         </div>
       </div>
-      <Spacing size={100} />
       <BottomFixedDiv>
         <PrimaryButton
           text={!!image ? `${countState}인 포즈 뽑기` : '인원수 선택하고 포즈 뽑기'}

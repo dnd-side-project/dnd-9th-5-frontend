@@ -1,9 +1,9 @@
-import { MainHeader } from '@/components/Header';
+import MainHeader from '@/components/Header/MainHeader';
 import { StrictPropsWithChildren } from '@/types';
 
 export default function MainLayout({ children }: StrictPropsWithChildren) {
   return (
-    <div className="flex h-full flex-col overflow-hidden px-20 pt-100">
+    <div className="flex h-full flex-col overflow-hidden px-20">
       <MainHeader />
       {children}
     </div>

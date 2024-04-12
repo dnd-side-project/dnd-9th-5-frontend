@@ -14,8 +14,11 @@ export function BottomDiv({ children }: StrictPropsWithChildren) {
 
 export function BottomFixedDiv({ children }: StrictPropsWithChildren) {
   return (
-    <div className={`fixed inset-x-0 bottom-0`}>
-      <BottomDiv>{children}</BottomDiv>
-    </div>
+    <>
+      <div className={`fixed inset-x-0 bottom-0`}>
+        <BottomDiv>{children}</BottomDiv>
+      </div>
+      <div className="h-100" />
+    </>
   );
 }

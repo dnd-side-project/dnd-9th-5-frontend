@@ -20,7 +20,7 @@ export default function LoginSection() {
   const { isLogin, userData } = useUserState();
 
   return (
-    <section className="py-24">
+    <section className="h-108 py-24">
       <button
         className="flex w-full items-center gap-16"
         onClick={() =>

@@ -31,15 +31,17 @@ const TabItem = ({ title, path, current }: TabItemI) =>
 export default function MyposeTab() {
   const path = usePathname();
   return (
-    <div className="flex h-48 gap-4 rounded-8 bg-divider p-4">
-      {MyposeTabData.map((item) => (
-        <TabItem
-          key={item.title}
-          title={item.title}
-          path={item.path}
-          current={path === item.path}
-        />
-      ))}
+    <div className="h-72 px-20 py-12">
+      <div className="flex h-full gap-4 rounded-8 bg-divider p-4 ">
+        {MyposeTabData.map((item) => (
+          <TabItem
+            key={item.title}
+            title={item.title}
+            path={item.path}
+            current={path === item.path}
+          />
+        ))}
+      </div>
     </div>
   );
 }

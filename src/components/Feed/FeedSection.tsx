@@ -30,7 +30,7 @@ export default function FeedSection({ children, query }: FeedSecionI) {
         {data.pages[0].filteredContents.empty ? (
           children
         ) : (
-          <div className="columns-2	py-16">
+          <div className="columns-2">
             {data.pages.map((page) => {
               const poseListData = 'filteredContents' in page ? page.filteredContents : page;
               return <PhotoList key={poseListData.number} data={poseListData} />;
@@ -40,7 +40,7 @@ export default function FeedSection({ children, query }: FeedSecionI) {
         {data.pages[0]?.recommendation && (
           <>
             <h4 className="mb-16">이런 포즈는 어때요?</h4>
-            <div className="columns-2	py-16">
+            <div className="columns-2">
               {data.pages.map((page) => {
                 const poseListData =
                   'recommendedContents' in page ? page.recommendedContents : page;
@@ -53,11 +53,11 @@ export default function FeedSection({ children, query }: FeedSecionI) {
       </div>
     );
   return (
-    <div>
+    <div className="">
       {data.pages[0].empty ? (
         children
       ) : (
-        <div className="columns-2	py-16">
+        <div className="columns-2">
           {data.pages.map(
             (page) => 'content' in page && <PhotoList key={page.number} data={page} />
           )}
