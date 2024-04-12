@@ -45,6 +45,7 @@ privateApi.interceptors.request.use(
       alert('오류가 발생했어요.');
     }
     location.href = '/auth/logout';
+    return Promise.reject(error);
   }
 );
 
