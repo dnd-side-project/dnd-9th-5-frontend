@@ -63,6 +63,7 @@ export default function FeedSection({ children, query }: FeedSecionI) {
           )}
         </div>
       )}
+      <div ref={ref} />
     </div>
   );
 }
