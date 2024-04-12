@@ -17,7 +17,7 @@ export default function Page() {
         setUser(response);
         localStorage.setItem('accesstoken', response.token.accessToken);
         alert(`로그인에 성공했어요!`);
-        router.replace('/mypose/bookmark');
+        router.replace('/menu');
       });
     }
   });

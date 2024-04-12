@@ -9,6 +9,14 @@ import { Popup } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { withdrawReasonList } from '@/constants/data';
 
+const RadioInput = ({ checked }: { checked: boolean }) => {
+  return checked ? (
+    <input type="radio" checked name="reason" className="accent-brand" />
+  ) : (
+    <input type="radio" name="reason" />
+  );
+};
+
 export default function Page() {
   const [withdrawalReason, setWithdrawalReason] = useState<string>();
   const [etc, setEtc] = useState(false);
@@ -22,10 +30,11 @@ export default function Page() {
         content={`탈퇴 시 업로드한 포즈를 제외한\n모든 정보가 삭제되며 복구되지 않아요.`}
       >
         <>
-          <PrimaryButton onClick={exit} text="취소" />
+          <PrimaryButton onClick={exit} text="취소" type="secondary" />
           <PrimaryButton
             text="탈퇴"
             onClick={() => router.replace(`/auth/withdraw?reason=${withdrawalReason}`)}
+            className="bg-[#EC323E]"
           />
         </>
       </Popup>
@@ -51,7 +60,7 @@ export default function Page() {
                 setEtc(false);
               }}
             >
-              {item === withdrawalReason && <span>wow</span>}
+              <RadioInput checked={item === withdrawalReason} />
               <label className="ml-8">{item}</label>
             </div>
           ))}
@@ -62,15 +71,16 @@ export default function Page() {
               setWithdrawalReason(undefined);
             }}
           >
+            <RadioInput checked={etc} />
             <label className="ml-8">기타</label>
           </div>
         </form>
         {etc && (
           <textarea
-            className="border-border-default outline-border-active"
+            className="w-full rounded-8 border-2 border-solid border-border-disabled p-16 outline-icon-disabled"
             onChange={(e) => setWithdrawalReason(e.target.value)}
             value={withdrawalReason}
-            placeholder="떠나시는 이유를 알려주세요"
+            placeholder="이유를 알려주세요"
           />
         )}
       </div>
