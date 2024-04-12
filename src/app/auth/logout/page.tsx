@@ -13,7 +13,7 @@ export default function Page() {
   useEffect(() => {
     if (token) {
       patchLogout(token.accessToken, token.refreshToken).then(() => {
-        alert('로그아웃 되었어요');
+        alert('로그아웃 되었습니다');
       });
     }
     clearUser();

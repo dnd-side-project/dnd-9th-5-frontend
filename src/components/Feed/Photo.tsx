@@ -35,7 +35,7 @@ export default function Photo({ imageKey, source, id, isMarked }: Photo) {
               height: 'auto',
             }}
             onLoad={() => setLoaded(true)}
-            onClick={() => router.push(`detail/${id}`)}
+            onClick={() => router.push(`/detail/${id}`)}
           />
           {loaded && <BookmarkButton isMarked={isMarked} poseId={id} />}
         </>
