@@ -14,7 +14,7 @@ interface Photo {
 }
 
 export default function Photo({ imageKey, source, id, isMarked }: Photo) {
-  const [loaded, setLoaded] = useState(isMarked);
+  const [loaded, setLoaded] = useState(false);
   const router = useRouter();
 
   return (
@@ -24,8 +24,6 @@ export default function Photo({ imageKey, source, id, isMarked }: Photo) {
           <Image
             src={imageKey}
             alt={source || ''}
-            // placeholder="blur"
-            // blurDataURL={IMAGE.profile_default}
             width={200}
             height={0}
             style={{
@@ -38,6 +36,7 @@ export default function Photo({ imageKey, source, id, isMarked }: Photo) {
             onClick={() => router.push(`/detail/${id}`)}
           />
           {loaded && <BookmarkButton isMarked={isMarked} poseId={id} />}
+          {loaded || <div className="h-200 w-full rounded-8 bg-sub-white" />}
         </>
       )}
     </div>
