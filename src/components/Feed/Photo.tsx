@@ -18,7 +18,7 @@ export default function Photo({ imageKey, source, id, isMarked }: Photo) {
   const router = useRouter();
 
   return (
-    <div className="relative mb-16 inline-block h-fit w-full rounded-8">
+    <div className="relative mb-16 inline-block w-full rounded-8">
       {imageKey && (
         <>
           <Image

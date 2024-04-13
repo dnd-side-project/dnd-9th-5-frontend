@@ -17,29 +17,42 @@ export default function PoseImage({ src, responsive = false, onLoad }: DetailedI
         >
           <div className="fixed inset-x-0 inset-y-0 bg-dimmed opacity-70" />
           <div className="h-screen w-full">
-            <Image src={src} alt="fullImage" fill className="object-contain" />
+            <Image
+              src={src}
+              alt="fullImage"
+              fill
+              style={{
+                objectFit: 'contain',
+              }}
+            />
           </div>
         </div>
       )}
       {responsive ? (
         <Image
           src={src}
-          alt="상세보기"
-          layout="responsive"
+          style={{
+            objectFit: 'contain',
+            width: '100%',
+            height: 'auto',
+          }}
           priority
+          alt="상세보기"
           width={400}
           height={0}
           onLoad={onLoad}
-          className="cursor-pointer object-contain"
           onClick={() => setIsModalShow(true)}
         />
       ) : (
         <Image
           src={src}
-          fill
-          className="cursor-pointer object-contain"
-          placeholder="blur"
-          blurDataURL={src}
+          width={400}
+          height={0}
+          style={{
+            objectFit: 'contain',
+            width: '100%',
+            height: '100%',
+          }}
           alt="포즈픽"
           onLoad={onLoad}
           onClick={() => setIsModalShow(true)}
