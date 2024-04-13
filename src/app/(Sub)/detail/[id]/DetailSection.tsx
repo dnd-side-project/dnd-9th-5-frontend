@@ -39,7 +39,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
   };
 
   return (
-    <div className="overflow-y-auto">
+    <div>
       {source && <Source source={source} url={sourceUrl} />}
       <div className="block">
         {isRendered || <div className="h-400 w-screen bg-sub-white" />}

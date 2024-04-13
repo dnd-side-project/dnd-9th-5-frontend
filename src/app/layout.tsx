@@ -21,7 +21,6 @@ export const metadata: Metadata = {
   },
   other: {
     'naver-site-verification': META_STRING.verification.naver,
-    'last-updated': '2023-11-08',
   },
   openGraph: {
     title: META_STRING.title,
@@ -50,7 +49,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body className="flex min-h-[100dvh] w-screen touch-none justify-center bg-slate-100 py-px">
+      <body className="flex min-h-screen w-screen touch-none justify-center bg-slate-100 py-px">
         <div className="w-full max-w-440 overflow-scroll bg-white text-primary">
           <Suspense>
             <Analytics />
