@@ -3,9 +3,6 @@
 @tailwind utilities;
 
 * {
-  box-sizing: border-box;
-  -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
   font-family: Pretendard;
   white-space: pre-wrap;
 }
@@ -20,30 +17,29 @@
   }
 }
 
-@supports (-webkit-touch-callout: none) {
-  .h-screen {
-    height: -webkit-fill-available;
-  }
-}
 
 /* Font */
 @font-face {
   font-family: 'Pretendard';
-  font-weight: 700;
-  src: url('/fonts/Pretendard-Bold.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Pretendard';
-  font-weight: 500;
-  src: url('/fonts/Pretendard-Medium.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
   font-weight: 400;
-  src: url('/fonts/Pretendard-Regular.woff2') format('woff2');
+  font-style: normal;
 }
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
 
 /* Typography */
 h1 {
