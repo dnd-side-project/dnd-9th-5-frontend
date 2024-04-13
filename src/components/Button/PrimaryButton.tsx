@@ -23,7 +23,7 @@ export default function PrimaryButton({ icon, text, onClick, type = 'fill', clas
   return (
     <button
       onClick={onClick}
-      className={`flex h-60 items-center justify-center gap-8 rounded-12 px-24 transition-all hover:scale-105 active:scale-95 ${style[type]} ${className}`}
+      className={`flex h-60 items-center justify-center gap-8 rounded-12 px-24 transition-all active:scale-95 ${style[type]} ${className}`}
     >
       {icon && <Icon icon={icon} />}
       <div id="subtitle-1">{text}</div>
