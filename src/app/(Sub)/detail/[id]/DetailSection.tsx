@@ -1,6 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 
 import Source from './Source';
 import TagButton from './TagButton';
@@ -23,6 +24,8 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
   const { open } = useOverlay();
   const pathname = usePathname();
 
+  const [isRendered, setIsRendered] = useState(false);
+
   if (!data) return null;
   const { imageKey, tagAttributes, source, sourceUrl, peopleCount, frameCount } = data.poseInfo;
 
@@ -39,7 +42,8 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
     <div className="overflow-y-auto">
       {source && <Source source={source} url={sourceUrl} />}
       <div className="block">
-        <PoseImage src={imageKey} responsive={true} />
+        {isRendered || <div className="h-400 w-screen bg-sub-white" />}
+        <PoseImage src={imageKey} responsive={true} onLoad={() => setIsRendered(true)} />
       </div>
       <div className="flex flex-wrap gap-10 px-20 py-12">
         <TagButton type="people" value={peopleCount} name={`${peopleCount}인`} />
