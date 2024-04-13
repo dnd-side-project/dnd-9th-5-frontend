@@ -53,7 +53,7 @@ export default function FeedSection({ children, query }: FeedSecionI) {
       </div>
     );
   return (
-    <div className="">
+    <div>
       {data.pages[0].empty ? (
         children
       ) : (
