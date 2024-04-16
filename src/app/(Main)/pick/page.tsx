@@ -46,11 +46,11 @@ export default function Page() {
       </div>
       <div className="relative flex grow">
         {(isLottie || !isRendered) && (
-          <div className="absolute inset-0 z-10 flex w-full justify-center bg-black">
+          <div className="absolute inset-x-0 inset-y-0 z-10 flex justify-center bg-black">
             <Lottie animationData={lottiePick} play />
           </div>
         )}
-        <div className="absolute inset-0 flex w-full justify-center bg-black">
+        <div className="absolute inset-x-0 inset-y-0 bg-black">
           <PoseImage src={image} onLoad={() => setIsRendered(true)} />
         </div>
       </div>
