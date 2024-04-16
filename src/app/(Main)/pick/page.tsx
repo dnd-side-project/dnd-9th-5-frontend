@@ -17,6 +17,9 @@ export default function Page() {
   const [isLottie, setIsLottie] = useState(true);
   const { refetch } = usePosePickQuery(countState, {
     onSuccess: (data) => {
+      if (data.poseInfo.imageKey === image) {
+        setIsRendered(true);
+      }
       setImage(data.poseInfo.imageKey);
     },
   });
@@ -41,7 +44,7 @@ export default function Page() {
           setState={setCountState}
         />
       </div>
-      <div className="relative flex flex-1">
+      <div className="relative flex grow">
         {(isLottie || !isRendered) && (
           <div className="absolute inset-0 z-10 flex w-full justify-center bg-black">
             <Lottie animationData={lottiePick} play />
