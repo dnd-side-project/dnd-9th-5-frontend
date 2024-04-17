@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body className="flex min-h-screen w-screen touch-none justify-center bg-slate-100 py-px">
+      <body className="flex w-screen touch-none justify-center bg-slate-100">
         <div className="w-full max-w-440 overflow-scroll bg-white text-primary">
           <Suspense>
             <Analytics />
