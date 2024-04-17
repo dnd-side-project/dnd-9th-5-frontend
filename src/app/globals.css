@@ -11,6 +11,17 @@
   display: none;
 }
 
+body {
+  min-height: 100vh;
+}
+
+@supports (-webkit-touch-callout: none) {
+  body {
+    /* for ios safari 15, safe-area-inset-bottom is 0, so a special fix apply here */
+    min-height: -webkit-fill-available;
+  }
+}
+
 @media (min-width: 440px) {
   html {
     font-size: 16px;

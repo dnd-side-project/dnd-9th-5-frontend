@@ -10,9 +10,11 @@ import PoseImage from '@/components/Modal/PoseImage';
 import { SelectionBasic } from '@/components/Selection';
 import { peopleCountList } from '@/constants/data';
 
+const DEFAULT_IMAGE = '/images/image-frame.png';
+
 export default function Page() {
   const [countState, setCountState] = useState(1);
-  const [image, setImage] = useState<string>('/images/image-frame.png');
+  const [image, setImage] = useState<string>(DEFAULT_IMAGE);
   const [isRendered, setIsRendered] = useState(false);
   const [isLottie, setIsLottie] = useState(true);
   const { refetch } = usePosePickQuery(countState, {
@@ -23,6 +25,11 @@ export default function Page() {
       setImage(data.poseInfo.imageKey);
     },
   });
+
+  useEffect(() => {
+    setImage(DEFAULT_IMAGE);
+    setIsRendered(true);
+  }, [countState]);
 
   useEffect(() => {
     setTimeout(() => setIsLottie(false), 2200);
