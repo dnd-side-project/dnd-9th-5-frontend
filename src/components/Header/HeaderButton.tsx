@@ -7,12 +7,11 @@ import { ICON } from '@/constants/icon';
 
 export function CloseButton() {
   const router = useRouter();
-
   return (
     <IconButton
       icon={ICON.close.black}
       onClick={() => {
-        if (document.referrer) router.back();
+        if (window.history.length > 1) router.back();
         else router.replace('/feed');
       }}
     />
