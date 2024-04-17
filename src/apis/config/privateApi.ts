@@ -21,7 +21,7 @@ privateApi.interceptors.response.use(
     if (error.response.status === 415) {
       alert('세션이 만료되었어요. 다시 로그인이 필요해요!');
     } else {
-      alert('오류가 발생했어요. 다시 로그인해주세요!');
+      alert('오류가 발생했어요. 다시 시도해주세요');
     }
     location.href = '/auth/logout';
     return Promise.reject(error);
