@@ -34,7 +34,7 @@ export default function Page() {
           <PrimaryButton
             text="탈퇴"
             onClick={() => router.replace(`/auth/withdraw?reason=${withdrawalReason}`)}
-            className="bg-[#EC323E]"
+            type="warning"
           />
         </>
       </Popup>
