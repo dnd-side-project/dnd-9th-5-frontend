@@ -8,6 +8,7 @@ export interface PoseInfo {
   sourceUrl: string;
   tagAttributes: string;
   updatedAt: string;
+  bookmarkCheck: boolean;
 }
 
 // 포즈피드
@@ -16,7 +17,7 @@ interface PoseFeedContentsSort {
   sorted: boolean;
   unsorted: boolean;
 }
-interface PoseFeedContents {
+export interface PoseFeedContents {
   content: Array<{ poseInfo: PoseInfo }>;
   pageable: {
     sort: PoseFeedContentsSort;

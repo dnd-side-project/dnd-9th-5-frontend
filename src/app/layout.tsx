@@ -6,7 +6,7 @@ import { Analytics } from '@/components/Analytics';
 import { OverlayProvider } from '@/components/Overlay/OverlayProvider';
 import { META_STRING } from '@/constants/meta';
 import QueryProvider from '@/provider/QueryProvider';
-import RecoilContextProvider from '@/provider/RecoilContextProvider';
+import RecoilProvider from '@/provider/RecoilProvider';
 
 import type { Metadata } from 'next';
 
@@ -17,11 +17,10 @@ export const metadata: Metadata = {
   },
   description: META_STRING.description.main,
   verification: {
-    google: 'MB7qV_Oa4G4gR0jHgjtnE6S4g4blocE2mjo7z-z2f6Q',
+    google: META_STRING.verification.google,
   },
   other: {
-    'naver-site-verification': 'eb9f471cae26de34e6bc71849e73f04cb8b00d83',
-    'last-updated': '2023-11-08',
+    'naver-site-verification': META_STRING.verification.naver,
   },
   openGraph: {
     title: META_STRING.title,
@@ -50,17 +49,17 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body className="flex min-h-[100dvh] w-screen touch-none justify-center bg-slate-100 py-px">
+      <body className="flex min-h-screen w-screen touch-none justify-center bg-slate-100 py-px">
         <div className="w-full max-w-440 overflow-scroll bg-white text-primary">
           <Suspense>
             <Analytics />
           </Suspense>
-          <RecoilContextProvider>
-            <QueryProvider>
+          <QueryProvider>
+            <RecoilProvider>
               <OverlayProvider>{children}</OverlayProvider>
-            </QueryProvider>
-            <div id="portal" />
-          </RecoilContextProvider>
+            </RecoilProvider>
+          </QueryProvider>
+          <div id="portal" />
         </div>
       </body>
     </html>

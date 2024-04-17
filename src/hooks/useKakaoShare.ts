@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-import { KAKAO_KEY } from '@/constants/env';
+import { KAKAO_JS_KEY } from '@/constants/env';
 import { META_STRING } from '@/constants/meta';
 
 export default function useKakaoShare() {
@@ -20,7 +20,7 @@ export default function useKakaoShare() {
     if (window.Kakao) {
       const kakao = window.Kakao;
       if (!kakao.isInitialized()) {
-        kakao.init(KAKAO_KEY);
+        kakao.init(KAKAO_JS_KEY);
       }
 
       kakao.Link.sendDefault({

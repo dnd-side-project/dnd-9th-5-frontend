@@ -7,6 +7,7 @@ export const colors = {
   divider: COLOR.gray[100],
   'card-ui': COLOR.gray[30],
   dimmed: COLOR.black,
+  warning: '#EC323E',
 
   // border
   'border-default': COLOR.gray[300],

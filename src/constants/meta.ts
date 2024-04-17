@@ -14,4 +14,8 @@ export const META_STRING = {
   },
   favicon: '/meta/favicon.ico',
   appleIcon: '/pwa-icons/apple.png',
+  verification: {
+    google: 'MB7qV_Oa4G4gR0jHgjtnE6S4g4blocE2mjo7z-z2f6Q',
+    naver: 'eb9f471cae26de34e6bc71849e73f04cb8b00d83',
+  },
 };

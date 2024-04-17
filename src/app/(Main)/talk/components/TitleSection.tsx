@@ -49,8 +49,8 @@ export default function TitleSection() {
             }}
           >
             <div>
-              <p>제시어에 맞춰 포즈를 취해 보세요!</p>
-              <p>독특한 나만의 포즈가 완성된답니다.</p>
+              <p>{`일명 <포즈로 말해요> 챌린지!`}</p>
+              <p>제시어에 맞춰 포즈를 취해보세요.</p>
             </div>
             <Spacing size={8} direction="horizontal" />
             <Icon size={20} icon="close_white" />

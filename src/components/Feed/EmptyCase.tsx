@@ -1,29 +1,20 @@
-import Link from 'next/link';
+import { PropsWithChildren } from 'react';
 
-import { PrimaryButton } from '@/components/Button';
 import { Spacing } from '@/components/Spacing';
 
-interface EmptyCase {
+interface EmptyCase extends PropsWithChildren {
   title: string;
   text: string;
-  button: string;
-  path: string;
 }
 
-export default function EmptyCase(props: EmptyCase) {
-  const { title, text, button, path } = props;
-
+export default function EmptyCase({ title, text, children }: EmptyCase) {
   return (
     <div className="py-80 text-center">
       <h4 className="text-secondary">{title}</h4>
       <Spacing size={8} />
       <p className="text-tertiary">{text}</p>
       <Spacing size={32} />
-      <div className="flex justify-center">
-        <Link href={path}>
-          <PrimaryButton text={button} type="fill" />
-        </Link>
-      </div>
+      <div className="flex justify-center">{children}</div>
     </div>
   );
 }

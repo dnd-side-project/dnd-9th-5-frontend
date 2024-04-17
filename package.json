@@ -32,6 +32,7 @@
     "react-lottie-player": "^1.5.4",
     "react-tooltip": "^5.20.0",
     "recoil": "^0.7.7",
+    "recoil-persist": "^5.1.0",
     "svgstore": "^3.0.1",
     "svgstore-cli": "^2.0.1",
     "tailwind-merge": "^1.14.0",

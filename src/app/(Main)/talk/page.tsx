@@ -1,18 +1,12 @@
 import TalkSection from './components/TalkSection';
 import TitleSection from './components/TitleSection';
-import { MainHeader } from '@/components/Header';
 import { PageAnimation } from '@/components/PageAnimation';
-import { Spacing } from '@/components/Spacing';
 
 export default function Talk() {
   return (
-    <>
-      <MainHeader />
-      <PageAnimation className="flex flex-1 flex-col items-center justify-center">
-        <TitleSection />
-        <TalkSection />
-      </PageAnimation>
-      <Spacing size={80} />
-    </>
+    <PageAnimation className="flex flex-1 flex-col items-center justify-center">
+      <TitleSection />
+      <TalkSection />
+    </PageAnimation>
   );
 }

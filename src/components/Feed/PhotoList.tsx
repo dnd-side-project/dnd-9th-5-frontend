@@ -1,20 +1,21 @@
-import { PoseInfo } from '@/apis';
 import Photo from './Photo';
+import { PoseFeedContents } from '@/apis';
 
 interface PhotoList {
-  data?: Array<{ poseInfo: PoseInfo }>;
+  data?: PoseFeedContents;
 }
 
 export default function PhotoList({ data }: PhotoList) {
-  if (!data) return <Photo />;
+  if (!data) return;
   return (
     <>
-      {data.map((item) => (
+      {data.content.map((item) => (
         <Photo
           key={item.poseInfo.poseId}
           imageKey={item.poseInfo.imageKey}
           source={item.poseInfo.source}
           id={item.poseInfo.poseId}
+          isMarked={item.poseInfo.bookmarkCheck}
         />
       ))}
     </>

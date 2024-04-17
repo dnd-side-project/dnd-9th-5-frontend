@@ -7,16 +7,16 @@ import {
 
 import {
   FilterTagsResponse,
+  PoseFeedContents,
   PoseFeedResponse,
   PosePickResponse,
   PoseTalkResponse,
-  RegisterResponse,
+  getBookmarkFeed,
   getFilterTag,
   getPoseDetail,
   getPoseFeed,
   getPosePick,
   getPoseTalk,
-  getRegister,
 } from '.';
 import { FilterState } from '@/hooks/useFilterState';
 
@@ -38,8 +38,8 @@ export const usePoseTalkQuery = (options?: UseQueryOptions<PoseTalkResponse>) =>
 export const usePoseFeedQuery = (
   { peopleCount, frameCount, tags }: FilterState,
   options?: UseInfiniteQueryOptions<PoseFeedResponse>
-) =>
-  useSuspenseInfiniteQuery<PoseFeedResponse>(
+) => {
+  return useSuspenseInfiniteQuery<PoseFeedResponse>(
     ['poseFeed', peopleCount, frameCount, tags],
     ({ pageParam = 0 }) => getPoseFeed(peopleCount, frameCount, tags.join(','), pageParam),
     {
@@ -52,9 +52,22 @@ export const usePoseFeedQuery = (
       ...options,
     }
   );
+};
+
+export const useBookmarkFeedQuery = (
+  accesstoken: string,
+  options?: UseInfiniteQueryOptions<PoseFeedContents>
+) =>
+  useSuspenseInfiniteQuery<PoseFeedContents>(
+    ['bookmarkFeed'],
+    ({ pageParam = 0 }) => getBookmarkFeed(pageParam),
+    {
+      getNextPageParam: (lastPage) => {
+        return lastPage.last ? undefined : lastPage.number + 1;
+      },
+      ...options,
+    }
+  );
 
 export const useFilterTagQuery = (options?: UseQueryOptions<FilterTagsResponse>) =>
   useSuspenseQuery<FilterTagsResponse>(['filterTag'], getFilterTag, { ...options });
-
-export const useRegisterQuery = (code: string) =>
-  useSuspenseQuery<RegisterResponse>(['register'], () => getRegister(code), {});

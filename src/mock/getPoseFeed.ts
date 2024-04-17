@@ -32,6 +32,7 @@ export const data: PoseFeedResponse = {
     content: [
       {
         poseInfo: {
+          bookmarkCheck: false,
           createdAt: '2023-08-19T14:37:48.885903',
           updatedAt: '2023-08-19T14:37:48.885903',
           imageKey:
@@ -46,6 +47,7 @@ export const data: PoseFeedResponse = {
       },
       {
         poseInfo: {
+          bookmarkCheck: false,
           createdAt: '2023-08-19T14:37:32.793511',
           updatedAt: '2023-08-19T14:37:32.793511',
           imageKey:
@@ -60,6 +62,7 @@ export const data: PoseFeedResponse = {
       },
       {
         poseInfo: {
+          bookmarkCheck: false,
           createdAt: '2023-08-19T14:37:31.943832',
           updatedAt: '2023-08-19T14:37:31.943832',
           imageKey:
@@ -74,6 +77,7 @@ export const data: PoseFeedResponse = {
       },
       {
         poseInfo: {
+          bookmarkCheck: false,
           createdAt: '2023-08-19T14:37:31.963291',
           updatedAt: '2023-08-19T14:37:31.963291',
           imageKey:
@@ -88,6 +92,7 @@ export const data: PoseFeedResponse = {
       },
       {
         poseInfo: {
+          bookmarkCheck: false,
           createdAt: '2023-08-19T14:37:44.664353',
           updatedAt: '2023-08-19T14:37:44.664353',
           imageKey:
@@ -102,6 +107,7 @@ export const data: PoseFeedResponse = {
       },
       {
         poseInfo: {
+          bookmarkCheck: false,
           createdAt: '2023-08-19T14:37:43.246315',
           updatedAt: '2023-08-19T14:37:43.246315',
           imageKey:
@@ -116,6 +122,7 @@ export const data: PoseFeedResponse = {
       },
       {
         poseInfo: {
+          bookmarkCheck: false,
           createdAt: '2023-08-19T14:37:38.141524',
           updatedAt: '2023-08-19T14:37:38.141524',
           imageKey:
@@ -130,6 +137,7 @@ export const data: PoseFeedResponse = {
       },
       {
         poseInfo: {
+          bookmarkCheck: false,
           createdAt: '2023-08-19T14:37:50.162718',
           updatedAt: '2023-08-19T14:37:50.162718',
           imageKey:
@@ -144,6 +152,7 @@ export const data: PoseFeedResponse = {
       },
       {
         poseInfo: {
+          bookmarkCheck: false,
           createdAt: '2023-08-19T14:37:30.103739',
           updatedAt: '2023-08-19T14:37:30.103739',
           imageKey:
@@ -158,6 +167,7 @@ export const data: PoseFeedResponse = {
       },
       {
         poseInfo: {
+          bookmarkCheck: false,
           createdAt: '2023-08-19T14:37:42.244371',
           updatedAt: '2023-08-19T14:37:42.244371',
           imageKey:
