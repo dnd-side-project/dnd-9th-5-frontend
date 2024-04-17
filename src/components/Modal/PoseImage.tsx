@@ -12,7 +12,7 @@ export default function PoseImage({ src, responsive = false, onLoad }: DetailedI
     <>
       {isModalShow && (
         <div
-          className="fixed inset-x-0 inset-y-0 z-30 flex items-center justify-center"
+          className="fixed inset-x-0 inset-y-0 z-modal flex items-center justify-center"
           onClick={() => setIsModalShow(false)}
         >
           <div className="fixed inset-x-0 inset-y-0 bg-dimmed opacity-70" />
