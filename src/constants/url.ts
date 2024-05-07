@@ -8,4 +8,6 @@ export const URL = {
     term: 'https://shineshine.notion.site/3113eb146abb4b5c809070c3f01380da',
     privacy: 'https://shineshine.notion.site/75e98a2462824b839a9c37473a6afbd5',
   },
+  appstore:
+    'https://apps.apple.com/kr/app/%ED%8F%AC%EC%A6%88%ED%94%BC%EC%BB%A4-%EB%84%A4%EC%BB%B7%EC%82%AC%EC%A7%84-%ED%8F%AC%EC%A6%88%EC%B6%94%EC%B2%9C/id6474260471',
 };
