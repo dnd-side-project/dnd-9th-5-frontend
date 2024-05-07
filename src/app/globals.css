@@ -18,12 +18,20 @@ body {
   display: none;
 }
 
+/*iOS Browser*/
 @supports (-webkit-touch-callout: none) {
   body {
     min-height: -webkit-fill-available;
   }
   #ios-banner {
     display: block;
+  }
+}
+
+/*PWA*/
+@media all and (display-mode: standalone) {
+  #ios-banner {
+    display: none;
   }
 }
 

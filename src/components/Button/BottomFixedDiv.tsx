@@ -1,3 +1,4 @@
+import Banner from '../Header/Banner';
 import { StrictPropsWithChildren } from '@/types';
 
 export function ButtonList({ children }: StrictPropsWithChildren) {
@@ -6,7 +7,7 @@ export function ButtonList({ children }: StrictPropsWithChildren) {
 
 export function BottomDiv({ children }: StrictPropsWithChildren) {
   return (
-    <div className={`mx-auto max-w-440 bg-white px-20 pb-30 pt-10`}>
+    <div className={`mx-auto max-w-440 bg-white px-20 pb-24 pt-10`}>
       <ButtonList>{children}</ButtonList>
     </div>
   );
@@ -17,8 +18,12 @@ export function BottomFixedDiv({ children }: StrictPropsWithChildren) {
     <>
       <div className={`fixed inset-x-0 bottom-0 z-30`}>
         <BottomDiv>{children}</BottomDiv>
+        <div id="ios-banner">
+          <Banner />
+        </div>
       </div>
-      <div className="h-100" />
+      <div className="h-88" />
+      <div id="ios-banner" className="h-62" />
     </>
   );
 }
