@@ -1,7 +1,6 @@
 'use client';
 
 import LoginModal from './LoginModal';
-import LogoutModal from './LogoutModal';
 import { Icon } from '@/components/Button/Icon';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { ICON } from '@/constants/icon';

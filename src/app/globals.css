@@ -14,11 +14,16 @@
 body {
   min-height: 100vh;
 }
+#ios-banner {
+  display: none;
+}
 
 @supports (-webkit-touch-callout: none) {
   body {
-    /* for ios safari 15, safe-area-inset-bottom is 0, so a special fix apply here */
     min-height: -webkit-fill-available;
+  }
+  #ios-banner {
+    display: block;
   }
 }
 
