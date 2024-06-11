@@ -1,4 +1,6 @@
-export const META_STRING = {
+import { Metadata } from 'next';
+
+const META_STRING = {
   title: 'PosePicker | 포즈피커',
   description: {
     main: '포토부스에서 고민하는 당신을 위한 포즈 추천 서비스',
@@ -19,3 +21,42 @@ export const META_STRING = {
     naver: 'eb9f471cae26de34e6bc71849e73f04cb8b00d83',
   },
 };
+
+const METADATA: Metadata = {
+  title: {
+    default: `${META_STRING.title}`,
+    template: `${META_STRING.title} | %s`,
+  },
+  description: META_STRING.description.main,
+  verification: {
+    google: META_STRING.verification.google,
+  },
+  other: {
+    'naver-site-verification': META_STRING.verification.naver,
+    version: 'v1.0.2',
+  },
+  openGraph: {
+    title: META_STRING.title,
+    description: META_STRING.description.sub,
+    images: [META_STRING.image.og],
+  },
+  twitter: {
+    title: META_STRING.title,
+    description: META_STRING.description.sub,
+    images: [META_STRING.image.detail],
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
+  icons: {
+    icon: META_STRING.favicon,
+    apple: META_STRING.appleIcon,
+  },
+  manifest: '/manifest.json',
+  themeColor: '#ffffff',
+};
+
+export default METADATA;
