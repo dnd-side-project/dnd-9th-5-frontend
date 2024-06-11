@@ -57,7 +57,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
           type="secondary"
           className="border border-border-default"
         />
-        <PrimaryButton text="카카오 공유" onClick={() => shareKakao(BASE_SITE_URL + pathname)} />
+        <PrimaryButton text="카카오 공유" onClick={() => shareKakao(poseId)} />
       </BottomFixedDiv>
     </div>
   );
