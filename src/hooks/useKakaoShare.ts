@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 
 import { KAKAO_JS_KEY } from '@/constants/env';
-import { META_STRING } from '@/constants/meta';
+import { OPEN_GRAPH } from '@/constants/meta';
 
 export default function useKakaoShare() {
   useEffect(() => {
@@ -26,9 +26,7 @@ export default function useKakaoShare() {
       kakao.Link.sendDefault({
         objectType: 'feed',
         content: {
-          title: '이 포즈는 어때요?',
-          description: META_STRING.description.sub,
-          imageUrl: META_STRING.image.kakao_share,
+          ...OPEN_GRAPH.kakao_share,
           link: {
             mobileWebUrl: uri,
             webUrl: uri,

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-export const META_STRING = {
+const META_STRING = {
   title: 'PosePicker | 포즈피커',
   description: {
     main: '포토부스에서 고민하는 당신을 위한 포즈 추천 서비스',
@@ -10,7 +10,7 @@ export const META_STRING = {
     // feed: '포즈피드에서 조건에 맞는 포즈를 찾고, 친구한테 공유해보세요',
   },
   image: {
-    og: '/meta/og_main.png',
+    main: '/meta/og_main.png',
     detail: '/meta/og_detail.png',
     kakao_share: 'https://www.posepicker.site/meta/og_kakao.png',
   },
@@ -19,6 +19,20 @@ export const META_STRING = {
   verification: {
     google: 'MB7qV_Oa4G4gR0jHgjtnE6S4g4blocE2mjo7z-z2f6Q',
     naver: 'eb9f471cae26de34e6bc71849e73f04cb8b00d83',
+  },
+};
+
+export const OPEN_GRAPH = {
+  detail: {
+    title: META_STRING.title,
+    description: '이 포즈는 어때요?',
+    image: META_STRING.image.detail,
+  },
+  kakao_share: {
+    title: '이 포즈는 어때요?',
+    description: META_STRING.description.sub,
+    button: '포즈 확인하기',
+    imageURL: META_STRING.image.kakao_share,
   },
 };
 
@@ -38,7 +52,7 @@ const METADATA: Metadata = {
   openGraph: {
     title: META_STRING.title,
     description: META_STRING.description.sub,
-    images: [META_STRING.image.og],
+    images: [META_STRING.image.main],
   },
   twitter: {
     title: META_STRING.title,
