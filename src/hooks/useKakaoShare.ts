@@ -3,7 +3,6 @@
 import { useEffect } from 'react';
 
 import { KAKAO_JS_KEY } from '@/constants/env';
-import { META_STRING } from '@/constants/meta';
 
 export default function useKakaoShare() {
   useEffect(() => {
@@ -16,33 +15,18 @@ export default function useKakaoShare() {
     };
   }, []);
 
-  const shareKakao = (uri: string) => {
+  const shareKakao = (poseId: number) => {
     if (window.Kakao) {
       const kakao = window.Kakao;
       if (!kakao.isInitialized()) {
         kakao.init(KAKAO_JS_KEY);
       }
 
-      kakao.Link.sendDefault({
-        objectType: 'feed',
-        content: {
-          title: META_STRING.title,
-          description: META_STRING.description.main,
-          imageUrl: META_STRING.image.kakao_share,
-          link: {
-            mobileWebUrl: uri,
-            webUrl: uri,
-          },
+      kakao.Share.sendCustom({
+        templateId: 108921,
+        templateArgs: {
+          poseId,
         },
-        buttons: [
-          {
-            title: META_STRING.description.sub,
-            link: {
-              mobileWebUrl: uri,
-              webUrl: uri,
-            },
-          },
-        ],
       });
     }
   };
