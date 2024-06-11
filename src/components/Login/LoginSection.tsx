@@ -1,7 +1,6 @@
 'use client';
 
 import LoginModal from './LoginModal';
-import LogoutModal from './LogoutModal';
 import { Icon } from '@/components/Button/Icon';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { ICON } from '@/constants/icon';
@@ -21,13 +20,9 @@ export default function LoginSection() {
 
   return (
     <section className="h-108 py-24">
-      <button
+      <div
         className="flex w-full items-center gap-16"
-        onClick={() =>
-          isLogin
-            ? open(({ exit }) => <LogoutModal exit={exit} />)
-            : open(() => <LoginModal onClose={exit} />)
-        }
+        onClick={() => !isLogin && open(() => <LoginModal onClose={exit} />)}
       >
         <DefaultProfile />
         <div className="text-start">
@@ -38,7 +33,7 @@ export default function LoginSection() {
               : '간편 로그인으로 3초만에 가입할 수 있어요.'}
           </div>
         </div>
-      </button>
+      </div>
     </section>
   );
 }

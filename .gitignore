@@ -9,3 +9,6 @@
 # Next-PWA
 public/*.js
 public/*.js.map
+
+package-lock.json
+yarn.lock

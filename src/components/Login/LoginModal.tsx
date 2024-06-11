@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { AppleButton, KakaoButton } from './LoginButton';
 import { Popup } from '@/components/Modal';
 import { KAKAO_AUTHORIZE } from '@/constants/env';
+import { URL } from '@/constants/url';
 
 interface LoginModalProps {
   onClose: () => void;
@@ -13,7 +14,7 @@ interface LoginModalProps {
 export default function LoginModal({ onClose }: LoginModalProps) {
   const router = useRouter();
   const handleLogin = () => {
-    router.replace(KAKAO_AUTHORIZE);
+    router.push(KAKAO_AUTHORIZE);
   };
 
   return (
@@ -24,7 +25,7 @@ export default function LoginModal({ onClose }: LoginModalProps) {
     >
       <div className="flex w-full flex-col gap-8 pb-16">
         <KakaoButton onClick={handleLogin} />
-        <AppleButton onClick={() => alert('앱스토어 준비중입니다.')} />
+        <AppleButton onClick={() => window.open(URL.appstore)} />
       </div>
     </Popup>
   );
