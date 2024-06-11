@@ -26,8 +26,8 @@ export default function useKakaoShare() {
       kakao.Link.sendDefault({
         objectType: 'feed',
         content: {
-          title: META_STRING.title,
-          description: META_STRING.description.main,
+          title: '이 포즈는 어때요?',
+          description: META_STRING.description.sub,
           imageUrl: META_STRING.image.kakao_share,
           link: {
             mobileWebUrl: uri,
@@ -36,7 +36,7 @@ export default function useKakaoShare() {
         },
         buttons: [
           {
-            title: META_STRING.description.sub,
+            title: '포즈 확인하기',
             link: {
               mobileWebUrl: uri,
               webUrl: uri,
