@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-const META_STRING = {
+export const META_STRING = {
   title: 'PosePicker | 포즈피커',
   description: {
     main: '포토부스에서 고민하는 당신을 위한 포즈 추천 서비스',
