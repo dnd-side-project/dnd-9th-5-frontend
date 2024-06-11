@@ -10,6 +10,8 @@ export const menuList: readonly MenuI[] = [
   { text: '자주 묻는 질문', link: URL.menu.faq },
   { text: '포즈피커 공식 SNS', link: URL.instagram, highlight: true },
   { text: '문의하기', link: URL.inquiry },
+  { text: '문의하기', link: URL.inquiry },
+  { text: '개발자의 비밀일기', link: URL.menu.release_note },
   { text: '', link: '' },
   { text: '이용약관', link: URL.menu.term },
   { text: '개인정보 처리방침', link: URL.menu.privacy },
