@@ -21,12 +21,7 @@ module.exports = {
   },
 
   rules: {
-    'prettier/prettier': [
-      'error',
-      {
-        endOfLine: 'auto',
-      },
-    ],
+    'prettier/prettier': 0,
 
     'react-hooks/exhaustive-deps': 'error',
 
