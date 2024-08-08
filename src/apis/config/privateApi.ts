@@ -2,13 +2,7 @@ import axios from 'axios';
 
 import { CustomInstance } from './type';
 import { BASE_API_URL } from '@/constants/env';
-
-function getAccesstoken() {
-  if (typeof window !== 'undefined') {
-    const item = localStorage.getItem('accesstoken');
-    return item;
-  }
-}
+import { getClientCookie } from '@/utils';
 
 const privateApi: CustomInstance = axios.create({
   baseURL: `${BASE_API_URL}/api`,
@@ -30,11 +24,11 @@ privateApi.interceptors.response.use(
 
 privateApi.interceptors.request.use(
   (config) => {
-    const accessToken = getAccesstoken();
+    const accessToken = getClientCookie('accesstoken');
 
-    if (accessToken) {
-      config.headers.Authorization = `Bearer ${accessToken}`;
-    }
+    if (!accessToken) throw 'There is No AccessToken';
+
+    config.headers.Authorization = `Bearer ${accessToken}`;
 
     return config;
   },
