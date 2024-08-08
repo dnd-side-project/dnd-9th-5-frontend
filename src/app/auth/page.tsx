@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 
 import { getRegister } from '@/apis';
 import useUserState from '@/context/userState';
+import { setClientCookie } from '@/utils';
 
 export default function Page() {
   const code = useSearchParams().get('code');
@@ -15,7 +16,7 @@ export default function Page() {
     if (code) {
       getRegister(code).then((response) => {
         setUser(response);
-        localStorage.setItem('accesstoken', response.token.accessToken);
+        setClientCookie('accesstoken', response.token.accessToken);
         alert(`로그인에 성공했어요!`);
         router.back();
       });

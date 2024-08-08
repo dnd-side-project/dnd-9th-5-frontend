@@ -1,12 +1,10 @@
-'use client';
-
 import BookmarkEmpty from './BookmarkEmpty';
 import BookmarkSecion from './BookmarkSecion';
-import useUserState from '@/context/userState';
+import { getServerCookie } from '@/utils';
 
-export default function BookmarkPage() {
-  const { token } = useUserState();
+export default async function BookmarkPage() {
+  const token = await getServerCookie('accesstoken');
 
-  if (token) return <BookmarkSecion accesstoken={token?.accessToken} />;
-  else return <BookmarkEmpty />;
+  if (token) return <BookmarkSecion />;
+  return <BookmarkEmpty />;
 }

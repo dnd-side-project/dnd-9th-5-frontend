@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 
-import { patchDeleteAccount, patchLogout } from '@/apis';
+import { patchDeleteAccount } from '@/apis';
 import useUserState from '@/context/userState';
 
 export default function Page() {
@@ -13,11 +13,9 @@ export default function Page() {
 
   useEffect(() => {
     if (token && withdrawalReason) {
-      patchDeleteAccount(token.accessToken, token.refreshToken, withdrawalReason).then(
-        (response) => {
-          console.log(response);
-        }
-      );
+      patchDeleteAccount(withdrawalReason).then((response) => {
+        console.log(response);
+      });
     }
     // 회원탈퇴 api 될 떄 까지만
     // if (token) {

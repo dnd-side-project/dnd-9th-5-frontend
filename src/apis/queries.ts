@@ -54,10 +54,7 @@ export const usePoseFeedQuery = (
   );
 };
 
-export const useBookmarkFeedQuery = (
-  accesstoken: string,
-  options?: UseInfiniteQueryOptions<PoseFeedContents>
-) =>
+export const useBookmarkFeedQuery = (options?: UseInfiniteQueryOptions<PoseFeedContents>) =>
   useSuspenseInfiniteQuery<PoseFeedContents>(
     ['bookmarkFeed'],
     ({ pageParam = 0 }) => getBookmarkFeed(pageParam),
