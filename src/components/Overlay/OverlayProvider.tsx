@@ -10,11 +10,13 @@ import React, {
   useState,
 } from 'react';
 
+import { isProduction } from '@/utils/isProduction';
+
 export const OverlayContext = createContext<{
   mount(id: string, element: ReactNode): void;
   unmount(id: string): void;
 } | null>(null);
-if (process.env.NODE_ENV !== 'production') {
+if (!isProduction) {
   OverlayContext.displayName = 'OverlayContext';
 }
 
