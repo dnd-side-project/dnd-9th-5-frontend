@@ -1,4 +1,4 @@
-const isServer = typeof window === 'undefined';
+import { isServer } from './isServer';
 
 export const setCookie = async (key: string, value: string, options?: { expires?: Date }) => {
   // 서버 측 쿠키
