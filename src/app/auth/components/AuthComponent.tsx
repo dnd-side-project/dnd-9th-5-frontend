@@ -15,11 +15,16 @@ export default function AuthComponent({ code }: AuthComponentProps) {
   const router = useRouter();
 
   useDidMount(async () => {
-    const response = await getRegister(code);
-    setUser(response);
-    localStorage.setItem('accesstoken', response.token.accessToken);
-    alert(`로그인에 성공했어요!`);
-    router.back();
+    try {
+      const response = await getRegister(code);
+      setUser(response);
+      localStorage.setItem('accesstoken', response.token.accessToken);
+      alert(`로그인에 성공했어요!`);
+      router.back();
+    } catch (error) {
+      router.push('/');
+    }
   });
-  return <div></div>;
+
+  return null;
 }
