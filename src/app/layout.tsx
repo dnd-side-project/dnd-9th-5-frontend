@@ -2,6 +2,7 @@ import './globals.css';
 
 import { Suspense } from 'react';
 
+import { JsonLD } from '@/components';
 import { Analytics } from '@/components/Analytics';
 import { OverlayProvider } from '@/components/Overlay/OverlayProvider';
 import METADATA from '@/constants/meta';
@@ -15,11 +16,12 @@ export const metadata: Metadata = METADATA;
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body className="flex w-screen touch-none justify-center bg-slate-100">
-        <div className="w-full max-w-440 overflow-scroll bg-white text-primary">
+      <body className="flex justify-center w-screen touch-none bg-slate-100">
+        <div className="w-full overflow-scroll bg-white max-w-440 text-primary">
           <Suspense>
             <Analytics />
           </Suspense>
+          <JsonLD />
           <QueryProvider>
             <RecoilProvider>
               <OverlayProvider>{children}</OverlayProvider>
