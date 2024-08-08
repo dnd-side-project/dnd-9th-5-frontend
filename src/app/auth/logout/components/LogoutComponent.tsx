@@ -19,5 +19,6 @@ export default function LogoutComponent() {
     localStorage.removeItem('accesstoken');
     router.back();
   });
-  return <div></div>;
+
+  return null;
 }
