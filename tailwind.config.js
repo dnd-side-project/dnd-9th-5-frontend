@@ -18,14 +18,9 @@ module.exports = {
         modal: 1000,
         tooltip: 500,
       },
-    },
-    fontWeight: {
-      100: '100',
-      300: '300',
-      350: '350',
-      400: '400',
-      700: '700',
-      900: '900',
+      maxWidth: {
+        layout: '27.5rem',
+      },
     },
   },
   plugins: [require('prettier-plugin-tailwindcss')],
