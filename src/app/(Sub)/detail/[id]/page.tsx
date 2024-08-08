@@ -1,5 +1,5 @@
 import { QueryAsyncBoundary } from '@suspensive/react-query';
-import { Metadata, ResolvingMetadata } from 'next';
+import { Metadata } from 'next';
 
 import DetailSection from './DetailSection';
 import { getPoseDetail } from '@/apis';
@@ -7,7 +7,7 @@ import { RejectedFallback } from '@/components/ErrorBoundary';
 import Header from '@/components/Header';
 import { Loading } from '@/components/Loading';
 import { PageAnimation } from '@/components/PageAnimation';
-import { HydrationProvider } from '@/components/Provider/HydrationProvider';
+import { HydrationProvider } from '@/components/Provider';
 import { OPEN_GRAPH } from '@/constants/meta';
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
