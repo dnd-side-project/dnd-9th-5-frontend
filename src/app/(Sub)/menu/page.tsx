@@ -1,5 +1,3 @@
-'use client';
-
 import MenuListSection from './MenuListSection';
 import Header from '@/components/Header';
 import LoginSection from '@/components/Login/LoginSection';

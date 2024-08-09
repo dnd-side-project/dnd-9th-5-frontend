@@ -3,21 +3,18 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import { patchDeleteAccount } from '@/apis';
-import useUserState from '@/context/userState';
+import { ACCESS_TOKEN } from '@/constants';
 import useDidMount from '@/hooks/useDidMount';
+import { getClientCookie, removeClientCookie } from '@/utils';
 
 export default function WithdrawComponent() {
   const router = useRouter();
-  const { token, clearUser } = useUserState();
+  const token = getClientCookie(ACCESS_TOKEN);
   const withdrawalReason = useSearchParams().get('reason');
 
   useDidMount(async () => {
     if (token && withdrawalReason) {
-      const response = await patchDeleteAccount(
-        token.accessToken,
-        token.refreshToken,
-        withdrawalReason
-      );
+      const response = await patchDeleteAccount(withdrawalReason);
       console.log(response);
     }
 
@@ -27,8 +24,7 @@ export default function WithdrawComponent() {
     //     alert('로그아웃 되었습니다');
     //   });
     // }
-    clearUser();
-    localStorage.removeItem('accesstoken');
+    removeClientCookie(ACCESS_TOKEN);
     router.replace('/menu');
   });
 
