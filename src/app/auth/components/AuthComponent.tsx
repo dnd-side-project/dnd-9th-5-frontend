@@ -20,7 +20,7 @@ export default function AuthComponent({ code }: AuthComponentProps) {
       setUser(response);
       localStorage.setItem('accesstoken', response.token.accessToken);
       alert(`로그인에 성공했어요!`);
-      router.back();
+      router.push('/');
     } catch (error) {
       router.push('/');
     }
