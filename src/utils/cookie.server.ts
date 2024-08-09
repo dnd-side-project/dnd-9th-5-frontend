@@ -8,8 +8,7 @@ export const setServerCookie = async (key: string, value: string, options?: { ex
 export const getServerCookie = async (key: string) => {
   const { cookies } = await import('next/headers');
   const cookie = cookies().get(key);
-  if (!cookie) throw `There is no ${key} in cookie!`;
-  return cookie.value;
+  return cookie?.value;
 };
 
 export const removeServerCookie = async (key: string) => {
