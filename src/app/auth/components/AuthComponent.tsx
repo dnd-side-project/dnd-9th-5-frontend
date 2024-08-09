@@ -18,6 +18,8 @@ export default function AuthComponent({ code }: AuthComponentProps) {
     try {
       const response = await getRegister(code);
       setClientCookie(ACCESS_TOKEN, response.token.accessToken);
+      setClientCookie('email', response.email);
+      setClientCookie('nickname', response.nickname);
       alert(`로그인에 성공했어요!`);
       router.push('/');
     } catch (error) {

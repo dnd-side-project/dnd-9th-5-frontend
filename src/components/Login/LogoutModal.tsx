@@ -19,10 +19,8 @@ export default function LogoutModal({ exit }: { exit(): void }) {
       title="로그아웃"
       content={`북마크는 로그인 시에만 유지되어요.\n정말 로그아웃하시겠어요?`}
     >
-      <>
-        <PrimaryButton text="로그아웃" type="secondary" onClick={handleLogout} />
-        <PrimaryButton text="로그인 유지" onClick={exit} />
-      </>
+      <PrimaryButton text="로그아웃" type="secondary" onClick={handleLogout} />
+      <PrimaryButton text="로그인 유지" onClick={exit} />
     </Popup>
   );
 }

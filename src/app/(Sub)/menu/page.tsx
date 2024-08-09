@@ -2,10 +2,10 @@ import MenuListSection from './MenuListSection';
 import Header from '@/components/Header';
 import LoginSection from '@/components/Login/LoginSection';
 
-export default function MenuPage() {
+export default async function MenuPage() {
   return (
     <div className="px-20">
-      <Header close={true} title="메뉴" />
+      <Header close title="메뉴" />
       <LoginSection />
       <MenuListSection />
     </div>
