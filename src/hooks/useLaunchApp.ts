@@ -6,10 +6,11 @@ export default function useLaunchApp() {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    function handler() {
+    const handler = () => {
       if (!timerRef.current) return;
       clearTimeout(timerRef.current);
-    }
+    };
+
     window.addEventListener('visibilitychange', handler);
   }, []);
 
@@ -18,6 +19,7 @@ export default function useLaunchApp() {
       window.open(baseUrl);
       return;
     }
+
     location.href = deepLinkUrl ?? baseUrl;
 
     timerRef.current = setTimeout(() => {
