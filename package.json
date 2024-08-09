@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "type:check": "tsc --noEmit",
     "format": "prettier --write --ignore-path .gitignore .",
     "make-sprite": "rm public/sprite/sprite.svg && svgstore -o public/sprite/sprite.svg public/sprite/icons/**/*.svg"
   },

@@ -1,0 +1,18 @@
+name: 'CI'
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Check typescript
+        run: yarn type:check
+
+      - name: Check eslint
+        run: yarn lint
