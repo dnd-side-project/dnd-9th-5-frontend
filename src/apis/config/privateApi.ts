@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import { CustomInstance } from './type';
+import { ACCESS_TOKEN } from '@/constants';
 import { BASE_API_URL } from '@/constants/env';
 import { getClientCookie } from '@/utils';
 
@@ -24,7 +25,7 @@ privateApi.interceptors.response.use(
 
 privateApi.interceptors.request.use(
   (config) => {
-    const accessToken = getClientCookie('accesstoken');
+    const accessToken = getClientCookie(ACCESS_TOKEN);
 
     if (!accessToken) throw 'There is No AccessToken';
 
