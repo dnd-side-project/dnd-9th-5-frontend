@@ -7,13 +7,6 @@ import { ACCESS_TOKEN } from '@/constants';
 import { ICON } from '@/constants/icon';
 import { getClientCookie } from '@/utils';
 
-function DefaultProfile() {
-  return (
-    <div className="flex items-center justify-center rounded-full h-60 w-60 bg-border-default">
-      <Icon icon={ICON.profile} size={33} />
-    </div>
-  );
-}
 
 export default function LoginSection() {
   const { open, exit } = useOverlay();
@@ -25,7 +18,9 @@ export default function LoginSection() {
         className="flex items-center w-full gap-16"
         onClick={() => !token && open(() => <LoginModal onClose={exit} />)}
       >
-        <DefaultProfile />
+        <div className="flex items-center justify-center rounded-full h-60 w-60 bg-border-default">
+          <Icon icon={ICON.profile} size={33} />
+        </div>
         <div className="text-start">
           <div id="subtitle-1">{token ? userData?.email : '회원가입 / 로그인'}</div>
           <div id="subtitle-3" className="text-tertiary">
