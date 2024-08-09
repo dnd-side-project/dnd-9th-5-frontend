@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 import { CustomInstance } from './type';
-import { ACCESS_TOKEN } from '@/constants';
+import { ACCESS_TOKEN, ERROR_UNAUTHORIZED, ERROR_UNSUPPORTED_MEDIA_TYPE } from '@/constants';
 import { BASE_API_URL } from '@/constants/env';
-import { getClientCookie } from '@/utils';
+import { getClientCookie, removeClientCookie } from '@/utils';
 
 const privateApi: CustomInstance = axios.create({
   baseURL: `${BASE_API_URL}/api`,
@@ -13,12 +13,15 @@ const privateApi: CustomInstance = axios.create({
 privateApi.interceptors.response.use(
   (response) => response.data,
   (error) => {
-    if (error.response.status === 401) {
+    const status = error.response.status;
+    if (status === ERROR_UNAUTHORIZED) {
       alert('세션이 만료되었어요. 다시 로그인이 필요해요!');
-    } else {
+      removeClientCookie(ACCESS_TOKEN);
+    }
+    if (status === ERROR_UNSUPPORTED_MEDIA_TYPE) {
       alert('오류가 발생했어요. 다시 시도해주세요');
     }
-    location.href = '/auth/logout';
+    location.href = '/';
     return Promise.reject(error);
   }
 );
@@ -26,11 +29,7 @@ privateApi.interceptors.response.use(
 privateApi.interceptors.request.use(
   (config) => {
     const accessToken = getClientCookie(ACCESS_TOKEN);
-
-    if (!accessToken) throw 'There is No AccessToken';
-
     config.headers.Authorization = `Bearer ${accessToken}`;
-
     return config;
   },
   (error) => {
