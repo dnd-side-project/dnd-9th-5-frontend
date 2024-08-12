@@ -1,13 +1,11 @@
+'use client';
+
 import BookmarkEmpty from './BookmarkEmpty';
 import { useBookmarkFeedQuery } from '@/apis';
 import FeedSection from '@/components/Feed/FeedSection';
 
-interface BookmarkSecionI {
-  accesstoken: string;
-}
-
-export default function BookmarkSecion({ accesstoken }: BookmarkSecionI) {
-  const query = useBookmarkFeedQuery(accesstoken);
+export default function BookmarkSecion() {
+  const query = useBookmarkFeedQuery();
 
   return (
     <FeedSection query={query}>
