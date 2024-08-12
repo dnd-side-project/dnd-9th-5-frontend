@@ -6,11 +6,13 @@ import LogoutModal from '@/components/Login/LogoutModal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { ACCESS_TOKEN } from '@/constants';
 import { menuList } from '@/constants/data';
+import useLaunchApp from '@/hooks/useLaunchApp';
 import { getClientCookie } from '@/utils';
 
 export default function MenuListSection() {
   const token = getClientCookie(ACCESS_TOKEN);
   const { open } = useOverlay();
+  const { launchApp } = useLaunchApp();
 
   function handleLogout() {
     open(({ exit }) => <LogoutModal exit={exit} />);
@@ -23,7 +25,7 @@ export default function MenuListSection() {
           <div
             key={idx}
             className={`cursor-pointer py-12 ${'highlight' in item && 'text-main-violet'}`}
-            onClick={() => window.open(item.link)}
+            onClick={() => launchApp(item.link, item?.deepLink)}
           >
             <span id="subtitle-1">{item.text}</span>
           </div>
