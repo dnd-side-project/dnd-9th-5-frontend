@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 
 import { GA_ID, HOTJAR } from '@/constants/env';
 import { pageview } from '@/utils/gtm';
+import { isProduction } from '@/utils/isProduction';
 
 export default function Analytics() {
   const pathname = usePathname();
@@ -17,12 +18,13 @@ export default function Analytics() {
     }
   }, [pathname, searchParams]);
 
-  if (process.env.NEXT_PUBLIC_VERCEL_ENV !== 'production') {
+  if (!isProduction) {
     return null;
   }
 
   return (
     <>
+      {/* GA */}
       <noscript>
         <iframe
           src={`https://www.googletagmanager.com/ns.html?id=${GA_ID}`}
@@ -44,6 +46,7 @@ export default function Analytics() {
   `,
         }}
       />
+      {/* HotJar */}
       <Script
         id="hotjar-script"
         strategy="afterInteractive"
