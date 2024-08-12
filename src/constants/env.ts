@@ -8,3 +8,5 @@ export const KAKAO_AUTHORIZE = `https://kauth.kakao.com/oauth/authorize?client_i
 
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 export const HOTJAR = { HJID: 3704547, HJSV: 6 };
+
+export const NODE_ENV = process.env.NODE_ENV;

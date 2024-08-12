@@ -11,14 +11,9 @@
     "make-sprite": "rm public/sprite/sprite.svg && svgstore -o public/sprite/sprite.svg public/sprite/icons/**/*.svg"
   },
   "dependencies": {
-    "@emotion/css": "^11.11.2",
     "@suspensive/react": "^1.13.0",
     "@suspensive/react-query": "^1.13.0",
     "@tanstack/react-query": "^4.32.6",
-    "@tanstack/react-query-devtools": "^4.35.0",
-    "@types/node": "20.4.5",
-    "@types/react": "18.2.17",
-    "@types/react-dom": "18.2.7",
     "axios": "^1.4.0",
     "clsx": "^2.0.0",
     "eslint": "^8.46.0",
@@ -34,7 +29,6 @@
     "recoil": "^0.7.7",
     "recoil-persist": "^5.1.0",
     "svgstore": "^3.0.1",
-    "svgstore-cli": "^2.0.1",
     "tailwind-merge": "^1.14.0",
     "typescript": "5.1.6"
   },
@@ -52,6 +46,11 @@
     "postcss": "^8.4.27",
     "prettier": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.4.1",
-    "tailwindcss": "^3.3.3"
+    "tailwindcss": "^3.3.3",
+    "@types/node": "20.4.5",
+    "@types/react": "18.2.17",
+    "@types/react-dom": "18.2.7",
+    "@tanstack/react-query-devtools": "^4.35.0",
+    "svgstore-cli": "^2.0.1"
   }
 }
