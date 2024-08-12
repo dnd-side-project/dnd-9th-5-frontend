@@ -19,9 +19,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
     <html lang="ko">
       <body className="flex justify-center w-screen touch-none bg-slate-100">
         <div className="w-full overflow-scroll bg-white max-w-layout text-primary">
-          <Suspense>
-            <Analytics />
-          </Suspense>
+          <Analytics />
           <JsonLD />
           <QueryProvider>
             <RecoilProvider>
