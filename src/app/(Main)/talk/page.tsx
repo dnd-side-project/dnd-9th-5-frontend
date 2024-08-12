@@ -1,5 +1,5 @@
-import TalkSection from './components/TalkSection';
-import TitleSection from './components/TitleSection';
+import TalkSection from './TalkSection';
+import TitleSection from './TitleSection';
 import { PageAnimation } from '@/components/PageAnimation';
 
 export default function Talk() {

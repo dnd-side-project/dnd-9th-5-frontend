@@ -1,14 +1,9 @@
 import axios from 'axios';
 
 import { CustomInstance } from './type';
+import { ACCESS_TOKEN, ERROR_UNAUTHORIZED, ERROR_UNSUPPORTED_MEDIA_TYPE } from '@/constants';
 import { BASE_API_URL } from '@/constants/env';
-
-function getAccesstoken() {
-  if (typeof window !== 'undefined') {
-    const item = localStorage.getItem('accesstoken');
-    return item;
-  }
-}
+import { getClientCookie, removeClientCookie } from '@/utils';
 
 const privateApi: CustomInstance = axios.create({
   baseURL: `${BASE_API_URL}/api`,
@@ -18,24 +13,20 @@ const privateApi: CustomInstance = axios.create({
 privateApi.interceptors.response.use(
   (response) => response.data,
   (error) => {
-    if (error.response.status === 401) {
+    const status = error.response.status;
+    if (status === ERROR_UNAUTHORIZED || status === ERROR_UNSUPPORTED_MEDIA_TYPE) {
       alert('세션이 만료되었어요. 다시 로그인이 필요해요!');
-    } else {
-      alert('오류가 발생했어요. 다시 시도해주세요');
+      removeClientCookie(ACCESS_TOKEN);
     }
-    location.href = '/auth/logout';
+    location.href = '/';
     return Promise.reject(error);
   }
 );
 
 privateApi.interceptors.request.use(
   (config) => {
-    const accessToken = getAccesstoken();
-
-    if (accessToken) {
-      config.headers.Authorization = `Bearer ${accessToken}`;
-    }
-
+    const accessToken = getClientCookie(ACCESS_TOKEN);
+    config.headers.Authorization = `Bearer ${accessToken}`;
     return config;
   },
   (error) => {
