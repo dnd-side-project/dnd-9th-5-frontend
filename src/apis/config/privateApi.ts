@@ -14,12 +14,9 @@ privateApi.interceptors.response.use(
   (response) => response.data,
   (error) => {
     const status = error.response.status;
-    if (status === ERROR_UNAUTHORIZED) {
+    if (status === ERROR_UNAUTHORIZED || status === ERROR_UNSUPPORTED_MEDIA_TYPE) {
       alert('세션이 만료되었어요. 다시 로그인이 필요해요!');
       removeClientCookie(ACCESS_TOKEN);
-    }
-    if (status === ERROR_UNSUPPORTED_MEDIA_TYPE) {
-      alert('오류가 발생했어요. 다시 시도해주세요');
     }
     location.href = '/';
     return Promise.reject(error);
