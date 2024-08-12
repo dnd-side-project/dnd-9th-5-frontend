@@ -2,7 +2,7 @@
 
 import { redirect } from 'next/navigation';
 
-import { AuthComponent } from './components';
+import AuthComponent from './AuthComponent';
 
 interface AuthPageProps {
   searchParams: {
