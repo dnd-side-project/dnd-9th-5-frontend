@@ -23,7 +23,7 @@ export default function useLaunchApp() {
     location.href = deepLinkUrl ?? baseUrl;
 
     timerRef.current = setTimeout(() => {
-      alert('Instagram 앱이 설치되지 않았습니다. 앱을 먼저 설치해주세요.');
+      window.open(baseUrl);
     }, 2000);
   };
 
