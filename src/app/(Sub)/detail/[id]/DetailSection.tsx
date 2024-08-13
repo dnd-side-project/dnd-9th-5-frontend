@@ -54,7 +54,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
         <PrimaryButton
           text="링크 공유"
           onClick={handleShareLink}
-          type="secondary"
+          variant="secondary"
           className="border border-border-default"
         />
         <PrimaryButton text="카카오 공유" onClick={() => shareKakao(poseId)} />

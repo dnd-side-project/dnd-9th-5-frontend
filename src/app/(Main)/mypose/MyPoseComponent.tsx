@@ -16,7 +16,7 @@ export default function MyPoseComponent() {
       <PrimaryButton
         onClick={() => open(({ exit }) => <PreparingPopup onClose={exit} />)}
         text="포즈 등록하기"
-        type="secondary"
+        variant="secondary"
       />
     </EmptyCase>
   );

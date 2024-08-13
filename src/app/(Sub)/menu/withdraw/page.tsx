@@ -30,11 +30,11 @@ export default function Page() {
         content={`탈퇴 시 업로드한 포즈를 제외한\n모든 정보가 삭제되며 복구되지 않아요.`}
       >
         <>
-          <PrimaryButton onClick={exit} text="취소" type="secondary" />
+          <PrimaryButton onClick={exit} text="취소" variant="secondary" />
           <PrimaryButton
             text="탈퇴"
             onClick={() => router.replace(`/auth/withdraw?reason=${withdrawalReason}`)}
-            type="warning"
+            variant="warning"
           />
         </>
       </Popup>
@@ -85,11 +85,11 @@ export default function Page() {
         )}
       </div>
       <BottomFixedDiv>
-        <PrimaryButton text="계속 쓸래요" type="outline" onClick={() => router.back()} />
+        <PrimaryButton text="계속 쓸래요" variant="outline" onClick={() => router.back()} />
         {withdrawalReason ? (
-          <PrimaryButton text="탈퇴할래요" type="fill" onClick={handleWithdraw} />
+          <PrimaryButton text="탈퇴할래요" variant="fill" onClick={handleWithdraw} />
         ) : (
-          <PrimaryButton text="탈퇴할래요" type="secondary" />
+          <PrimaryButton text="탈퇴할래요" variant="secondary" />
         )}
       </BottomFixedDiv>
     </>

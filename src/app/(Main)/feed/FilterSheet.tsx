@@ -74,8 +74,8 @@ export default function FilterSheet() {
         </section>
       </div>
       <BottomDiv>
-        <PrimaryButton type="outline" icon="restart" text="필터 초기화" onClick={resetFilter} />
-        <PrimaryButton type="fill" text="포즈보기" onClick={decideFilter} />
+        <PrimaryButton variant="outline" icon="restart" text="필터 초기화" onClick={resetFilter} />
+        <PrimaryButton variant="fill" text="포즈보기" onClick={decideFilter} />
       </BottomDiv>
     </BottomSheet>
   );
