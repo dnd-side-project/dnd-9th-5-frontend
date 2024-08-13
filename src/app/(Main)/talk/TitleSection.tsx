@@ -5,26 +5,26 @@ import TalkToolTip from './TalkToolTip';
 import { Icon } from '@/components/Button/Icon';
 import { Spacing } from '@/components/Spacing';
 import { ICON } from '@/constants/icon';
-import useDidMount from '@/hooks/useDidMount';
+import { setClientCookie } from '@/utils';
 
-export default function TitleSection() {
-  const [isOpen, setIsOpen] = useState(true);
+interface TitleSectionProps {
+  isInitialToolTipOpen: boolean;
+}
 
-  useDidMount(() => {
-    if (localStorage.getItem('tooltipIsOpen') === 'false') setIsOpen(false);
-  });
+export default function TitleSection({ isInitialToolTipOpen }: TitleSectionProps) {
+  const [isOpen, setIsOpen] = useState(isInitialToolTipOpen);
 
   const handleToolTopClick = () => {
-    localStorage.setItem('tooltipIsOpen', 'false');
+    setClientCookie('tooltipIsOpen', 'false');
     setIsOpen(false);
   };
 
   const handleToolTopInfoClick = () => {
     if (isOpen) {
-      localStorage.setItem('tooltipIsOpen', 'false');
+      setClientCookie('tooltipIsOpen', 'false');
       setIsOpen(false);
     } else {
-      localStorage.setItem('tooltipIsOpen', 'true');
+      setClientCookie('tooltipIsOpen', 'true');
       setIsOpen(true);
     }
   };

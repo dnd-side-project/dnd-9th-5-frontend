@@ -12,7 +12,7 @@ import { Spacing } from '@/components/Spacing';
 import useLoading from '@/hooks/useLoading';
 
 export default function TalkSection() {
-  const [talkWord, setTalkWord] = useState<string>(`제시어에 맞춰 포즈를 취해요!`);
+  const [talkWord, setTalkWord] = useState(`제시어에 맞춰 포즈를 취해요!`);
   const { isLoading: isFirstLoading, stopLoading: stopFirstLoading } = useLoading({
     isFirstLoadingInfinite: true,
   });
