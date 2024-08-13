@@ -1,6 +1,7 @@
 'use client';
 
 import { useQueryClient } from '@tanstack/react-query';
+import { delay } from 'es-toolkit';
 import { useEffect, useState } from 'react';
 import Lottie from 'react-lottie-player';
 
@@ -11,52 +12,42 @@ import { BottomFixedDiv, PrimaryButton } from '@/components/Button';
 import { Spacing } from '@/components/Spacing';
 import useLoading from '@/hooks/useLoading';
 
+const INITIAL_TALK_WORD = `제시어에 맞춰 포즈를 취해요!`;
+
 export default function TalkSection() {
-  const [talkWord, setTalkWord] = useState(`제시어에 맞춰 포즈를 취해요!`);
-  const { isLoading: isFirstLoading, stopLoading: stopFirstLoading } = useLoading({
-    isFirstLoadingInfinite: true,
-  });
+  const [talkWord, setTalkWord] = useState(INITIAL_TALK_WORD);
+  const [isLoading, setIsLoading] = useState(true);
+  const isWordLoaded = talkWord !== INITIAL_TALK_WORD;
 
   const { refetch } = usePoseTalkQuery({
-    onSuccess: (data) => {
-      setTimeout(() => {
-        setTalkWord(data.poseWord.content);
-      }, 1000);
+    onSuccess: async (data) => {
+      await delay(1000);
+      setTalkWord(data.poseWord.content);
+      setIsLoading(false);
     },
   });
 
-  const { isLoading, startLoading } = useLoading({
-    loadingDelay: 1000,
-    initialState: false,
-  });
-
   const handleTalkClick = () => {
-    if (isFirstLoading) stopFirstLoading();
-    startLoading();
+    setIsLoading(true);
     refetch();
   };
 
-  const queryClient = useQueryClient();
-
-  useEffect(() => {
-    return () => {
-      queryClient.resetQueries(['poseTalk']);
-    };
-  }, [queryClient]);
-
   return (
     <section className="flex flex-col items-center">
-      <h1 className="h-100 max-w-310 items-center break-keep text-center">{talkWord}</h1>
+      <h1 className="items-center text-center h-100 max-w-310 break-keep">{talkWord}</h1>
+
       <Spacing size={10} />
-      <div className="flex h-300 justify-center">
-        {isFirstLoading && <Lottie loop animationData={lottieTalkBeforeClick} play />}
-        {!isFirstLoading && isLoading && (
+
+      <div className="flex justify-center h-300">
+        {isLoading && !isWordLoaded && <Lottie loop animationData={lottieTalkBeforeClick} play />}
+        {isWordLoaded && isLoading && (
           <Lottie loop animationData={lottieTalkAfterClick} play speed={1.2} className="w-500" />
         )}
-        {!isFirstLoading && !isLoading && (
+        {isWordLoaded && !isLoading && (
           <Lottie loop animationData={lottieTalkAfterClick} play speed={0} className="w-500" />
         )}
       </div>
+
       <BottomFixedDiv>
         <PrimaryButton onClick={handleTalkClick} text="제시어 뽑기" />
       </BottomFixedDiv>
