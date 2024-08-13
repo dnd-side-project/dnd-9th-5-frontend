@@ -14,13 +14,12 @@ const DEFAULT_IMAGE = '/images/image-frame.png';
 
 export default function PickComponent() {
   const [countState, setCountState] = useState(1);
-  const [isRendered, setIsRendered] = useState(false);
   const [isLottiePlaying, setIsLottiePlaying] = useState(true);
   const { refetch, data } = usePosePickQuery(countState);
   const imageSrc = data?.poseInfo?.imageKey || DEFAULT_IMAGE;
 
   useEffect(() => {
-    setIsRendered(true);
+    // setIsRendered(true);
   }, [countState]);
 
   useEffect(() => {
@@ -28,7 +27,6 @@ export default function PickComponent() {
   }, []);
 
   const handlePickClick = () => {
-    setIsRendered(false);
     refetch();
     setIsLottiePlaying(true);
     setTimeout(() => setIsLottiePlaying(false), 900);
@@ -44,13 +42,13 @@ export default function PickComponent() {
         />
       </div>
       <div className="relative flex grow">
-        {(isLottiePlaying || !isRendered) && (
+        {isLottiePlaying && (
           <div className="absolute inset-x-0 inset-y-0 z-10 flex justify-center bg-black">
             <Lottie animationData={lottiePick} play />
           </div>
         )}
         <div className="absolute inset-x-0 inset-y-0 bg-black">
-          <PoseImage src={imageSrc} onLoad={() => setIsRendered(true)} />
+          <PoseImage src={imageSrc} />
         </div>
       </div>
       <BottomFixedDiv>
