@@ -75,3 +75,39 @@ const METADATA: Metadata = {
 };
 
 export default METADATA;
+
+export const JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'PosePicker | 포즈피커',
+  description: '포토부스에서 고민하는 당신을 위한 포즈 추천 서비스',
+  keywords: 'pose, photo booth, recommendation, 포즈, 포토부스, 추천',
+  url: 'https://www.posepicker.site',
+  image: 'https://www.posepicker.site/meta/og_main.png',
+  author: {
+    '@type': 'Organization',
+    name: 'PosePicker',
+  },
+  datePublished: '2024-08-08T00:00:00+09:00',
+  dateModified: '2024-08-08T00:00:00+09:00',
+  publisher: {
+    '@type': 'Organization',
+    name: 'PosePicker',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://www.posepicker.site/pwa-icons/apple.png',
+    },
+  },
+  headline: '포즈가 고민될 땐? 포즈피커!',
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://www.posepicker.site',
+  },
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'KRW',
+    availability: 'https://schema.org/InStock',
+  },
+  thumbnailUrl: 'https://www.posepicker.site/meta/og_main.png',
+};
