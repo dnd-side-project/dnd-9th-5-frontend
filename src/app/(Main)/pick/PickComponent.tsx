@@ -14,20 +14,15 @@ const DEFAULT_IMAGE = '/images/image-frame.png';
 
 export default function PickComponent() {
   const [countState, setCountState] = useState(1);
-  const [image, setImage] = useState<string>(DEFAULT_IMAGE);
   const [isRendered, setIsRendered] = useState(false);
   const [isLottie, setIsLottie] = useState(true);
-  const { refetch } = usePosePickQuery(countState, {
-    onSuccess: (data) => {
-      if (data.poseInfo.imageKey === image) {
-        setIsRendered(true);
-      }
-      setImage(data.poseInfo.imageKey);
-    },
-  });
+  const {
+    refetch,
+    data
+  } = usePosePickQuery(countState);
+  const imageSrc = data?.poseInfo?.imageKey || DEFAULT_IMAGE;
 
   useEffect(() => {
-    setImage(DEFAULT_IMAGE);
     setIsRendered(true);
   }, [countState]);
 
@@ -44,13 +39,7 @@ export default function PickComponent() {
 
   return (
     <>
-      <div className="py-16">
-        <SelectionBasic
-          data={peopleCountList.slice(1)}
-          state={countState}
-          setState={setCountState}
-        />
-      </div>
+      <SelectionBasic data={peopleCountList.slice(1)} state={countState} setState={setCountState} />
       <div className="relative flex grow">
         {(isLottie || !isRendered) && (
           <div className="absolute inset-x-0 inset-y-0 z-10 flex justify-center bg-black">
@@ -58,12 +47,12 @@ export default function PickComponent() {
           </div>
         )}
         <div className="absolute inset-x-0 inset-y-0 bg-black">
-          <PoseImage src={image} onLoad={() => setIsRendered(true)} />
+          <PoseImage src={imageSrc} onLoad={() => setIsRendered(true)} />
         </div>
       </div>
       <BottomFixedDiv>
         <PrimaryButton
-          text={!!image ? `${countState}인 포즈 뽑기` : '인원수 선택하고 포즈 뽑기'}
+          text={!!imageSrc ? `${countState}인 포즈 뽑기` : '인원수 선택하고 포즈 뽑기'}
           onClick={handlePickClick}
         />
       </BottomFixedDiv>
