@@ -6,7 +6,7 @@ import { FilterTagsResponse, useFilterTagQuery } from '@/apis';
 import { BottomDiv, PrimaryButton } from '@/components/Button';
 import BottomSheet from '@/components/Modal/BottomSheet';
 import { SelectionBasic, SelectionTagList } from '@/components/Selection';
-import { frameCountList, peopleCountList } from '@/constants';
+import { FRAME_COUNT_LIST, PEOPLE_COUNT_LIST } from '@/constants';
 import { useBottomSheet, useFilterState } from '@/hooks';
 
 export default function FilterSheet() {
@@ -51,13 +51,13 @@ export default function FilterSheet() {
           <div id="subtitle-2" className="mb-8 text-secondary">
             인원 수
           </div>
-          <SelectionBasic data={peopleCountList} state={countState} setState={setCountState} />
+          <SelectionBasic data={PEOPLE_COUNT_LIST} state={countState} setState={setCountState} />
         </section>
         <section>
           <div id="subtitle-2" className="mb-8 text-secondary">
             프레임 수
           </div>
-          <SelectionBasic data={frameCountList} state={frameState} setState={setFrameState} />
+          <SelectionBasic data={FRAME_COUNT_LIST} state={frameState} setState={setFrameState} />
         </section>
         <section>
           <div id="subtitle-2" className="mb-8 text-secondary">

@@ -83,8 +83,8 @@ export interface PoseTalkResponse {
 // 로그인
 export interface RegisterResponse {
   id: number;
-  nickname: string;
-  email: string;
+  COOKIE_NICKNAME: string;
+  COOKIE_EMAIL: string;
   token: {
     accessToken: string;
     refreshToken: string;

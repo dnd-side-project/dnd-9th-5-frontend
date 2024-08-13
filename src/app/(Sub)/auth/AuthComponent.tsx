@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 
 import { getRegister } from '@/apis';
-import { ACCESS_TOKEN, EMAIL, NICKNAME } from '@/constants';
+import { COOKIE_ACCESS_TOKEN, COOKIE_EMAIL, COOKIE_NICKNAME } from '@/constants';
 import { useDidMount } from '@/hooks';
 import { setClientCookie } from '@/utils';
 
@@ -18,13 +18,13 @@ export default function AuthComponent({ code }: AuthComponentProps) {
     try {
       const {
         token: { accessToken },
-        email,
-        nickname,
+        COOKIE_EMAIL,
+        COOKIE_NICKNAME,
       } = await getRegister(code);
 
-      setClientCookie(ACCESS_TOKEN, accessToken);
-      setClientCookie(EMAIL, email);
-      setClientCookie(NICKNAME, nickname);
+      setClientCookie(COOKIE_ACCESS_TOKEN, accessToken);
+      setClientCookie(COOKIE_EMAIL, COOKIE_EMAIL);
+      setClientCookie(COOKIE_NICKNAME, COOKIE_NICKNAME);
 
       alert(`로그인에 성공했어요!`);
       router.push('/');

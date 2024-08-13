@@ -9,7 +9,7 @@ import { usePosePickQuery } from '@/apis';
 import { BottomFixedDiv, PrimaryButton } from '@/components/Button';
 import PoseImage from '@/components/Modal/PoseImage';
 import { SelectionBasic } from '@/components/Selection';
-import { peopleCountList } from '@/constants';
+import { PEOPLE_COUNT_LIST } from '@/constants';
 import { useDidMount } from '@/hooks';
 
 const DEFAULT_IMAGE = '/images/image-frame.png';
@@ -36,7 +36,7 @@ export default function PickComponent() {
     <>
       <div className="py-16">
         <SelectionBasic
-          data={peopleCountList.slice(1)}
+          data={PEOPLE_COUNT_LIST.slice(1)}
           state={countState}
           setState={setCountState}
         />

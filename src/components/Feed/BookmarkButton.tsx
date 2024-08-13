@@ -6,7 +6,7 @@ import { Icon } from '../Button/Icon';
 import { deleteBookmark, postBookmark } from '@/apis';
 import LoginModal from '@/components/Login/LoginModal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
-import { ACCESS_TOKEN } from '@/constants';
+import { COOKIE_ACCESS_TOKEN } from '@/constants';
 import { ICON } from '@/constants';
 import { getClientCookie } from '@/utils';
 
@@ -16,7 +16,7 @@ interface BookmarkButtonI {
 }
 export default function BookmarkButton({ poseId, isMarked }: BookmarkButtonI) {
   const { open } = useOverlay();
-  const token = getClientCookie(ACCESS_TOKEN);
+  const token = getClientCookie(COOKIE_ACCESS_TOKEN);
   const [marked, setMarked] = useState(isMarked);
 
   function onClick() {

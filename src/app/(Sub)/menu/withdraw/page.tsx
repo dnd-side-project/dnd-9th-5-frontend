@@ -7,7 +7,7 @@ import { BottomFixedDiv, PrimaryButton } from '@/components/Button';
 import Header from '@/components/Header';
 import { Popup } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
-import { withdrawReasonList } from '@/constants';
+import { WITHDRAW_REASON_LIST } from '@/constants';
 
 const RadioInput = ({ checked }: { checked: boolean }) => {
   return checked ? (
@@ -51,7 +51,7 @@ export default function Page() {
           알려줄 수 있나요?
         </h4>
         <form>
-          {withdrawReasonList.map((item, idx) => (
+          {WITHDRAW_REASON_LIST.map((item, idx) => (
             <div
               key={idx}
               className="py-16"

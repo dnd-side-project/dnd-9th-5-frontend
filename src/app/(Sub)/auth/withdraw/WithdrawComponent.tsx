@@ -3,13 +3,13 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import { patchDeleteAccount } from '@/apis';
-import { ACCESS_TOKEN } from '@/constants';
+import { COOKIE_ACCESS_TOKEN } from '@/constants';
 import { useDidMount } from '@/hooks';
 import { getClientCookie, removeClientCookie } from '@/utils';
 
 export default function WithdrawComponent() {
   const router = useRouter();
-  const token = getClientCookie(ACCESS_TOKEN);
+  const token = getClientCookie(COOKIE_ACCESS_TOKEN);
   const withdrawalReason = useSearchParams().get('reason');
 
   useDidMount(async () => {
@@ -24,7 +24,7 @@ export default function WithdrawComponent() {
     //     alert('로그아웃 되었습니다');
     //   });
     // }
-    removeClientCookie(ACCESS_TOKEN);
+    removeClientCookie(COOKIE_ACCESS_TOKEN);
     router.replace('/menu');
   });
 
