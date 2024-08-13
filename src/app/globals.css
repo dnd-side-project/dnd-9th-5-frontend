@@ -28,12 +28,6 @@ body {
   }
 }
 
-@layer base {
-  .bottom-fixed {
-    @apply fixed inset-x-0 bottom-0 z-30;
-  }
-}
-
 /*PWA*/
 @media all and (display-mode: standalone) {
   #ios-banner {

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import TalkToolTip from './TalkToolTip';
 import { Icon } from '@/components/Button/Icon';
 import { Spacing } from '@/components/Spacing';
-import { ICON, COOKIE_IS_TOOLTIP_OPEN } from '@/constants';
+import { COOKIE_IS_TOOLTIP_OPEN, ICON } from '@/constants';
 import { setClientCookie } from '@/utils';
 
 interface TitleSectionProps {

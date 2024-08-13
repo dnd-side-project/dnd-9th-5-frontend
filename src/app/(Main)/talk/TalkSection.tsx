@@ -32,11 +32,11 @@ export default function TalkWordSection() {
 
   return (
     <section className="flex flex-col items-center">
-      <h1 className="h-100 max-w-310 items-center break-keep text-center">{talkWord}</h1>
+      <h1 className="items-center text-center h-100 max-w-310 break-keep">{talkWord}</h1>
 
       <Spacing size={10} />
 
-      <div className="flex h-300 justify-center">
+      <div className="flex justify-center h-300">
         {!isWordLoaded && isLoading && <Lottie loop animationData={lottieTalkBeforeClick} play />}
         {isWordLoaded && isLoading && (
           <Lottie loop animationData={lottieTalkAfterClick} play speed={1.2} className="w-500" />
@@ -47,7 +47,7 @@ export default function TalkWordSection() {
       </div>
 
       <BottomFixedDiv>
-        <PrimaryButton onClick={handleTalkClick} text="제시어 뽑기" />
+        <PrimaryButton className="w-full" onClick={handleTalkClick} text="제시어 뽑기" />
       </BottomFixedDiv>
     </section>
   );
