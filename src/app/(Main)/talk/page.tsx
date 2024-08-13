@@ -1,5 +1,5 @@
-import TalkSection from './TalkSection';
-import TitleSection from './TitleSection';
+import TalkWordSection from './TalkSection';
+import TalkTitleSection from './TitleSection';
 import { getServerCookie } from '@/utils';
 
 export default async function Talk() {
@@ -7,8 +7,8 @@ export default async function Talk() {
 
   return (
     <div className="flex flex-col items-center justify-center flex-1">
-      <TitleSection isInitialToolTipOpen={isToolTipOpen} />
-      <TalkSection />
+      <TalkTitleSection isInitialToolTipOpen={isToolTipOpen} />
+      <TalkWordSection />
     </div>
   );
 }

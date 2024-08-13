@@ -11,7 +11,7 @@ interface TitleSectionProps {
   isInitialToolTipOpen: boolean;
 }
 
-export default function TitleSection({ isInitialToolTipOpen }: TitleSectionProps) {
+export default function TalkTitleSection({ isInitialToolTipOpen }: TitleSectionProps) {
   const [isOpen, setIsOpen] = useState(isInitialToolTipOpen);
 
   const handleToolTopClick = () => {
