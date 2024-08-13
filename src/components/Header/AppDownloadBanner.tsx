@@ -3,9 +3,9 @@ import Link from 'next/link';
 
 import { URL } from '@/constants';
 
-export default function Banner() {
+export default function AppDownloadBanner() {
   return (
-    <div className="flex items-center gap-10 p-10 h-62 bg-violet-50">
+    <div className="flex items-center gap-10 p-10 bg-violet-50">
       <Image
         width={40}
         height={40}
