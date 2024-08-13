@@ -2,7 +2,6 @@ export * from './meta';
 export * from './auth';
 export * from './error';
 export * from './color';
-export * from './deepLink';
 export * from './env';
 export * from './url';
 export * from './image';
