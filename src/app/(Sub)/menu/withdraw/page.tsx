@@ -3,7 +3,8 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-import { BottomFixedDiv, PrimaryButton } from '@/components/Button';
+import { MainFooter } from '@/app/(Main)/MainFooter';
+import { PrimaryButton } from '@/components/Button';
 import Header from '@/components/Header';
 import { Popup } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
@@ -84,14 +85,14 @@ export default function Page() {
           />
         )}
       </div>
-      <BottomFixedDiv>
+      <MainFooter>
         <PrimaryButton text="계속 쓸래요" variant="outline" onClick={() => router.back()} />
         {withdrawalReason ? (
           <PrimaryButton text="탈퇴할래요" variant="fill" onClick={handleWithdraw} />
         ) : (
           <PrimaryButton text="탈퇴할래요" variant="secondary" />
         )}
-      </BottomFixedDiv>
+      </MainFooter>
     </>
   );
 }

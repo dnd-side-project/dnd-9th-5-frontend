@@ -6,8 +6,9 @@ import Lottie from 'react-lottie-player';
 
 import lottieTalkAfterClick from '#/lotties/talk_after_click.json';
 import lottieTalkBeforeClick from '#/lotties/talk_before_click.json';
+import { MainFooter } from '../MainFooter';
 import { usePoseTalkQuery } from '@/apis';
-import { BottomFixedDiv, PrimaryButton } from '@/components/Button';
+import { PrimaryButton } from '@/components/Button';
 import { Spacing } from '@/components/Spacing';
 
 const INITIAL_TALK_WORD = `제시어에 맞춰 포즈를 취해요!`;
@@ -46,9 +47,9 @@ export default function TalkWordSection() {
         )}
       </div>
 
-      <BottomFixedDiv>
+      <MainFooter>
         <PrimaryButton className="w-full" onClick={handleTalkClick} text="제시어 뽑기" />
-      </BottomFixedDiv>
+      </MainFooter>
     </section>
   );
 }

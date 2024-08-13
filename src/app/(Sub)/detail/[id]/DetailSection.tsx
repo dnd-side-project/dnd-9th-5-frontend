@@ -6,7 +6,8 @@ import { useState } from 'react';
 import Source from './Source';
 import TagButton from './TagButton';
 import { usePoseDetailQuery } from '@/apis';
-import { BottomFixedDiv, PrimaryButton } from '@/components/Button';
+import { MainFooter } from '@/app/(Main)/MainFooter';
+import { PrimaryButton } from '@/components/Button';
 import { Popup } from '@/components/Modal';
 import PoseImage from '@/components/Modal/PoseImage';
 import { useOverlay } from '@/components/Overlay/useOverlay';
@@ -50,7 +51,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
         <TagButton type="frame" value={frameCount} name={`${frameCount}컷`} />
         {tagAttributes?.split(',').map((tag, index) => <TagButton key={index} name={tag} />)}
       </div>
-      <BottomFixedDiv>
+      <MainFooter>
         <PrimaryButton
           text="링크 공유"
           onClick={handleShareLink}
@@ -58,7 +59,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
           className="border border-border-default"
         />
         <PrimaryButton text="카카오 공유" onClick={() => shareKakao(poseId)} />
-      </BottomFixedDiv>
+      </MainFooter>
     </div>
   );
 }

@@ -5,8 +5,9 @@ import { useState } from 'react';
 import Lottie from 'react-lottie-player';
 
 import lottiePick from '#/lotties/pick.json';
+import { MainFooter } from '../MainFooter';
 import { usePosePickQuery } from '@/apis';
-import { BottomFixedDiv, PrimaryButton } from '@/components/Button';
+import { PrimaryButton } from '@/components/Button';
 import PoseImage from '@/components/Modal/PoseImage';
 import { SelectionBasic } from '@/components/Selection';
 import { PEOPLE_COUNT_LIST } from '@/constants';
@@ -51,12 +52,12 @@ export default function PickComponent() {
           <PoseImage src={imageSrc} />
         </div>
       </div>
-      <BottomFixedDiv>
+      <MainFooter>
         <PrimaryButton
           text={!!imageSrc ? `${countState}인 포즈 뽑기` : '인원수 선택하고 포즈 뽑기'}
           onClick={handlePickClick}
         />
-      </BottomFixedDiv>
+      </MainFooter>
     </>
   );
 }
