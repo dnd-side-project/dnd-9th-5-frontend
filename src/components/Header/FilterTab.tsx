@@ -1,6 +1,9 @@
+'use client';
+
 import { Icon } from '@/components/Button/Icon';
 import Tag from '@/components/Selection/Tag';
 import { useBottomSheet, useFilterState } from '@/hooks';
+import cn from '@/utils/cn';
 
 export default function FilterTab() {
   const { openBottomSheet } = useBottomSheet();
@@ -9,18 +12,18 @@ export default function FilterTab() {
   const isFiltered = tags.length !== 0;
 
   return (
-    <div className="flex h-56 items-center gap-8 bg-white px-20">
+    <div className="flex items-center h-56 gap-8 px-20 bg-white">
       <button
-        className={`flex min-w-fit items-center gap-8 rounded-8 ${
-          isFiltered
-            ? 'border-1 border-main-violet bg-main-violet-base text-main-violet'
-            : 'bg-sub-white'
-        } px-16 py-9`}
+        className={cn('flex min-w-fit items-center gap-8 rounded-8 px-16 py-9', {
+          'border-1 border-main-violet bg-main-violet-base text-main-violet': isFiltered,
+          'bg-sub-white': !isFiltered,
+        })}
         onClick={openBottomSheet}
       >
         <h5 id="subtitle-2">필터</h5>
         <Icon icon={isFiltered ? 'carat_down' : 'carat_down_gray'} />
       </button>
+
       {isFiltered && (
         <>
           <div className="text-divider">|</div>
