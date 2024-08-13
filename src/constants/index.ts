@@ -7,3 +7,4 @@ export * from './url';
 export * from './image';
 export * from './icon';
 export * from './data';
+export * from './cookie';

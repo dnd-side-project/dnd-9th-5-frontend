@@ -4,7 +4,7 @@ import { useState } from 'react';
 import TalkToolTip from './TalkToolTip';
 import { Icon } from '@/components/Button/Icon';
 import { Spacing } from '@/components/Spacing';
-import { ICON } from '@/constants';
+import { ICON, IS_TOOLTIP_OPEN } from '@/constants';
 import { setClientCookie } from '@/utils';
 
 interface TitleSectionProps {
@@ -15,16 +15,16 @@ export default function TalkTitleSection({ isInitialToolTipOpen }: TitleSectionP
   const [isOpen, setIsOpen] = useState(isInitialToolTipOpen);
 
   const handleToolTopClick = () => {
-    setClientCookie('tooltipIsOpen', 'false');
+    setClientCookie(IS_TOOLTIP_OPEN, 'false');
     setIsOpen(false);
   };
 
   const handleToolTopInfoClick = () => {
     if (isOpen) {
-      setClientCookie('tooltipIsOpen', 'false');
+      setClientCookie(IS_TOOLTIP_OPEN, 'false');
       setIsOpen(false);
     } else {
-      setClientCookie('tooltipIsOpen', 'true');
+      setClientCookie(IS_TOOLTIP_OPEN, 'true');
       setIsOpen(true);
     }
   };
