@@ -15,11 +15,8 @@ const DEFAULT_IMAGE = '/images/image-frame.png';
 export default function PickComponent() {
   const [countState, setCountState] = useState(1);
   const [isRendered, setIsRendered] = useState(false);
-  const [isLottie, setIsLottie] = useState(true);
-  const {
-    refetch,
-    data
-  } = usePosePickQuery(countState);
+  const [isLottiePlaying, setIsLottiePlaying] = useState(true);
+  const { refetch, data } = usePosePickQuery(countState);
   const imageSrc = data?.poseInfo?.imageKey || DEFAULT_IMAGE;
 
   useEffect(() => {
@@ -27,21 +24,27 @@ export default function PickComponent() {
   }, [countState]);
 
   useEffect(() => {
-    setTimeout(() => setIsLottie(false), 2200);
+    setTimeout(() => setIsLottiePlaying(false), 2200);
   }, []);
 
   const handlePickClick = () => {
     setIsRendered(false);
     refetch();
-    setIsLottie(true);
-    setTimeout(() => setIsLottie(false), 900);
+    setIsLottiePlaying(true);
+    setTimeout(() => setIsLottiePlaying(false), 900);
   };
 
   return (
     <>
-      <SelectionBasic data={peopleCountList.slice(1)} state={countState} setState={setCountState} />
+      <div className="py-16">
+        <SelectionBasic
+          data={peopleCountList.slice(1)}
+          state={countState}
+          setState={setCountState}
+        />
+      </div>
       <div className="relative flex grow">
-        {(isLottie || !isRendered) && (
+        {(isLottiePlaying || !isRendered) && (
           <div className="absolute inset-x-0 inset-y-0 z-10 flex justify-center bg-black">
             <Lottie animationData={lottiePick} play />
           </div>
