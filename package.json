@@ -16,7 +16,7 @@
     "@tanstack/react-query": "^4.32.6",
     "axios": "^1.4.0",
     "clsx": "^2.0.0",
-    "es-toolkit": "toss/es-toolkit",
+    "es-toolkit": "^1.15.1",
     "eslint": "^8.46.0",
     "eslint-config-next": "^13.4.12",
     "framer-motion": "^10.15.0",
