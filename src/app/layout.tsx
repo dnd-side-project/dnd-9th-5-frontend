@@ -16,8 +16,8 @@ export const metadata: Metadata = METADATA;
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="ko">
-      <body className="flex justify-center w-screen touch-none bg-slate-100">
-        <div className="w-full overflow-scroll bg-white max-w-layout text-primary">
+      <body className="flex w-screen touch-none justify-center bg-slate-100">
+        <div className="w-full max-w-layout overflow-scroll bg-white text-primary">
           <Suspense>
             <Analytics />
           </Suspense>

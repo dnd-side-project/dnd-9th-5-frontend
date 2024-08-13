@@ -17,7 +17,7 @@ export default function BottomSheet({ children }: StrictPropsWithChildren) {
       <AnimatedPortal
         motionProps={{ initial: { opacity: 0 }, animate: { opacity: 1 }, exit: { opacity: 0 } }}
       >
-        <div className="max-w-layout fixed inset-x-0 bottom-0 z-modal mx-auto rounded-t-16 bg-white">
+        <div className="fixed inset-x-0 bottom-0 z-modal mx-auto max-w-layout rounded-t-16 bg-white">
           <div className="flex justify-end px-8 pt-12">
             <IconButton icon={ICON.close.black} onClick={closeBottomSheet} />
           </div>

@@ -35,10 +35,10 @@ export default function MenuListSection() {
       )}
       {token && (
         <>
-          <div className="py-12 cursor-pointer" onClick={handleLogout}>
+          <div className="cursor-pointer py-12" onClick={handleLogout}>
             <span id="subtitle-1">로그아웃</span>
           </div>
-          <Link href={'/menu/withdraw'} className="py-12 cursor-pointer">
+          <Link href={'/menu/withdraw'} className="cursor-pointer py-12">
             <span id="subtitle-1" className="text-tertiary">
               탈퇴하기
             </span>
