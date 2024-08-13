@@ -10,12 +10,12 @@ type HydrationProviderProps = {
   isInfiniteQuery?: boolean;
 };
 
-export const HydrationProvider = async ({
+export default async function HydrationProvider({
   children,
   queryKey,
   queryFn,
   isInfiniteQuery = false,
-}: StrictPropsWithChildren<HydrationProviderProps>) => {
+}: StrictPropsWithChildren<HydrationProviderProps>) {
   const getQueryClient = cache(() => new QueryClient());
 
   const queryClient = getQueryClient();

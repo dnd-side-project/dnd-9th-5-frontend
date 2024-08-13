@@ -1,26 +1,16 @@
 'use client';
 
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
+import { redirect } from 'next/navigation';
 
-import { getRegister } from '@/apis';
-import useUserState from '@/context/userState';
+import AuthComponent from './AuthComponent';
 
-export default function Page() {
-  const code = useSearchParams().get('code');
-  const { setUser } = useUserState();
-  const router = useRouter();
+interface AuthPageProps {
+  searchParams: {
+    code: string;
+  };
+}
 
-  useEffect(() => {
-    if (code) {
-      getRegister(code).then((response) => {
-        setUser(response);
-        localStorage.setItem('accesstoken', response.token.accessToken);
-        alert(`로그인에 성공했어요!`);
-        router.back();
-      });
-    }
-  });
-
-  return;
+export default function AuthPage({ searchParams: { code } }: AuthPageProps) {
+  if (!code) redirect('/');
+  return <AuthComponent code={code} />;
 }
