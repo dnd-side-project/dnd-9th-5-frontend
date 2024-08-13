@@ -1,5 +1,4 @@
 export * from './meta';
-export * from './auth';
 export * from './error';
 export * from './color';
 export * from './env';
