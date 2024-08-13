@@ -1,12 +1,14 @@
-import TalkSection from './TalkSection';
-import TitleSection from './TitleSection';
-import { PageAnimation } from '@/components/PageAnimation';
+import TalkWordSection from './TalkSection';
+import TalkTitleSection from './TitleSection';
+import { getServerCookie } from '@/utils';
 
-export default function Talk() {
+export default async function Talk() {
+  const isToolTipOpen = (await getServerCookie('tooltipIsOpen')) === 'true';
+
   return (
-    <PageAnimation className="flex flex-1 flex-col items-center justify-center">
-      <TitleSection />
-      <TalkSection />
-    </PageAnimation>
+    <div className="flex flex-col items-center justify-center flex-1">
+      <TalkTitleSection isInitialToolTipOpen={isToolTipOpen} />
+      <TalkWordSection />
+    </div>
   );
 }

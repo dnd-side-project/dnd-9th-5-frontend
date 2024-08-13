@@ -4,7 +4,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 
 import { patchDeleteAccount } from '@/apis';
 import { ACCESS_TOKEN } from '@/constants';
-import useDidMount from '@/hooks/useDidMount';
+import { useDidMount } from '@/hooks';
 import { getClientCookie, removeClientCookie } from '@/utils';
 
 export default function WithdrawComponent() {

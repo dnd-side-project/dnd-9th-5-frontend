@@ -10,8 +10,8 @@ import { BottomFixedDiv, PrimaryButton } from '@/components/Button';
 import { Popup } from '@/components/Modal';
 import PoseImage from '@/components/Modal/PoseImage';
 import { useOverlay } from '@/components/Overlay/useOverlay';
-import { BASE_SITE_URL } from '@/constants/env';
-import useKakaoShare from '@/hooks/useKakaoShare';
+import { BASE_SITE_URL } from '@/constants';
+import { useKakaoShare } from '@/hooks';
 import { copy } from '@/utils/copy';
 
 interface DetailSectionProps {
@@ -54,7 +54,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
         <PrimaryButton
           text="링크 공유"
           onClick={handleShareLink}
-          type="secondary"
+          variant="secondary"
           className="border border-border-default"
         />
         <PrimaryButton text="카카오 공유" onClick={() => shareKakao(poseId)} />

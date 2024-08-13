@@ -7,7 +7,7 @@ export function ButtonList({ children }: StrictPropsWithChildren) {
 
 export function BottomDiv({ children }: StrictPropsWithChildren) {
   return (
-    <div className={`max-w-layout mx-auto bg-white px-20 pb-24 pt-10`}>
+    <div className={`mx-auto max-w-layout bg-white px-20 pb-24 pt-10`}>
       <ButtonList>{children}</ButtonList>
     </div>
   );

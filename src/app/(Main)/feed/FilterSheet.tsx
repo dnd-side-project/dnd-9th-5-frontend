@@ -6,9 +6,8 @@ import { FilterTagsResponse, useFilterTagQuery } from '@/apis';
 import { BottomDiv, PrimaryButton } from '@/components/Button';
 import BottomSheet from '@/components/Modal/BottomSheet';
 import { SelectionBasic, SelectionTagList } from '@/components/Selection';
-import { frameCountList, peopleCountList } from '@/constants/data';
-import useBottomSheet from '@/hooks/useBottomSheet';
-import useFilterState from '@/hooks/useFilterState';
+import { frameCountList, peopleCountList } from '@/constants';
+import { useBottomSheet, useFilterState } from '@/hooks';
 
 export default function FilterSheet() {
   const { data: tagListData } = useFilterTagQuery();
@@ -74,8 +73,8 @@ export default function FilterSheet() {
         </section>
       </div>
       <BottomDiv>
-        <PrimaryButton type="outline" icon="restart" text="필터 초기화" onClick={resetFilter} />
-        <PrimaryButton type="fill" text="포즈보기" onClick={decideFilter} />
+        <PrimaryButton variant="outline" icon="restart" text="필터 초기화" onClick={resetFilter} />
+        <PrimaryButton variant="fill" text="포즈보기" onClick={decideFilter} />
       </BottomDiv>
     </BottomSheet>
   );

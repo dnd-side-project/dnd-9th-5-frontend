@@ -4,9 +4,8 @@ import LoginModal from './LoginModal';
 import { Icon } from '@/components/Button/Icon';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { ACCESS_TOKEN, EMAIL, NICKNAME } from '@/constants';
-import { ICON } from '@/constants/icon';
+import { ICON } from '@/constants';
 import { getClientCookie } from '@/utils';
-
 
 export default function LoginSection() {
   const { open, exit } = useOverlay();
@@ -15,12 +14,12 @@ export default function LoginSection() {
   const nickname = getClientCookie(NICKNAME);
 
   return (
-    <section className="py-24 h-108">
+    <section className="h-108 py-24">
       <div
-        className="flex items-center w-full gap-16"
+        className="flex w-full items-center gap-16"
         onClick={() => !token && open(() => <LoginModal onClose={exit} />)}
       >
-        <div className="flex items-center justify-center rounded-full h-60 w-60 bg-border-default">
+        <div className="flex h-60 w-60 items-center justify-center rounded-full bg-border-default">
           <Icon icon={ICON.profile} size={33} />
         </div>
         <div className="text-start">

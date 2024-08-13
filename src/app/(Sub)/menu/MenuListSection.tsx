@@ -5,8 +5,8 @@ import Link from 'next/link';
 import LogoutModal from '@/components/Login/LogoutModal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { ACCESS_TOKEN } from '@/constants';
-import { menuList } from '@/constants/data';
-import useLaunchApp from '@/hooks/useLaunchApp';
+import { menuList } from '@/constants';
+import { useLaunchApp } from '@/hooks';
 import { getClientCookie } from '@/utils';
 
 export default function MenuListSection() {
@@ -35,10 +35,10 @@ export default function MenuListSection() {
       )}
       {token && (
         <>
-          <div className="py-12 cursor-pointer" onClick={handleLogout}>
+          <div className="cursor-pointer py-12" onClick={handleLogout}>
             <span id="subtitle-1">로그아웃</span>
           </div>
-          <Link href={'/menu/withdraw'} className="py-12 cursor-pointer">
+          <Link href={'/menu/withdraw'} className="cursor-pointer py-12">
             <span id="subtitle-1" className="text-tertiary">
               탈퇴하기
             </span>

@@ -11,10 +11,10 @@ export default function SelectionBasic({ data, state, setState }: SelectionBasic
         <span
           key={item.text}
           id="subtitle-2"
-          className={`flex h-40 grow cursor-pointer items-center justify-center first:rounded-l-8 last:rounded-r-8 ${
+          className={`flex h-40 grow cursor-pointer items-center justify-center border-1 first:rounded-l-8 last:rounded-r-8 ${
             state === item.value
-              ? 'border-1 border-main-violet bg-main-violet-bright text-main-violet-dark'
-              : 'border-1 border-border-default bg-sub-white text-secondary'
+              ? 'border-main-violet bg-main-violet-bright text-main-violet-dark'
+              : 'border-border-default bg-sub-white text-secondary'
           }`}
           onClick={() => {
             setState(item.value);
