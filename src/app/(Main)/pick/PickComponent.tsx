@@ -1,7 +1,7 @@
 'use client';
 
 import { delay } from 'es-toolkit';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Lottie from 'react-lottie-player';
 
 import lottiePick from '#/lotties/pick.json';
