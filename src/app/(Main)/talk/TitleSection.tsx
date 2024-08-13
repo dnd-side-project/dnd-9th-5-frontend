@@ -2,15 +2,33 @@
 import { useEffect, useState } from 'react';
 import { Tooltip } from 'react-tooltip';
 
+import TalkToolTip from './TalkToolTip';
 import { Icon } from '@/components/Button/Icon';
 import { Spacing } from '@/components/Spacing';
 import { ICON } from '@/constants/icon';
+import useDidMount from '@/hooks/useDidMount';
 
 export default function TitleSection() {
-  const [isOpen, setIsOpen] = useState<boolean>(true);
-  useEffect(() => {
+  const [isOpen, setIsOpen] = useState(true);
+
+  useDidMount(() => {
     if (localStorage.getItem('tooltipIsOpen') === 'false') setIsOpen(false);
-  }, []);
+  });
+
+  const handleToolTopClick = () => {
+    localStorage.setItem('tooltipIsOpen', 'false');
+    setIsOpen(false);
+  };
+
+  const handleToolTopInfoClick = () => {
+    if (isOpen) {
+      localStorage.setItem('tooltipIsOpen', 'false');
+      setIsOpen(false);
+    } else {
+      localStorage.setItem('tooltipIsOpen', 'true');
+      setIsOpen(true);
+    }
+  };
 
   return (
     <section className="flex flex-col items-center">
@@ -20,44 +38,12 @@ export default function TitleSection() {
           data-tooltip-id="my-tooltip"
           data-tooltip-place="top"
           style={{ cursor: 'pointer' }}
-          onClick={() => {
-            if (isOpen) {
-              localStorage.setItem('tooltipIsOpen', 'false');
-              setIsOpen(false);
-            } else {
-              localStorage.setItem('tooltipIsOpen', 'true');
-              setIsOpen(true);
-            }
-          }}
+          onClick={handleToolTopInfoClick}
         >
           <Icon icon={ICON.info} />
         </a>
       </div>
-      <Tooltip
-        id="my-tooltip"
-        style={{ fontSize: '1rem', fontWeight: 400 }}
-        closeOnEsc
-        openOnClick
-        isOpen={isOpen}
-        className="z-tooltip"
-        render={() => (
-          <div
-            className="flex cursor-pointer"
-            onClick={() => {
-              localStorage.setItem('tooltipIsOpen', 'false');
-              setIsOpen(false);
-            }}
-          >
-            <div>
-              <p>{`일명 <포즈로 말해요> 챌린지!`}</p>
-              <p>제시어에 맞춰 포즈를 취해보세요.</p>
-            </div>
-            <Spacing size={8} direction="horizontal" />
-            <Icon size={20} icon="close_white" />
-          </div>
-        )}
-        clickable
-      />
+      <TalkToolTip isOpen={isOpen} onToolTipClick={handleToolTopClick} />
       <Spacing size={8} />
     </section>
   );
