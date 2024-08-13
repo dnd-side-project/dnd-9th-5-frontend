@@ -4,9 +4,9 @@ import { PageAnimation } from '@/components/PageAnimation';
 
 export default function Talk() {
   return (
-    <PageAnimation className="flex flex-1 flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center flex-1">
       <TitleSection />
       <TalkSection />
-    </PageAnimation>
+    </div>
   );
 }

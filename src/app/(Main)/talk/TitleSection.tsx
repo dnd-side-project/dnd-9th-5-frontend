@@ -1,6 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { Tooltip } from 'react-tooltip';
+import { useState } from 'react';
 
 import TalkToolTip from './TalkToolTip';
 import { Icon } from '@/components/Button/Icon';
