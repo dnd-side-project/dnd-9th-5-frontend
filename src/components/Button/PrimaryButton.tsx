@@ -1,30 +1,41 @@
 import { Icon } from './Icon';
+import cn from '@/utils/cn';
 
-interface Button {
-  icon?: string;
+interface ButtonProps {
   text: string;
+  icon?: string;
   onClick?: () => void;
-  type?: keyof Style;
+  type?: StyleType;
   className?: string;
 }
 
-type Style = { [key: string]: string };
+type StyleType = 'fill' | 'outline' | 'secondary' | 'warning';
 
-const style: Style = {
+const styleMap: Record<StyleType, string> = {
   fill: `bg-main-violet text-white`,
   outline: `border-1 border-main-violet text-main-violet bg-main-violet-base`,
   secondary: `bg-sub-white text-secondary w-fit`,
   warning: `bg-warning text-white`,
 };
 
-export default function PrimaryButton({ icon, text, onClick, type = 'fill', className }: Button) {
+export default function PrimaryButton({
+  icon,
+  text,
+  onClick,
+  type = 'fill',
+  className,
+}: ButtonProps) {
   return (
     <button
       onClick={onClick}
-      className={`flex h-60 items-center justify-center gap-8 rounded-12 px-24 transition-all active:scale-95 ${style[type]} ${className}`}
+      className={cn(
+        'flex h-60 items-center justify-center gap-8 rounded-12 px-24 transition-all active:scale-95',
+        styleMap[type],
+        className
+      )}
     >
       {icon && <Icon icon={icon} />}
-      <div id="subtitle-1">{text}</div>
+      <span id="subtitle-1">{text}</span>
     </button>
   );
 }
