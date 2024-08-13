@@ -1,5 +1,6 @@
 'use client';
 
+import { delay } from 'es-toolkit';
 import { useEffect, useState } from 'react';
 import Lottie from 'react-lottie-player';
 
@@ -9,6 +10,7 @@ import { BottomFixedDiv, PrimaryButton } from '@/components/Button';
 import PoseImage from '@/components/Modal/PoseImage';
 import { SelectionBasic } from '@/components/Selection';
 import { peopleCountList } from '@/constants/data';
+import useDidMount from '@/hooks/useDidMount';
 
 const DEFAULT_IMAGE = '/images/image-frame.png';
 
@@ -18,18 +20,16 @@ export default function PickComponent() {
   const { refetch, data } = usePosePickQuery(countState);
   const imageSrc = data?.poseInfo?.imageKey || DEFAULT_IMAGE;
 
-  useEffect(() => {
-    // setIsRendered(true);
-  }, [countState]);
+  useDidMount(async () => {
+    await delay(2200);
+    setIsLottiePlaying(false);
+  });
 
-  useEffect(() => {
-    setTimeout(() => setIsLottiePlaying(false), 2200);
-  }, []);
-
-  const handlePickClick = () => {
+  const handlePickClick = async () => {
     refetch();
     setIsLottiePlaying(true);
-    setTimeout(() => setIsLottiePlaying(false), 900);
+    await delay(900);
+    setIsLottiePlaying(false);
   };
 
   return (
