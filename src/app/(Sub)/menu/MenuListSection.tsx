@@ -6,7 +6,7 @@ import LogoutModal from '@/components/Login/LogoutModal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { ACCESS_TOKEN } from '@/constants';
 import { menuList } from '@/constants';
-import useLaunchApp from '@/hooks/useLaunchApp';
+import { useLaunchApp } from '@/hooks';
 import { getClientCookie } from '@/utils';
 
 export default function MenuListSection() {

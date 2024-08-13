@@ -10,7 +10,7 @@ import { BottomFixedDiv, PrimaryButton } from '@/components/Button';
 import PoseImage from '@/components/Modal/PoseImage';
 import { SelectionBasic } from '@/components/Selection';
 import { peopleCountList } from '@/constants';
-import useDidMount from '@/hooks/useDidMount';
+import { useDidMount } from '@/hooks';
 
 const DEFAULT_IMAGE = '/images/image-frame.png';
 

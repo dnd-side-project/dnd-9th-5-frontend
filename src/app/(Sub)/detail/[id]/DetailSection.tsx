@@ -11,7 +11,7 @@ import { Popup } from '@/components/Modal';
 import PoseImage from '@/components/Modal/PoseImage';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { BASE_SITE_URL } from '@/constants';
-import useKakaoShare from '@/hooks/useKakaoShare';
+import { useKakaoShare } from '@/hooks';
 import { copy } from '@/utils/copy';
 
 interface DetailSectionProps {

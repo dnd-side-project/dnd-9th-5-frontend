@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 
 import { getRegister } from '@/apis';
 import { ACCESS_TOKEN, EMAIL, NICKNAME } from '@/constants';
-import useDidMount from '@/hooks/useDidMount';
+import { useDidMount } from '@/hooks';
 import { setClientCookie } from '@/utils';
 
 interface AuthComponentProps {

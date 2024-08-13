@@ -1,7 +1,6 @@
 import { Icon } from '@/components/Button/Icon';
 import Tag from '@/components/Selection/Tag';
-import useBottomSheet from '@/hooks/useBottomSheet';
-import useFilterState from '@/hooks/useFilterState';
+import { useBottomSheet, useFilterState } from '@/hooks';
 
 export default function FilterTab() {
   const { openBottomSheet } = useBottomSheet();

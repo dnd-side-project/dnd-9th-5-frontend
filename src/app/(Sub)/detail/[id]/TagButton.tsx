@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import Tag from '@/components/Selection/Tag';
-import useFilterState from '@/hooks/useFilterState';
+import { useFilterState } from '@/hooks';
 
 interface TagButtonProps {
   type?: 'people' | 'frame' | 'tag';
