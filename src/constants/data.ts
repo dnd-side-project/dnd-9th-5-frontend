@@ -1,14 +1,21 @@
+import { INSTAGRAM_POSEPICKER_URL_SCHEME } from './deepLink';
 import { URL } from './url';
 
 interface MenuI {
   text: string;
   link: string;
+  deepLink?: string;
   highlight?: boolean;
 }
 export const menuList: readonly MenuI[] = [
   { text: '공지사항', link: URL.menu.notice },
   { text: '자주 묻는 질문', link: URL.menu.faq },
-  { text: '포즈피커 공식 SNS', link: URL.instagram, highlight: true },
+  {
+    text: '포즈피커 공식 SNS',
+    link: URL.instagram,
+    deepLink: INSTAGRAM_POSEPICKER_URL_SCHEME,
+    highlight: true,
+  },
   { text: '문의하기', link: URL.inquiry },
   { text: '개발자의 비밀일기', link: URL.menu.release_note },
   { text: '', link: '' },
