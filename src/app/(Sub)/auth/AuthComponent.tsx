@@ -18,13 +18,13 @@ export default function AuthComponent({ code }: AuthComponentProps) {
     try {
       const {
         token: { accessToken },
-        COOKIE_EMAIL,
-        COOKIE_NICKNAME,
+        email,
+        nickname,
       } = await getRegister(code);
 
       setClientCookie(COOKIE_ACCESS_TOKEN, accessToken);
-      setClientCookie(COOKIE_EMAIL, COOKIE_EMAIL);
-      setClientCookie(COOKIE_NICKNAME, COOKIE_NICKNAME);
+      setClientCookie(COOKIE_EMAIL, email);
+      setClientCookie(COOKIE_NICKNAME, nickname);
 
       alert(`로그인에 성공했어요!`);
       router.push('/');

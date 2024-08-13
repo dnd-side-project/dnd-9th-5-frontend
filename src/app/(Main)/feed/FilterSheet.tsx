@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 import { FilterTagsResponse, useFilterTagQuery } from '@/apis';
-import { BottomDiv, PrimaryButton } from '@/components/Button';
+import { PrimaryButton } from '@/components/Button';
 import BottomSheet from '@/components/Modal/BottomSheet';
 import { SelectionBasic, SelectionTagList } from '@/components/Selection';
 import { FRAME_COUNT_LIST, PEOPLE_COUNT_LIST } from '@/constants';
@@ -72,10 +72,16 @@ export default function FilterSheet() {
           )}
         </section>
       </div>
-      <BottomDiv>
-        <PrimaryButton variant="outline" icon="restart" text="필터 초기화" onClick={resetFilter} />
-        <PrimaryButton variant="fill" text="포즈보기" onClick={decideFilter} />
-      </BottomDiv>
+      <div className="flex gap-8 px-20 pb-20">
+        <PrimaryButton
+          className="flex-1"
+          variant="outline"
+          icon="restart"
+          text="필터 초기화"
+          onClick={resetFilter}
+        />
+        <PrimaryButton className="flex-1" variant="fill" text="포즈보기" onClick={decideFilter} />
+      </div>
     </BottomSheet>
   );
 }

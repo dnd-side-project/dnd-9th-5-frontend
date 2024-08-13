@@ -1,5 +1,3 @@
-'use client';
-
 import { useRouter } from 'next/navigation';
 
 import { AppleButton, KakaoButton } from './LoginButton';
@@ -23,7 +21,7 @@ export default function LoginModal({ onClose }: LoginModalProps) {
       content={`로그인하면 북마크도 쓸 수 있어요!\n간편 로그인으로 3초만에 가입해요.`}
       onClose={onClose}
     >
-      <div className="flex w-full flex-col gap-8 pb-16">
+      <div className="flex flex-col w-full gap-8 pb-16">
         <KakaoButton onClick={handleLogin} />
         <AppleButton onClick={() => window.open(URL.appstore)} />
       </div>

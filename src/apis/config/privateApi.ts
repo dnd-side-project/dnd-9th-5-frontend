@@ -2,8 +2,8 @@ import axios from 'axios';
 
 import { CustomInstance } from './type';
 import {
-  COOKIE_ACCESS_TOKEN,
   BASE_API_URL,
+  COOKIE_ACCESS_TOKEN,
   ERROR_UNAUTHORIZED,
   ERROR_UNSUPPORTED_MEDIA_TYPE,
 } from '@/constants';
