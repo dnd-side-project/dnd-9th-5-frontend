@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-import { KAKAO_JS_KEY } from '@/constants/env';
+import { KAKAO_JS_KEY } from '@/constants';
 
 export default function useKakaoShare() {
   useEffect(() => {

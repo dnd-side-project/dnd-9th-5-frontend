@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { CustomInstance } from './type';
 import { ACCESS_TOKEN, ERROR_UNAUTHORIZED, ERROR_UNSUPPORTED_MEDIA_TYPE } from '@/constants';
-import { BASE_API_URL } from '@/constants/env';
+import { BASE_API_URL } from '@/constants';
 import { getClientCookie, removeClientCookie } from '@/utils';
 
 const privateApi: CustomInstance = axios.create({

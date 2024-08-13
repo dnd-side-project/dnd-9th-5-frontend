@@ -5,7 +5,7 @@ import Link from 'next/link';
 import LogoutModal from '@/components/Login/LogoutModal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { ACCESS_TOKEN } from '@/constants';
-import { menuList } from '@/constants/data';
+import { menuList } from '@/constants';
 import useLaunchApp from '@/hooks/useLaunchApp';
 import { getClientCookie } from '@/utils';
 

@@ -4,8 +4,8 @@ import { useRouter } from 'next/navigation';
 
 import { AppleButton, KakaoButton } from './LoginButton';
 import { Popup } from '@/components/Modal';
-import { KAKAO_AUTHORIZE } from '@/constants/env';
-import { URL } from '@/constants/url';
+import { KAKAO_AUTHORIZE } from '@/constants';
+import { URL } from '@/constants';
 
 interface LoginModalProps {
   onClose: () => void;

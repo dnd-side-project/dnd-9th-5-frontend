@@ -10,7 +10,7 @@ import { BottomFixedDiv, PrimaryButton } from '@/components/Button';
 import { Popup } from '@/components/Modal';
 import PoseImage from '@/components/Modal/PoseImage';
 import { useOverlay } from '@/components/Overlay/useOverlay';
-import { BASE_SITE_URL } from '@/constants/env';
+import { BASE_SITE_URL } from '@/constants';
 import useKakaoShare from '@/hooks/useKakaoShare';
 import { copy } from '@/utils/copy';
 

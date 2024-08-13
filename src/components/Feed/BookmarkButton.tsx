@@ -7,7 +7,7 @@ import { deleteBookmark, postBookmark } from '@/apis';
 import LoginModal from '@/components/Login/LoginModal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { ACCESS_TOKEN } from '@/constants';
-import { ICON } from '@/constants/icon';
+import { ICON } from '@/constants';
 import { getClientCookie } from '@/utils';
 
 interface BookmarkButtonI {

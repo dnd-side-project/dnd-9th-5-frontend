@@ -1,6 +1,6 @@
 import { IconButton } from '../Button';
 import { AnimatedPortal } from '@/components/Portal';
-import { ICON } from '@/constants/icon';
+import { ICON } from '@/constants';
 import useBottomSheet from '@/hooks/useBottomSheet';
 import { StrictPropsWithChildren } from '@/types';
 

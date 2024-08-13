@@ -6,7 +6,7 @@ import { FilterTagsResponse, useFilterTagQuery } from '@/apis';
 import { BottomDiv, PrimaryButton } from '@/components/Button';
 import BottomSheet from '@/components/Modal/BottomSheet';
 import { SelectionBasic, SelectionTagList } from '@/components/Selection';
-import { frameCountList, peopleCountList } from '@/constants/data';
+import { frameCountList, peopleCountList } from '@/constants';
 import useBottomSheet from '@/hooks/useBottomSheet';
 import useFilterState from '@/hooks/useFilterState';
 

@@ -8,7 +8,7 @@ import Header from '@/components/Header';
 import { Loading } from '@/components/Loading';
 import { PageAnimation } from '@/components/PageAnimation';
 import { HydrationProvider } from '@/components/Provider';
-import { OPEN_GRAPH } from '@/constants/meta';
+import { OPEN_GRAPH } from '@/constants';
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const id = parseInt(params.id);

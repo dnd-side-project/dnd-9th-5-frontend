@@ -3,7 +3,7 @@ import './globals.css';
 import Analytics from './Analytics';
 import JsonLD from './JsonLD';
 import { OverlayProvider } from '@/components/Overlay/OverlayProvider';
-import METADATA from '@/constants/meta';
+import METADATA from '@/constants';
 import QueryProvider from '@/provider/QueryProvider';
 import RecoilProvider from '@/provider/RecoilProvider';
 

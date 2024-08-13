@@ -9,7 +9,7 @@ import {
 } from '.';
 import privateApi from './config/privateApi';
 import publicApi from './config/publicApi';
-import { KAKAO_REDIRECT_URI } from '@/constants/env';
+import { KAKAO_REDIRECT_URI } from '@/constants';
 
 export const getPosePick = (peopleCount: number) =>
   publicApi.get<PosePickResponse>(`/pose/pick/${peopleCount}`);

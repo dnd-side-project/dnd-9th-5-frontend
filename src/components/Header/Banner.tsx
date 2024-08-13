@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { URL } from '@/constants/url';
+import { URL } from '@/constants';
 
 export default function Banner() {
   return (

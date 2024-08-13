@@ -4,7 +4,7 @@ import LoginModal from './LoginModal';
 import { Icon } from '@/components/Button/Icon';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { ACCESS_TOKEN, EMAIL, NICKNAME } from '@/constants';
-import { ICON } from '@/constants/icon';
+import { ICON } from '@/constants';
 import { getClientCookie } from '@/utils';
 
 export default function LoginSection() {

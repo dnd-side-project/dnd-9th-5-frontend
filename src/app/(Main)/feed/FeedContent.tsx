@@ -4,7 +4,7 @@ import { usePoseFeedQuery } from '@/apis';
 import { PrimaryButton } from '@/components/Button';
 import EmptyCase from '@/components/Feed/EmptyCase';
 import FeedSection from '@/components/Feed/FeedSection';
-import { URL } from '@/constants/url';
+import { URL } from '@/constants';
 import useFilterState from '@/hooks/useFilterState';
 
 export default function FeedContent() {
