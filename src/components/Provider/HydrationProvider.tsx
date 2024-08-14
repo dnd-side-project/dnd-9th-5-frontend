@@ -26,4 +26,4 @@ export default async function HydrationProvider({
   const dehydratedState = dehydrate(queryClient);
 
   return <Hydrate state={dehydratedState}>{children}</Hydrate>;
-};
+}

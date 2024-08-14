@@ -1,0 +1,26 @@
+name: 'CI'
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@main
+      name: Checkout repository
+      
+    - name: Cache dependencies
+      uses: actions/cache@v4
+      with:
+        path: ${{ github.workspace }}/.next/cache
+        key: ${{ runner.os }}-nextjs-${{ hashFiles('yarn.lock') }}
+        restore-keys: ${{ runner.os }}-nextjs-${{ hashFiles('yarn.lock') }}-
+
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
+
+    - name: Check typescript
+      run: yarn run type:check
+
+    - name: Check eslint
+      run: yarn run lint

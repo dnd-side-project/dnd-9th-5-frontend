@@ -1,13 +1,14 @@
 'use client';
 
-import { PropsWithChildren, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
 import useIsMounted from '@/hooks/useIsMounted';
 
-export type PortalProps = {
+export interface PortalProps {
+  children: any; // FIXME: any
   documentId?: string;
-};
+}
 
 const findWrapperElement = (documentId: string): Element | null => {
   const wrapper = document.getElementById(documentId);
@@ -19,7 +20,7 @@ const findWrapperElement = (documentId: string): Element | null => {
   }
 };
 
-export default function Portal({ documentId, children }: PropsWithChildren<PortalProps>) {
+export default function Portal({ documentId, children }: PortalProps) {
   const ref = useRef<Element | null>(null);
   const isMounted = useIsMounted();
 

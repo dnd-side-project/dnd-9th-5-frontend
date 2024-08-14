@@ -12,3 +12,6 @@ export const URL = {
   appstore:
     'https://apps.apple.com/kr/app/%ED%8F%AC%EC%A6%88%ED%94%BC%EC%BB%A4-%EB%84%A4%EC%BB%B7%EC%82%AC%EC%A7%84-%ED%8F%AC%EC%A6%88%EC%B6%94%EC%B2%9C/id6474260471',
 };
+
+// ref : https://qiita.com/ahandsel/items/9d668441152e00ba31ff
+export const INSTAGRAM_POSEPICKER_URL_SCHEME = 'instagram://user?username=posepicker'; 

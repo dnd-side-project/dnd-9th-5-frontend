@@ -36,7 +36,8 @@ export const OPEN_GRAPH = {
   },
 };
 
-const METADATA: Metadata = {
+export const METADATA: Metadata = {
+  metadataBase: new URL('https://www.posepicker.site'),
   title: {
     default: `${META_STRING.title}`,
     template: `${META_STRING.title} | %s`,
@@ -73,7 +74,6 @@ const METADATA: Metadata = {
   themeColor: '#ffffff',
 };
 
-export default METADATA;
 
 export const JSON_LD = {
   '@context': 'https://schema.org',

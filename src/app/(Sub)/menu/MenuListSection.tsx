@@ -4,13 +4,12 @@ import Link from 'next/link';
 
 import LogoutModal from '@/components/Login/LogoutModal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
-import { ACCESS_TOKEN } from '@/constants';
-import { menuList } from '@/constants/data';
-import useLaunchApp from '@/hooks/useLaunchApp';
+import { COOKIE_ACCESS_TOKEN, MENU_LIST } from '@/constants';
+import { useLaunchApp } from '@/hooks';
 import { getClientCookie } from '@/utils';
 
 export default function MenuListSection() {
-  const token = getClientCookie(ACCESS_TOKEN);
+  const token = getClientCookie(COOKIE_ACCESS_TOKEN);
   const { open } = useOverlay();
   const { launchApp } = useLaunchApp();
 
@@ -20,7 +19,7 @@ export default function MenuListSection() {
 
   return (
     <section className="flex flex-col">
-      {menuList.map((item, idx) =>
+      {MENU_LIST.map((item, idx) =>
         item.text ? (
           <div
             key={idx}

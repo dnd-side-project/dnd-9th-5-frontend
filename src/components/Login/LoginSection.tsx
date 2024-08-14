@@ -3,16 +3,14 @@
 import LoginModal from './LoginModal';
 import { Icon } from '@/components/Button/Icon';
 import { useOverlay } from '@/components/Overlay/useOverlay';
-import { ACCESS_TOKEN, EMAIL, NICKNAME } from '@/constants';
-import { ICON } from '@/constants/icon';
+import { COOKIE_ACCESS_TOKEN, COOKIE_EMAIL, COOKIE_NICKNAME, ICON } from '@/constants';
 import { getClientCookie } from '@/utils';
-
 
 export default function LoginSection() {
   const { open, exit } = useOverlay();
-  const token = getClientCookie(ACCESS_TOKEN);
-  const email = getClientCookie(EMAIL);
-  const nickname = getClientCookie(NICKNAME);
+  const token = getClientCookie(COOKIE_ACCESS_TOKEN);
+  const email = getClientCookie(COOKIE_EMAIL);
+  const nickname = getClientCookie(COOKIE_NICKNAME);
 
   return (
     <section className="py-24 h-108">

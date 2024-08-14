@@ -3,12 +3,11 @@
 import { useEffect, useState } from 'react';
 
 import { FilterTagsResponse, useFilterTagQuery } from '@/apis';
-import { BottomDiv, PrimaryButton } from '@/components/Button';
+import { PrimaryButton } from '@/components/Button';
 import BottomSheet from '@/components/Modal/BottomSheet';
 import { SelectionBasic, SelectionTagList } from '@/components/Selection';
-import { frameCountList, peopleCountList } from '@/constants/data';
-import useBottomSheet from '@/hooks/useBottomSheet';
-import useFilterState from '@/hooks/useFilterState';
+import { FRAME_COUNT_LIST, PEOPLE_COUNT_LIST } from '@/constants';
+import { useBottomSheet, useFilterState } from '@/hooks';
 
 export default function FilterSheet() {
   const { data: tagListData } = useFilterTagQuery();
@@ -52,13 +51,13 @@ export default function FilterSheet() {
           <div id="subtitle-2" className="mb-8 text-secondary">
             인원 수
           </div>
-          <SelectionBasic data={peopleCountList} state={countState} setState={setCountState} />
+          <SelectionBasic data={PEOPLE_COUNT_LIST} state={countState} setState={setCountState} />
         </section>
         <section>
           <div id="subtitle-2" className="mb-8 text-secondary">
             프레임 수
           </div>
-          <SelectionBasic data={frameCountList} state={frameState} setState={setFrameState} />
+          <SelectionBasic data={FRAME_COUNT_LIST} state={frameState} setState={setFrameState} />
         </section>
         <section>
           <div id="subtitle-2" className="mb-8 text-secondary">
@@ -73,10 +72,16 @@ export default function FilterSheet() {
           )}
         </section>
       </div>
-      <BottomDiv>
-        <PrimaryButton type="outline" icon="restart" text="필터 초기화" onClick={resetFilter} />
-        <PrimaryButton type="fill" text="포즈보기" onClick={decideFilter} />
-      </BottomDiv>
+      <div className="flex gap-8 px-20 pb-20">
+        <PrimaryButton
+          className="flex-1"
+          variant="outline"
+          icon="restart"
+          text="필터 초기화"
+          onClick={resetFilter}
+        />
+        <PrimaryButton className="flex-1" variant="fill" text="포즈보기" onClick={decideFilter} />
+      </div>
     </BottomSheet>
   );
 }

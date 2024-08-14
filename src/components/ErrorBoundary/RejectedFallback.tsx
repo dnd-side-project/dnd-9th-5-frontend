@@ -17,7 +17,7 @@ export default function RejectedFallback({
       <p className="text-b3 text-grey-600 mt-2">페이지를 불러오는데 실패했습니다.</p>
       <p>{error.message}</p>
       <button
-        className="bg-grey-200 text-grey-800 font-bold mt-16 rounded-lg px-12 py-8 text-13"
+        className="bg-grey-200 text-grey-800 mt-16 rounded-lg px-12 py-8 text-13 font-bold"
         onClick={reset || resetErrorBoundary}
       >
         다시 불러오기
