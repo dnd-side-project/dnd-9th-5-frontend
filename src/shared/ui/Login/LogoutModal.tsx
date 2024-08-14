@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-import { PrimaryButton } from '@/shared';
+import { Button } from '@/shared';
 import { Popup } from '@/components/Modal';
 import { COOKIE_ACCESS_TOKEN } from '@/shared';
 import { removeClientCookie } from '@/utils';
@@ -19,8 +19,8 @@ export default function LogoutModal({ exit }: { exit(): void }) {
       title="로그아웃"
       content={`북마크는 로그인 시에만 유지되어요.\n정말 로그아웃하시겠어요?`}
     >
-      <PrimaryButton text="로그아웃" variant="secondary" onClick={handleLogout} />
-      <PrimaryButton text="로그인 유지" onClick={exit} />
+      <Button text="로그아웃" variant="secondary" onClick={handleLogout} />
+      <Button text="로그인 유지" onClick={exit} />
     </Popup>
   );
 }

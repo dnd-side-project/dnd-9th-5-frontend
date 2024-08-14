@@ -7,7 +7,7 @@ import {
   FRAME_COUNT_LIST,
   FilterTagsResponse,
   PEOPLE_COUNT_LIST,
-  PrimaryButton,
+  Button,
   SelectionBasic,
   SelectionTagList,
   useBottomSheet,
@@ -79,14 +79,14 @@ export default function FilterSheet() {
         </section>
       </div>
       <div className="flex gap-8 px-20 pb-20">
-        <PrimaryButton
+        <Button
           className="flex-1"
           variant="outline"
           icon="restart"
           text="필터 초기화"
           onClick={resetFilter}
         />
-        <PrimaryButton className="flex-1" variant="fill" text="포즈보기" onClick={decideFilter} />
+        <Button className="flex-1" variant="fill" text="포즈보기" onClick={decideFilter} />
       </div>
     </BottomSheet>
   );

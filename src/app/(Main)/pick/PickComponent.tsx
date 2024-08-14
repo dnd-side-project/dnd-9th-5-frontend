@@ -6,7 +6,7 @@ import Lottie from 'react-lottie-player';
 
 import lottiePick from '#/lotties/pick.json';
 import { PoseImage, usePosePickQuery } from '@/shared';
-import { PrimaryButton } from '@/shared';
+import { Button } from '@/shared';
 import { SelectionBasic } from '@/shared';
 import { PEOPLE_COUNT_LIST } from '@/shared';
 import { useDidMount } from '@/shared';
@@ -52,7 +52,7 @@ export default function PickComponent() {
         </div>
       </div>
       <Footer>
-        <PrimaryButton
+        <Button
           text={!!imageSrc ? `${countState}인 포즈 뽑기` : '인원수 선택하고 포즈 뽑기'}
           onClick={handlePickClick}
         />

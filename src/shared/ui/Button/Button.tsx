@@ -1,5 +1,4 @@
-import { Icon } from './Icon';
-import cn from '@/utils/cn';
+import { Icon, cn } from '@/shared';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
@@ -17,7 +16,7 @@ const styleMap: Record<StyleType, string> = {
   warning: 'bg-warning text-white',
 };
 
-export default function PrimaryButton({ icon, text, onClick, variant = 'fill', className }: ButtonProps) {
+export default function Button({ icon, text, onClick, variant = 'fill', className }: ButtonProps) {
   return (
     <button
       onClick={onClick}

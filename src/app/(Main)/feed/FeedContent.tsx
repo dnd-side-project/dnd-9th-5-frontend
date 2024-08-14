@@ -1,12 +1,11 @@
 import Link from 'next/link';
 
 import { usePoseFeedQuery } from '@/shared';
-import { PrimaryButton } from '@/shared';
+import { Button } from '@/shared';
 import { EmptyCase } from '@/shared';
 import { URL } from '@/shared';
 import { useFilterState } from '@/shared';
 import FeedSection from '@/shared/ui/Feed/FeedSection';
-
 
 export default function FeedContent() {
   const { filterState } = useFilterState();
@@ -19,7 +18,7 @@ export default function FeedContent() {
         text={'찾고 싶은 포즈를 저희에게 알려주세요.'}
       >
         <Link href={URL.inquiry}>
-          <PrimaryButton text={'문의사항 남기기'} />
+          <Button text={'문의사항 남기기'} />
         </Link>
       </EmptyCase>
     </FeedSection>

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 
-import { isMobileWeb } from '@/utils';
+import { isMobileWeb } from '..';
+
 
 export default function useLaunchApp() {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);

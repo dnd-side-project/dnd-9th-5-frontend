@@ -1,0 +1,17 @@
+{
+  "index *": {
+    "prefix": "index *",
+    "body": [
+      "export * from './'"
+    ],
+    "description": "Generated snippet: index *"
+  },
+  "index default": {
+    "prefix": "indeex default",
+    "body": [
+      "export { default as $0 } from './$0';",
+      ""
+    ],
+    "description": "Generated snippet: index default"
+  }
+}

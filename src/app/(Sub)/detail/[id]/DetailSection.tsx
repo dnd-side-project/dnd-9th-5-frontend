@@ -7,7 +7,7 @@ import Source from './Source';
 import TagButton from './TagButton';
 import { usePoseDetailQuery } from '@/shared';
 import { MainFooter } from '../../../(Main)/MainFooter';
-import { PrimaryButton } from '@/shared';
+import { Button } from '@/shared';
 import { Popup } from '@/components/Modal';
 import PoseImage from '@/components/Modal/PoseImage';
 import { useOverlay } from '@/components/Overlay/useOverlay';
@@ -34,7 +34,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
     await copy(BASE_SITE_URL + pathname);
     open(({ exit }) => (
       <Popup content="링크가 복사되었습니다.">
-        <PrimaryButton text="확인" onClick={exit} />
+        <Button text="확인" onClick={exit} />
       </Popup>
     ));
   };
@@ -52,13 +52,13 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
         {tagAttributes?.split(',').map((tag, index) => <TagButton key={index} name={tag} />)}
       </div>
       <MainFooter>
-        <PrimaryButton
+        <Button
           text="링크 공유"
           onClick={handleShareLink}
           variant="secondary"
           className="border border-border-default"
         />
-        <PrimaryButton text="카카오 공유" onClick={() => shareKakao(poseId)} />
+        <Button text="카카오 공유" onClick={() => shareKakao(poseId)} />
       </MainFooter>
     </div>
   );

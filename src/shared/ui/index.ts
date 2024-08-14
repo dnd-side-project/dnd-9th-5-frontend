@@ -10,3 +10,6 @@ export * from './Modal';
 export * from './Portal';
 export * from './EmptyCase';
 export * from './Overlay';
+export * from './Icon';
+export * from './Button';
+export * from './IconButton';

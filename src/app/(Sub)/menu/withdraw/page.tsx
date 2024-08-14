@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import { MainFooter } from '../../../(Main)/MainFooter';
-import { PrimaryButton } from '@/shared';
+import { Button } from '@/shared';
 import Header from '@/components/Header';
 import { Popup } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
@@ -31,8 +31,8 @@ export default function Page() {
         content={`탈퇴 시 업로드한 포즈를 제외한\n모든 정보가 삭제되며 복구되지 않아요.`}
       >
         <>
-          <PrimaryButton onClick={exit} text="취소" variant="secondary" />
-          <PrimaryButton
+          <Button onClick={exit} text="취소" variant="secondary" />
+          <Button
             text="탈퇴"
             onClick={() => router.replace(`/auth/withdraw?reason=${withdrawalReason}`)}
             variant="warning"
@@ -86,11 +86,11 @@ export default function Page() {
         )}
       </div>
       <MainFooter>
-        <PrimaryButton text="계속 쓸래요" variant="outline" onClick={() => router.back()} />
+        <Button text="계속 쓸래요" variant="outline" onClick={() => router.back()} />
         {withdrawalReason ? (
-          <PrimaryButton text="탈퇴할래요" variant="fill" onClick={handleWithdraw} />
+          <Button text="탈퇴할래요" variant="fill" onClick={handleWithdraw} />
         ) : (
-          <PrimaryButton text="탈퇴할래요" variant="secondary" />
+          <Button text="탈퇴할래요" variant="secondary" />
         )}
       </MainFooter>
     </>

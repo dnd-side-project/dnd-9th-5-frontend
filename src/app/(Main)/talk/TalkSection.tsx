@@ -7,7 +7,7 @@ import Lottie from 'react-lottie-player';
 import lottieTalkAfterClick from '#/lotties/talk_after_click.json';
 import lottieTalkBeforeClick from '#/lotties/talk_before_click.json';
 import { usePoseTalkQuery } from '@/shared';
-import { PrimaryButton } from '@/shared';
+import { Button } from '@/shared';
 import { Spacing } from '@/shared';
 import { Footer } from '@/widgets';
 
@@ -48,7 +48,7 @@ export default function TalkWordSection() {
       </div>
 
       <Footer>
-        <PrimaryButton className="w-full" onClick={handleTalkClick} text="제시어 뽑기" />
+        <Button className="w-full" onClick={handleTalkClick} text="제시어 뽑기" />
       </Footer>
     </section>
   );
