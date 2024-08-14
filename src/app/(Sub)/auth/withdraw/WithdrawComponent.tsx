@@ -4,8 +4,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 
 import { patchDeleteAccount } from '@/shared';
 import { COOKIE_ACCESS_TOKEN } from '@/shared';
-import { useDidMount } from '@/shared';
-import { getClientCookie, removeClientCookie } from '@/utils';
+import { getClientCookie, removeClientCookie, useDidMount } from '@/shared';
 
 export default function WithdrawComponent() {
   const router = useRouter();

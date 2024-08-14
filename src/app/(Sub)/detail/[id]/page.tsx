@@ -1,9 +1,7 @@
-import { QueryAsyncBoundary } from '@suspensive/react-query';
 import { Metadata } from 'next';
 
 import DetailSection from './DetailSection';
 import { HydrationProvider, OPEN_GRAPH, PageAnimation, getPoseDetail } from '@/shared';
-import { ErrorBoundary } from '@/shared/ui/ErrorBoundary';
 import { Header } from '@/widgets';
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
@@ -28,7 +26,7 @@ export default function DetailPage({ params }: { params: { id: number } }) {
 
   return (
     <div>
-      <Header close={true} menu={true} />
+      <Header />
       <PageAnimation>
         <HydrationProvider queryKey={['poseId', id]} queryFn={() => getPoseDetail(id)}>
           <DetailSection poseId={id} />

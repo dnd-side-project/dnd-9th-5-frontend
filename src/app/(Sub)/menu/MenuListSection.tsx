@@ -3,7 +3,7 @@
 import Link from 'next/link';
 
 import LogoutModal from '@/components/Login/LogoutModal';
-import { useOverlay } from '@/components/Overlay/useOverlay';
+import { useOverlay } from '@/shared';
 import { COOKIE_ACCESS_TOKEN, MENU_LIST } from '@/shared';
 import { useLaunchApp } from '@/shared';
 import { getClientCookie } from '@/utils';

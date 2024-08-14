@@ -4,8 +4,7 @@ import { useRouter } from 'next/navigation';
 
 import { getRegister } from '@/shared';
 import { COOKIE_ACCESS_TOKEN, COOKIE_EMAIL, COOKIE_NICKNAME } from '@/shared';
-import { useDidMount } from '@/shared';
-import { setClientCookie } from '@/utils';
+import { setClientCookie, useDidMount } from '@/shared';
 
 interface AuthComponentProps {
   code: string;

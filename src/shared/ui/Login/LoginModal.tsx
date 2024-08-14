@@ -1,7 +1,7 @@
 import { useRouter } from 'next/navigation';
 
 import { AppleButton, KakaoButton } from './LoginButton';
-import { Popup } from '@/components/Modal';
+import { Popup } from '@/shared';
 import { KAKAO_AUTHORIZE } from '@/shared';
 import { URL } from '@/shared';
 

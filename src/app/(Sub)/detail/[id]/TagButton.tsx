@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
-import Tag from '@/shared/Tag';
-import { useFilterState } from '@/shared';
+import { Tag, useFilterState } from '@/shared';
 
 interface TagButtonProps {
   type?: 'people' | 'frame' | 'tag';

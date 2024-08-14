@@ -1,6 +1,8 @@
 import { usePathname } from 'next/navigation';
 
-import { Spacing } from '@/shared';
+import { Spacing, Tab } from '@/shared';
+import FilterTab from '@/shared/ui/Header/FilterTab';
+import MyposeTab from '@/shared/ui/Header/MyposeTab';
 
 export default function Header() {
   const curPath = usePathname();

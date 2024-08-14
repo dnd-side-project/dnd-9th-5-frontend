@@ -1,10 +1,6 @@
 import Link from 'next/link';
 
-import { usePoseFeedQuery } from '@/shared';
-import { Button } from '@/shared';
-import { EmptyCase } from '@/shared';
-import { URL } from '@/shared';
-import { useFilterState } from '@/shared';
+import { Button, EmptyCase, URL, useFilterState, usePoseFeedQuery } from '@/shared';
 import FeedSection from '@/shared/ui/Feed/FeedSection';
 
 export default function FeedContent() {

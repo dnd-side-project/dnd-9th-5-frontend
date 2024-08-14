@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Icon } from '../Button/Icon';
 import { deleteBookmark, postBookmark } from '@/shared';
 import LoginModal from '@/components/Login/LoginModal';
-import { useOverlay } from '@/components/Overlay/useOverlay';
+import { useOverlay } from '@/shared';
 import { COOKIE_ACCESS_TOKEN } from '@/shared';
 import { ICON } from '@/shared';
 import { getClientCookie } from '@/utils';
