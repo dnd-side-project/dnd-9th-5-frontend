@@ -5,14 +5,14 @@ import { useState } from 'react';
 
 import Source from './Source';
 import TagButton from './TagButton';
-import { usePoseDetailQuery } from '@/apis';
+import { usePoseDetailQuery } from '@/shared';
 import { MainFooter } from '../../../(Main)/MainFooter';
-import { PrimaryButton } from '@/components/Button';
+import { PrimaryButton } from '@/shared';
 import { Popup } from '@/components/Modal';
 import PoseImage from '@/components/Modal/PoseImage';
 import { useOverlay } from '@/components/Overlay/useOverlay';
-import { BASE_SITE_URL } from '@/constants';
-import { useKakaoShare } from '@/hooks';
+import { BASE_SITE_URL } from '@/shared';
+import { useKakaoShare } from '@/shared';
 import { copy } from '@/utils/copy';
 
 interface DetailSectionProps {

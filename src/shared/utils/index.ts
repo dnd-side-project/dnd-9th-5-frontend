@@ -4,3 +4,4 @@ export * from './device';
 export * from './cn';
 export * from './copy';
 export * from './gtm';
+export * from './environment';

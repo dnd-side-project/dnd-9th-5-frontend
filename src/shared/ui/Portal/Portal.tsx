@@ -3,7 +3,8 @@
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
-import useIsMounted from '@/hooks/useIsMounted';
+import { useIsMounted } from '@/shared/hooks';
+
 
 export interface PortalProps {
   children: any; // FIXME: any

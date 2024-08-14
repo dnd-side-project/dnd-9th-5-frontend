@@ -1,4 +1,4 @@
-import { PoseFeedResponse } from '@/apis';
+import { PoseFeedResponse } from '@/shared';
 
 export const data: PoseFeedResponse = {
   recommendation: true,

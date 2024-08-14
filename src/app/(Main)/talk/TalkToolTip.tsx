@@ -1,8 +1,8 @@
 import { ComponentProps } from 'react';
 import { Tooltip } from 'react-tooltip';
 
-import { Icon } from '@/components/Button';
-import { Spacing } from '@/components/Spacing';
+import { Icon } from '@/shared';
+import { Spacing } from '@/shared';
 
 interface TalkToolTipProps extends ComponentProps<typeof Tooltip> {
   onToolTipClick: () => void;

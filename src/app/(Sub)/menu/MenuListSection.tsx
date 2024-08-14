@@ -4,8 +4,8 @@ import Link from 'next/link';
 
 import LogoutModal from '@/components/Login/LogoutModal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
-import { COOKIE_ACCESS_TOKEN, MENU_LIST } from '@/constants';
-import { useLaunchApp } from '@/hooks';
+import { COOKIE_ACCESS_TOKEN, MENU_LIST } from '@/shared';
+import { useLaunchApp } from '@/shared';
 import { getClientCookie } from '@/utils';
 
 export default function MenuListSection() {

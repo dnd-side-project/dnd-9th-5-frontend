@@ -3,7 +3,7 @@
 import { AnimatePresence, MotionProps, motion } from 'framer-motion';
 
 import { Portal } from '.';
-import { StrictPropsWithChildren } from '@/types';
+import { StrictPropsWithChildren } from '@/shared';
 
 interface AnimatedPortalProps {
   motionProps: MotionProps;

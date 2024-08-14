@@ -3,7 +3,7 @@
 import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 
 import { OverlayControlRef, OverlayController } from './OverlayController';
-import { OverlayContext } from './OverlayProvider';
+import OverlayContext from './OverlayProvider';
 import { CreateOverlayElement } from './type';
 
 let elementId = 1;
@@ -13,7 +13,7 @@ interface Options {
   delay?: number;
 }
 
-export function useOverlay({ exitOnUnmount = true, delay }: Options = {}) {
+export default function useOverlay({ exitOnUnmount = true, delay }: Options = {}) {
   const context = useContext(OverlayContext);
 
   if (context == null) {

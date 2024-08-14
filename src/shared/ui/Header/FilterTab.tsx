@@ -1,9 +1,7 @@
 'use client';
 
-import { Icon } from '@/components/Button/Icon';
-import Tag from '@/components/Selection/Tag';
-import { useBottomSheet, useFilterState } from '@/hooks';
-import cn from '@/utils/cn';
+import { Tag } from '../Selection';
+import { Icon, cn, useBottomSheet, useFilterState } from '@/shared';
 
 export default function FilterTab() {
   const { openBottomSheet } = useBottomSheet();

@@ -2,10 +2,8 @@
 import { useState } from 'react';
 
 import TalkToolTip from './TalkToolTip';
-import { Icon } from '@/components/Button/Icon';
-import { Spacing } from '@/components/Spacing';
-import { COOKIE_IS_TOOLTIP_OPEN, ICON } from '@/constants';
-import { setClientCookie } from '@/utils';
+import { COOKIE_IS_TOOLTIP_OPEN, ICON, Icon, Spacing, setClientCookie } from '@/shared';
+
 
 interface TitleSectionProps {
   isInitialToolTipOpen: boolean;

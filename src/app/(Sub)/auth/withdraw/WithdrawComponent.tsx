@@ -2,9 +2,9 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 
-import { patchDeleteAccount } from '@/apis';
-import { COOKIE_ACCESS_TOKEN } from '@/constants';
-import { useDidMount } from '@/hooks';
+import { patchDeleteAccount } from '@/shared';
+import { COOKIE_ACCESS_TOKEN } from '@/shared';
+import { useDidMount } from '@/shared';
 import { getClientCookie, removeClientCookie } from '@/utils';
 
 export default function WithdrawComponent() {

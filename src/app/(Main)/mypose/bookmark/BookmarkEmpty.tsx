@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import { PrimaryButton } from '@/components/Button';
-import EmptyCase from '@/components/Feed/EmptyCase';
+import { EmptyCase, PrimaryButton } from '@/shared';
+
 
 export default function BookmarkEmpty() {
   return (

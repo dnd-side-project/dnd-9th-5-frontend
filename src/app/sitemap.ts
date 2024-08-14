@@ -1,5 +1,5 @@
-import { getPoseFeed } from '@/apis';
-import { URL } from '@/constants';
+import { getPoseFeed } from '@/shared';
+import { URL } from '@/shared';
 
 export default async function sitemap() {
   const baseUrl = URL.site;

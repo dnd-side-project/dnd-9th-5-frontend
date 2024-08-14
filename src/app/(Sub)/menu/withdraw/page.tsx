@@ -4,11 +4,11 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import { MainFooter } from '../../../(Main)/MainFooter';
-import { PrimaryButton } from '@/components/Button';
+import { PrimaryButton } from '@/shared';
 import Header from '@/components/Header';
 import { Popup } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
-import { WITHDRAW_REASON_LIST } from '@/constants';
+import { WITHDRAW_REASON_LIST } from '@/shared';
 
 const RadioInput = ({ checked }: { checked: boolean }) => {
   return checked ? (

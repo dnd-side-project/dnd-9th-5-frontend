@@ -1,7 +1,6 @@
 import BookmarkEmpty from './BookmarkEmpty';
 import BookmarkSecion from './BookmarkSecion';
-import { COOKIE_ACCESS_TOKEN } from '@/constants';
-import { getServerCookie } from '@/utils';
+import { COOKIE_ACCESS_TOKEN, getServerCookie } from '@/shared';
 
 export default async function BookmarkPage() {
   const token = await getServerCookie(COOKIE_ACCESS_TOKEN);

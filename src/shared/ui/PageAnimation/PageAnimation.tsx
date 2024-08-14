@@ -1,7 +1,8 @@
 'use client';
 import { type AnimationProps, motion } from 'framer-motion';
 
-import cn from '@/utils/cn';
+
+import { cn } from '@/shared';
 
 import type { StrictPropsWithChildren } from '@/types';
 

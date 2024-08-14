@@ -1,8 +1,6 @@
 import { IconButton } from '../Button';
-import { AnimatedPortal } from '@/components/Portal';
-import { ICON } from '@/constants';
-import { useBottomSheet } from '@/hooks';
-import { StrictPropsWithChildren } from '@/types';
+import { AnimatedPortal, ICON, StrictPropsWithChildren, useBottomSheet } from '@/shared';
+
 
 export default function BottomSheet({ children }: StrictPropsWithChildren) {
   const { isBottomSheetOpen, closeBottomSheet } = useBottomSheet();

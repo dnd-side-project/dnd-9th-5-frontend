@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { CustomInstance } from './type';
-import { BASE_API_URL } from '@/constants';
+import { BASE_API_URL } from '@/shared';
 
 const publicApi: CustomInstance = axios.create({
   baseURL: `${BASE_API_URL}/api`,

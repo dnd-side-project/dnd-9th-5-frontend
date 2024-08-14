@@ -1,4 +1,4 @@
-import { Icon } from '@/components/Button';
+import { Icon } from '@/shared';
 
 interface Button {
   onClick: () => void;

@@ -4,9 +4,9 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import Script from 'next/script';
 import { useEffect } from 'react';
 
-import { GA_ID, HOTJAR } from '@/constants';
-import { pageview } from '@/utils/gtm';
-import { isProduction } from '@/utils/isProduction';
+import { isProduction, pageview } from '@/shared';
+import { GA_ID } from '@/shared/constants';
+
 
 export default function Analytics() {
   const pathname = usePathname();

@@ -1,8 +1,8 @@
 'use client';
 
 import BookmarkEmpty from './BookmarkEmpty';
-import { useBookmarkFeedQuery } from '@/apis';
-import FeedSection from '@/components/Feed/FeedSection';
+import { useBookmarkFeedQuery } from '@/shared';
+import FeedSection from '@/shared/ui/Feed/FeedSection';
 
 export default function BookmarkSecion() {
   const query = useBookmarkFeedQuery();

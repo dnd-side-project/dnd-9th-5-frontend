@@ -1,6 +1,6 @@
 import Script from 'next/script';
 
-import { JSON_LD } from '@/constants';
+import { JSON_LD } from '@/shared';
 
 export default function JsonLD() {
   return (

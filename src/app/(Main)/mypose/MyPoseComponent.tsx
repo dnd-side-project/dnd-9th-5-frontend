@@ -1,9 +1,7 @@
 'use client';
 
-import { PrimaryButton } from '@/components/Button';
-import EmptyCase from '@/components/Feed/EmptyCase';
-import { PreparingPopup } from '@/components/Modal';
-import { useOverlay } from '@/components/Overlay/useOverlay';
+import { PrimaryButton } from '@/shared';
+import { EmptyCase, PreparingPopup, useOverlay } from '@/shared';
 
 export default function MyPoseComponent() {
   const { open } = useOverlay();

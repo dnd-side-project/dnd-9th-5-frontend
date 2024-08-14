@@ -5,13 +5,12 @@ import { useState } from 'react';
 import Lottie from 'react-lottie-player';
 
 import lottiePick from '#/lotties/pick.json';
-import { MainFooter } from '../MainFooter';
-import { usePosePickQuery } from '@/apis';
-import { PrimaryButton } from '@/components/Button';
-import PoseImage from '@/components/Modal/PoseImage';
-import { SelectionBasic } from '@/components/Selection';
-import { PEOPLE_COUNT_LIST } from '@/constants';
-import { useDidMount } from '@/hooks';
+import { PoseImage, usePosePickQuery } from '@/shared';
+import { PrimaryButton } from '@/shared';
+import { SelectionBasic } from '@/shared';
+import { PEOPLE_COUNT_LIST } from '@/shared';
+import { useDidMount } from '@/shared';
+import { Footer } from '@/widgets';
 
 const DEFAULT_IMAGE = '/images/image-frame.png';
 
@@ -52,12 +51,12 @@ export default function PickComponent() {
           <PoseImage src={imageSrc} />
         </div>
       </div>
-      <MainFooter>
+      <Footer>
         <PrimaryButton
           text={!!imageSrc ? `${countState}인 포즈 뽑기` : '인원수 선택하고 포즈 뽑기'}
           onClick={handlePickClick}
         />
-      </MainFooter>
+      </Footer>
     </>
   );
 }

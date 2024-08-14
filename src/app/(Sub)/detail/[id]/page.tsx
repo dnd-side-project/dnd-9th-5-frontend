@@ -2,13 +2,9 @@ import { QueryAsyncBoundary } from '@suspensive/react-query';
 import { Metadata } from 'next';
 
 import DetailSection from './DetailSection';
-import { getPoseDetail } from '@/apis';
-import { RejectedFallback } from '@/components/ErrorBoundary';
-import Header from '@/components/Header';
-import { Loading } from '@/components/Loading';
-import { PageAnimation } from '@/components/PageAnimation';
-import { HydrationProvider } from '@/components/Provider';
-import { OPEN_GRAPH } from '@/constants';
+import { HydrationProvider, OPEN_GRAPH, PageAnimation, getPoseDetail } from '@/shared';
+import { ErrorBoundary } from '@/shared/ui/ErrorBoundary';
+import { Header } from '@/widgets';
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const id = parseInt(params.id);
@@ -33,16 +29,11 @@ export default function DetailPage({ params }: { params: { id: number } }) {
   return (
     <div>
       <Header close={true} menu={true} />
-      <QueryAsyncBoundary
-        rejectedFallback={RejectedFallback}
-        pendingFallback={<Loading className="h-[calc(100dvh-400px)]" />}
-      >
-        <PageAnimation>
-          <HydrationProvider queryKey={['poseId', id]} queryFn={() => getPoseDetail(id)}>
-            <DetailSection poseId={id} />
-          </HydrationProvider>
-        </PageAnimation>
-      </QueryAsyncBoundary>
+      <PageAnimation>
+        <HydrationProvider queryKey={['poseId', id]} queryFn={() => getPoseDetail(id)}>
+          <DetailSection poseId={id} />
+        </HydrationProvider>
+      </PageAnimation>
     </div>
   );
 }

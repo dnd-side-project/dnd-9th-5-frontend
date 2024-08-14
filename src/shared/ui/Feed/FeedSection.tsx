@@ -4,7 +4,7 @@ import { UseSuspenseInfiniteQueryResultOnSuccess } from '@suspensive/react-query
 import { PropsWithChildren, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-import { PoseFeedContents, PoseFeedResponse } from '@/apis';
+import { PoseFeedContents, PoseFeedResponse } from '@/shared';
 import PhotoList from '@/components/Feed/PhotoList';
 
 interface FeedSecionI extends PropsWithChildren {

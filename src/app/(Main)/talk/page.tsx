@@ -1,7 +1,6 @@
 import TalkWordSection from './TalkSection';
 import TalkTitleSection from './TitleSection';
-import { COOKIE_IS_TOOLTIP_OPEN } from '@/constants';
-import { getServerCookie } from '@/utils';
+import { COOKIE_IS_TOOLTIP_OPEN, getServerCookie } from '@/shared';
 
 export default async function Talk() {
   const isToolTipOpen = (await getServerCookie(COOKIE_IS_TOOLTIP_OPEN)) === 'true';

@@ -1,10 +1,15 @@
 'use client';
 
 import LoginModal from './LoginModal';
-import { Icon } from '@/components/Button/Icon';
-import { useOverlay } from '@/components/Overlay/useOverlay';
-import { COOKIE_ACCESS_TOKEN, COOKIE_EMAIL, COOKIE_NICKNAME, ICON } from '@/constants';
-import { getClientCookie } from '@/utils';
+import { useOverlay } from '../Overlay';
+import { Icon } from '@/shared';
+import {
+  COOKIE_ACCESS_TOKEN,
+  COOKIE_EMAIL,
+  COOKIE_NICKNAME,
+  ICON,
+  getClientCookie,
+} from '@/shared';
 
 export default function LoginSection() {
   const { open, exit } = useOverlay();

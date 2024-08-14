@@ -1,11 +1,12 @@
 import Link from 'next/link';
 
-import { usePoseFeedQuery } from '@/apis';
-import { PrimaryButton } from '@/components/Button';
-import EmptyCase from '@/components/Feed/EmptyCase';
-import FeedSection from '@/components/Feed/FeedSection';
-import { URL } from '@/constants';
-import { useFilterState } from '@/hooks';
+import { usePoseFeedQuery } from '@/shared';
+import { PrimaryButton } from '@/shared';
+import { EmptyCase } from '@/shared';
+import { URL } from '@/shared';
+import { useFilterState } from '@/shared';
+import FeedSection from '@/shared/ui/Feed/FeedSection';
+
 
 export default function FeedContent() {
   const { filterState } = useFilterState();

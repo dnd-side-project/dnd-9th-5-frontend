@@ -1,5 +1,5 @@
 import Photo from './Photo';
-import { PoseFeedContents } from '@/apis';
+import { PoseFeedContents } from '@/shared';
 
 interface PhotoList {
   data?: PoseFeedContents;

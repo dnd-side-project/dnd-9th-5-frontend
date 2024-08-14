@@ -6,7 +6,7 @@ import {
   COOKIE_ACCESS_TOKEN,
   ERROR_UNAUTHORIZED,
   ERROR_UNSUPPORTED_MEDIA_TYPE,
-} from '@/constants';
+} from '@/shared';
 import { getClientCookie, removeClientCookie } from '@/utils';
 
 const privateApi: CustomInstance = axios.create({

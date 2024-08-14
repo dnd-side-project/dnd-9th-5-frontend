@@ -10,9 +10,9 @@ import React, {
   useState,
 } from 'react';
 
-import { isProduction } from '@/utils/isProduction';
+import { isProduction } from '@/shared';
 
-export const OverlayContext = createContext<{
+const OverlayContext = createContext<{
   mount(id: string, element: ReactNode): void;
   unmount(id: string): void;
 } | null>(null);
@@ -52,3 +52,5 @@ export function OverlayProvider({ children }: PropsWithChildren) {
     </OverlayContext.Provider>
   );
 }
+
+export default OverlayContext;
