@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-import { MainFooter } from '@/app/(Main)/MainFooter';
+import { MainFooter } from '../../../(Main)/MainFooter';
 import { PrimaryButton } from '@/components/Button';
 import Header from '@/components/Header';
 import { Popup } from '@/components/Modal';

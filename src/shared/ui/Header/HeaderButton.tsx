@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 
 import { IconButton } from '../Button';
-import { ICON } from '@/constants';
+import { ICON } from '@/shared/constants';
 
 export function CloseButton() {
   const router = useRouter();

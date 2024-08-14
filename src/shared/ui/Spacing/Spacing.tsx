@@ -1,6 +1,6 @@
 import { HTMLAttributes, memo } from 'react';
 
-import cn from '@/utils/cn';
+import { cn } from '@/shared';
 
 interface SpacingProps extends HTMLAttributes<HTMLDivElement> {
   direction?: 'horizontal' | 'vertical';

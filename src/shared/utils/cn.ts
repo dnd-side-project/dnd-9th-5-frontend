@@ -5,8 +5,6 @@ import type { ClassValue } from 'clsx';
 
 const customTwMerge = extendTailwindMerge({});
 
-const cn = (...inputs: ClassValue[]) => {
+export const cn = (...inputs: ClassValue[]) => {
   return customTwMerge(clsx(inputs));
 };
-
-export default cn;
