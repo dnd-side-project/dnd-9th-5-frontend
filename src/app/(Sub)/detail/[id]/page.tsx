@@ -33,9 +33,7 @@ export default function DetailPage({ params }: { params: { id: number } }) {
 
   return (
     <div>
-      <Header close={true} menu={true}>
-        <IconButton icon={ICON.bookmark.white} />
-      </Header>
+      <Header close={true} menu={true} />
       <QueryAsyncBoundary
         rejectedFallback={RejectedFallback}
         pendingFallback={<Loading className="h-[calc(100dvh-400px)]" />}
