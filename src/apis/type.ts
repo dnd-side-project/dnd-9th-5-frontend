@@ -92,3 +92,9 @@ export interface RegisterResponse {
     expiresIn: number;
   };
 }
+
+// 마이포즈
+export interface MyposeCountResponse {
+  bookmarkCount: number;
+  uploadCount: number;
+}
