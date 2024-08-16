@@ -1,7 +1,5 @@
 import { PropsWithChildren } from 'react';
 
-import { MainFooter } from '@/app/(Main)/MainFooter';
-
 interface PopupI extends PropsWithChildren {
   title?: string;
   content?: string;

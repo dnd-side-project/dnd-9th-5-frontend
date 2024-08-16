@@ -4,7 +4,6 @@ import { Metadata } from 'next';
 import DetailSection from './DetailSection';
 import { getPoseDetail } from '@/apis';
 import { RejectedFallback } from '@/components/ErrorBoundary';
-import BookmarkButton from '@/components/Feed/BookmarkButton';
 import Header from '@/components/Header';
 import { Loading } from '@/components/Loading';
 import { PageAnimation } from '@/components/PageAnimation';
