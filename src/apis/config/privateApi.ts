@@ -22,7 +22,7 @@ privateApi.interceptors.response.use(
       alert('세션이 만료되었어요. 다시 로그인이 필요해요!');
       removeClientCookie(COOKIE_ACCESS_TOKEN);
     }
-    location.href = '/';
+    // location.href = '/';
     return Promise.reject(error);
   }
 );
@@ -30,7 +30,9 @@ privateApi.interceptors.response.use(
 privateApi.interceptors.request.use(
   (config) => {
     const accessToken = getClientCookie(COOKIE_ACCESS_TOKEN);
-    config.headers.Authorization = `Bearer ${accessToken}`;
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
+    }
     return config;
   },
   (error) => {
