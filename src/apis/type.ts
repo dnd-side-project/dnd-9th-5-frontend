@@ -9,6 +9,8 @@ export interface PoseInfo {
   tagAttributes: string;
   updatedAt: string;
   bookmarkCheck: boolean;
+  width: number;
+  height: number;
 }
 
 // 포즈피드
