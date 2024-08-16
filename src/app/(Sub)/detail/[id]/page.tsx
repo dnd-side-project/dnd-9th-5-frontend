@@ -3,12 +3,13 @@ import { Metadata } from 'next';
 
 import DetailSection from './DetailSection';
 import { getPoseDetail } from '@/apis';
+import { IconButton } from '@/components/Button';
 import { RejectedFallback } from '@/components/ErrorBoundary';
 import Header from '@/components/Header';
 import { Loading } from '@/components/Loading';
 import { PageAnimation } from '@/components/PageAnimation';
 import { HydrationProvider } from '@/components/Provider';
-import { OPEN_GRAPH } from '@/constants';
+import { ICON, OPEN_GRAPH } from '@/constants';
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const id = parseInt(params.id);
@@ -32,7 +33,9 @@ export default function DetailPage({ params }: { params: { id: number } }) {
 
   return (
     <div>
-      <Header close={true} menu={true} />
+      <Header close={true} menu={true}>
+        <IconButton icon={ICON.bookmark.white} />
+      </Header>
       <QueryAsyncBoundary
         rejectedFallback={RejectedFallback}
         pendingFallback={<Loading className="h-[calc(100dvh-400px)]" />}

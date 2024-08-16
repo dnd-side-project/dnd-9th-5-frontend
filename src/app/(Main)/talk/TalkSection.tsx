@@ -11,7 +11,7 @@ import { usePoseTalkQuery } from '@/apis';
 import { PrimaryButton } from '@/components/Button';
 import { Spacing } from '@/components/Spacing';
 
-const INITIAL_TALK_WORD = `제시어에 맞춰 포즈를 취해요!`;
+const INITIAL_TALK_WORD = `제시어에 맞춰\n포즈를 취해요!`;
 
 export default function TalkWordSection() {
   const [talkWord, setTalkWord] = useState(INITIAL_TALK_WORD);
@@ -33,11 +33,11 @@ export default function TalkWordSection() {
 
   return (
     <section className="flex flex-col items-center">
-      <h1 className="items-center text-center h-100 max-w-310 break-keep">{talkWord}</h1>
+      <h1 className="max-w-310 h-100 items-center break-keep text-center">{talkWord}</h1>
 
       <Spacing size={10} />
 
-      <div className="flex justify-center h-300">
+      <div className="flex h-300 justify-center">
         {!isWordLoaded && isLoading && <Lottie loop animationData={lottieTalkBeforeClick} play />}
         {isWordLoaded && isLoading && (
           <Lottie loop animationData={lottieTalkAfterClick} play speed={1.2} className="w-500" />
