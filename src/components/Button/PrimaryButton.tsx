@@ -17,7 +17,13 @@ const styleMap: Record<StyleType, string> = {
   warning: 'bg-warning text-white',
 };
 
-export default function PrimaryButton({ icon, text, onClick, variant = 'fill', className }: ButtonProps) {
+export default function PrimaryButton({
+  icon,
+  text,
+  onClick,
+  variant = 'fill',
+  className,
+}: ButtonProps) {
   return (
     <button
       onClick={onClick}
