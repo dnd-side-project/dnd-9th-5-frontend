@@ -2,10 +2,10 @@
 
 import { usePathname } from 'next/navigation';
 
+import Tab from './Tab';
+import FilterTab from '@/app/(Main)/feed/FilterTab';
+import MyposeTab from '@/app/(Main)/mypose/MyposeTab';
 import Header from '@/components/Header';
-import FilterTab from '@/components/Header/FilterTab';
-import MyposeTab from '@/components/Header/MyposeTab';
-import Tab from '@/components/Header/Tab';
 import { Spacing } from '@/components/Spacing';
 
 export default function MainHeader() {

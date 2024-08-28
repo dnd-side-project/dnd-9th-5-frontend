@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, ReactNode } from 'react';
 
 import { CloseButton, MenuButton } from './HeaderButton';
 import { Spacing } from '../Spacing';
@@ -7,12 +7,14 @@ interface Header {
   title?: string;
   close?: boolean;
   menu?: boolean;
+  additional?: ReactNode;
 }
 
 export default function Header({
   title = '',
   close = false,
   menu = false,
+  additional,
   children,
 }: PropsWithChildren<Header>) {
   return (
@@ -22,7 +24,10 @@ export default function Header({
         <div className="flex h-48 items-center justify-between gap-12 px-4 pt-8">
           {close ? <CloseButton /> : <div className="w-4" />}
           <h4 className="flex flex-1">{title}</h4>
-          <div className="flex">{menu && <MenuButton />}</div>
+          <div className="flex">
+            {additional}
+            {menu && <MenuButton />}
+          </div>
         </div>
         {children}
       </div>

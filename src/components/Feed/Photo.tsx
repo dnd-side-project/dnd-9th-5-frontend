@@ -5,22 +5,21 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import BookmarkButton from './BookmarkButton';
+import { PoseInfo } from '@/apis';
 
-interface Photo {
-  imageKey?: string;
-  source?: string;
-  id: number;
-  isMarked: boolean;
+interface PhotoI {
+  data: PoseInfo;
 }
-
-export default function Photo({ imageKey, source, id, isMarked }: Photo) {
+export default function Photo({ data }: PhotoI) {
+  const { imageKey, source, bookmarkCheck, poseId, width, height } = data;
   const [loaded, setLoaded] = useState(false);
+  console.log(width / height);
 
   return (
     <div className="relative mb-16 inline-block w-full rounded-8">
       {imageKey && (
         <>
-          <Link href={`/detail/${id}`}>
+          <Link href={`/detail/${poseId}`}>
             <Image
               src={imageKey}
               alt={source || ''}
@@ -36,8 +35,13 @@ export default function Photo({ imageKey, source, id, isMarked }: Photo) {
             />
           </Link>
 
-          {loaded && <BookmarkButton isMarked={isMarked} poseId={id} />}
-          {loaded || <div className="h-200 w-full rounded-8 bg-sub-white" />}
+          {loaded && <BookmarkButton isMarked={bookmarkCheck} poseId={poseId} />}
+          {loaded || (
+            <div
+              style={{ aspectRatio: `${width}/${height}` }}
+              className="w-full rounded-8 bg-sub-white"
+            />
+          )}
         </>
       )}
     </div>

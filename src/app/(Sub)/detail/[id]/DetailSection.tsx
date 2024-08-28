@@ -51,14 +51,14 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
         <TagButton type="frame" value={frameCount} name={`${frameCount}컷`} />
         {tagAttributes?.split(',').map((tag, index) => <TagButton key={index} name={tag} />)}
       </div>
-      <MainFooter>
+      <MainFooter grow={false}>
         <PrimaryButton
           text="링크 공유"
           onClick={handleShareLink}
           variant="secondary"
           className="border border-border-default"
         />
-        <PrimaryButton text="카카오 공유" onClick={() => shareKakao(poseId)} />
+        <PrimaryButton className="grow" text="카카오 공유" onClick={() => shareKakao(poseId)} />
       </MainFooter>
     </div>
   );

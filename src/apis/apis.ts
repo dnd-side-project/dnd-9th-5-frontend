@@ -1,5 +1,6 @@
 import {
   FilterTagsResponse,
+  MyposeCountResponse,
   PoseDetailResponse,
   PoseFeedContents,
   PoseFeedResponse,
@@ -62,3 +63,5 @@ export const getBookmarkFeed = (pageNumber: number) =>
   privateApi.get<PoseFeedContents>('/bookmark/feed', {
     params: { pageNumber, pageSize: 10 },
   });
+
+export const getMyposeCount = () => privateApi.get<MyposeCountResponse>(`/pose/user/mypose`);

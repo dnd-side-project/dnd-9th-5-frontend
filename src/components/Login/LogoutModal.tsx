@@ -10,6 +10,7 @@ import { removeClientCookie } from '@/utils';
 export default function LogoutModal({ exit }: { exit(): void }) {
   const router = useRouter();
   const handleLogout = () => {
+    alert('로그아웃 되었어요');
     removeClientCookie(COOKIE_ACCESS_TOKEN);
     router.push('/');
   };

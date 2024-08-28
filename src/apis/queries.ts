@@ -7,12 +7,14 @@ import {
 
 import {
   FilterTagsResponse,
+  MyposeCountResponse,
   PoseFeedContents,
   PoseFeedResponse,
   PosePickResponse,
   PoseTalkResponse,
   getBookmarkFeed,
   getFilterTag,
+  getMyposeCount,
   getPoseDetail,
   getPoseFeed,
   getPosePick,
@@ -68,3 +70,6 @@ export const useBookmarkFeedQuery = (options?: UseInfiniteQueryOptions<PoseFeedC
 
 export const useFilterTagQuery = (options?: UseQueryOptions<FilterTagsResponse>) =>
   useSuspenseQuery<FilterTagsResponse>(['filterTag'], getFilterTag, { ...options });
+
+export const useMyposeCountQuery = (options?: UseQueryOptions<MyposeCountResponse>) =>
+  useQuery<MyposeCountResponse>(['myposeCount'], getMyposeCount, { ...options });

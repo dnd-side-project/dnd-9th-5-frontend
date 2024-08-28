@@ -10,13 +10,7 @@ export default function PhotoList({ data }: PhotoList) {
   return (
     <>
       {data.content.map((item) => (
-        <Photo
-          key={item.poseInfo.poseId}
-          imageKey={item.poseInfo.imageKey}
-          source={item.poseInfo.source}
-          id={item.poseInfo.poseId}
-          isMarked={item.poseInfo.bookmarkCheck}
-        />
+        <Photo key={item.poseInfo.poseId} data={item.poseInfo} />
       ))}
     </>
   );

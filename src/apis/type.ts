@@ -9,6 +9,8 @@ export interface PoseInfo {
   tagAttributes: string;
   updatedAt: string;
   bookmarkCheck: boolean;
+  width: number;
+  height: number;
 }
 
 // 포즈피드
@@ -91,4 +93,10 @@ export interface RegisterResponse {
     grantType: string;
     expiresIn: number;
   };
+}
+
+// 마이포즈
+export interface MyposeCountResponse {
+  bookmarkCount: number;
+  uploadCount: number;
 }
