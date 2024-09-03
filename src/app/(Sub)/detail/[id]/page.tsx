@@ -1,8 +1,8 @@
-import { Metadata } from 'next';
+// import { Metadata } from 'next';
 
 import DetailSection from './DetailSection';
-import { getPoseDetail } from '@/apis';
-import { OPEN_GRAPH } from '@/constants';
+// import { getPoseDetail } from '@/apis';
+// import { OPEN_GRAPH } from '@/constants';
 
 // 상세페이지 메타데이터 생성
 // export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
