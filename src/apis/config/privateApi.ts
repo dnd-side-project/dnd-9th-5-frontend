@@ -17,7 +17,6 @@ const privateApi: CustomInstance = axios.create({
 privateApi.interceptors.response.use(
   (response) => response.data,
   (error) => {
-    console.log(error);
     const status = error.response?.status;
     console.log('🚀 ~ status:', status);
     if (status === ERROR_UNAUTHORIZED || status === ERROR_UNSUPPORTED_MEDIA_TYPE) {
