@@ -9,8 +9,8 @@ export interface PoseInfo {
   tagAttributes: string;
   updatedAt: string;
   bookmarkCheck: boolean;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
 }
 
 // 포즈피드
@@ -60,17 +60,7 @@ export interface PosePickResponse {
 }
 
 export interface PoseDetailResponse {
-  poseInfo: {
-    createdAt: string;
-    frameCount: number;
-    imageKey: string;
-    peopleCount: number;
-    poseId: number;
-    source: string;
-    sourceUrl: string;
-    tagAttributes: string;
-    updatedAt: string;
-  };
+  poseInfo: PoseInfo;
 }
 
 export interface PoseTalkResponse {

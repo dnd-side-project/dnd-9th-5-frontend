@@ -8,6 +8,7 @@ import {
 import {
   FilterTagsResponse,
   MyposeCountResponse,
+  PoseDetailResponse,
   PoseFeedContents,
   PoseFeedResponse,
   PosePickResponse,
@@ -22,8 +23,10 @@ import {
 } from '.';
 import { FilterState } from '@/hooks/useFilterState';
 
-export const usePoseDetailQuery = (poseId: number) =>
-  useQuery(['poseId', poseId], () => getPoseDetail(poseId));
+export const usePoseDetailQuery = (
+  { poseId }: { poseId: number },
+  options?: UseQueryOptions<PoseDetailResponse>
+) => useQuery<PoseDetailResponse>(['poseId', poseId], () => getPoseDetail(poseId), { ...options });
 
 export const usePosePickQuery = (
   peopleCount: number,
