@@ -7,4 +7,6 @@ export const KAKAO_REDIRECT_URI = `${BASE_SITE_URL}/auth`;
 export const KAKAO_AUTHORIZE = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_REST_KEY}&redirect_uri=${KAKAO_REDIRECT_URI}&response_type=code`;
 
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+export const GOOGLE_ADSENSE_ID = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID;
+
 export const HOTJAR = { HJID: 3704547, HJSV: 6 };

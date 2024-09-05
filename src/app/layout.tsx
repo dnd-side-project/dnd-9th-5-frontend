@@ -1,10 +1,9 @@
 import './globals.css';
 
 import Script from 'next/script';
-import { Suspense } from 'react';
 
 import { OverlayProvider } from '@/components/Overlay/OverlayProvider';
-import { GA_ID } from '@/constants/env';
+import { GA_ID, GOOGLE_ADSENSE_ID } from '@/constants/env';
 import METADATA from '@/constants/meta';
 import QueryProvider from '@/provider/QueryProvider';
 import RecoilProvider from '@/provider/RecoilProvider';
@@ -31,6 +30,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('config', '${GA_ID}');
           `}
         </Script>
+        {/* Google Adsence */}
+        <Script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-${GOOGLE_ADSENSE_ID}`}
+          crossOrigin="anonymous"
+        ></Script>
       </head>
       <body className="flex w-screen touch-none justify-center bg-slate-100">
         <div className="w-full max-w-440 overflow-scroll bg-white text-primary">
