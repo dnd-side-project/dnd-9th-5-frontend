@@ -1,3 +1,5 @@
+import { isServer } from './isServer';
+
 export const setClientCookie = (key: string, value: string, options?: { expires?: Date }) => {
   document.cookie = `${key}=${value}; path=/; ${
     options?.expires ? `expires=${options.expires.toUTCString()}` : ''
@@ -5,10 +7,12 @@ export const setClientCookie = (key: string, value: string, options?: { expires?
 };
 
 export const getClientCookie = (key: string) => {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${key}=`);
+  if (isServer) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${key}=`);
 
-  return parts.pop()?.split(';').shift();
+    return parts.pop()?.split(';').shift();
+  }
 };
 
 export const removeClientCookie = (key: string) => {

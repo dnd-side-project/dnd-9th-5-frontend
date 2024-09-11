@@ -8,6 +8,8 @@ import TagButton from './TagButton';
 import { usePoseDetailQuery } from '@/apis';
 import { MainFooter } from '@/app/(Main)/MainFooter';
 import { PrimaryButton } from '@/components/Button';
+import BookmarkButton from '@/components/Feed/BookmarkButton';
+import Header from '@/components/Header';
 import { Popup } from '@/components/Modal';
 import PoseImage from '@/components/Modal/PoseImage';
 import { useOverlay } from '@/components/Overlay/useOverlay';
@@ -20,7 +22,7 @@ interface DetailSectionProps {
 }
 
 export default function DetailSection({ poseId }: DetailSectionProps) {
-  const { data } = usePoseDetailQuery(poseId);
+  const { data } = usePoseDetailQuery({ poseId });
   const { shareKakao } = useKakaoShare();
   const { open } = useOverlay();
   const pathname = usePathname();
@@ -28,7 +30,8 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
   const [isRendered, setIsRendered] = useState(false);
 
   if (!data) return null;
-  const { imageKey, tagAttributes, source, sourceUrl, peopleCount, frameCount } = data.poseInfo;
+  const { imageKey, tagAttributes, source, sourceUrl, peopleCount, frameCount, bookmarkCheck } =
+    data.poseInfo;
 
   const handleShareLink = async () => {
     await copy(BASE_SITE_URL + pathname);
@@ -41,6 +44,11 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
 
   return (
     <div>
+      <Header
+        close={true}
+        menu={true}
+        additional={<BookmarkButton poseId={poseId} isMarked={bookmarkCheck} style="black" />}
+      />
       {source && <Source source={source} url={sourceUrl} />}
       <div className="block">
         {isRendered || <div className="h-400 w-screen bg-sub-white" />}

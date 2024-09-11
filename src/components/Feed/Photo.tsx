@@ -13,7 +13,6 @@ interface PhotoI {
 export default function Photo({ data }: PhotoI) {
   const { imageKey, source, bookmarkCheck, poseId, width, height } = data;
   const [loaded, setLoaded] = useState(false);
-  console.log(width / height);
 
   return (
     <div className="relative mb-16 inline-block w-full rounded-8">

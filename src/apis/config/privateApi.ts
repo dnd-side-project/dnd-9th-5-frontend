@@ -17,7 +17,8 @@ const privateApi: CustomInstance = axios.create({
 privateApi.interceptors.response.use(
   (response) => response.data,
   (error) => {
-    const status = error.response.status;
+    const status = error.response?.status;
+    console.log('🚀 ~ status:', status);
     if (status === ERROR_UNAUTHORIZED || status === ERROR_UNSUPPORTED_MEDIA_TYPE) {
       alert('세션이 만료되었어요. 다시 로그인이 필요해요!');
       removeClientCookie(COOKIE_ACCESS_TOKEN);
