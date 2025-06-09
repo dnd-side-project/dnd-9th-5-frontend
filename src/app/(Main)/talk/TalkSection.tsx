@@ -1,15 +1,14 @@
 'use client';
 
-import { delay } from 'es-toolkit';
 import { useState } from 'react';
 import Lottie from 'react-lottie-player';
 
 import lottieTalkAfterClick from '#/lotties/talk_after_click.json';
 import lottieTalkBeforeClick from '#/lotties/talk_before_click.json';
 import { MainFooter } from '../MainFooter';
-import { usePoseTalkQuery } from '@/apis';
 import { PrimaryButton } from '@/components/Button';
 import { Spacing } from '@/components/Spacing';
+import { getPoseTalk } from '@/service/api';
 
 const INITIAL_TALK_WORD = `제시어에 맞춰\n포즈를 취해요!`;
 
@@ -18,22 +17,16 @@ export default function TalkWordSection() {
   const [isLoading, setIsLoading] = useState(true);
   const isWordLoaded = talkWord !== INITIAL_TALK_WORD;
 
-  const { refetch } = usePoseTalkQuery({
-    onSuccess: async (data) => {
-      await delay(1000);
-      setTalkWord(data.poseWord.content);
-      setIsLoading(false);
-    },
-  });
-
-  const handleTalkClick = () => {
+  const handleTalkClick = async () => {
     setIsLoading(true);
-    refetch();
+    const keyword = (await getPoseTalk()).data.keyword;
+    setTalkWord(keyword);
+    setIsLoading(false);
   };
 
   return (
     <section className="flex flex-col items-center">
-      <h1 className="max-w-310 h-100 items-center break-keep text-center">{talkWord}</h1>
+      <h1 className="h-100 max-w-310 items-center break-keep text-center">{talkWord}</h1>
 
       <Spacing size={10} />
 

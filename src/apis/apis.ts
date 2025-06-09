@@ -5,7 +5,6 @@ import {
   PoseFeedContents,
   PoseFeedResponse,
   PosePickResponse,
-  PoseTalkResponse,
   RegisterResponse,
 } from '.';
 import privateApi from './config/privateApi';
@@ -17,8 +16,6 @@ export const getPosePick = (peopleCount: number) =>
 
 export const getPoseDetail = (poseId: number) =>
   privateApi.get<PoseDetailResponse>(`/pose/${poseId}`);
-
-export const getPoseTalk = () => publicApi.get<PoseTalkResponse>('/pose/talk');
 
 export const getPoseFeed = async (
   peopleCount: number,

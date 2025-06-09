@@ -63,15 +63,6 @@ export interface PoseDetailResponse {
   poseInfo: PoseInfo;
 }
 
-export interface PoseTalkResponse {
-  poseWord: {
-    content: string;
-    createdAt: string;
-    updateAt: string;
-    wordId: number;
-  };
-}
-
 // 로그인
 export interface RegisterResponse {
   id: number;

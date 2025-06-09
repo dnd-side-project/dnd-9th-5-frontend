@@ -12,14 +12,12 @@ import {
   PoseFeedContents,
   PoseFeedResponse,
   PosePickResponse,
-  PoseTalkResponse,
   getBookmarkFeed,
   getFilterTag,
   getMyposeCount,
   getPoseDetail,
   getPoseFeed,
   getPosePick,
-  getPoseTalk,
 } from '.';
 import { FilterState } from '@/hooks/useFilterState';
 
@@ -36,9 +34,6 @@ export const usePosePickQuery = (
     enabled: false,
     ...options,
   });
-
-export const usePoseTalkQuery = (options?: UseQueryOptions<PoseTalkResponse>) =>
-  useSuspenseQuery<PoseTalkResponse>(['poseTalk'], getPoseTalk, { enabled: false, ...options });
 
 export const usePoseFeedQuery = (
   { peopleCount, frameCount, tags }: FilterState,
