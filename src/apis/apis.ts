@@ -4,15 +4,11 @@ import {
   PoseDetailResponse,
   PoseFeedContents,
   PoseFeedResponse,
-  PosePickResponse,
   RegisterResponse,
 } from '.';
 import privateApi from './config/privateApi';
 import publicApi from './config/publicApi';
 import { KAKAO_REDIRECT_URI } from '@/constants';
-
-export const getPosePick = (peopleCount: number) =>
-  publicApi.get<PosePickResponse>(`/pose/pick/${peopleCount}`);
 
 export const getPoseDetail = (poseId: number) =>
   privateApi.get<PoseDetailResponse>(`/pose/${poseId}`);

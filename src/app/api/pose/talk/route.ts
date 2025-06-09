@@ -9,7 +9,6 @@ export async function GET(): Promise<ApiResponse<PoseTalkResponseI>> {
   try {
     const response = await notionClient.databases.query({
       database_id: NOTION_DATABASE.talk,
-      page_size: 100,
     });
 
     const results = response.results;
