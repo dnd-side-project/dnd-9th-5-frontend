@@ -8,7 +8,7 @@ import lottieTalkBeforeClick from '#/lotties/talk_before_click.json';
 import { MainFooter } from '../MainFooter';
 import { PrimaryButton } from '@/components/Button';
 import { Spacing } from '@/components/Spacing';
-import { getPoseTalk } from '@/service/api';
+import { getPoseTalk } from '@/server/api';
 
 const INITIAL_TALK_WORD = `제시어에 맞춰\n포즈를 취해요!`;
 

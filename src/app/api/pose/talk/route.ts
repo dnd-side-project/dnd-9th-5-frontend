@@ -2,7 +2,7 @@ import { PageObjectResponse } from '@notionhq/client';
 import { NextResponse } from 'next/server';
 
 import { NOTION_DATABASE, notionClient } from '@/database';
-import { ApiResponse, PoseTalkResponseI } from '@/service/type';
+import { ApiResponse, PoseTalkResponseI } from '@/server/type';
 
 // region GET
 export async function GET(): Promise<ApiResponse<PoseTalkResponseI>> {
