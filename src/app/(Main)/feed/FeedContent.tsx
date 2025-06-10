@@ -27,6 +27,7 @@ export default function FeedContent() {
 
   useEffect(() => {
     fetchPoseFeed();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterState]);
 
   return (

@@ -48,7 +48,7 @@ export async function GET(req: NextRequest): Promise<ApiResponse<PoseFeedRespons
       page_size: 10,
     });
 
-    let contents: PoseDataI[] = [];
+    const contents: PoseDataI[] = [];
     const resultPages = response.results as PageObjectResponse[];
 
     for (const page of resultPages) {

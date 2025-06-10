@@ -43,14 +43,14 @@ export async function GET(
 
     const imageBlock = contentBlocks.find((block) => block.type === 'image');
 
-    if (!(imageBlock && 'file' in imageBlock.image)) {
+    if (!(imageBlock && 'image' in imageBlock && 'file' in imageBlock.image)) {
       return NextResponse.json({ error: `No Image : ${randomPage.id}` }, { status: 500 });
     }
 
     const imageUrl = imageBlock.image.file.url;
 
     return NextResponse.json({
-      imageUrl: imageUrl,
+      imageUrl,
     });
   } catch (error) {
     console.error('[NOTION_API_ERROR]', error);

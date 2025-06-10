@@ -8,10 +8,10 @@ import { getClientCookie } from '@/utils';
 
 export default function BookmarkSecion() {
   const accesstoken = getClientCookie(COOKIE_ACCESS_TOKEN);
-  const query = useBookmarkFeedQuery({ enabled: accesstoken !== '' });
+  // const query = useBookmarkFeedQuery({ enabled: accesstoken !== '' });
 
   return (
-    <FeedSection query={query}>
+    <FeedSection data={null}>
       <BookmarkEmpty />
     </FeedSection>
   );

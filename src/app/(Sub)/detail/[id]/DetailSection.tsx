@@ -33,6 +33,7 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
 
   useEffect(() => {
     fetchDetail();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [poseId]);
 
   // region method
