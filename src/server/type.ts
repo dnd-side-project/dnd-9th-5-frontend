@@ -16,14 +16,17 @@ export interface PoseTalkResponseI {
 export interface PosePickResponseI {
   imageUrl: string;
 }
-export interface PoseDataResponseI {
-  poseId: number;
-  frameCount: number;
-  peopleCount: number;
-  imageUrl: string;
-  source: string;
-  sourceUrl: string;
-  tagAttributes: string;
-  updatedAt: string;
-  bookmarkCheck: boolean;
+export interface PoseDetailResponseI {
+  id: string;
+  image: string;
+  people: number;
+  cut: number;
+  tags: string;
+  source: string | null;
+  sourceUrl: string | null;
+  bookmarkCheck?: boolean;
+}
+
+export interface PoseFeedResponseI {
+  contents: PoseDetailResponseI[];
 }

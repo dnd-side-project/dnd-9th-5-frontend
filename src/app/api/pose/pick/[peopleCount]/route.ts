@@ -1,4 +1,4 @@
-import { BlockObjectResponse, PageObjectResponse } from '@notionhq/client';
+import { BlockObjectResponse } from '@notionhq/client';
 import { NextRequest, NextResponse } from 'next/server';
 
 import { NOTION_DATABASE, notionClient } from '@/database';

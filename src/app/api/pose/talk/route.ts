@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 
 import { NOTION_DATABASE, notionClient } from '@/database';
 import { ApiResponse, PoseTalkResponseI } from '@/server/type';
+import { UniqueIdPropertyItemObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 
 // region GET
 export async function GET(): Promise<ApiResponse<PoseTalkResponseI>> {
@@ -19,13 +20,10 @@ export async function GET(): Promise<ApiResponse<PoseTalkResponseI>> {
     const randomPage = results[Math.floor(Math.random() * results.length)] as PageObjectResponse;
 
     const keywordProps = randomPage.properties['keyword'];
-    const idProps = randomPage.properties['id'];
+    const idProps = randomPage.properties['id'] as UniqueIdPropertyItemObjectResponse;
 
     if (!('title' in keywordProps)) {
       return NextResponse.json({ error: 'No props : keyword' });
-    }
-    if (!('unique_id' in idProps)) {
-      return NextResponse.json({ error: 'No props : id' });
     }
 
     const id = idProps.unique_id.number as number;

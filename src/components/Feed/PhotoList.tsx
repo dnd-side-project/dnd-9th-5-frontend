@@ -1,16 +1,16 @@
+import { PoseDetailResponseI } from '@/server/type';
 import Photo from './Photo';
-import { PoseFeedContents } from '@/apis';
 
 interface PhotoList {
-  data?: PoseFeedContents;
+  datas?: PoseDetailResponseI[];
 }
 
-export default function PhotoList({ data }: PhotoList) {
-  if (!data) return;
+export default function PhotoList({ datas }: PhotoList) {
+  if (!datas) return;
   return (
     <>
-      {data.content.map((item) => (
-        <Photo key={item.poseInfo.poseId} data={item.poseInfo} />
+      {datas.map((data) => (
+        <Photo key={data.id} data={data} />
       ))}
     </>
   );
