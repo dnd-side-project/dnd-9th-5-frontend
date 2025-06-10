@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 
-import { usePoseFeedQuery } from '@/apis';
 import { PrimaryButton } from '@/components/Button';
 import EmptyCase from '@/components/Feed/EmptyCase';
 import FeedSection from '@/components/Feed/FeedSection';

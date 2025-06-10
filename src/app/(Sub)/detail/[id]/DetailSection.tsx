@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 
 import Source from './Source';
 import TagButton from './TagButton';
-import { usePoseDetailQuery } from '@/apis';
 import { MainFooter } from '@/app/(Main)/MainFooter';
 import { PrimaryButton } from '@/components/Button';
 import BookmarkButton from '@/components/Feed/BookmarkButton';

@@ -8,40 +8,11 @@ import {
 import {
   FilterTagsResponse,
   MyposeCountResponse,
-  PoseDetailResponse,
   PoseFeedContents,
-  PoseFeedResponse,
   getBookmarkFeed,
   getFilterTag,
   getMyposeCount,
-  getPoseDetail,
-  getPoseFeed,
 } from '.';
-import { FilterState } from '@/hooks/useFilterState';
-
-export const usePoseDetailQuery = (
-  { poseId }: { poseId: number },
-  options?: UseQueryOptions<PoseDetailResponse>
-) => useQuery<PoseDetailResponse>(['poseId', poseId], () => getPoseDetail(poseId), options);
-
-export const usePoseFeedQuery = (
-  { peopleCount, frameCount, tags }: FilterState,
-  options?: UseInfiniteQueryOptions<PoseFeedResponse>
-) => {
-  return useSuspenseInfiniteQuery<PoseFeedResponse>(
-    ['poseFeed', peopleCount, frameCount, tags],
-    ({ pageParam = 0 }) => getPoseFeed(peopleCount, frameCount, tags.join(','), pageParam),
-    {
-      getNextPageParam: (lastPage) => {
-        const target = lastPage.recommendation
-          ? lastPage.recommendedContents
-          : lastPage.filteredContents;
-        return target.last ? undefined : target.number + 1;
-      },
-      ...options,
-    }
-  );
-};
 
 export const useBookmarkFeedQuery = (options?: UseInfiniteQueryOptions<PoseFeedContents>) =>
   useSuspenseInfiniteQuery<PoseFeedContents>(

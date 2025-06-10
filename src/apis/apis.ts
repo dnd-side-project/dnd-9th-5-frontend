@@ -10,24 +10,6 @@ import privateApi from './config/privateApi';
 import publicApi from './config/publicApi';
 import { KAKAO_REDIRECT_URI } from '@/constants';
 
-export const getPoseDetail = (poseId: number) =>
-  privateApi.get<PoseDetailResponse>(`/pose/${poseId}`);
-
-export const getPoseFeed = async (
-  peopleCount: number,
-  frameCount: number,
-  tags: string,
-  pageNumber: number
-) =>
-  await privateApi.get<PoseFeedResponse>(`/pose`, {
-    params: {
-      frameCount,
-      pageNumber,
-      peopleCount,
-      tags,
-    },
-  });
-
 export const getFilterTag = () => publicApi.get<FilterTagsResponse>('/pose/tags');
 
 export const getRegister = (code: string) =>
