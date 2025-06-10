@@ -6,20 +6,20 @@ import Lottie from 'react-lottie-player';
 
 import lottiePick from '#/lotties/pick.json';
 import { MainFooter } from '../MainFooter';
-import { usePosePickQuery } from '@/apis';
 import { PrimaryButton } from '@/components/Button';
 import PoseImage from '@/components/Modal/PoseImage';
 import { SelectionBasic } from '@/components/Selection';
 import { PEOPLE_COUNT_LIST } from '@/constants';
 import { useDidMount } from '@/hooks';
+import { getPosePick } from '@/server/api';
 
-const DEFAULT_IMAGE = '/images/image-frame.png';
+const DEFAULT_IMAGE = '/images/image-frame.png' as const;
 
 export default function PickComponent() {
   const [countState, setCountState] = useState(1);
+  const [isLoading, setisLoading] = useState(false);
   const [isLottiePlaying, setIsLottiePlaying] = useState(true);
-  const { refetch, data } = usePosePickQuery(countState);
-  const imageSrc = data?.poseInfo?.imageKey || DEFAULT_IMAGE;
+  const [imageSrc, setImageSrc] = useState<string>(DEFAULT_IMAGE);
 
   useDidMount(async () => {
     await delay(2200);
@@ -27,9 +27,10 @@ export default function PickComponent() {
   });
 
   const handlePickClick = async () => {
-    refetch();
+    setisLoading(true);
     setIsLottiePlaying(true);
-    await delay(900);
+    const imageUrl = (await getPosePick(countState)).data.imageUrl;
+    setImageSrc(imageUrl);
     setIsLottiePlaying(false);
   };
 
@@ -43,13 +44,13 @@ export default function PickComponent() {
         />
       </div>
       <div className="relative flex grow">
-        {isLottiePlaying && (
+        {(isLottiePlaying || isLoading) && (
           <div className="absolute inset-x-0 inset-y-0 z-10 flex justify-center bg-black">
             <Lottie animationData={lottiePick} play />
           </div>
         )}
         <div className="absolute inset-x-0 inset-y-0 bg-black">
-          <PoseImage src={imageSrc} />
+          <PoseImage src={imageSrc} onLoad={() => setisLoading(false)} />
         </div>
       </div>
       <MainFooter>

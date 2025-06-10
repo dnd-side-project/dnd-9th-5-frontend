@@ -10,7 +10,7 @@ import { FRAME_COUNT_LIST, PEOPLE_COUNT_LIST } from '@/constants';
 import { useBottomSheet, useFilterState } from '@/hooks';
 
 export default function FilterSheet() {
-  const { data: tagListData } = useFilterTagQuery();
+  // const { data: tagListData } = useFilterTagQuery();
 
   const { filterState, updateFilterState } = useFilterState();
   const { isBottomSheetOpen, closeBottomSheet } = useBottomSheet();
@@ -59,7 +59,7 @@ export default function FilterSheet() {
           </div>
           <SelectionBasic data={FRAME_COUNT_LIST} state={frameState} setState={setFrameState} />
         </section>
-        <section>
+        {/* <section>
           <div id="subtitle-2" className="mb-8 text-secondary">
             태그
           </div>
@@ -70,7 +70,7 @@ export default function FilterSheet() {
               setState={setTagState}
             />
           )}
-        </section>
+        </section> */}
       </div>
       <div className="flex gap-8 px-20 pb-20">
         <PrimaryButton
