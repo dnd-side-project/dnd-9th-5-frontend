@@ -16,7 +16,7 @@ export interface PoseTalkResponseI {
 export interface PosePickResponseI {
   imageUrl: string;
 }
-export interface PoseDetailResponseI {
+export interface PoseDataI {
   id: string;
   image: string;
   people: number;
@@ -28,5 +28,5 @@ export interface PoseDetailResponseI {
 }
 
 export interface PoseFeedResponseI {
-  contents: PoseDetailResponseI[];
+  contents: PoseDataI[];
 }

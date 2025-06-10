@@ -1,8 +1,8 @@
-import { PoseDetailResponseI } from '@/server/type';
+import { PoseDataI } from '@/server/type';
 import Photo from './Photo';
 
 interface PhotoList {
-  datas?: PoseDetailResponseI[];
+  datas?: PoseDataI[];
 }
 
 export default function PhotoList({ datas }: PhotoList) {

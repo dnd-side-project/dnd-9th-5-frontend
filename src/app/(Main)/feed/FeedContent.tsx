@@ -14,22 +14,21 @@ import { getPoseFeed } from '@/server/api';
 
 export default function FeedContent() {
   const { filterState } = useFilterState();
-  console.log('🚀 ~ FeedContent ~ filterState:', filterState);
   // const query = usePoseFeedQuery(filterState);
-
   const [data, setData] = useState<PoseFeedResponseI | null>(null);
+
   async function fetchPoseFeed() {
     const res = await getPoseFeed(
       filterState.peopleCount,
       filterState.frameCount,
       filterState.tags.join(',')
     );
-    console.log('🚀 ~ fetchPoseFeed ~ res:', res);
     setData(res.data);
   }
+
   useEffect(() => {
     fetchPoseFeed();
-  }, []);
+  }, [filterState]);
 
   return (
     <FeedSection data={data}>

@@ -6,9 +6,9 @@ import {
   UniqueIdPropertyItemObjectResponse,
   UrlPropertyItemObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints';
-import { PoseDetailResponseI } from './type';
+import { PoseDataI } from './type';
 
-export function refinePoseDataFromPage(page: PageObjectResponse): PoseDetailResponseI | null {
+export function refinePoseDataFromPage(page: PageObjectResponse): PoseDataI | null {
   const idProps = page.properties['id'] as UniqueIdPropertyItemObjectResponse;
   const imageProps = page.properties['image'] as FilesPropertyItemObjectResponse;
   const peopleProps = page.properties['people'] as NumberPropertyItemObjectResponse;

@@ -2,7 +2,7 @@ import { PageObjectResponse } from '@notionhq/client';
 import { NextRequest, NextResponse } from 'next/server';
 
 import { NOTION_DATABASE, notionClient } from '@/database';
-import { ApiResponse, PoseDetailResponseI, PoseFeedResponseI } from '@/server/type';
+import { ApiResponse, PoseDataI, PoseFeedResponseI } from '@/server/type';
 import { refinePoseDataFromPage } from '@/server/utils';
 
 // region GET
@@ -48,7 +48,7 @@ export async function GET(req: NextRequest): Promise<ApiResponse<PoseFeedRespons
       page_size: 10,
     });
 
-    let contents: PoseDetailResponseI[] = [];
+    let contents: PoseDataI[] = [];
     const resultPages = response.results as PageObjectResponse[];
 
     for (const page of resultPages) {

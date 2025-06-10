@@ -16,7 +16,7 @@ export default function FeedComponent() {
     >
       <PageAnimation>
         <FeedContent />
-        {/* <FilterSheet /> */}
+        <FilterSheet />
       </PageAnimation>
     </QueryAsyncBoundary>
   );
