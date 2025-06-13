@@ -1,9 +1,11 @@
+'use client';
+
 import { PropsWithChildren, ReactNode } from 'react';
 
 import { Spacing } from '../Spacing';
-import { useRouter } from 'next/router';
 import { IconButton } from '../common/Button';
 import { ICON } from '@/constants';
+import { useRouter } from 'next/navigation';
 
 interface Header {
   title?: string;
