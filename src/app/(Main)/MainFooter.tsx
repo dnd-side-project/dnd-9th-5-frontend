@@ -20,7 +20,7 @@ export function MainFooter({ children, grow = true }: MainFooterI) {
         {/* {isIOS() && <AppDownloadBanner />} */}
       </div>
       <div className="h-88" />
-      {isIOS() && <div className="h-62" />}
+      {/* {isIOS() && <div className="h-62" />} */}
     </>
   );
 }
