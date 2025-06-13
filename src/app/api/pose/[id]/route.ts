@@ -1,7 +1,7 @@
 import { PageObjectResponse } from '@notionhq/client';
 import { NextRequest, NextResponse } from 'next/server';
 
-import { NOTION_DATABASE, notionClient } from '@/database';
+import { NOTION_DATABASE, notionClient } from '@/server/database';
 import { ApiResponse, PoseDataI } from '@/server/type';
 import { refinePoseDataFromPage } from '@/server/utils';
 

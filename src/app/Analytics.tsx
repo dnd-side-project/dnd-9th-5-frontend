@@ -4,7 +4,7 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import Script from 'next/script';
 import { useEffect } from 'react';
 
-import { GA_ID, HOTJAR } from '@/constants';
+import { GA_ID, HOTJAR, JSON_LD } from '@/constants';
 import { pageview } from '@/utils/gtm';
 import { isProduction } from '@/utils/isProduction';
 
@@ -61,6 +61,15 @@ export default function Analytics() {
             a.appendChild(r);
         })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');;
   `,
+        }}
+      />
+
+      {/* JSON LD*/}
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(JSON_LD),
         }}
       />
     </>

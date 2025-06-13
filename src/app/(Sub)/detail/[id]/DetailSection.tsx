@@ -5,10 +5,9 @@ import { useEffect, useState } from 'react';
 
 import Source from './Source';
 import TagButton from './TagButton';
-import { MainFooter } from '@/app/(Main)/MainFooter';
-import { PrimaryButton } from '@/components/Button';
+import { MainFooter } from '@/components/Layout/MainFooter';
 import BookmarkButton from '@/components/Feed/BookmarkButton';
-import Header from '@/components/Header';
+import Header from '@/components/Layout/Header';
 import { Popup } from '@/components/Modal';
 import PoseImage from '@/components/Modal/PoseImage';
 import { useOverlay } from '@/components/Overlay/useOverlay';
@@ -17,6 +16,7 @@ import { useKakaoShare } from '@/hooks';
 import { copy } from '@/utils/copy';
 import { PoseDataI } from '@/server/type';
 import { getPoseDetail } from '@/server/api';
+import PrimaryButton from '@/components/common/Button';
 
 interface DetailSectionProps {
   poseId: number;

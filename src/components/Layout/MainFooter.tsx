@@ -1,4 +1,4 @@
-import AppDownloadBanner from '../../components/Header/AppDownloadBanner';
+import AppDownloadBanner from './AppDownloadBanner';
 import { StrictPropsWithChildren } from '@/types';
 import { isIOS } from '@/utils';
 

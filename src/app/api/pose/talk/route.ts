@@ -1,7 +1,7 @@
 import { PageObjectResponse } from '@notionhq/client';
 import { NextResponse } from 'next/server';
 
-import { NOTION_DATABASE, notionClient } from '@/database';
+import { NOTION_DATABASE, notionClient } from '@/server/database';
 import { ApiResponse, PoseTalkResponseI } from '@/server/type';
 import { UniqueIdPropertyItemObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 

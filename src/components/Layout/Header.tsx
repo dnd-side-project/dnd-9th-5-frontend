@@ -1,7 +1,9 @@
 import { PropsWithChildren, ReactNode } from 'react';
 
-import { CloseButton, MenuButton } from './HeaderButton';
 import { Spacing } from '../Spacing';
+import { useRouter } from 'next/router';
+import { IconButton } from '../common/Button';
+import { ICON } from '@/constants';
 
 interface Header {
   title?: string;
@@ -10,6 +12,7 @@ interface Header {
   additional?: ReactNode;
 }
 
+// region Header
 export default function Header({
   title = '',
   close = false,
@@ -32,5 +35,31 @@ export default function Header({
         {children}
       </div>
     </>
+  );
+}
+
+// region Buttons
+function CloseButton() {
+  const router = useRouter();
+  return (
+    <IconButton
+      icon={ICON.close.black}
+      onClick={() => {
+        if (window.history.length > 1) router.back();
+        else router.replace('/feed');
+      }}
+    />
+  );
+}
+
+function MenuButton() {
+  const router = useRouter();
+  return (
+    <IconButton
+      icon={ICON.menu}
+      onClick={() => {
+        router.push('/menu');
+      }}
+    />
   );
 }

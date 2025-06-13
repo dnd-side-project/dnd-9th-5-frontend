@@ -5,13 +5,13 @@ import { useState } from 'react';
 import Lottie from 'react-lottie-player';
 
 import lottiePick from '#/lotties/pick.json';
-import { MainFooter } from '../MainFooter';
-import { PrimaryButton } from '@/components/Button';
+import { MainFooter } from '../../../components/Layout/MainFooter';
 import PoseImage from '@/components/Modal/PoseImage';
-import { SelectionBasic } from '@/components/Selection';
+import { SelectionBasic } from '@/components/common/Selection';
 import { PEOPLE_COUNT_LIST } from '@/constants';
 import { useDidMount } from '@/hooks';
 import { getPosePick } from '@/server/api';
+import PrimaryButton from '@/components/common/Button';
 
 const DEFAULT_IMAGE = '/images/image-frame.png' as const;
 

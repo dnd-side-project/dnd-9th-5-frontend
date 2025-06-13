@@ -1,5 +1,5 @@
 import MenuListSection from './MenuListSection';
-import Header from '@/components/Header';
+import Header from '@/components/Layout/Header';
 import LoginSection from '@/components/Login/LoginSection';
 
 export default async function MenuPage() {

@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 
-import { PrimaryButton } from '@/components/Button';
 import EmptyCase from '@/components/Feed/EmptyCase';
 import FeedSection from '@/components/Feed/FeedSection';
 import { URL } from '@/constants';
@@ -10,6 +9,7 @@ import { useFilterState } from '@/hooks';
 import { useEffect, useState } from 'react';
 import { PoseFeedResponseI } from '@/server/type';
 import { getPoseFeed } from '@/server/api';
+import PrimaryButton from '@/components/common/Button';
 
 export default function FeedContent() {
   const { filterState } = useFilterState();

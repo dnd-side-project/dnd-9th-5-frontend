@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 
-import { Icon, IconButton } from '../Button/Icon';
 import { deleteBookmark, postBookmark } from '@/apis';
 import LoginModal from '@/components/Login/LoginModal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { COOKIE_ACCESS_TOKEN } from '@/constants';
 import { ICON } from '@/constants';
 import { getClientCookie } from '@/utils';
+import { Icon, IconButton } from '../common/Button';
 
 interface BookmarkButtonI {
   poseId: number;

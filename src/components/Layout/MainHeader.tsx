@@ -2,11 +2,11 @@
 
 import { usePathname } from 'next/navigation';
 
-import Tab from './Tab';
 import FilterTab from '@/app/(Main)/feed/FilterTab';
 import MyposeTab from '@/app/(Main)/mypose/MyposeTab';
-import Header from '@/components/Header';
+import Header from '@/components/Layout/Header';
 import { Spacing } from '@/components/Spacing';
+import Tab from './Tab';
 
 export default function MainHeader() {
   const curPath = usePathname();

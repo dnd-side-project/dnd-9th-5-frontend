@@ -1,7 +1,7 @@
 import { BlockObjectResponse } from '@notionhq/client';
 import { NextRequest, NextResponse } from 'next/server';
 
-import { NOTION_DATABASE, notionClient } from '@/database';
+import { NOTION_DATABASE, notionClient } from '@/server/database';
 import { ApiResponse, PosePickResponseI } from '@/server/type';
 
 const PAGE_SIZE = 10;

@@ -1,7 +1,7 @@
 'use client';
 
-import { Icon } from '@/components/Button/Icon';
-import Tag from '@/components/Selection/Tag';
+import { Icon } from '@/components/common/Button';
+import { Tag } from '@/components/common/Selection';
 import { useBottomSheet, useFilterState } from '@/hooks';
 import cn from '@/utils/cn';
 
@@ -12,7 +12,7 @@ export default function FilterTab() {
   const isFiltered = tags.length !== 0;
 
   return (
-    <div className="flex items-center h-56 gap-8 px-20 bg-white">
+    <div className="flex h-56 items-center gap-8 bg-white px-20">
       <button
         className={cn('flex min-w-fit items-center gap-8 rounded-8 px-16 py-9', {
           'border-1 border-main-violet bg-main-violet-base text-main-violet': isFiltered,

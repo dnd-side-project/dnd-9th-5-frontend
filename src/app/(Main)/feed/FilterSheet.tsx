@@ -3,11 +3,11 @@
 import { useEffect, useState } from 'react';
 
 import { FilterTagsResponse, useFilterTagQuery } from '@/apis';
-import { PrimaryButton } from '@/components/Button';
 import BottomSheet from '@/components/Modal/BottomSheet';
-import { SelectionBasic, SelectionTagList } from '@/components/Selection';
+import { SelectionBasic, SelectionTagList } from '@/components/common/Selection';
 import { FRAME_COUNT_LIST, PEOPLE_COUNT_LIST } from '@/constants';
 import { useBottomSheet, useFilterState } from '@/hooks';
+import PrimaryButton from '@/components/common/Button';
 
 export default function FilterSheet() {
   // const { data: tagListData } = useFilterTagQuery();

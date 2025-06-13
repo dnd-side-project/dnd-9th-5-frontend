@@ -1,6 +1,6 @@
 'use client';
 
-import { PrimaryButton } from '@/components/Button';
+import PrimaryButton from '@/components/common/Button';
 import EmptyCase from '@/components/Feed/EmptyCase';
 import { PreparingPopup } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';

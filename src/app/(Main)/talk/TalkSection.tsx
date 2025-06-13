@@ -5,10 +5,10 @@ import Lottie from 'react-lottie-player';
 
 import lottieTalkAfterClick from '#/lotties/talk_after_click.json';
 import lottieTalkBeforeClick from '#/lotties/talk_before_click.json';
-import { MainFooter } from '../MainFooter';
-import { PrimaryButton } from '@/components/Button';
+import { MainFooter } from '../../../components/Layout/MainFooter';
 import { Spacing } from '@/components/Spacing';
 import { getPoseTalk } from '@/server/api';
+import PrimaryButton from '@/components/common/Button';
 
 const INITIAL_TALK_WORD = `제시어에 맞춰\n포즈를 취해요!`;
 
