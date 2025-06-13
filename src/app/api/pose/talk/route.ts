@@ -17,7 +17,8 @@ export async function GET(): Promise<ApiResponse<PoseTalkResponseI>> {
       return NextResponse.json({ error: 'No data found' }, { status: 404 });
     }
 
-    const randomPage = results[Math.floor(Math.random() * results.length)] as PageObjectResponse;
+    const randomIndex = Math.floor(Math.random() * results.length);
+    const randomPage = results[randomIndex] as PageObjectResponse;
 
     const keywordProps = randomPage.properties['keyword'];
     const idProps = randomPage.properties['id'] as UniqueIdPropertyItemObjectResponse;
