@@ -1,5 +1,11 @@
-import FeedComponent from './FeedComponent';
+import FeedContent from './FeedContent';
+import FilterSheet from './FilterSheet';
 
 export default function Feed() {
-  return <FeedComponent />;
+  return (
+    <>
+      <FeedContent />
+      <FilterSheet />
+    </>
+  );
 }

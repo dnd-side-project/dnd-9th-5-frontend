@@ -3,7 +3,7 @@
 import Link from 'next/link';
 
 import EmptyCase from '@/components/Feed/EmptyCase';
-import FeedSection from '@/components/Feed/FeedSection';
+import Masonry from '@/components/Feed/Masonry';
 import { URL } from '@/constants';
 import { useFilterState } from '@/hooks';
 import { useEffect, useState } from 'react';
@@ -31,7 +31,7 @@ export default function FeedContent() {
   }, [filterState]);
 
   return (
-    <FeedSection data={data}>
+    <Masonry data={data}>
       <EmptyCase
         title={'신비한 포즈를 찾으시는군요!'}
         text={'찾고 싶은 포즈를 저희에게 알려주세요.'}
@@ -40,6 +40,6 @@ export default function FeedContent() {
           <PrimaryButton text={'문의사항 남기기'} />
         </Link>
       </EmptyCase>
-    </FeedSection>
+    </Masonry>
   );
 }

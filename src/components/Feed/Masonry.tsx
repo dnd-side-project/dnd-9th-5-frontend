@@ -1,16 +1,43 @@
 'use client';
 
-import Image from 'next/image';
+import { PropsWithChildren, useState } from 'react';
+
+import { PoseDataI, PoseFeedResponseI } from '@/server/type';
 import Link from 'next/link';
-import { useState } from 'react';
-
+import Image from 'next/image';
 import BookmarkButton from './BookmarkButton';
-import { PoseDataI } from '@/server/type';
+import { Loading } from '../Loading';
 
+// region Masonry
+interface MasonryI extends PropsWithChildren {
+  data: PoseFeedResponseI | null;
+}
+
+export default function Masonry({ children, data }: MasonryI) {
+  if (!data) {
+    return <Loading className="h-[calc(100dvh-178px)]" />;
+  }
+
+  if (data.contents.length === 0) {
+    return children;
+  }
+
+  return (
+    <div>
+      <div className="columns-2">
+        {data.contents.map((content) => (
+          <Photo key={content.id} data={content} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// region Photo
 interface PhotoI {
   data: PoseDataI;
 }
-export default function Photo({ data }: PhotoI) {
+function Photo({ data }: PhotoI) {
   const { people, cut, tags, source, sourceUrl, image, id } = data;
   const [loaded, setLoaded] = useState(false);
 

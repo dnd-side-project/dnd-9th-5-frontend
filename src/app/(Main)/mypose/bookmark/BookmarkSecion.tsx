@@ -2,7 +2,7 @@
 
 import BookmarkEmpty from './BookmarkEmpty';
 import { useBookmarkFeedQuery } from '@/apis';
-import FeedSection from '@/components/Feed/FeedSection';
+import Masonry from '@/components/Feed/Masonry';
 import { COOKIE_ACCESS_TOKEN } from '@/constants';
 import { getClientCookie } from '@/utils';
 
@@ -11,8 +11,8 @@ export default function BookmarkSecion() {
   // const query = useBookmarkFeedQuery({ enabled: accesstoken !== '' });
 
   return (
-    <FeedSection data={null}>
+    <Masonry data={null}>
       <BookmarkEmpty />
-    </FeedSection>
+    </Masonry>
   );
 }
