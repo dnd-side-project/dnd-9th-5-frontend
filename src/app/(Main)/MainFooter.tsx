@@ -17,7 +17,7 @@ export function MainFooter({ children, grow = true }: MainFooterI) {
             <div className="flex gap-8">{children}</div>
           )}
         </div>
-        {isIOS() && <AppDownloadBanner />}
+        {/* {isIOS() && <AppDownloadBanner />} */}
       </div>
       <div className="h-88" />
       {isIOS() && <div className="h-62" />}
