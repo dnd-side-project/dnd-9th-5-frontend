@@ -34,7 +34,7 @@ export default function PoseFeedFilterTab({ filterState }: Props) {
           <div className="text-divider">|</div>
           <div className="flex gap-8 overflow-x-scroll">
             {people !== 0 && <Tag key="people" text={`${people}인`} />}
-            {cut !== 0 && <Tag key="cut" text={`${cut}인`} />}
+            {cut !== 0 && <Tag key="cut" text={`${cut}컷`} />}
             {/* {tags.map((tag) => (
               <Tag
                 key={tag.value}

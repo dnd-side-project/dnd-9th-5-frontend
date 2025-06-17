@@ -1,15 +1,15 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import { FilterTagsResponse, useFilterTagQuery } from '@/apis';
-import BottomSheet from '@/components/Modal/BottomSheet';
-import { SelectionBasic, SelectionTagList } from '@/components/common/Selection';
-import { FRAME_COUNT_LIST, PEOPLE_COUNT_LIST } from '@/constants';
-import { useBottomSheet, useFilterState } from '@/hooks';
-import PrimaryButton from '@/components/common/Button';
 import { FilterStateI } from './page';
-import { useRouter } from 'next/navigation';
+import { FilterTagsResponse } from '@/apis';
+import PrimaryButton from '@/components/common/Button';
+import { SelectionBasic } from '@/components/common/Selection';
+import BottomSheet from '@/components/Modal/BottomSheet';
+import { FRAME_COUNT_LIST, PEOPLE_COUNT_LIST } from '@/constants';
+import { useBottomSheet } from '@/hooks';
 
 interface FilterSheetI {
   filterState: FilterStateI;
@@ -17,19 +17,15 @@ interface FilterSheetI {
 
 export default function FilterSheet({ filterState }: FilterSheetI) {
   const router = useRouter();
-  // const { data: tagListData } = useFilterTagQuery();
 
-  // const { filterState, updateFilterState } = useFilterState();
   const { isBottomSheetOpen, closeBottomSheet } = useBottomSheet();
 
   const [countState, setCountState] = useState<number>(filterState.people);
   const [frameState, setFrameState] = useState<number>(filterState.cut);
-  // const [tagState, setTagState] = useState<string[]>([]);
 
   function resetFilter() {
     setCountState(0);
     setFrameState(0);
-    // setTagState([]);
   }
 
   function decideFilter() {
@@ -39,14 +35,12 @@ export default function FilterSheet({ filterState }: FilterSheetI) {
     });
     const queryString = params.toString();
     router.replace(`/feed?${queryString}`);
-    // updateFilterState({ peopleCount: countState, frameCount: frameState, tags: tagState });
     closeBottomSheet();
   }
 
   useEffect(() => {
     setCountState(filterState.people);
     setFrameState(filterState.cut);
-    // setTagState(filterState.tags);
   }, [isBottomSheetOpen, filterState]);
 
   function refineTagListData(tagListData: FilterTagsResponse) {
