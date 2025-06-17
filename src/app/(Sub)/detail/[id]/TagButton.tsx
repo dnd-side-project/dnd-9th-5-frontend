@@ -1,7 +1,9 @@
+'use client';
+
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 import { Tag } from '@/components/common/Selection';
-import { useFilterState } from '@/hooks';
 
 interface TagButtonProps {
   type?: 'people' | 'frame' | 'tag';
@@ -10,29 +12,18 @@ interface TagButtonProps {
 }
 
 export default function TagButton({ type = 'tag', value, name }: TagButtonProps) {
-  const { updateFilterState } = useFilterState();
+  const router = useRouter();
+
   const handleTag = () => {
-    let filterState;
-    if (type === 'people') {
-      filterState = {
-        tags: [],
-        frameCount: 0,
-        peopleCount: value ? (value > 5 ? 5 : value) : 0,
-      };
-    } else if (type === 'frame') {
-      filterState = {
-        tags: [],
-        frameCount: value ? (value > 8 ? 8 : value) : 0,
-        peopleCount: 0,
-      };
-    } else {
-      filterState = {
-        tags: new Array(name),
-        frameCount: 0,
-        peopleCount: 0,
-      };
-    }
-    updateFilterState(filterState);
+    // const searchParams = new URLSearchParams();
+    // if (type === 'people') {
+    //   searchParams.append('people', (value ? (value > 5 ? 5 : value) : 0).toString());
+    // } else if (type === 'frame') {
+    //   searchParams.append('cut', (value ? (value > 8 ? 8 : value) : 0).toString());
+    // } else {
+    //   searchParams.append('tags', new Array(name).join(','));
+    // }
+    // router.push(`/feed?${searchParams.toString()}`);
   };
 
   return (
