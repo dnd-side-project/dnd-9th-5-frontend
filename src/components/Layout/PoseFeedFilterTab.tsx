@@ -5,7 +5,7 @@ import { Tag } from '@/components/common/Selection';
 import { useBottomSheet, useFilterState } from '@/hooks';
 import cn from '@/utils/cn';
 
-export default function FilterTab() {
+export default function PoseFeedFilterTab() {
   const { openBottomSheet } = useBottomSheet();
   const { selectedFilterItems, deleteSelectedFilterItem } = useFilterState();
   const tags = selectedFilterItems();

@@ -6,7 +6,7 @@ import MyposeTab from '@/app/(Main)/mypose/MyposeTab';
 import Header from '@/components/Layout/Header';
 import { Spacing } from '@/components/Spacing';
 import Link from 'next/link';
-import FilterTab from './FilterTab';
+import PoseFeedFilterTab from './PoseFeedFilterTab';
 
 // region MainHeader
 export default function MainHeader() {
@@ -21,7 +21,7 @@ export default function MainHeader() {
       {isMyposePage && <Spacing size={72} />}
       <Header title="PosePicker" menu={true}>
         <Navigation />
-        {isFeedPage && <FilterTab />}
+        {/* {isFeedPage && <PoseFeedFilterTab />} */}
         {isMyposePage && <MyposeTab />}
       </Header>
     </>

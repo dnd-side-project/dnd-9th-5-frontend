@@ -8,32 +8,45 @@ import { SelectionBasic, SelectionTagList } from '@/components/common/Selection'
 import { FRAME_COUNT_LIST, PEOPLE_COUNT_LIST } from '@/constants';
 import { useBottomSheet, useFilterState } from '@/hooks';
 import PrimaryButton from '@/components/common/Button';
+import { FilterStateI } from './page';
+import { useRouter } from 'next/navigation';
 
-export default function FilterSheet() {
+interface FilterSheetI {
+  filterState: FilterStateI;
+}
+
+export default function FilterSheet({ filterState }: FilterSheetI) {
+  const router = useRouter();
   // const { data: tagListData } = useFilterTagQuery();
 
-  const { filterState, updateFilterState } = useFilterState();
+  // const { filterState, updateFilterState } = useFilterState();
   const { isBottomSheetOpen, closeBottomSheet } = useBottomSheet();
 
-  const [countState, setCountState] = useState<number>(0);
-  const [frameState, setFrameState] = useState<number>(0);
-  const [tagState, setTagState] = useState<string[]>([]);
+  const [countState, setCountState] = useState<number>(filterState.people);
+  const [frameState, setFrameState] = useState<number>(filterState.cut);
+  // const [tagState, setTagState] = useState<string[]>([]);
 
   function resetFilter() {
     setCountState(0);
     setFrameState(0);
-    setTagState([]);
+    // setTagState([]);
   }
 
   function decideFilter() {
-    updateFilterState({ peopleCount: countState, frameCount: frameState, tags: tagState });
+    const params = new URLSearchParams({
+      people: countState.toString(),
+      cut: frameState.toString(),
+    });
+    const queryString = params.toString();
+    router.replace(`/feed?${queryString}`);
+    // updateFilterState({ peopleCount: countState, frameCount: frameState, tags: tagState });
     closeBottomSheet();
   }
 
   useEffect(() => {
-    setCountState(filterState.peopleCount);
-    setFrameState(filterState.frameCount);
-    setTagState(filterState.tags);
+    setCountState(filterState.people);
+    setFrameState(filterState.cut);
+    // setTagState(filterState.tags);
   }, [isBottomSheetOpen, filterState]);
 
   function refineTagListData(tagListData: FilterTagsResponse) {

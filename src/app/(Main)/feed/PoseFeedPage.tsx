@@ -10,18 +10,19 @@ import { useEffect, useState } from 'react';
 import { PoseFeedResponseI } from '@/server/type';
 import { getPoseFeed } from '@/server/api';
 import PrimaryButton from '@/components/common/Button';
+import { FilterStateI } from './page';
 
-export default function FeedContent() {
-  const { filterState } = useFilterState();
+interface PoseFeedPageI {
+  filterState: FilterStateI;
+}
+
+export default function PoseFeedPage({ filterState }: PoseFeedPageI) {
+  // const { filterState } = useFilterState();
   // const query = usePoseFeedQuery(filterState);
   const [data, setData] = useState<PoseFeedResponseI | null>(null);
 
   async function fetchPoseFeed() {
-    const res = await getPoseFeed(
-      filterState.peopleCount,
-      filterState.frameCount,
-      filterState.tags.join(',')
-    );
+    const res = await getPoseFeed(filterState.people, filterState.cut, [].join(','));
     setData(res.data);
   }
 
