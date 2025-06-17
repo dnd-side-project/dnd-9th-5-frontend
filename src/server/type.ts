@@ -21,7 +21,7 @@ export interface PoseDataI {
   image: string;
   people: number;
   cut: number;
-  tags: string;
+  tags: string[] | null;
   source: string | null;
   sourceUrl: string | null;
   bookmarkCheck?: boolean;

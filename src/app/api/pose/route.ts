@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { NOTION_DATABASE, notionClient } from '@/server/database';
 import { ApiResponse, PoseDataI, PoseFeedResponseI } from '@/server/type';
 import { refinePoseDataFromPage } from '@/server/utils';
+import { equal } from 'assert';
 
 // region GET
 export async function GET(req: NextRequest): Promise<ApiResponse<PoseFeedResponseI>> {
@@ -11,7 +12,7 @@ export async function GET(req: NextRequest): Promise<ApiResponse<PoseFeedRespons
 
   const people = searchParams.get('people');
   const cut = searchParams.get('cut');
-  const tags = searchParams.get('tags')?.split(',');
+  const tags = searchParams.get('tag')?.split(',');
 
   const andFilters = [];
   if (people && people !== '0') {
@@ -32,10 +33,12 @@ export async function GET(req: NextRequest): Promise<ApiResponse<PoseFeedRespons
   }
   if (tags && tags.length > 0) {
     andFilters.push({
-      or: tags.map((tag) => ({
-        property: 'tags',
-        multi_select: {
-          contains: tag,
+      and: tags.map((tag) => ({
+        property: 'tag',
+        formula: {
+          string: {
+            contains: tag,
+          },
         },
       })),
     });
