@@ -23,7 +23,6 @@ export function refinePoseDataFromPage(page: PageObjectResponse): PoseDataI | nu
   }
 
   const tagProps = page.properties['tag'] as FormulaPropertyItemObjectResponse;
-  // console.log('🚀 ~ refinePoseDataFromPage ~ tagProps:', tagProps);
   const tagString = tagProps.formula.type === 'string' ? tagProps.formula.string : null;
   const tags = tagString ? tagString.split(',').filter((tag) => tag.trim() !== '') : null;
 
