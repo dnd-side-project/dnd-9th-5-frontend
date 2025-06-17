@@ -1,6 +1,7 @@
-import PoseFeedFilterTab from '@/components/Layout/PoseFeedFilterTab';
 import FilterSheet from './FilterSheet';
 import PoseFeedPage from './PoseFeedPage';
+import MainLayout from '@/components/Layout/MainLayout';
+import PoseFeedFilterTab from '@/components/Layout/PoseFeedFilterTab';
 
 interface Props {
   searchParams: { people?: string; cut?: string };
@@ -20,10 +21,11 @@ export default function Feed({ searchParams }: Props) {
   };
 
   return (
-    <>
-      <PoseFeedFilterTab />
+    <MainLayout
+      subHeader={{ children: <PoseFeedFilterTab filterState={filterState} />, height: 56 }}
+    >
       <PoseFeedPage filterState={filterState} />
       <FilterSheet filterState={filterState} />
-    </>
+    </MainLayout>
   );
 }

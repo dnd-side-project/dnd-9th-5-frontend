@@ -1,15 +1,20 @@
 'use client';
 
+import { FilterStateI } from '@/app/feed/page';
 import { Icon } from '@/components/common/Button';
 import { Tag } from '@/components/common/Selection';
-import { useBottomSheet, useFilterState } from '@/hooks';
+import { useBottomSheet } from '@/hooks';
 import cn from '@/utils/cn';
 
-export default function PoseFeedFilterTab() {
+interface Props {
+  filterState: FilterStateI;
+}
+
+export default function PoseFeedFilterTab({ filterState }: Props) {
+  const { people, cut } = filterState;
   const { openBottomSheet } = useBottomSheet();
-  const { selectedFilterItems, deleteSelectedFilterItem } = useFilterState();
-  const tags = selectedFilterItems();
-  const isFiltered = tags.length !== 0;
+
+  const isFiltered = !(people === 0 && cut === 0);
 
   return (
     <div className="flex h-56 items-center gap-8 bg-white px-20">
@@ -28,14 +33,16 @@ export default function PoseFeedFilterTab() {
         <>
           <div className="text-divider">|</div>
           <div className="flex gap-8 overflow-x-scroll">
-            {tags.map((tag) => (
+            {people !== 0 && <Tag key="people" text={`${people}인`} />}
+            {cut !== 0 && <Tag key="cut" text={`${cut}인`} />}
+            {/* {tags.map((tag) => (
               <Tag
                 key={tag.value}
                 text={tag.value}
                 onClick={() => deleteSelectedFilterItem(tag)}
                 x={true}
               />
-            ))}
+            ))} */}
           </div>
         </>
       )}
