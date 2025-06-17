@@ -15,6 +15,8 @@ export async function GET(req: NextRequest): Promise<ApiResponse<PoseFeedRespons
   const tags = searchParams.get('tag')?.split(',');
 
   const andFilters = [];
+  andFilters.push({ property: 'accept', checkbox: { equals: true } });
+
   if (people && people !== '0') {
     andFilters.push({
       property: 'people',

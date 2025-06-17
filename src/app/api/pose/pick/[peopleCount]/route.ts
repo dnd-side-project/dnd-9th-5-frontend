@@ -20,10 +20,15 @@ export async function GET(
       database_id: NOTION_DATABASE.data,
       page_size: PAGE_SIZE,
       filter: {
-        property: 'people',
-        number: {
-          equals: parseInt(peopleCount),
-        },
+        and: [
+          { property: 'accept', checkbox: { equals: true } },
+          {
+            property: 'people',
+            number: {
+              equals: parseInt(peopleCount),
+            },
+          },
+        ],
       },
     });
     const resultPages = response.results;
