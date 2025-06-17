@@ -1,5 +1,5 @@
-import PickComponent from './PickComponent';
+import PosePickPage from '@/components/pages/PosePickPage';
 
 export default function Page() {
-  return <PickComponent />;
+  return <PosePickPage />;
 }

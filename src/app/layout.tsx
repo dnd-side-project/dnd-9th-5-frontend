@@ -1,6 +1,6 @@
 import './globals.css';
 
-import Analytics from './Analytics';
+import Analytics from '../components/Layout/Analytics';
 import { OverlayProvider } from '@/components/Overlay/OverlayProvider';
 import { METADATA } from '@/constants';
 import QueryProvider from '@/provider/QueryProvider';

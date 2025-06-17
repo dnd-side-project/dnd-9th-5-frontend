@@ -1,30 +1,31 @@
 'use client';
 
-import { delay } from 'es-toolkit';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Lottie from 'react-lottie-player';
 
 import lottiePick from '#/lotties/pick.json';
-import { MainFooter } from '../../../components/Layout/MainFooter';
-import PoseImage from '@/components/Modal/PoseImage';
-import { SelectionBasic } from '@/components/common/Selection';
-import { PEOPLE_COUNT_LIST } from '@/constants';
-import { useDidMount } from '@/hooks';
-import { getPosePick } from '@/server/api';
+import { MainFooter } from '../Layout/MainFooter';
 import PrimaryButton from '@/components/common/Button';
+import { SelectionBasic } from '@/components/common/Selection';
+import PoseImage from '@/components/Modal/PoseImage';
+import { PEOPLE_COUNT_LIST } from '@/constants';
+import { getPosePick } from '@/server/api';
 
 const DEFAULT_IMAGE = '/images/image-frame.png' as const;
 
-export default function PickComponent() {
+export default function PosePickPage() {
   const [countState, setCountState] = useState(1);
   const [isLoading, setisLoading] = useState(false);
   const [isLottiePlaying, setIsLottiePlaying] = useState(true);
   const [imageSrc, setImageSrc] = useState<string>(DEFAULT_IMAGE);
 
-  useDidMount(async () => {
-    await delay(2200);
-    setIsLottiePlaying(false);
-  });
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLottiePlaying(false);
+    }, 2200);
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   const handlePickClick = async () => {
     setisLoading(true);
