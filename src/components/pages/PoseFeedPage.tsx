@@ -21,7 +21,7 @@ export default function PoseFeedPage({ filterState, initialData }: PoseFeedPageI
 
   async function fetchPoseFeed() {
     setData(null);
-    const res = await getPoseFeed(filterState.people, filterState.cut, [].join(','));
+    const res = await getPoseFeed(filterState);
     setData(res.data);
   }
 

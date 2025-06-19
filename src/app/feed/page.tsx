@@ -5,23 +5,25 @@ import PoseFeedFilterTab from '@/components/Layout/PoseFeedFilterTab.client';
 import { getPoseFeed } from '@/server/api';
 
 interface Props {
-  searchParams: { people?: string; cut?: string };
+  searchParams: { people?: string; cut?: string; tag?: string };
 }
 
 export interface FilterStateI {
   people: number;
   cut: number;
+  tags: string[];
 }
 
 export default async function Feed({ searchParams }: Props) {
-  const { people, cut } = searchParams;
+  const { people, cut, tag } = searchParams;
 
   const filterState: FilterStateI = {
     people: people ? parseInt(people) : 0,
     cut: cut ? parseInt(cut) : 0,
+    tags: tag ? tag.split(',') : [],
   };
 
-  const data = (await getPoseFeed(filterState.people, filterState.cut, [].join(','))).data;
+  const data = (await getPoseFeed(filterState)).data;
 
   return (
     <MainLayout

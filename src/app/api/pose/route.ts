@@ -4,7 +4,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { NOTION_DATABASE, notionClient } from '@/server/database';
 import { ApiResponse, PoseDataI, PoseFeedResponseI } from '@/server/type';
 import { refinePoseDataFromPage } from '@/server/utils';
-import { equal } from 'assert';
 
 // region GET
 export async function GET(req: NextRequest): Promise<ApiResponse<PoseFeedResponseI>> {
