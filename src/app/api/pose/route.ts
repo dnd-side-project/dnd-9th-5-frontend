@@ -17,12 +17,21 @@ export async function GET(req: NextRequest): Promise<ApiResponse<PoseFeedRespons
   andFilters.push({ property: 'accept', checkbox: { equals: true } });
 
   if (people && people !== '0') {
-    andFilters.push({
-      property: 'people',
-      number: {
-        equals: parseInt(people),
-      },
-    });
+    andFilters.push(
+      people === '5'
+        ? {
+            property: 'people',
+            number: {
+              greater_than: parseInt(people),
+            },
+          }
+        : {
+            property: 'people',
+            number: {
+              equals: parseInt(people),
+            },
+          }
+    );
   }
   if (cut && cut !== '0') {
     andFilters.push({
