@@ -14,7 +14,7 @@ export interface FilterStateI {
   tags: string[];
 }
 
-export default async function Feed({ searchParams }: Props) {
+export default async function Page({ searchParams }: Props) {
   const { people, cut, tag } = searchParams;
 
   const filterState: FilterStateI = {
@@ -23,7 +23,7 @@ export default async function Feed({ searchParams }: Props) {
     tags: tag ? tag.split(',') : [],
   };
 
-  const data = (await getPoseFeed(filterState)).data;
+  const data = (await getPoseFeed(filterState, null)).data;
 
   return (
     <MainLayout
