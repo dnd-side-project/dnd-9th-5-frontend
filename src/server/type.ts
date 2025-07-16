@@ -18,7 +18,10 @@ export interface PosePickResponseI {
 }
 export interface PoseDataI {
   id: string;
-  image: string;
+  image: {
+    size?: { width: number; height: number };
+    url: string;
+  };
   people: number;
   cut: number;
   tags: string[] | null;

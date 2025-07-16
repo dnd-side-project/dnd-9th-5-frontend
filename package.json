@@ -23,6 +23,7 @@
     "eslint-config-next": "^13.4.12",
     "framer-motion": "^10.15.0",
     "next": "13.4.12",
+    "probe-image-size": "^7.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hotjar": "^6.1.0",
@@ -38,6 +39,7 @@
   "devDependencies": {
     "@tanstack/react-query-devtools": "^4.35.0",
     "@types/node": "20.4.5",
+    "@types/probe-image-size": "^7.2.5",
     "@types/react": "18.2.17",
     "@types/react-dom": "18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.2.1",

@@ -68,12 +68,10 @@ export async function GET(req: NextRequest): Promise<ApiResponse<PoseFeedRespons
     const resultPages = response.results as PageObjectResponse[];
 
     for (const page of resultPages) {
-      const content = refinePoseDataFromPage(page);
-
+      const content = await refinePoseDataFromPage(page);
       if (content === null) {
         continue;
       }
-
       contents.push(content);
     }
 

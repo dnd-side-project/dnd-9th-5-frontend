@@ -6,10 +6,11 @@ import {
   UniqueIdPropertyItemObjectResponse,
   UrlPropertyItemObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints';
+import probe from 'probe-image-size';
 
 import { PoseDataI } from './type';
 
-export function refinePoseDataFromPage(page: PageObjectResponse): PoseDataI | null {
+export async function refinePoseDataFromPage(page: PageObjectResponse): Promise<PoseDataI | null> {
   const idProps = page.properties['id'] as UniqueIdPropertyItemObjectResponse;
   const imageProps = page.properties['image'] as FilesPropertyItemObjectResponse;
   const peopleProps = page.properties['people'] as NumberPropertyItemObjectResponse;
@@ -32,13 +33,36 @@ export function refinePoseDataFromPage(page: PageObjectResponse): PoseDataI | nu
       ? sourceProps.formula.string
       : null;
 
-  return {
-    id: idProps.unique_id.number + '',
-    image: imageFile.file.url,
-    people: peopleProps.number ?? 0,
-    cut: cutProps.number ?? 0,
-    tags,
-    source,
-    sourceUrl: sourceUrlProps.url,
-  };
+  const imageFileUrl = imageFile.file.url;
+  try {
+    const probeRes = await probe(imageFileUrl);
+    return {
+      id: idProps.unique_id.number + '',
+      image: {
+        url: imageFileUrl,
+        size: {
+          width: probeRes.width,
+          height: probeRes.height,
+        },
+      },
+      people: peopleProps.number ?? 0,
+      cut: cutProps.number ?? 0,
+      tags,
+      source,
+      sourceUrl: sourceUrlProps.url,
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      id: idProps.unique_id.number + '',
+      image: {
+        url: imageFileUrl,
+      },
+      people: peopleProps.number ?? 0,
+      cut: cutProps.number ?? 0,
+      tags,
+      source,
+      sourceUrl: sourceUrlProps.url,
+    };
+  }
 }

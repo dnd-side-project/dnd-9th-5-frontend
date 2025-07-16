@@ -50,32 +50,28 @@ interface PhotoI {
 }
 function Photo({ data }: PhotoI) {
   const { people, cut, tags, source, sourceUrl, image, id } = data;
+  const aspectRatio = image.size ? image.size.width / image.size.height : 1;
   const [loaded, setLoaded] = useState(false);
 
   return (
     <div className="relative mb-16 inline-block w-full rounded-8">
-      {image && (
-        <>
-          <Link href={`/detail/${id}`}>
-            <Image
-              src={image}
-              alt={source || ''}
-              width={200}
-              height={0}
-              style={{
-                objectFit: 'contain',
-                borderRadius: 8,
-                width: '100%',
-                height: 'auto',
-              }}
-              onLoad={() => setLoaded(true)}
-            />
-          </Link>
-
-          {loaded && <BookmarkButton isMarked={false} poseId={parseInt(id)} />}
-          {loaded || <div style={{ aspectRatio: 1 }} className="w-full rounded-8 bg-sub-white" />}
-        </>
-      )}
+      <Link href={`/detail/${id}`}>
+        <Image
+          src={image.url}
+          alt={source || ''}
+          width={200}
+          height={0}
+          style={{
+            objectFit: 'contain',
+            borderRadius: 8,
+            width: '100%',
+            height: 'auto',
+          }}
+          onLoad={() => setLoaded(true)}
+        />
+      </Link>
+      {loaded && <BookmarkButton isMarked={false} poseId={parseInt(id)} />}
+      {loaded || <div style={{ aspectRatio }} className="w-full rounded-8 bg-sub-white" />}
     </div>
   );
 }
