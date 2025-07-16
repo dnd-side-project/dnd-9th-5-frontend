@@ -5,16 +5,19 @@ import Link from 'next/link';
 import { PropsWithChildren, useState } from 'react';
 
 import BookmarkButton from './BookmarkButton';
+import PrimaryButton from '../common/Button';
 import { Loading } from '../Loading';
 import { PoseDataI, PoseFeedResponseI } from '@/server/type';
 
 // region Masonry
 interface MasonryI extends PropsWithChildren {
   data: PoseFeedResponseI | null;
+  loading: 'new' | 'more' | false;
+  fetchMore(): void;
 }
 
-export default function Masonry({ children, data }: MasonryI) {
-  if (!data) {
+export default function Masonry({ children, data, loading, fetchMore }: MasonryI) {
+  if (loading === 'new' || !data) {
     return <Loading className="h-[calc(100dvh-178px)]" />;
   }
 
@@ -29,6 +32,14 @@ export default function Masonry({ children, data }: MasonryI) {
           <Photo key={content.id} data={content} />
         ))}
       </div>
+      {loading === false && data.pagination.hasMore && (
+        <PrimaryButton
+          variant="secondary"
+          onClick={fetchMore}
+          text="더보기"
+          className="mb-16 w-full"
+        />
+      )}
     </div>
   );
 }
