@@ -8,7 +8,7 @@ import { refinePoseDataFromPage } from '@/server/utils';
 interface Params {
   id: string;
 }
-// region GET
+
 export async function GET(
   req: NextRequest,
   { params: { id } }: { params: Params }
@@ -26,7 +26,7 @@ export async function GET(
       return NextResponse.json({ error: `No Data : ${id}` }, { status: 400 });
     }
 
-    const data = refinePoseDataFromPage(results[0]);
+    const data = await refinePoseDataFromPage(results[0]);
 
     if (!data) {
       return NextResponse.json({ error: `No Image : ${id}` }, { status: 400 });

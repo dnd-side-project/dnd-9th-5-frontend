@@ -1,46 +1,31 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import Source from './Source';
-import TagButton from './TagButton';
-import { MainFooter } from '@/components/Layout/MainFooter';
+import Source from '../../app/detail/[id]/Source';
+import TagButton from '../../app/detail/[id]/TagButton';
+import PrimaryButton from '@/components/common/Button';
 import BookmarkButton from '@/components/Feed/BookmarkButton';
 import Header from '@/components/Layout/Header';
+import { MainFooter } from '@/components/Layout/MainFooter';
 import { Popup } from '@/components/Modal';
 import PoseImage from '@/components/Modal/PoseImage';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { BASE_SITE_URL } from '@/constants';
 import { useKakaoShare } from '@/hooks';
-import { copy } from '@/utils/copy';
 import { PoseDataI } from '@/server/type';
-import { getPoseDetail } from '@/server/api';
-import PrimaryButton from '@/components/common/Button';
+import { copy } from '@/utils/copy';
 
-interface DetailSectionProps {
-  poseId: number;
+interface PropsI {
+  data: PoseDataI;
 }
 
-export default function DetailSection({ poseId }: DetailSectionProps) {
-  const [data, setData] = useState<PoseDataI | null>(null);
-  // const { data } = usePoseDetailQuery({ poseId });
+export default function PoseDetailPage({ data }: PropsI) {
   const { shareKakao } = useKakaoShare();
   const { open } = useOverlay();
   const pathname = usePathname();
-
   const [isRendered, setIsRendered] = useState(false);
-
-  useEffect(() => {
-    fetchDetail();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [poseId]);
-
-  // region method
-  async function fetchDetail() {
-    const res = await getPoseDetail(poseId + '');
-    setData(res.data);
-  }
 
   const handleShareLink = async () => {
     await copy(BASE_SITE_URL + pathname);
@@ -53,14 +38,8 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
 
   // region return
   if (!data) return null;
-  const {
-    image: imageKey,
-    tags: tagAttributes,
-    people: peopleCount,
-    cut: frameCount,
-    source,
-    sourceUrl,
-  } = data;
+  const { id, image, tags, people, cut, source, sourceUrl } = data;
+  const aspectRatio = image.size ? image.size.width / image.size.height : 1;
   const bookmarkCheck = false;
 
   return (
@@ -68,17 +47,17 @@ export default function DetailSection({ poseId }: DetailSectionProps) {
       <Header
         close={true}
         menu={true}
-        additional={<BookmarkButton poseId={poseId} isMarked={bookmarkCheck} style="black" />}
+        additional={<BookmarkButton poseId={parseInt(id)} isMarked={bookmarkCheck} style="black" />}
       />
       {source && sourceUrl && <Source source={source} url={sourceUrl} />}
       <div className="block">
-        {isRendered || <div className="h-400 w-screen bg-sub-white" />}
-        <PoseImage src={imageKey} responsive={true} onLoad={() => setIsRendered(true)} />
+        {!isRendered && <div style={{ aspectRatio }} className="w-full bg-sub-white" />}
+        <PoseImage src={image.url} responsive={true} onLoad={() => setIsRendered(true)} />
       </div>
       <div className="flex flex-wrap gap-10 px-20 py-12">
-        <TagButton type="people" value={peopleCount} name={`${peopleCount}인`} />
-        <TagButton type="frame" value={frameCount} name={`${frameCount}컷`} />
-        {tagAttributes?.split(',').map((tag, index) => <TagButton key={index} name={tag} />)}
+        <TagButton type="people" value={people} name={`${people}인`} />
+        <TagButton type="frame" value={cut} name={`${cut}컷`} />
+        {tags?.map((tag, index) => <TagButton key={index} name={tag} />)}
       </div>
       <MainFooter grow={true}>
         <PrimaryButton
