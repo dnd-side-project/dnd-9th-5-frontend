@@ -1,12 +1,12 @@
 'use client';
 
+import Image from 'next/image';
+import Link from 'next/link';
 import { PropsWithChildren, useState } from 'react';
 
-import { PoseDataI, PoseFeedResponseI } from '@/server/type';
-import Link from 'next/link';
-import Image from 'next/image';
 import BookmarkButton from './BookmarkButton';
 import { Loading } from '../Loading';
+import { PoseDataI, PoseFeedResponseI } from '@/server/type';
 
 // region Masonry
 interface MasonryI extends PropsWithChildren {

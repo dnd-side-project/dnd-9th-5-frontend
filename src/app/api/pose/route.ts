@@ -5,14 +5,15 @@ import { NOTION_DATABASE, notionClient } from '@/server/database';
 import { ApiResponse, PoseDataI, PoseFeedResponseI } from '@/server/type';
 import { refinePoseDataFromPage } from '@/server/utils';
 
-// region GET
 export async function GET(req: NextRequest): Promise<ApiResponse<PoseFeedResponseI>> {
+  // region parameter
   const searchParams = req.nextUrl.searchParams;
-
   const people = searchParams.get('people');
   const cut = searchParams.get('cut');
   const tags = searchParams.get('tag')?.split(',');
+  const cursor = searchParams.get('cursor') || undefined;
 
+  // regin filters
   const andFilters = [];
   andFilters.push({ property: 'accept', checkbox: { equals: true } });
 
@@ -54,11 +55,13 @@ export async function GET(req: NextRequest): Promise<ApiResponse<PoseFeedRespons
     });
   }
 
+  // region try
   try {
     const response = await notionClient.databases.query({
       database_id: NOTION_DATABASE.data,
       filter: { and: andFilters },
       page_size: 10,
+      start_cursor: cursor,
     });
 
     const contents: PoseDataI[] = [];
@@ -76,6 +79,7 @@ export async function GET(req: NextRequest): Promise<ApiResponse<PoseFeedRespons
 
     return NextResponse.json({
       contents,
+      pagination: { hasMore: response.has_more, nextCusor: response.next_cursor },
     });
   } catch (error) {
     console.error('[NOTION_API_ERROR]', error);

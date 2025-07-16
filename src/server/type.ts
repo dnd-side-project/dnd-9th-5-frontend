@@ -28,5 +28,9 @@ export interface PoseDataI {
 }
 
 export interface PoseFeedResponseI {
+  pagination: {
+    hasMore: boolean;
+    nextCusor: string | null;
+  };
   contents: PoseDataI[];
 }
