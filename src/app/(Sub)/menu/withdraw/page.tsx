@@ -3,12 +3,12 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-import { MainFooter } from '@/components/Layout/MainFooter';
+import PrimaryButton from '@/components/common/Button';
 import Header from '@/components/Layout/Header';
+import { MainFooter } from '@/components/Layout/MainFooter';
 import { Popup } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { WITHDRAW_REASON_LIST } from '@/constants';
-import PrimaryButton from '@/components/common/Button';
 
 const RadioInput = ({ checked }: { checked: boolean }) => {
   return checked ? (
@@ -44,7 +44,7 @@ export default function Page() {
 
   return (
     <>
-      <Header title="서비스 탈퇴" close={true} />
+      <Header title="서비스 탈퇴" />
       <div className="px-20">
         <h4 className="py-40 text-center">
           떠나시는 <span className="text-main-violet-dark">이유를</span>
