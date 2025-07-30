@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { FilterStateI } from './page';
 import { FilterTagsResponse } from '@/apis';
 import PrimaryButton from '@/components/common/Button';
-import { SelectionBasic } from '@/components/common/Selection';
+import { SelectionBasic, Tag } from '@/components/common/Selection';
 import BottomSheet from '@/components/Modal/BottomSheet';
 import { FRAME_COUNT_LIST, PEOPLE_COUNT_LIST } from '@/constants';
 import { useBottomSheet } from '@/hooks';
@@ -22,16 +22,19 @@ export default function FilterSheet({ filterState }: FilterSheetI) {
 
   const [countState, setCountState] = useState<number>(filterState.people);
   const [frameState, setFrameState] = useState<number>(filterState.cut);
+  const [tagState, setTagState] = useState<string[]>(filterState.tags);
 
   function resetFilter() {
     setCountState(0);
     setFrameState(0);
+    setTagState([]);
   }
 
   function decideFilter() {
     const params = new URLSearchParams({
       people: countState.toString(),
       cut: frameState.toString(),
+      tags: tagState.join(','),
     });
     const queryString = params.toString();
     router.replace(`/feed?${queryString}`);
@@ -41,6 +44,7 @@ export default function FilterSheet({ filterState }: FilterSheetI) {
   useEffect(() => {
     setCountState(filterState.people);
     setFrameState(filterState.cut);
+    setTagState(filterState.tags);
   }, [isBottomSheetOpen, filterState]);
 
   function refineTagListData(tagListData: FilterTagsResponse) {
@@ -49,6 +53,10 @@ export default function FilterSheet({ filterState }: FilterSheetI) {
       tagList.push(tag.attribute);
     }
     return tagList;
+  }
+
+  function toggleTag(tag: string) {
+    setTagState((prev) => prev.filter((item) => item !== tag));
   }
 
   return (
@@ -66,18 +74,23 @@ export default function FilterSheet({ filterState }: FilterSheetI) {
           </div>
           <SelectionBasic data={FRAME_COUNT_LIST} state={frameState} setState={setFrameState} />
         </section>
-        {/* <section>
-          <div id="subtitle-2" className="mb-8 text-secondary">
-            태그
-          </div>
-          {tagListData && (
+        {tagState.length !== 0 && (
+          <section>
+            <div id="subtitle-2" className="mb-8 text-secondary">
+              태그
+            </div>
+            {/* {tags && (
             <SelectionTagList
               data={refineTagListData(tagListData)}
               state={tagState}
               setState={setTagState}
             />
-          )}
-        </section> */}
+          )} */}
+            {tagState.map((tag, index) => (
+              <Tag key={index} text={tag} x={true} onClick={() => toggleTag(tag)} />
+            ))}
+          </section>
+        )}
       </div>
       <div className="flex gap-8 px-20 pb-20">
         <PrimaryButton

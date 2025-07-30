@@ -40,7 +40,6 @@ export default function PoseFeedFilterTab({ filterState }: Props) {
                 key={tag}
                 text={tag}
                 // onClick={() => deleteSelectedFilterItem(tag)}
-                x={true}
               />
             ))}
           </div>
