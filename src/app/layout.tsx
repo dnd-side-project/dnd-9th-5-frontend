@@ -14,6 +14,9 @@ export const metadata: Metadata = METADATA;
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="ko">
+      <head>
+        <meta name="google-adsense-account" content="ca-pub-7559978289195926" />
+      </head>
       <body className="flex w-screen touch-none justify-center bg-slate-100">
         <div className="w-full max-w-layout overflow-scroll bg-white text-primary">
           <Analytics />
