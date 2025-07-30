@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { PropsWithChildren, ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 
 import { IconButton } from '../common/Button';
 import { Spacing } from '../Spacing';
@@ -35,7 +35,8 @@ interface CloseButtonI {
   onClick?(): void;
 }
 export function CloseButton({ onClick }: CloseButtonI) {
-  return <IconButton icon={ICON.close.black} onClick={onClick} />;
+  const router = useRouter();
+  return <IconButton icon={ICON.close.black} onClick={onClick ? onClick : () => router.back()} />;
 }
 
 export function MenuButton() {
