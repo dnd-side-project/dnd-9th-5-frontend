@@ -14,8 +14,8 @@ import { cachedPoseAtom } from '@/store/atom';
 // region Masonry
 interface MasonryI extends PropsWithChildren {
   data: PoseFeedResponseI | null;
-  loading: 'new' | 'more' | false;
-  fetchMore(): void;
+  loading?: 'new' | 'more' | false;
+  fetchMore?: () => void;
 }
 
 export default function Masonry({ children, data, loading, fetchMore }: MasonryI) {
