@@ -15,20 +15,16 @@ export default function TagButton({ type = 'tag', value, name }: TagButtonProps)
   const router = useRouter();
 
   const handleTag = () => {
-    // const searchParams = new URLSearchParams();
-    // if (type === 'people') {
-    //   searchParams.append('people', (value ? (value > 5 ? 5 : value) : 0).toString());
-    // } else if (type === 'frame') {
-    //   searchParams.append('cut', (value ? (value > 8 ? 8 : value) : 0).toString());
-    // } else {
-    //   searchParams.append('tags', new Array(name).join(','));
-    // }
-    // router.push(`/feed?${searchParams.toString()}`);
+    const searchParams = new URLSearchParams();
+    if (type === 'people') {
+      searchParams.append('people', (value ? (value > 5 ? 5 : value) : 0).toString());
+    } else if (type === 'frame') {
+      searchParams.append('cut', (value ? (value > 8 ? 8 : value) : 0).toString());
+    } else {
+      searchParams.append('tags', new Array(name).join(','));
+    }
+    router.push(`/feed?${searchParams.toString()}`);
   };
 
-  return (
-    <Link href="/feed" type="button" scroll={false} onClick={handleTag}>
-      <Tag text={name} />
-    </Link>
-  );
+  return <Tag text={name} onClick={handleTag} />;
 }

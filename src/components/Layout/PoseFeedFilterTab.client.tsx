@@ -11,10 +11,10 @@ interface Props {
 }
 
 export default function PoseFeedFilterTab({ filterState }: Props) {
-  const { people, cut } = filterState;
+  const { people, cut, tags } = filterState;
   const { openBottomSheet } = useBottomSheet();
 
-  const isFiltered = !(people === 0 && cut === 0);
+  const isFiltered = !(people === 0 && cut === 0 && tags.length === 0);
 
   return (
     <div className="flex h-56 items-center gap-8 bg-white px-20">
@@ -35,14 +35,14 @@ export default function PoseFeedFilterTab({ filterState }: Props) {
           <div className="flex gap-8 overflow-x-scroll">
             {people !== 0 && <Tag key="people" text={`${people}인`} />}
             {cut !== 0 && <Tag key="cut" text={`${cut}컷`} />}
-            {/* {tags.map((tag) => (
+            {tags.map((tag) => (
               <Tag
-                key={tag.value}
-                text={tag.value}
-                onClick={() => deleteSelectedFilterItem(tag)}
+                key={tag}
+                text={tag}
+                // onClick={() => deleteSelectedFilterItem(tag)}
                 x={true}
               />
-            ))} */}
+            ))}
           </div>
         </>
       )}

@@ -5,7 +5,7 @@ import PoseFeedFilterTab from '@/components/Layout/PoseFeedFilterTab.client';
 import { getPoseFeed } from '@/server/api';
 
 interface Props {
-  searchParams: { people?: string; cut?: string; tag?: string };
+  searchParams: { people?: string; cut?: string; tags?: string };
 }
 
 export interface FilterStateI {
@@ -15,12 +15,12 @@ export interface FilterStateI {
 }
 
 export default async function Page({ searchParams }: Props) {
-  const { people, cut, tag } = searchParams;
+  const { people, cut, tags } = searchParams;
 
   const filterState: FilterStateI = {
     people: people ? parseInt(people) : 0,
     cut: cut ? parseInt(cut) : 0,
-    tags: tag ? tag.split(',') : [],
+    tags: tags ? tags.split(',') : [],
   };
 
   const data = (await getPoseFeed(filterState, null)).data;

@@ -12,7 +12,7 @@ export const getPoseFeed = ({ people, cut, tags }: FilterStateI, next: string | 
     params: {
       people,
       cut,
-      tag: tags.join(','),
+      tags: tags.join(','),
       cursor: next,
     },
   });

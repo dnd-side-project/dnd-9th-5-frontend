@@ -10,7 +10,7 @@ export async function GET(req: NextRequest): Promise<ApiResponse<PoseFeedRespons
   const searchParams = req.nextUrl.searchParams;
   const people = searchParams.get('people');
   const cut = searchParams.get('cut');
-  const tags = searchParams.get('tag')?.split(',');
+  const tags = searchParams.get('tags')?.split(',');
   const cursor = searchParams.get('cursor') || undefined;
 
   // regin filters
