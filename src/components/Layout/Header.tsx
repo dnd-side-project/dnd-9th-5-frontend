@@ -9,30 +9,20 @@ import { ICON } from '@/constants';
 
 interface Header {
   title?: string;
-  close?: boolean;
-  menu?: boolean;
-  additional?: ReactNode;
+  left?: JSX.Element;
+  right?: JSX.Element[];
 }
 
 // region Header
-export default function Header({
-  title = '',
-  close = false,
-  menu = false,
-  additional,
-  children,
-}: PropsWithChildren<Header>) {
+export default function Header({ title = '', left, right, children }: PropsWithChildren<Header>) {
   return (
     <>
       <Spacing size={48} />
       <div className="fixed inset-x-0 top-0 z-30 mx-auto max-w-layout bg-white">
         <div className="flex h-48 items-center justify-between gap-12 px-4 pt-8">
-          {close ? <CloseButton /> : <div className="w-4" />}
+          {left ?? <div className="w-4" />}
           <h4 className="flex flex-1">{title}</h4>
-          <div className="flex">
-            {additional}
-            {menu && <MenuButton />}
-          </div>
+          <div className="flex">{right}</div>
         </div>
         {children}
       </div>
@@ -41,20 +31,14 @@ export default function Header({
 }
 
 // region Buttons
-function CloseButton() {
-  const router = useRouter();
-  return (
-    <IconButton
-      icon={ICON.close.black}
-      onClick={() => {
-        if (window.history.length > 1) router.back();
-        else router.replace('/feed');
-      }}
-    />
-  );
+interface CloseButtonI {
+  onClick?(): void;
+}
+export function CloseButton({ onClick }: CloseButtonI) {
+  return <IconButton icon={ICON.close.black} onClick={onClick} />;
 }
 
-function MenuButton() {
+export function MenuButton() {
   const router = useRouter();
   return (
     <IconButton

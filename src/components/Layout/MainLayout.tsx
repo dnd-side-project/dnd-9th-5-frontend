@@ -1,5 +1,5 @@
 import Navigation from './Navigation.client';
-import Header from '@/components/Layout/Header';
+import Header, { MenuButton } from '@/components/Layout/Header';
 import { Spacing } from '@/components/Spacing';
 
 interface Props extends React.PropsWithChildren, MainHeaderI {}
@@ -25,7 +25,7 @@ function MainHeader({ subHeader }: MainHeaderI) {
     <>
       <Spacing size={48} />
       {subHeader && <Spacing size={subHeader.height} />}
-      <Header title="PosePicker" menu={true}>
+      <Header title="PosePicker" right={[<MenuButton key="menu" />]}>
         <Navigation />
         {subHeader && subHeader.children}
       </Header>
