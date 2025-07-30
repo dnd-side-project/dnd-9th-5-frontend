@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 
+import { BASE_SITE_URL } from './env';
+
 const META_STRING = {
   title: 'PosePicker | 포즈피커',
   description: {
@@ -12,13 +14,14 @@ const META_STRING = {
   image: {
     main: '/meta/og_main.png',
     detail: '/meta/og_detail.png',
-    kakao_share: 'https://www.posepicker.site/meta/og_kakao.png',
+    kakao_share: `${BASE_SITE_URL}/meta/og_kakao.png`,
   },
   favicon: '/meta/favicon.ico',
   appleIcon: '/pwa-icons/apple.png',
   verification: {
     google: 'MB7qV_Oa4G4gR0jHgjtnE6S4g4blocE2mjo7z-z2f6Q',
     naver: 'eb9f471cae26de34e6bc71849e73f04cb8b00d83',
+    adsense: 'ca-pub-7559978289195926',
   },
 };
 
@@ -37,7 +40,7 @@ export const OPEN_GRAPH = {
 };
 
 export const METADATA: Metadata = {
-  metadataBase: new URL('https://www.posepicker.site'),
+  metadataBase: new URL(BASE_SITE_URL),
   title: {
     default: `${META_STRING.title}`,
     template: `${META_STRING.title} | %s`,
@@ -49,6 +52,7 @@ export const METADATA: Metadata = {
   other: {
     'naver-site-verification': META_STRING.verification.naver,
     version: 'v1.0.2',
+    'google-adsense-account': META_STRING.verification.adsense,
   },
   openGraph: {
     title: META_STRING.title,
@@ -73,7 +77,6 @@ export const METADATA: Metadata = {
   manifest: '/manifest.json',
   themeColor: '#ffffff',
 };
-
 
 export const JSON_LD = {
   '@context': 'https://schema.org',
