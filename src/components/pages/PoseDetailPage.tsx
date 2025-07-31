@@ -1,15 +1,15 @@
 'use client';
 
+import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 
-import Source from '../../app/detail/[id]/Source';
-import TagButton from '../../app/detail/[id]/TagButton';
+import { Tag } from '../common/Selection';
+import { MainFooter } from '../Layout/MainFooter';
 import PrimaryButton from '@/components/common/Button';
 import BookmarkButton from '@/components/Feed/BookmarkButton';
 import Header, { CloseButton } from '@/components/Layout/Header';
-import { MainFooter } from '../Layout/MainFooter';
 import { Popup } from '@/components/Modal';
 import PoseImage from '@/components/Modal/PoseImage';
 import { useOverlay } from '@/components/Overlay/useOverlay';
@@ -92,4 +92,45 @@ export default function PoseDetailPage({ fetchedData }: PropsI) {
       </MainFooter>
     </div>
   );
+}
+
+// region Source
+interface Source {
+  source: string;
+  url: string;
+}
+
+function Source({ source, url }: Source) {
+  return (
+    <div className="flex h-60 items-center px-19">
+      <Link href={url} target="_blank" className="rounded-8 bg-divider px-12 py-5 text-main-violet">
+        {source} ↗
+      </Link>
+    </div>
+  );
+}
+
+// region TagButton
+interface TagButtonProps {
+  type?: 'people' | 'frame' | 'tag';
+  value?: number;
+  name: string;
+}
+
+function TagButton({ type = 'tag', value, name }: TagButtonProps) {
+  const router = useRouter();
+
+  const handleTag = () => {
+    const searchParams = new URLSearchParams();
+    if (type === 'people') {
+      searchParams.append('people', (value ? (value > 5 ? 5 : value) : 0).toString());
+    } else if (type === 'frame') {
+      searchParams.append('cut', (value ? (value > 8 ? 8 : value) : 0).toString());
+    } else {
+      searchParams.append('tags', new Array(name).join(','));
+    }
+    router.push(`/feed?${searchParams.toString()}`);
+  };
+
+  return <Tag text={name} onClick={handleTag} />;
 }
