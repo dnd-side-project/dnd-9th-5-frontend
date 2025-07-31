@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
 
 import { FilterStateI } from '../../app/feed/page';
 import PrimaryButton from '@/components/common/Button';
@@ -10,14 +11,17 @@ import Masonry from '@/components/Feed/Masonry';
 import { URL } from '@/constants';
 import { getPoseFeed } from '@/server/api';
 import { PoseFeedResponseI } from '@/server/type';
+import { poseFeedAtom } from '@/store/atom';
 
 interface PoseFeedPageI {
   filterState: FilterStateI;
-  initialData: PoseFeedResponseI;
+  fallbackData: PoseFeedResponseI;
 }
 
-export default function PoseFeedPage({ filterState, initialData }: PoseFeedPageI) {
-  const [data, setData] = useState<PoseFeedResponseI | null>(initialData);
+export default function PoseFeedPage({ filterState, fallbackData }: PoseFeedPageI) {
+  const cachedData = useRecoilValue(poseFeedAtom);
+  console.log('🚀 ~ PoseFeedPage ~ cachedData:', cachedData);
+  const [data, setData] = useState<PoseFeedResponseI | null>(cachedData?.feedData ?? fallbackData);
   const [loading, setLoading] = useState<'new' | 'more' | false>(false);
 
   async function fetchNewFeed() {
@@ -42,12 +46,14 @@ export default function PoseFeedPage({ filterState, initialData }: PoseFeedPageI
   }
 
   useEffect(() => {
-    fetchNewFeed();
+    if (!cachedData || cachedData.filterState !== filterState) {
+      fetchNewFeed();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterState]);
 
   return (
-    <Masonry data={data} loading={loading} fetchMore={fetchMoreFeed}>
+    <Masonry data={data} loading={loading} fetchMore={fetchMoreFeed} filterState={filterState}>
       <EmptyCase
         title={'신비한 포즈를 찾으시는군요!'}
         text={'찾고 싶은 포즈를 저희에게 알려주세요.'}

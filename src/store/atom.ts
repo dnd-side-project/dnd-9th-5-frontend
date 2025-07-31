@@ -1,10 +1,22 @@
-import { atom } from 'recoil';
+import { atom, selector } from 'recoil';
 
-import { PoseDataI } from '@/server/type';
+import { FilterStateI } from '@/app/feed/page';
+import { PoseDataI, PoseFeedResponseI } from '@/server/type';
 
-export const cachedPoseFeedAtom = atom<PoseDataI | null>({
+export const poseFeedAtom = atom<{
+  filterState: FilterStateI | undefined;
+  selectedIdx: number;
+  feedData: PoseFeedResponseI;
+} | null>({
   key: 'cachedPoseFeedAtom',
   default: null,
 });
 
-export const cachedPoseAtom = atom<PoseDataI | null>({ key: 'cachedPoseAtom', default: null });
+export const poseDetailSelector = selector({
+  key: 'poseSelector',
+  get: ({ get }) => {
+    const feed = get(poseFeedAtom);
+    if (!feed) return null;
+    return feed.feedData.contents[feed.selectedIdx];
+  },
+});

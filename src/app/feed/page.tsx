@@ -29,7 +29,7 @@ export default async function Page({ searchParams }: Props) {
     <MainLayout
       subHeader={{ children: <PoseFeedFilterTab filterState={filterState} />, height: 56 }}
     >
-      <PoseFeedPage filterState={filterState} initialData={data} />
+      <PoseFeedPage filterState={filterState} fallbackData={data} />
       <FilterSheet filterState={filterState} />
     </MainLayout>
   );

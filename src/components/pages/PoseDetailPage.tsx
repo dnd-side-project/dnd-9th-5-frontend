@@ -16,7 +16,7 @@ import { useOverlay } from '@/components/Overlay/useOverlay';
 import { BASE_SITE_URL } from '@/constants';
 import { useKakaoShare } from '@/hooks';
 import { PoseDataI } from '@/server/type';
-import { cachedPoseAtom } from '@/store/atom';
+import { poseDetailSelector } from '@/store/atom';
 import { copy } from '@/utils/copy';
 
 interface PropsI {
@@ -33,7 +33,7 @@ export default function PoseDetailPage({ fetchedData }: PropsI) {
   const pathname = usePathname();
   const [isRendered, setIsRendered] = useState(false);
 
-  const cachedData = useRecoilValue(cachedPoseAtom);
+  const cachedData = useRecoilValue(poseDetailSelector);
   const [data, setData] = useState(fromFeed ? cachedData : fetchedData);
 
   const handleShareLink = async () => {

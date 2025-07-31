@@ -7,18 +7,23 @@ import { useSetRecoilState } from 'recoil';
 
 import BookmarkButton from './BookmarkButton';
 import PrimaryButton from '../common/Button';
+import { FilterStateI } from '@/app/feed/page';
 import { PoseDataI, PoseFeedResponseI } from '@/server/type';
-import { cachedPoseAtom } from '@/store/atom';
+import { poseFeedAtom } from '@/store/atom';
 import cn from '@/utils/cn';
 
 // region Masonry
 interface MasonryI extends PropsWithChildren {
   data: PoseFeedResponseI | null;
+  filterState?: FilterStateI;
   loading?: 'new' | 'more' | false;
   fetchMore?: () => void;
 }
 
-export default function Masonry({ children, data, loading, fetchMore }: MasonryI) {
+export default function Masonry({ children, data, loading, fetchMore, filterState }: MasonryI) {
+  const router = useRouter();
+  const setCachedData = useSetRecoilState(poseFeedAtom);
+
   if (loading === 'new' || !data) {
     return <Loading />;
   }
@@ -27,11 +32,20 @@ export default function Masonry({ children, data, loading, fetchMore }: MasonryI
     return children;
   }
 
+  function onClickImage(idx: number, poseId: string) {
+    setCachedData({
+      filterState,
+      selectedIdx: idx,
+      feedData: data as PoseFeedResponseI,
+    });
+    return router.push(`/detail/${poseId}?fromFeed=true`);
+  }
+
   return (
     <div>
       <div className="columns-2">
-        {data.contents.map((content) => (
-          <Photo key={content.id} data={content} />
+        {data.contents.map((content, idx) => (
+          <Photo key={content.id} data={content} onClick={() => onClickImage(idx, content.id)} />
         ))}
       </div>
       {data.pagination.hasMore && (
@@ -50,18 +64,12 @@ export default function Masonry({ children, data, loading, fetchMore }: MasonryI
 // region Photo
 interface PhotoI {
   data: PoseDataI;
+  onClick: () => void;
 }
-function Photo({ data }: PhotoI) {
-  const { people, cut, tags, source, sourceUrl, image, id } = data;
+function Photo({ data, onClick }: PhotoI) {
+  const { source, image, id } = data;
   const aspectRatio = image.size ? image.size.width / image.size.height : 1;
   const [loaded, setLoaded] = useState(false);
-  const router = useRouter();
-  const setCachedData = useSetRecoilState(cachedPoseAtom);
-
-  function onClickImage() {
-    setCachedData(data);
-    return router.push(`/detail/${id}?fromFeed=true`);
-  }
 
   return (
     <div className="relative mb-16 inline-block w-full cursor-pointer rounded-8">
@@ -77,7 +85,7 @@ function Photo({ data }: PhotoI) {
           height: 'auto',
         }}
         onLoad={() => setLoaded(true)}
-        onClick={onClickImage}
+        onClick={onClick}
       />
       {loaded && <BookmarkButton isMarked={false} poseId={parseInt(id)} />}
       {loaded || <div style={{ aspectRatio }} className="w-full rounded-8 bg-sub-white" />}
