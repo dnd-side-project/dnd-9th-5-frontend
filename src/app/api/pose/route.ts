@@ -68,7 +68,7 @@ export async function GET(req: NextRequest): Promise<ApiResponse<PoseFeedRespons
 
     const contents = (
       await Promise.all(resultPages.map(async (page) => await refinePoseDataFromPage(page)))
-    ).filter((item) => item !== null);
+    ).filter((item): item is PoseDataI => item !== null);
 
     return NextResponse.json({
       contents,
