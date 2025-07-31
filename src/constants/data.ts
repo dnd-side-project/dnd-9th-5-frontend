@@ -47,3 +47,5 @@ export const WITHDRAW_REASON_LIST = [
   '포즈 탐색이 어려워요',
   '재가입 할 거 에요',
 ] as const;
+
+export const FEED_FILTER_TAG_LIST = ['소품', '친구', '재미', '아이돌', '연인', '캐릭터', '흑백'];

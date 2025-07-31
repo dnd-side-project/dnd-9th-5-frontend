@@ -1,5 +1,5 @@
-import { ICON } from '@/constants';
 import { Icon } from '../common/Button';
+import { ICON } from '@/constants';
 
 // region tag
 interface TagI {
@@ -63,6 +63,8 @@ interface SelectionTagListI {
 }
 
 export function SelectionTagList({ data, state, setState }: SelectionTagListI) {
+  const mergedData = Array.from(new Set([...data, ...state]));
+
   function clickTag(tag: string) {
     if (state.includes(tag)) {
       setState((prev) => prev.filter((item) => item !== tag));
@@ -70,15 +72,18 @@ export function SelectionTagList({ data, state, setState }: SelectionTagListI) {
       setState((prev) => [...prev, tag]);
     }
   }
+
   return (
     <div className="flex flex-wrap gap-8">
-      {data.map((item) => {
+      {mergedData.map((item) => {
         const selected = state.includes(item);
+        const isCustomTag = !data.includes(item);
+
         return (
           <Tag
             key={item}
             violet={selected}
-            x={selected}
+            x={isCustomTag}
             onClick={() => clickTag(item)}
             text={item}
           />

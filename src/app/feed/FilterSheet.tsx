@@ -6,9 +6,9 @@ import { useEffect, useState } from 'react';
 import { FilterStateI } from './page';
 import { FilterTagsResponse } from '@/apis';
 import PrimaryButton from '@/components/common/Button';
-import { SelectionBasic, Tag } from '@/components/common/Selection';
+import { SelectionBasic, SelectionTagList, Tag } from '@/components/common/Selection';
 import BottomSheet from '@/components/Modal/BottomSheet';
-import { FRAME_COUNT_LIST, PEOPLE_COUNT_LIST } from '@/constants';
+import { FEED_FILTER_TAG_LIST, FRAME_COUNT_LIST, PEOPLE_COUNT_LIST } from '@/constants';
 import { useBottomSheet } from '@/hooks';
 
 interface FilterSheetI {
@@ -25,9 +25,9 @@ export default function FilterSheet({ filterState }: FilterSheetI) {
   const [tagState, setTagState] = useState<string[]>(filterState.tags);
 
   function resetFilter() {
-    setCountState(0);
-    setFrameState(0);
-    setTagState([]);
+    setCountState(filterState.people);
+    setFrameState(filterState.cut);
+    setTagState(filterState.tags);
   }
 
   function decideFilter() {
@@ -74,23 +74,15 @@ export default function FilterSheet({ filterState }: FilterSheetI) {
           </div>
           <SelectionBasic data={FRAME_COUNT_LIST} state={frameState} setState={setFrameState} />
         </section>
-        {tagState.length !== 0 && (
-          <section>
-            <div id="subtitle-2" className="mb-8 text-secondary">
-              태그
-            </div>
-            {/* {tags && (
-            <SelectionTagList
-              data={refineTagListData(tagListData)}
-              state={tagState}
-              setState={setTagState}
-            />
-          )} */}
-            {tagState.map((tag, index) => (
+        <section>
+          <div id="subtitle-2" className="mb-8 text-secondary">
+            태그
+          </div>
+          <SelectionTagList data={FEED_FILTER_TAG_LIST} state={tagState} setState={setTagState} />
+          {/* {tagState.map((tag, index) => (
               <Tag key={index} text={tag} x={true} onClick={() => toggleTag(tag)} />
-            ))}
-          </section>
-        )}
+            ))} */}
+        </section>
       </div>
       <div className="flex gap-8 px-20 pb-20">
         <PrimaryButton
