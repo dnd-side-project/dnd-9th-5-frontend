@@ -21,19 +21,20 @@ export default function BookmarkButton({ poseId, isMarked, style = 'circle' }: B
   const [marked, setMarked] = useState(isMarked);
 
   function onClick() {
+    alert('업데이트를 기다려주세요!');
     // if (!token) {
     //   open(({ exit }) => <LoginModal onClose={exit} />);
     //   return;
     // }
-    if (marked) {
-      deleteBookmark(poseId).then(() => {
-        setMarked(false);
-      });
-    } else {
-      postBookmark(poseId).then(() => {
-        setMarked(true);
-      });
-    }
+    // if (marked) {
+    //   deleteBookmark(poseId).then(() => {
+    //     setMarked(false);
+    //   });
+    // } else {
+    //   postBookmark(poseId).then(() => {
+    //     setMarked(true);
+    //   });
+    // }
   }
 
   if (style === 'black') {
