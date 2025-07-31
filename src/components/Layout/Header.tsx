@@ -1,11 +1,16 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { PropsWithChildren } from 'react';
 
-import { IconButton } from '../common/Button';
+import { Icon, IconButton } from '../common/Button';
+import { Tag } from '../common/Selection';
 import { Spacing } from '../Spacing';
+import { FilterStateI } from '@/app/feed/page';
 import { ICON } from '@/constants';
+import { useBottomSheet } from '@/hooks';
+import cn from '@/utils/cn';
 
 interface Header {
   title?: string;
@@ -48,5 +53,82 @@ export function MenuButton() {
         router.push('/menu');
       }}
     />
+  );
+}
+
+// region Navigation
+const navigationData = [
+  { path: '/pick', title: '포즈픽' },
+  { path: '/talk', title: '포즈톡' },
+  { path: '/feed', title: '포즈피드' },
+  { path: '/mypose/bookmark', title: '마이포즈' },
+] as const;
+
+export function Navigation() {
+  const curPath = usePathname();
+
+  return (
+    <nav className="flex h-48 items-center gap-16 border-b-2 border-b-divider px-20">
+      {navigationData.map((item) => (
+        <div key={item.path}>
+          {item.path.includes(curPath) ? (
+            <div className="relative py-12">
+              <h5 id="subtitle-1" className="text-brand">
+                {item.title}
+              </h5>
+              <div className="absolute bottom-0 left-0 w-full border-b-2 border-main-violet" />
+            </div>
+          ) : (
+            <Link className="py-12 text-tertiary" href={item.path} as={item.path}>
+              <h5>{item.title}</h5>
+            </Link>
+          )}
+        </div>
+      ))}
+    </nav>
+  );
+}
+
+// region PoseFeedFilterTab
+interface Props {
+  filterState: FilterStateI;
+}
+
+export function PoseFeedFilterTab({ filterState }: Props) {
+  const { people, cut, tags } = filterState;
+  const { openBottomSheet } = useBottomSheet();
+
+  const isFiltered = !(people === 0 && cut === 0 && tags.length === 0);
+
+  return (
+    <div className="flex h-56 items-center gap-8 bg-white px-20">
+      <button
+        className={cn('flex min-w-fit items-center gap-8 rounded-8 px-16 py-9', {
+          'border-1 border-main-violet bg-main-violet-base text-main-violet': isFiltered,
+          'bg-sub-white': !isFiltered,
+        })}
+        onClick={openBottomSheet}
+      >
+        <h5 id="subtitle-2">필터</h5>
+        <Icon icon={isFiltered ? 'carat_down' : 'carat_down_gray'} />
+      </button>
+
+      {isFiltered && (
+        <>
+          <div className="text-divider">|</div>
+          <div className="flex gap-8 overflow-x-scroll">
+            {people !== 0 && <Tag key="people" text={`${people}인`} />}
+            {cut !== 0 && <Tag key="cut" text={`${cut}컷`} />}
+            {tags.map((tag) => (
+              <Tag
+                key={tag}
+                text={tag}
+                // onClick={() => deleteSelectedFilterItem(tag)}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
   );
 }

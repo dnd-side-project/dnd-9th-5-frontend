@@ -1,7 +1,7 @@
 import FilterSheet from './FilterSheet';
 import PoseFeedPage from '../../components/pages/PoseFeedPage';
+import { PoseFeedFilterTab } from '@/components/Layout/Header';
 import MainLayout from '@/components/Layout/MainLayout';
-import PoseFeedFilterTab from '@/components/Layout/PoseFeedFilterTab.client';
 import { getPoseFeed } from '@/server/api';
 
 interface Props {

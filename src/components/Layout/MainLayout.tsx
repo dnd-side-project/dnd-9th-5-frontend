@@ -1,5 +1,4 @@
-import Navigation from './Navigation.client';
-import Header, { MenuButton } from '@/components/Layout/Header';
+import Header, { MenuButton, Navigation } from '@/components/Layout/Header';
 import { Spacing } from '@/components/Spacing';
 
 interface Props extends React.PropsWithChildren, MainHeaderI {}
