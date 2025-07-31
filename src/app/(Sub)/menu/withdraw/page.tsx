@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 import PrimaryButton from '@/components/common/Button';
 import Header from '@/components/Layout/Header';
-import { MainFooter } from '../../../../../_projects/components/MainFooter';
+import { MainFooter } from '../../../../components/Layout/MainFooter';
 import { Popup } from '@/components/Modal';
 import { useOverlay } from '@/components/Overlay/useOverlay';
 import { WITHDRAW_REASON_LIST } from '@/constants';

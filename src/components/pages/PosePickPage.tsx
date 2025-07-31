@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Lottie from 'react-lottie-player';
 
 import lottiePick from '#/lotties/pick.json';
-import { MainFooter } from '../../../_projects/components/MainFooter';
+import { MainFooter } from '../Layout/MainFooter';
 import PrimaryButton from '@/components/common/Button';
 import { SelectionBasic } from '@/components/common/Selection';
 import PoseImage from '@/components/Modal/PoseImage';

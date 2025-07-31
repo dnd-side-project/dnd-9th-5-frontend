@@ -7,7 +7,7 @@ import { Tooltip } from 'react-tooltip';
 import lottieTalkAfterClick from '#/lotties/talk_after_click.json';
 import lottieTalkBeforeClick from '#/lotties/talk_before_click.json';
 import PrimaryButton, { Icon } from '../common/Button';
-import { MainFooter } from '../../../_projects/components/MainFooter';
+import { MainFooter } from '../Layout/MainFooter';
 import { Spacing } from '../Spacing';
 import { COOKIE_IS_TOOLTIP_OPEN, ICON } from '@/constants';
 import { getPoseTalk } from '@/server/api';
