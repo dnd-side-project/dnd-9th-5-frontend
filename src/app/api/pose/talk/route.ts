@@ -1,9 +1,9 @@
 import { PageObjectResponse } from '@notionhq/client';
+import { UniqueIdPropertyItemObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import { NextResponse } from 'next/server';
 
 import { NOTION_DATABASE, notionClient } from '@/server/database';
 import { ApiResponse, PoseTalkResponseI } from '@/server/type';
-import { UniqueIdPropertyItemObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 
 // region GET
 export async function GET(): Promise<ApiResponse<PoseTalkResponseI>> {

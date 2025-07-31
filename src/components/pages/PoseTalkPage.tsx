@@ -113,8 +113,8 @@ function TalkWordSection() {
   };
 
   return (
-    <section className="flex flex-col items-center">
-      <h1 className="max-w-310 h-100 items-center break-keep text-center">{talkWord}</h1>
+    <section className="flex w-full flex-col items-center">
+      <h1 className="break-keep px-20 text-center">{talkWord}</h1>
 
       <Spacing size={10} />
 
