@@ -34,12 +34,13 @@ export default function Masonry({ children, data, loading, fetchMore }: MasonryI
           <Photo key={content.id} data={content} />
         ))}
       </div>
-      {loading === false && data.pagination.hasMore && (
+      {data.pagination.hasMore && (
         <PrimaryButton
-          variant="secondary"
+          variant={loading === 'more' ? 'secondary' : 'outline'}
           onClick={fetchMore}
-          text="더보기"
+          text={loading === 'more' ? '로딩중...' : '더보기'}
           className="mb-16 w-full"
+          disabled={loading === 'more'}
         />
       )}
     </div>

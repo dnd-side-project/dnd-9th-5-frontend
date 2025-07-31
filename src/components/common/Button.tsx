@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 import cn from '@/utils/cn';
 
 // region Icon
@@ -48,9 +49,11 @@ export default function PrimaryButton({
   onClick,
   variant = 'fill',
   className,
+  disabled,
 }: ButtonProps) {
   return (
     <button
+      disabled={disabled}
       onClick={onClick}
       className={cn(
         'flex h-60 items-center justify-center gap-8 rounded-12 px-24 transition-all active:scale-95',
