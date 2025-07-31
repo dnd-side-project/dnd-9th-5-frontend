@@ -64,16 +64,11 @@ export async function GET(req: NextRequest): Promise<ApiResponse<PoseFeedRespons
       start_cursor: cursor,
     });
 
-    const contents: PoseDataI[] = [];
     const resultPages = response.results as PageObjectResponse[];
 
-    for (const page of resultPages) {
-      const content = await refinePoseDataFromPage(page);
-      if (content === null) {
-        continue;
-      }
-      contents.push(content);
-    }
+    const contents = (
+      await Promise.all(resultPages.map(async (page) => await refinePoseDataFromPage(page)))
+    ).filter((item) => item !== null);
 
     return NextResponse.json({
       contents,
