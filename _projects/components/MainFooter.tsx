@@ -1,6 +1,4 @@
-import AppDownloadBanner from './AppDownloadBanner';
 import { StrictPropsWithChildren } from '@/types';
-import { isIOS } from '@/utils';
 
 interface MainFooterI extends StrictPropsWithChildren {
   grow?: boolean;

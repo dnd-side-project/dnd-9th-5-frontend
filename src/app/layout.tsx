@@ -1,6 +1,6 @@
 import './globals.css';
 
-import Analytics from '../components/Layout/Analytics';
+import Scripts from '../components/Layout/Scripts';
 import { OverlayProvider } from '@/components/Overlay/OverlayProvider';
 import { METADATA } from '@/constants';
 import QueryProvider from '@/provider/QueryProvider';
@@ -16,7 +16,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
     <html lang="ko">
       <body className="flex w-screen touch-none justify-center bg-slate-100">
         <div className="w-full max-w-layout overflow-scroll bg-white text-primary">
-          <Analytics />
+          <Scripts />
           <QueryProvider>
             <RecoilProvider>
               <OverlayProvider>{children}</OverlayProvider>

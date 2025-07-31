@@ -7,9 +7,9 @@ import { useSetRecoilState } from 'recoil';
 
 import BookmarkButton from './BookmarkButton';
 import PrimaryButton from '../common/Button';
-import { Loading } from '../Loading';
 import { PoseDataI, PoseFeedResponseI } from '@/server/type';
 import { cachedPoseAtom } from '@/store/atom';
+import cn from '@/utils/cn';
 
 // region Masonry
 interface MasonryI extends PropsWithChildren {
@@ -20,7 +20,7 @@ interface MasonryI extends PropsWithChildren {
 
 export default function Masonry({ children, data, loading, fetchMore }: MasonryI) {
   if (loading === 'new' || !data) {
-    return <Loading className="h-[calc(100dvh-178px)]" />;
+    return <Loading />;
   }
 
   if (data.contents.length === 0) {
@@ -80,6 +80,19 @@ function Photo({ data }: PhotoI) {
       />
       {loaded && <BookmarkButton isMarked={false} poseId={parseInt(id)} />}
       {loaded || <div style={{ aspectRatio }} className="w-full rounded-8 bg-sub-white" />}
+    </div>
+  );
+}
+
+// region Loading
+const loadingIconStyle = 'h-10 w-10 rounded-full bg-main-violet-base';
+function Loading() {
+  return (
+    <div className={cn('flex h-full items-center justify-center gap-10')}>
+      <div className={cn(loadingIconStyle, 'animate-sizeUpAndDown1')} />
+      <div className={cn(loadingIconStyle, 'animate-sizeUpAndDown2')} />
+      <div className={cn(loadingIconStyle, 'animate-sizeUpAndDown3')} />
+      <div className={cn(loadingIconStyle, 'animate-sizeUpAndDown4')} />
     </div>
   );
 }

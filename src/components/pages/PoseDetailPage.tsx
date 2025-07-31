@@ -9,7 +9,7 @@ import TagButton from '../../app/detail/[id]/TagButton';
 import PrimaryButton from '@/components/common/Button';
 import BookmarkButton from '@/components/Feed/BookmarkButton';
 import Header, { CloseButton } from '@/components/Layout/Header';
-import { MainFooter } from '@/components/Layout/MainFooter';
+import { MainFooter } from '../../../_projects/components/MainFooter';
 import { Popup } from '@/components/Modal';
 import PoseImage from '@/components/Modal/PoseImage';
 import { useOverlay } from '@/components/Overlay/useOverlay';

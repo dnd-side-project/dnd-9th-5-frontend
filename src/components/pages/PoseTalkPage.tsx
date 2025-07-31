@@ -7,7 +7,7 @@ import { Tooltip } from 'react-tooltip';
 import lottieTalkAfterClick from '#/lotties/talk_after_click.json';
 import lottieTalkBeforeClick from '#/lotties/talk_before_click.json';
 import PrimaryButton, { Icon } from '../common/Button';
-import { MainFooter } from '../Layout/MainFooter';
+import { MainFooter } from '../../../_projects/components/MainFooter';
 import { Spacing } from '../Spacing';
 import { COOKIE_IS_TOOLTIP_OPEN, ICON } from '@/constants';
 import { getPoseTalk } from '@/server/api';
@@ -114,7 +114,7 @@ function TalkWordSection() {
 
   return (
     <section className="flex flex-col items-center">
-      <h1 className="h-100 max-w-310 items-center break-keep text-center">{talkWord}</h1>
+      <h1 className="max-w-310 h-100 items-center break-keep text-center">{talkWord}</h1>
 
       <Spacing size={10} />
 
